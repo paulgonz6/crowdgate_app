@@ -1,0 +1,51 @@
+
+/*Light blue background color #F4F7F9*/
+
+a,
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  padding-bottom: 100px;
+}
+
+h1 {
+  line-height: 54px;
+  font-weight: 600;
+}
+
+.subtext {
+  color: #647A87;
+  font-size: 22px;
+  line-height: 34px;
+  font-weight: 300;
+  margin-top: 0;
+}
+
+.nav {
+  color: #647A87; 
+}
+
+.navbar {
+  background-color: white;
+  border-bottom: none;
+  box-shadow: 0 1px 5px rgba(0,0,0,.2);
+}
+
+.btn-primary {
+  border-width: 1px 1px 3px 1px;
+  background-color: #06C;
+  border-color: #105296;
+}
+
+.form-field-description {
+  font-size: 12px;
+  padding-top: 10px;
+  opacity: .6;
+}

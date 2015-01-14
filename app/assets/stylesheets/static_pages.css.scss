@@ -1,0 +1,47 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jumbotron {
+  background-color: #F4F7F9;
+  margin-bottom: 0px;
+  /*padding: 60px;*/
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  h1 {
+    font-size: 38px;
+    margin-top: 0;
+  }
+}
+
+.home-page-buttons {
+  margin-top: 30px;
+}
+
+.landing-pg-sections {
+  padding: 15px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+
+  p {
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+  }
+}
+
+footer {
+  min-height: 50px;
+  padding: 10px;
+  background-color: #647A87;
+  color: white;
+  font-weight: 300;
+
+  legend {
+    color: white;
+    font-size: 18px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}

@@ -1,0 +1,64 @@
+// Place all the styles related to the Tailgates controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.host-details {
+  padding: 0;
+  text-align: left;
+
+  dt {
+    text-align: left;
+    width: 40%;
+  }
+
+  dd {
+    margin-left: 0;
+  }
+}
+
+.tailgate-forms {
+  margin-top: 40px;
+}
+
+.tailgate-listing,
+.tailgate-content-section {
+  padding-bottom: 9px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.tailgate-listing:hover {
+  background-color: #F7f7f7;
+}
+
+.tailgate-page {
+}
+
+.booking-block {
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  padding: 20px 15px 20px 15px;
+  text-align: center;
+  margin-top: 40px;
+  margin-right: 97px;
+  position: fixed;
+  right: 0;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 10px 0;
+  }
+}
+
+.rating {
+  color: #FFD800;
+  margin-left: 10px;
+}
+
+.quantity {
+  text-align: left;
+  margin-bottom: 20px;
+}

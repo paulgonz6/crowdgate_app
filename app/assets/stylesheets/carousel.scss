@@ -1,0 +1,53 @@
+
+/* Carousel Styles */
+.carousel-indicators .active {
+  background-color: #647A87;
+}
+
+.carousel-indicators li {
+  border: 1px solid #647A87;
+}
+
+.carousel-inner {
+  min-height: 50vh;
+  background-color: #F4F7F9;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+
+.carousel-inner img {
+  width: 100%;
+  max-height: 60vh;
+}
+
+.carousel-control {
+  width: 0;
+}
+
+/* Carousel Header Styles */
+.header-text {
+  position: absolute;
+  padding-top: 30px;
+  top: 0%;
+  left: 15%;
+  right: auto;
+  width: 70%;
+}
+
+.btn-min-block {
+    min-width: 170px;
+    line-height: 26px;
+    margin-top: 50px;
+}
+
+.btn-theme {
+    color: black;
+    background-color: transparent;
+    border: 2px solid black;
+    margin-right: 15px;
+}
+
+.btn-theme:hover {
+    color: black;
+    background-color: transparent;
+    border-color: black;
+}

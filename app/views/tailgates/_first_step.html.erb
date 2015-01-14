@@ -1,0 +1,29 @@
+
+<form class="form tailgate-forms" role="form">
+  <fieldset>
+    <div class="form-group">
+      <label class="control-label" for="card-holder-name">What event are you tailgating for?</label>
+      <div class="">
+        <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Pick the appropriate sporting event">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="card-holder-name">How many guests do you want to invite?</label>
+      <div class="">
+        <input type="number" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="The more the merrier...">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="expiry-month">Do you want to affiliate your tailgate with either team?</label>        
+      <select class="form-control" name="expiry-month" id="expiry-month">
+        <option value="home">Select a team</option>
+        <option value="home">Penn State</option>
+        <option value="away">Army</option>
+        <option value="away">Neither</option>
+      </select>
+    </div>
+    <p class="btn btn-primary btn-block"><%= link_to 'Continue', login_path %></p>
+  </fieldset>
+</form>
