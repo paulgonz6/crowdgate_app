@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get 'events' => 'events#index'
-  
-  get 'tailgates' => 'tailgates#index'
-  get 'tailgate_details' => 'tailgates#show'
+
+  get('/tailgates/index', { :controller => "tailgates", :action => "index" })
+  get('/tailgates/show/:id', { :controller => "tailgates", :action => "show" })
+  get('/new_tailgate', { :controller => "tailgates", :action => "new" })
+  get('/create_tailgate', { :controller => "tailgates", :action => "process_form" })
+
   get 'confirm' => 'tailgates#confirm_purchase'
   get 'receipt' => 'tailgates#receipt'
-  get 'create_tg' => 'tailgates#new_step1'
+
 
   get 'login' => 'sessions#new'
 

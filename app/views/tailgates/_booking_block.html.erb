@@ -1,10 +1,10 @@
 <div class="col-md-3 col-md-offset-1 booking-block">
-  <h3>$50 per guest</h3>
-  <p>8 out 10 Spots Remaining</p>
+  <h3>$<%= @tailgate.price %> per guest</h3>
+  <p><%= @tailgate.size %> Spots Remaining</p>
 
   <!-- JUST FOR DEMO PURPOSES -->
   <p class="btn btn-primary btn-block"><%= link_to "Book Now", login_path %></p>
-  
+
   <hr/>
 
   <p class="btn btn-default btn-block buttons-with-icons"><a href="#"><i class="fa fa-envelope"></i> Email Host</a></p>
