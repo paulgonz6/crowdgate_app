@@ -1,103 +1,37 @@
 <div class="container">
   <div class="row">
     <div class="page-header">
-      <h3>What team do you want to tailgate for?</h3>
+      <h3>Index of all events</h3>
     </div>
   </div>
 
   <div class="row">
-    <form>
-      <div class="form-group">
-        <div class="col-md-6">
-          <input type="text" class="form-control" id="#" placeholder="Type in the name of a team">
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Find Games</button>
-    </form>
-  </div>
-
-  <div class="row search-results">
-    <div class="col-md-12 table-div">
-      <p class="form-field-description">Showing results for: Penn State Football</p>
-      <hr/>
-      <h4>Select a game to view our tailgate offerings</h4>
+    <div class="col-md-10 col-md-offset-1">
       <table class="table table-hover">
         <thead>
-          <th>Date</th>
-          <th>Opponent</th>
-          <th>Location</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Event Date</th>
+          <th>Event Time</th>
+          <th>Venue</th>
+          <th>City</th>
+          <th>State</th>
+          <th>API ID</th>
+          <th>API Modified At</th>
         </thead>
-        <tr>
-          <td>Saturday, Sept. 5</td>
-          <td>at Temple Owls </td>
-          <td>Lincoln Financial Field, Philadelphia, PA</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Sept. 12</td>
-          <td>Bulls Buffalo Bulls </td>
-          <td>Beaver Stadium, University Park, PA</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Sept. 19</td>
-          <td>Rutgers Scarlet Knights </td>
-          <td>Beaver Stadium, University Park, PA</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Sept. 26</td>
-          <td>San Diego State Aztecs </td>
-          <td>Beaver Stadium, University Park, PA</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Oct. 3</td>
-          <td><%= link_to "Army Black Knights", tailgates_path%></td>
-          <td>Beaver Stadium, University Park, PA</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Oct. 10</td>
-          <td>Indiana Hoosiers </td>
-          <td>Beaver Stadium, University Park, PA</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Oct. 17</td>
-          <td>at Ohio State Buckeyes </td>
-          <td>Ohio Stadium, Columbus, OH</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Oct. 24</td>
-          <td>at Maryland Terrapins </td>
-          <td>M&T Bank Stadium, Baltimore, MD</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Oct. 31</td>
-          <td>Illinois Fighting Illini </td>
-          <td>Beaver Stadium, University Park, PA</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Nov. 7</td>
-          <td>at Northwestern Wildcats </td>
-          <td>Ryan Field, Evanston, IL</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Nov. 21</td>
-          <td>Michigan Wolverines</td>
-          <td>Beaver Stadium, University Park, PA</td>
-        </tr>
-
-        <tr>
-          <td>Saturday, Nov. 28</td>
-          <td>at Michigan State Spartans</td>
-          <td>Spartan Stadium, East Lansing, MI</td>
-        </tr>
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= event.id %></td>
+            <td><%= event.name %></td>
+            <td><%= event.date %></td>
+            <td><%= event.time %></td>
+            <td><%= event.venue %></td>
+            <td><%= event.city %></td>
+            <td><%= event.state %></td>
+            <td><%= event.ap_id %></td>
+            <td><%= event.api_modified %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
   </div>

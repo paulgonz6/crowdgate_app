@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  get 'events' => 'events#index'
+  get('/events/new', { :controller => "events", :action => "new" })
+  get('/events/add', { :controller => "events", :action => "add" })
+  get('/events/index', { :controller => "events", :action => "index" })
 
   get('/tailgates/index', { :controller => "tailgates", :action => "index" })
   get('/tailgates/show/:id', { :controller => "tailgates", :action => "show" })
