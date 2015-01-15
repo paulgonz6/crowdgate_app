@@ -3,11 +3,11 @@
 
     <!-- TIME TAILGATE STARTS, RELATIVE TO KICKOFF-->
     <div class="form-group">
-      <label class="control-label" for="associated_event">What game are you tailgating for?</label>
-      <select class="form-control" name="associated_event" id="associated_event">
+      <label class="control-label" for="event_id">What game are you tailgating for?</label>
+      <select class="form-control" name="event_id" id="event_id">
         <option>Select a game</option>
           <% @events.each do |event| %>
-          <option value="<%= event.name %>"><%= event.name %></option>
+          <option value="<%= event.id %>"><%= event.name %></option>
           <% end %>
       </select>
     </div>
@@ -160,6 +160,6 @@
       </div>
     </div>
 
-    <input type="submit" class="btn btn-primary btn-block" value="Create Tailgate">
+    <input type="submit" class="btn btn-success btn-block" value="Create Tailgate">
 
 </form>

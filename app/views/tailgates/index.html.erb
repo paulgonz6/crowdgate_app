@@ -1,11 +1,42 @@
 <div class="container">
-  <div class="row">
-    <div class="page-header">
-      <h3>Tailgates for Penn State Nittany Lions vs. Army Black Nights</h3>
-      <h4><small>Beaver Stadium, University Park, PA, Saturday, Oct. 3</small></h4>
-    </div>
-  </div>
 
-  <%= render 'tailgates/listings' %>
+  <% @events.each do |event| %>
+    <% if event.tailgates.length > 0 %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-header">
+            <h3><%= event.name %></h3>
+            <h4><small><%= event.name %>, <%= event.city %>, <%= event.state %>, <%= event.time %></small></h4>
+          </div>
+        </div>
+      </div>
+        <% event.tailgates.each do |listing| %>
+          <div class="row tailgate-listing">
+            <div class="col-md-4">
+              <dl class="dl-horizontal host-details">
+                <dt>Host Name:</dt>
+                <dd>Sheldon C.</dd>
+                <dt>Experience:</dt>
+                <dd>Hosted 18 Tailgates</dd>
+                <dt>Status:</dt>
+                <dd>Veteran</dd>
+                <dt>Rating:</dt>
+                <dd>4 Stars</dd>
+              </dl>
+            </div>
+            <div class="col-md-6">
+              <p><a href="show/<%= listing.id %>"><strong><%= listing.name %></a></strong></p>
+              <p>
+                <%= listing.description %>
+              </p>
+            </div>
+             <div class="col-md-2">
+              <p><%= listing.size %> spots left</p>
+              <p>$<%= listing.price %> Per Guest</p>
+            </div>
+          </div>
+        <% end %>
+    <% end %>
+  <% end %>
 
 </div>

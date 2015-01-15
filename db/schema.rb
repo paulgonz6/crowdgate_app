@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115143122) do
+ActiveRecord::Schema.define(version: 20150115205222) do
 
   create_table "events", force: true do |t|
     t.string "name"
@@ -35,13 +35,13 @@ ActiveRecord::Schema.define(version: 20150115143122) do
     t.boolean "tent"
     t.string  "tailgate_start_time"
     t.boolean "tailgate_during_game"
-    t.string  "associated_event"
     t.boolean "chairs"
     t.boolean "table"
     t.boolean "bevs_alcohol"
     t.boolean "bevs_non_alcohol"
     t.boolean "tailgate_games"
     t.boolean "food"
+    t.integer "event_id"
   end
 
 end

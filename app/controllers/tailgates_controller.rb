@@ -6,7 +6,7 @@ class TailgatesController < ApplicationController
 
 
   def index
-    @tailgates = Tailgate.all.reverse
+    @events = Event.all
   end
 
   def confirm_purchase
@@ -31,7 +31,7 @@ class TailgatesController < ApplicationController
     new_tailgate.bevs_alcohol = params[:bevs_alcohol]
     new_tailgate.bevs_non_alcohol = params[:bevs_non_alcohol]
     new_tailgate.food = params[:food]
-    new_tailgate.associated_event = params[:associated_event]
+    new_tailgate.event_id = params[:event_id]
     new_tailgate.tailgate_start_time = params[:tailgate_start_time]
     new_tailgate.tailgate_during_game = params[:tailgate_during_game]
 

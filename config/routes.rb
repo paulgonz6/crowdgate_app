@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   get('/events/add', { :controller => "events", :action => "add" })
   get('/events/index', { :controller => "events", :action => "index" })
 
+  get('/events/delete/:id', { :controller => "events", :action => "delete" })
+  get('/events/destroy/:id', { :controller => "events", :action => "destroy" })
+
+  get('/events/edit/:id', { :controller => "events", :action => "edit" })
+  get('/events/save/:id', { :controller => "events", :action => "save" })
+
   get('/tailgates/index', { :controller => "tailgates", :action => "index" })
   get('/tailgates/show/:id', { :controller => "tailgates", :action => "show" })
   get('/new_tailgate', { :controller => "tailgates", :action => "new" })

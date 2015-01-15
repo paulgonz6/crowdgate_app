@@ -22,7 +22,7 @@ h1 {
 
 .subtext {
   color: #647A87;
-  color: white;
+  color: black;
   font-size: 22px;
   line-height: 34px;
   font-weight: 300;
@@ -44,5 +44,9 @@ h1 {
   border-width: 1px 1px 3px 1px;
   background-color: #06C;
   border-color: #105296;
+}
+
+.btn {
+  border-width: 1px 1px 3px 1px;
 }
 

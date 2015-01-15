@@ -4,7 +4,7 @@
     <div class="col-md-8">
       <div class="page-header">
         <h3><%= @tailgate.name %></h3>
-        <h4><small>Penn State vs. Army, Beaver Stadium, University Park, PA, Saturday, Oct. 3</small></h4>
+        <h4><small><%= @tailgate.event.name %>, <%= @tailgate.event.venue %>, <%= @tailgate.event.city %>, <%= @tailgate.event.state %>, <%= @tailgate.event.time %></small></h4>
       </div>
     </div>
     <%= render 'tailgates/booking_block' %>

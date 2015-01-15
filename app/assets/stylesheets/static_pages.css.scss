@@ -6,6 +6,8 @@
 .jumbotron {
   background-color: #F4F7F9;
   margin-bottom: 0px;
+  min-height: 50vh;
+  padding-top: 125px;
   box-shadow: 0 1px 3px rgba(0,0,0,.2);
   h1 {
     font-size: 38px;
@@ -15,12 +17,12 @@
 
 .jumbotron.landing-page {
   height: 80vh;
-  padding-top: 150px;
-  background-image: url('grove_background.jpeg');
+  background-image: url('grove_background_filtered.jpg');
+  background-size: cover;
 }
 
 .home-page-buttons {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .landing-pg-sections {
@@ -31,6 +33,24 @@
     font-size: 16px;
     line-height: 28px;
     font-weight: 300;
+  }
+
+  ol {
+    list-style: none;
+    padding: 0;
+    height: 350px;
+  }
+
+  li {
+    display: inline-block;
+    padding: 100px 0;
+    color: white;
+    font-size: 28px;
+    font-weight: 400;
+  }
+
+  .panel-heading {
+    background-color: #F4F7F9;
   }
 }
 
@@ -50,4 +70,14 @@ footer {
     list-style: none;
     padding: 0;
   }
+}
+
+.how-to-list {
+  margin-top: 20px;
+}
+
+.step-3-tailgate {
+  background-image: url('step_3_tailgate_group.jpg');
+  background-size: cover;
+  border-radius: 4px 4px 0 0;
 }

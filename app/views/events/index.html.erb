@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-12">
       <table class="table table-hover">
         <thead>
           <th>ID</th>
@@ -16,8 +16,8 @@
           <th>Venue</th>
           <th>City</th>
           <th>State</th>
-          <th>API ID</th>
-          <th>API Modified At</th>
+          <th></th>
+          <th></th>
         </thead>
         <% @events.each do |event| %>
           <tr>
@@ -28,8 +28,8 @@
             <td><%= event.venue %></td>
             <td><%= event.city %></td>
             <td><%= event.state %></td>
-            <td><%= event.ap_id %></td>
-            <td><%= event.api_modified %></td>
+            <td><p class="btn btn-default btn-block"><a href="/events/edit/<%= event.id %>">Edit</a></p></td>
+            <td><p class="btn btn-danger btn-block"><a href="/events/delete/<%= event.id %>">Delete</a></p></td>
           </tr>
         <% end %>
       </table>

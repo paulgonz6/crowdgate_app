@@ -3,6 +3,20 @@ require 'open-uri'
 
 class EventsController < ApplicationController
 
+  def delete
+    @event = Event.find_by({ :id => params[:id]})
+  end
+
+  def destroy
+    event = Event.find_by({ :id => params[:id]})
+    event.destroy
+    redirect_to('/events/index')
+  end
+
+  def edit
+    @event = Event.find_by({ :id => params[:id]})
+  end
+
   def index
     @events = Event.all
   end
