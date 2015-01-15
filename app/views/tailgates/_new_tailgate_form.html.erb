@@ -1,26 +1,118 @@
 
 <form class="form tailgate-forms" action="/create_tailgate">
 
+    <!-- HEADLINE -->
     <div class="form-group">
       <label class="control-label" for="name">Give your tailgate a headline</label>
       <input type="text" class="form-control" name="name" id="name" placeholder="Make it catchy">
     </div>
 
+    <!-- FREE FORM TAILGATE DESCRIPTION -->
     <div class="form-group">
       <label class="control-label" for="description">Tell us about your tailgate</label>
-      <input type="text" class="form-control" name="description" id="description" placeholder="Provide details on menu, etc.">
+      <textarea class="form-control" rows="5" name="description" id="description" placeholder="Provide details on menu, etc."></textarea>
     </div>
 
+    <!-- HOW MANY GUESTS -->
     <div class="form-group">
       <label class="control-label" for="size">How many guests do you want to invite?</label>
       <input type="number" class="form-control" name="size" id="size" placeholder="The more the merrier...">
     </div>
 
+    <!-- COST -->
     <div class="form-group">
       <label class="control-label" for="price">How much will it cost your guests to attend?</label>
-      <input type="number" class="form-control" name="price" id="price" placeholder="$50.00">
+      <label class="sr-only" for="price">Amount (in dollars)</label>
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <input type="text" class="form-control" name="price" id="price" placeholder="Amount">
+        <div class="input-group-addon">.00</div>
+      </div>
     </div>
 
+    <!-- TABLE FOR TAILGATE DETAILS -->
+    <table class="table table-bordered">
+      <tr>
+        <td>
+          <div class="radio">
+            <label>
+              <input type="radio" name="grill" id="grill" value="true">
+              Grill
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="radio">
+            <label>
+              <input type="radio" name="tent" id="tent" value="true">
+              Tent
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="radio">
+            <label>
+              <input type="radio" name="reserved_parking" id="reserved_parking" value="true">
+              Reserved Parking
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="radio">
+            <label>
+              <input type="radio" name="food" id="food" value="true">
+              Food
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="radio">
+            <label>
+              <input type="radio" name="bevs_alcohol" id="bevs_alcohol" value="true">
+              Beverages (Alcoholic)
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="radio">
+            <label>
+              <input type="radio" name="bevs_non_alcohol" id="bevs_non_alcohol" value="true">
+              Beverages (Non-Alcoholic)
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="radio">
+            <label>
+              <input type="radio" name="tailgate_games" id="tailgate_games" value="true">
+              Games
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="radio">
+            <label>
+              <input type="radio" name="chairs" id="chairs" value="true">
+              Chairs
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="radio">
+            <label>
+              <input type="radio" name="table" id="table" value="true">
+              Table
+            </label>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- AFFILIATE TAILGATE -->
     <div class="form-group">
       <label class="control-label" for="affiliation">Do you want to affiliate your tailgate with either team?</label>
       <input type="text" class="form-control" name="affiliation" id="affiliation" placeholder="All fans are always welcome at Crowdgates">

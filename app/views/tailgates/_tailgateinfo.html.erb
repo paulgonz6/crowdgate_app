@@ -3,8 +3,13 @@
     <h4>Tailgate Information:</h4>
     <table class="table table-bordered">
       <tr>
-        <td class="selected-cell">Chairs <span class="selected-option">&#10003</span></td>
-        <td class="selected-cell">Table<span class="selected-option">&#10003</span></td>
+        <td class="selected-cell">
+          Table
+          <% if @tailgate.table? %>
+            <span class="selected-option">&#10003</span>
+          <% end %>
+        </td>
+        <td class="selected-cell">Tent<span class="selected-option">&#10003</span></td>
         <td class="selected-cell">Tent<span class="selected-option">&#10003</span></td>
       </tr>
       <tr>
