@@ -22,6 +22,7 @@ h1 {
 
 .subtext {
   color: #647A87;
+  color: white;
   font-size: 22px;
   line-height: 34px;
   font-weight: 300;
@@ -29,11 +30,12 @@ h1 {
 }
 
 .nav {
-  color: #647A87; 
+  color: #647A87;
 }
 
 .navbar {
   background-color: white;
+  padding: 7px 0;
   border-bottom: none;
   box-shadow: 0 1px 5px rgba(0,0,0,.2);
 }
@@ -44,8 +46,3 @@ h1 {
   border-color: #105296;
 }
 
-.form-field-description {
-  font-size: 12px;
-  padding-top: 10px;
-  opacity: .6;
-}

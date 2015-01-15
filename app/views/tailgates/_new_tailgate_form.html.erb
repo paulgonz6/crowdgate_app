@@ -1,37 +1,47 @@
 
 <form class="form tailgate-forms" action="/create_tailgate">
 
+    <!-- TIME TAILGATE STARTS, RELATIVE TO KICKOFF-->
+    <div class="form-group">
+      <label class="control-label" for="associated_event">What game are you tailgating for?</label>
+      <select class="form-control" name="associated_event" id="associated_event">
+        <option>Select a game</option>
+          <% @events.each do |event| %>
+          <option value="<%= event.name %>"><%= event.name %></option>
+          <% end %>
+      </select>
+    </div>
+
     <!-- HEADLINE -->
     <div class="form-group">
       <label class="control-label" for="name">Give your tailgate a headline</label>
-      <input type="text" class="form-control" name="name" id="name" placeholder="Make it catchy">
+      <input type="text" class="form-control" name="name" id="name" placeholder="This is the first thing guests read. Make it stand out." required>
     </div>
 
     <!-- FREE FORM TAILGATE DESCRIPTION -->
     <div class="form-group">
       <label class="control-label" for="description">Tell us about your tailgate</label>
-      <textarea class="form-control" rows="5" name="description" id="description" placeholder="Provide details on menu, etc."></textarea>
+      <textarea class="form-control" rows="5" name="description" id="description" placeholder="Guests love clarity. Provide information on your menu, your tailgate style, your typical location, etc." required></textarea>
     </div>
 
     <!-- HOW MANY GUESTS -->
     <div class="form-group">
       <label class="control-label" for="size">How many guests do you want to invite?</label>
-      <input type="number" class="form-control" name="size" id="size" placeholder="The more the merrier...">
+      <input type="number" class="form-control" name="size" id="size" placeholder="The more the merrier..." required>
     </div>
 
     <!-- COST -->
     <div class="form-group">
       <label class="control-label" for="price">How much will it cost your guests to attend?</label>
-      <label class="sr-only" for="price">Amount (in dollars)</label>
       <div class="input-group">
         <div class="input-group-addon">$</div>
-        <input type="text" class="form-control" name="price" id="price" placeholder="Amount">
+        <input type="text" class="form-control" name="price" id="price" placeholder="Amount per guest" required>
         <div class="input-group-addon">.00</div>
       </div>
     </div>
 
     <!-- TABLE FOR TAILGATE DETAILS -->
-    <table class="table table-bordered">
+    <table class="table table-bordered tailgate-details-table">
       <tr>
         <td>
           <div class="radio">
@@ -114,8 +124,40 @@
 
     <!-- AFFILIATE TAILGATE -->
     <div class="form-group">
-      <label class="control-label" for="affiliation">Do you want to affiliate your tailgate with either team?</label>
-      <input type="text" class="form-control" name="affiliation" id="affiliation" placeholder="All fans are always welcome at Crowdgates">
+      <label class="control-label" for="affiliation">Do you want to affiliate your tailgate with either team? (All fans are welcome at any tailgate, but sometimes you just want to let your guests know what jersey you'll be wearing.)</label>
+      <select class="form-control" name="affiliation" id="affiliation">
+        <option value="Neither" selected>Neither</option>
+        <option value="Home team">Home Team</option>
+        <option value="Away team">Away Team</option>
+      </select>
+    </div>
+
+    <!-- TIME TAILGATE STARTS, RELATIVE TO KICKOFF-->
+    <div class="form-group">
+      <label class="control-label" for="tailgate_start_time">When does your tailgate start?</label>
+      <select class="form-control" name="tailgate_start_time" id="tailgate_start_time">
+        <option value="5 hours before kickoff">5 hours before kickoff</option>
+        <option value="4 hours before kickoff">4 hours before kickoff</option>
+        <option value="3 hours before kickoff" selected>3 hours before kickoff</option>
+        <option value="2 hours before kickoff">2 hours before kickoff</option>
+      </select>
+    </div>
+
+    <!-- TAILGATE DURING GAME?-->
+    <div class="form-group">
+      <label class="control-label" for="tailgate_during_game">Are you tailgating during the game?</label>
+      <div class="radio">
+        <label>
+          <input type="radio" name="tailgate_during_game" id="tailgate_during_game" value="true">
+          Yes
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="tailgate_during_game" id="tailgate_during_game" value="false" checked>
+          No
+        </label>
+      </div>
     </div>
 
     <input type="submit" class="btn btn-primary btn-block" value="Create Tailgate">

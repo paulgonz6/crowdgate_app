@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'static_pages#home'
+  get('/', { :controller => "static_pages", :action => "home" })
 
   get('/events/new', { :controller => "events", :action => "new" })
   get('/events/add', { :controller => "events", :action => "add" })

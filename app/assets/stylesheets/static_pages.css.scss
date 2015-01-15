@@ -2,15 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .jumbotron {
   background-color: #F4F7F9;
   margin-bottom: 0px;
-  /*padding: 60px;*/
   box-shadow: 0 1px 3px rgba(0,0,0,.2);
   h1 {
     font-size: 38px;
     margin-top: 0;
   }
+}
+
+.jumbotron.landing-page {
+  height: 80vh;
+  padding-top: 150px;
+  background-image: url('grove_background.jpeg');
 }
 
 .home-page-buttons {
