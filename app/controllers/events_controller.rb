@@ -17,6 +17,22 @@ class EventsController < ApplicationController
     @event = Event.find_by({ :id => params[:id]})
   end
 
+  def save
+    event = Event.find_by({ :id => params[:id]})
+
+    puts
+
+    event.name = params[:name]
+    event.date = params[:date]
+    event.time = params[:time]
+    event.venue = params[:venue]
+    event.city = params[:city]
+    event.state = params[:state]
+    event.save
+
+    redirect_to('/events/index')
+  end
+
   def index
     @events = Event.all
   end

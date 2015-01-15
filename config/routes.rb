@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get('/events/destroy/:id', { :controller => "events", :action => "destroy" })
 
   get('/events/edit/:id', { :controller => "events", :action => "edit" })
-  get('/events/save/:id', { :controller => "events", :action => "save" })
+  get('/events/save', { :controller => "events", :action => "save" })
 
   get('/tailgates/index', { :controller => "tailgates", :action => "index" })
   get('/tailgates/show/:id', { :controller => "tailgates", :action => "show" })
