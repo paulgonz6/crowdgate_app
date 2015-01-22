@@ -89,10 +89,7 @@ class TailgatesController < ApplicationController
     else
       render('tailgates/edit')
     end
-
   end
-
-
 
   def confirm_purchase
   end
