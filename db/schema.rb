@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122204558) do
+ActiveRecord::Schema.define(version: 20150122234332) do
 
   create_table "bookings", force: true do |t|
     t.datetime "created_at",                        null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150122204558) do
     t.integer  "user_id"
     t.boolean  "valid_transaction", default: false
     t.integer  "tailgate_id"
+    t.string   "stripe_token"
   end
 
   create_table "events", force: true do |t|
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 20150122204558) do
     t.string   "email"
     t.string   "image"
     t.string   "password_digest"
+    t.string   "stripe_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

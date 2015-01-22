@@ -6,6 +6,8 @@
     </div>
   </div>
 
+
+
   <div class="row">
     <div class="col-md-4">
       <div class="panel panel-default">
@@ -17,35 +19,58 @@
         </div>
       </div>
     </div>
-    <!-- <form class="form" action="/tailgates/<%= @tailgate.id %>/booking/receipt"> -->
-    <%= form_tag bookings_url, :class => "form" do %>
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Check Out and Create Account</h3>
+    <%= form_tag bookings_url, :class => "form", :id => "payment-form" do %>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Check Out and Create Account</h3>
+        </div>
+        <div class="panel-body">
+          <%= render 'bookings/billingaddress' %>
+          <legend><h4>Credit Card Information</h4></legend>
+          <span class="payment-errors"></span>
+
+          <!-- Credit Card Number -->
+          <div class="form-row">
+            <label>Card Number</label>
+            <input class="form-control" type="text" size="20" data-stripe="number"/>
           </div>
-          <div class="panel-body">
-            <%= render 'bookings/billingaddress' %>
-            <%= render 'bookings/creditcard' %>
-            <%= render 'users/signup' %>
+
+          <!-- CVC Number -->
+          <div class="form-row">
+            <label>CVC</label>
+            <input class="form-control" type="text" size="4" data-stripe="cvc"/>
           </div>
+
+          <!-- Expiration Date -->
+          <div class="form-row">
+            <label><span>Expiration (MM/YYYY)</span></label>
+            <input class="form-control" type="text" size="2" data-stripe="exp-month">
+            <input class="form-control" type="text" size="4" data-stripe="exp-year">
+          </div>
+        <%= render 'users/signup' %>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Confirm</h3>
-          </div>
-          <div class="panel-body text-center">
-            <%= render 'bookings/total_amount' %>
-            <input type="hidden" name="tailgate_id" value="<%= @tailgate.id %>">
-            <input type="submit" value="Confirm Payment" class="btn btn-primary btn-block">
-            <hr/>
-            <p>Charged to <i class="fa fa-cc-amex"></i> ending in 3000</p>
-          </div>
+
+    </div>
+
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Confirm</h3>
+        </div>
+        <div class="panel-body text-center">
+          <%= render 'bookings/total_amount' %>
+          <input type="hidden" name="tailgate_id" value="<%= @tailgate.id %>">
+          <button type="submit" class="btn btn-primary btn-block">Submit Payments</button>
+          <hr/>
+          <p>Charged to <i class="fa fa-cc-amex"></i> ending in 3000</p>
         </div>
       </div>
-    </form>
+    </div>
+
     <% end %>
   </div>
+
 </div>
+
