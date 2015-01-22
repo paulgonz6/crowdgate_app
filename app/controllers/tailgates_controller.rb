@@ -40,7 +40,11 @@ class TailgatesController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    if params[:search].present?
+      @events = Event.where("name LIKE '%#{params[:search]}%'")
+    else
+      @events = []
+    end
   end
 
   def show

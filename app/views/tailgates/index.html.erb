@@ -1,18 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <div class="page-header">
-        <form class="form-inline">
-          <div class="form-group">
-            <label for="exampleInputName2">Search for a team</label>
-            <input type="text" class="form-control" id="exampleInputName2" placeholder="e.g Penn State, Chicago Bears" style="width: 250px;">
-          </div>
-          <button type="submit" class="btn btn-primary">Find tailgates</button>
-        </form>
-      </div>
+    <div class="page-header">
+      <h4>Showing results for: <%= params[:search] %> </h4>
     </div>
   </div>
-
 
   <% @events.each do |event| %>
   <% if event.tailgates.length > 0 %>

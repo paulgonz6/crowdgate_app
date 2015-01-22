@@ -1,16 +1,15 @@
 <div class="container">
   <div class="row no-page-header">
     <% if @tailgates.length > 0 %>
-      <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-12">
         <% @tailgates.each_with_index do |listing, i| %>
           <div class="row tailgate-listing">
             <div class="col-md-1">
               <p><%= i + 1%>.</p>
             </div>
             <div class="col-md-6">
-              <p><strong>Tailgate Info</strong></p>
+              <p><strong><%= listing.event.name %></strong></p>
               <p><a href="show/<%= listing.id %>"><%= listing.name %></a></p>
-              <p><%= listing.event.name %></p>
             </div>
             <div class="col-md-2 text-center">
               <p><strong>Status</strong></p>
