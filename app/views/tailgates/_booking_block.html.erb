@@ -2,8 +2,7 @@
   <h3>$<%= @tailgate.price %> per guest</h3>
   <p><%= @tailgate.size %> Spots Remaining</p>
 
-  <!-- JUST FOR DEMO PURPOSES -->
-  <p class="btn btn-primary btn-block"><a href="/tailgates/<%= @tailgate.id %>/booking/billing">Book Now</a></p>
+  <p class="btn btn-primary btn-block"><%= link_to "Book Now", new_booking_url(@tailgate.id) %></p>
 
 
   <hr/>

@@ -73,10 +73,37 @@ Rails.application.routes.draw do
                               :action       => 'destroy'
 
 
-# BOOKING ROUTES =============================================================================
+# BOOKING ROUTES ============================================================================
 
-  get('/tailgates/:id/booking/billing', { :controller => "bookings", :action => "billing" })
-  get('/tailgates/:id/booking/receipt', { :controller => "bookings", :action => "receipt" })
+  #CREATE - PAYMENT CONFIRMATION SCREEN
+  get '/tailgates/:id/bookings/new',        :controller   => 'bookings',
+                                            :action       => 'new',
+                                            :as           => "new_booking"
+
+  post '/bookings',                         :controller   => 'bookings',
+                                            :action       => 'create',
+                                            :as           => "bookings"
+
+  # READ- RECEIPT
+  get '/bookings',                          :controller   => 'bookings',
+                                            :action       => 'index'
+
+  get '/bookings/:id',                      :controller   => 'bookings',
+                                            :action       => 'show',
+                                            :as           => "booking"
+
+  # UPDATE- FOR UPDATING WITH STRIPE TRANSACTION
+  get '/bookings/:id/edit',                  :controller   => 'bookings',
+                                             :action       => 'edit',
+                                             :as           => "edit_booking"
+
+  patch '/bookings/:id',                     :controller   => 'bookings',
+                                             :action       => 'update'
+
+  # DELETE- CANCEL TICKET (REFUND)
+  delete '/bookings/:id',                    :controller   => 'bookings',
+                                             :action       => 'destroy'
+
 
 # USER ROUTES ================================================================================
 
@@ -97,6 +124,9 @@ Rails.application.routes.draw do
                               :action       => 'show',
                               :as           => "user"
 
+  get '/users/:id/tailgates', :controller   => 'users',
+                              :action       => 'tailgates_index'
+
   # UPDATE
   get '/users/:id/edit',      :controller   => 'users',
                               :action       => 'edit',
@@ -108,6 +138,7 @@ Rails.application.routes.draw do
   # DELETE
   delete '/users/:id',        :controller   => 'users',
                               :action       => 'destroy'
+
 
 # REVIEW ROUTES ==============================================================================
   #CREATE

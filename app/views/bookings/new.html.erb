@@ -17,7 +17,8 @@
         </div>
       </div>
     </div>
-    <form class="form" action="/tailgates/<%= @tailgate.id %>/booking/receipt">
+    <!-- <form class="form" action="/tailgates/<%= @tailgate.id %>/booking/receipt"> -->
+    <%= form_tag bookings_url, :class => "form" do %>
       <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -37,6 +38,7 @@
           </div>
           <div class="panel-body text-center">
             <%= render 'bookings/total_amount' %>
+            <input type="hidden" name="tailgate_id" value="<%= @tailgate.id %>">
             <input type="submit" value="Confirm Payment" class="btn btn-primary btn-block">
             <hr/>
             <p>Charged to <i class="fa fa-cc-amex"></i> ending in 3000</p>
@@ -44,5 +46,6 @@
         </div>
       </div>
     </form>
+    <% end %>
   </div>
 </div>
