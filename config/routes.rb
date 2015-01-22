@@ -79,16 +79,39 @@ Rails.application.routes.draw do
   get('/tailgates/:id/booking/receipt', { :controller => "bookings", :action => "receipt" })
 
 # USER ROUTES ================================================================================
-  get('/users/:id', { :controller => "users", :action => "show" })
-  get('/users/:id/tailgates', { :controller => "users", :action => "tailgates_index" })
 
-  get 'signup' => 'users#new'
+  #CREATE
+  get '/users/new',           :controller   => 'users',
+                              :action       => 'new',
+                              :as           => "new_user"
 
-  get 'login' => 'sessions#new'
+  post '/users',              :controller   => 'users',
+                              :action       => 'create',
+                              :as           => "users"
+
+  # READ
+  get '/users',               :controller   => 'users',
+                              :action       => 'index'
+
+  get '/users/:id',           :controller   => 'users',
+                              :action       => 'show',
+                              :as           => "user"
+
+  # UPDATE
+  get '/users/:id/edit',      :controller   => 'users',
+                              :action       => 'edit',
+                              :as           => "edit_user"
+
+  patch '/users/:id',         :controller   => 'users',
+                              :action       => 'update'
+
+  # DELETE
+  delete '/users/:id',        :controller   => 'users',
+                              :action       => 'destroy'
 
 # REVIEW ROUTES ==============================================================================
   #CREATE
-  get '/reviews/new',:controller   => 'reviews',
+  get '/reviews/new',         :controller   => 'reviews',
                               :action       => 'new',
                               :as           => "new_review"
 
