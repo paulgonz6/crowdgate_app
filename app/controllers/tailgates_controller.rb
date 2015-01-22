@@ -32,8 +32,8 @@ class TailgatesController < ApplicationController
     @tailgate.image_4 = params[:image_4]
 
     if @tailgate.save
-      redirect_to("/users/#{@tailgate.user_id}/tailgates")
-      else
+      redirect_to "/users/#{@tailgate.user_id}/tailgates", :notice => "Successfully created tailgate for #{@tailgate.event.name}."
+    else
       render('tailgates/new')
     end
 
@@ -53,11 +53,15 @@ class TailgatesController < ApplicationController
 
   def edit
     @tailgate = Tailgate.find(params[:id])
-    @events = Event.all
   end
 
   def update
     @tailgate = Tailgate.find(params[:id])
+
+    puts @tailgate.name
+    puts @tailgate.event_id
+    puts @tailgate.event.name
+
     @tailgate.size = params[:size]
     @tailgate.name = params[:name]
     @tailgate.description = params[:description]
@@ -74,13 +78,18 @@ class TailgatesController < ApplicationController
     @tailgate.event_id = params[:event_id]
     @tailgate.tailgate_start_time = params[:tailgate_start_time]
     @tailgate.tailgate_during_game = params[:tailgate_during_game]
+    @tailgate.user_id = params[:user_id]
     @tailgate.image_1 = params[:image_1]
     @tailgate.image_2 = params[:image_2]
     @tailgate.image_3 = params[:image_3]
     @tailgate.image_4 = params[:image_4]
-    @tailgate.save
 
-    redirect_to("/users/#{@tailgate.user_id}/tailgates")
+    if @tailgate.save
+      redirect_to "/users/#{@tailgate.user_id}/tailgates", :notice => "Successfully updated tailgate for #{@tailgate.event.name}."
+    else
+      render('tailgates/edit')
+    end
+
   end
 
 

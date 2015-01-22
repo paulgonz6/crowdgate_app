@@ -14,11 +14,24 @@
   <%= csrf_meta_tags %>
 
 </head>
-  <body>
-    <%= render 'layouts/nav' %>
-    <div class="site-body">
-      <%= yield %>
+<body>
+  <%= render 'layouts/nav' %>
+  <div class="site-body">
+    <% if notice.present? %>
+    <div class="alert alert-dismissable alert-success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= notice %>
     </div>
-    <%= render 'layouts/footer' %>
-  </body>
+    <% end %>
+
+    <% if alert.present? %>
+    <div class="alert alert-dismissable alert-warning">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= alert %>
+    </div>
+    <% end %>
+    <%= yield %>
+  </div>
+  <%= render 'layouts/footer' %>
+</body>
 </html>

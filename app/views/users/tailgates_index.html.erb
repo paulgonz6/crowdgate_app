@@ -1,5 +1,13 @@
 <div class="container">
-  <div class="row no-page-header">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h3>Taiglates you are hosting</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
     <% if @tailgates.length > 0 %>
       <div class="col-md-12">
         <% @tailgates.each_with_index do |listing, i| %>
@@ -9,7 +17,7 @@
             </div>
             <div class="col-md-6">
               <p><strong><%= listing.event.name %></strong></p>
-              <p><a href="show/<%= listing.id %>"><%= listing.name %></a></p>
+              <p><%= link_to listing.name, tailgate_url(listing.id) %></p>
             </div>
             <div class="col-md-2 text-center">
               <p><strong>Status</strong></p>
@@ -18,7 +26,7 @@
             <div class="col-md-2 text-center">
               <p class="btn btn-default btn-block"><%= link_to "Manage Listing", edit_tailgate_url(listing.id) %></p>
               <br>
-              <p class="btn btn-warning btn-block"><a href="/tailgates/<%= listing.id %>/edit">Duplicate Listing</a></p>
+              <p class="btn btn-warning btn-block"><%= link_to "Copy Listing", new_tailgate_url %></p>
             </div>
           </div>
         <% end %>

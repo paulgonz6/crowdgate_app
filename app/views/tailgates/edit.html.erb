@@ -1,41 +1,55 @@
 <div class="container">
+  <% if @tailgate.errors.full_messages.count > 0 %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <ul>
+      <% @tailgate.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
   <div class="row">
     <div class="page-header">
       <h3>Edit tailgate</h3>
     </div>
   </div>
+
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <%= form_tag tailgate_url(@tailgate.id), :method => "patch", :class => "form tailgate-forms" do %>
-      <!-- <form class="form tailgate-forms" action="/tailgates/<%= @tailgate.id %>/save"> -->
 
-      <!-- TIME TAILGATE STARTS, RELATIVE TO KICKOFF-->
+      <div class="form-group">
+        <input type="hidden" name="user_id" value="<%= @tailgate.user_id %>">
+        <input type="hidden" name="event_id" value="<%= @tailgate.event_id %>">
+
+      </div>
+
+      <!-- EVENT -->
       <div class="form-group">
         <label class="control-label" for="event_id">What game are you tailgating for?</label>
-        <select class="form-control" name="event_id" id="event_id">
-          <option>Select a game</option>
-          <% @events.each do |event| %>
-          <option value="<%= event.id %>"><%= event.name %></option>
-          <% end %>
+        <select class="form-control" name="event_id" id="event_id" disabled>
+          <option value=""><%= @tailgate.event.name %></option>
         </select>
       </div>
 
       <!-- HEADLINE -->
       <div class="form-group">
         <label class="control-label" for="name">Give your tailgate a headline</label>
-        <input type="text" class="form-control" name="name" id="name" value="<%= @tailgate.name %>" required>
+        <input type="text" class="form-control" name="name" id="name" value="<%= @tailgate.name %>">
       </div>
 
       <!-- FREE FORM TAILGATE DESCRIPTION -->
       <div class="form-group">
         <label class="control-label" for="description">Tell us about your tailgate</label>
-        <textarea class="form-control" rows="5" name="description" id="description" required><%= @tailgate.description %></textarea>
+        <textarea class="form-control" rows="5" name="description" id="description"><%= @tailgate.description %></textarea>
       </div>
 
       <!-- HOW MANY GUESTS -->
       <div class="form-group">
         <label class="control-label" for="size">How many guests do you want to invite?</label>
-        <input type="number" class="form-control" name="size" id="size" value="<%= @tailgate.size %>" required>
+        <input type="number" class="form-control" name="size" id="size" value="<%= @tailgate.size %>">
       </div>
 
       <!-- COST -->
@@ -43,7 +57,7 @@
         <label class="control-label" for="price">How much will it cost your guests to attend?</label>
         <div class="input-group">
           <div class="input-group-addon">$</div>
-          <input type="text" class="form-control" name="price" id="price" value="<%= @tailgate.price %>" required>
+          <input type="text" class="form-control" name="price" id="price" value="<%= @tailgate.price %>">
           <div class="input-group-addon">.00</div>
         </div>
       </div>
@@ -191,9 +205,11 @@
 
       <input type="submit" class="btn btn-success btn-block" value="Save Changes">
       <br>
+
       <button class="btn btn-danger btn-block">
         <%= link_to "Delete Listing", tailgate_url(@tailgate.id), :method => "delete", :data => { :confirm => "Are you sure you want to delete this tailgate?"} %>
       </button>
+
       <% end %>
 
     </div>
