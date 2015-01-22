@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115205222) do
+ActiveRecord::Schema.define(version: 20150122041103) do
 
   create_table "events", force: true do |t|
     t.string "name"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 20150115205222) do
     t.string "state"
     t.string "ap_id"
     t.string "api_modified"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tailgates", force: true do |t|
@@ -42,6 +47,19 @@ ActiveRecord::Schema.define(version: 20150115205222) do
     t.boolean "tailgate_games"
     t.boolean "food"
     t.integer "event_id"
+    t.integer "user_id"
+    t.string  "image_1"
+    t.string  "image_2"
+    t.string  "image_3"
+    t.string  "image_4"
+  end
+
+  create_table "users", force: true do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "email"
+    t.string   "image"
   end
 
 end

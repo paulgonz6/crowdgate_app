@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row no-page-header">
+    <div class="col-md-3 col-md-offset-1">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @user.name %></h3>
+        </div>
+        <div class="panel-body">
+          <img src="/assets/my_profile.png" class="img-responsive thumbnail">
+          <p>Edit Profile</p>
+          <p><a href="/users/<%= @user.id %>/tailgates">View Tailgates</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Account Details</h3>
+        </div>
+        <div class="panel-body">
+          <dl class="dl-horizontal">
+            <dt>Name</dt>
+            <dd><%= @user.name %></dd>
+            <dt>Email</dt>
+            <dd><%= @user.email %></dd>
+            <dt>Password</dt>
+            <dd>1234wxyz</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

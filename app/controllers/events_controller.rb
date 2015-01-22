@@ -1,46 +1,63 @@
 require 'json'
 require 'open-uri'
+require 'time'
 
 class EventsController < ApplicationController
 
-  def delete
-    @event = Event.find_by({ :id => params[:id]})
+  def new
+    @event = Event.new
   end
 
-  def destroy
-    event = Event.find_by({ :id => params[:id]})
-    event.destroy
-    redirect_to('/events/index')
-  end
+  def create
+    @event = Event.new
+    @event.name = params[:name]
+    @event.date = params[:date]
+    @event.time = params[:time]
+    @event.venue = params[:venue]
+    @event.city = params[:city]
+    @event.state = params[:state]
 
-  def edit
-    @event = Event.find_by({ :id => params[:id]})
-  end
+    if @event.save
+      redirect_to(events_url)
+    else
+      render('events/new')
+    end
 
-  def save
-    event = Event.find_by({ :id => params[:id]})
-
-    puts
-
-    event.name = params[:name]
-    event.date = params[:date]
-    event.time = params[:time]
-    event.venue = params[:venue]
-    event.city = params[:city]
-    event.state = params[:state]
-    event.save
-
-    redirect_to('/events/index')
   end
 
   def index
     @events = Event.all
   end
 
-  def new
+  def edit
+    @event = Event.find_by({ :id => params[:id]})
   end
 
-  def add
+  def update
+    @event = Event.find_by({ :id => params[:id]})
+
+    @event.name = params[:name]
+    @event.date = params[:date]
+    @event.time = params[:time]
+    @event.venue = params[:venue]
+    @event.city = params[:city]
+    @event.state = params[:state]
+
+    if @event.save
+      redirect_to(events_url)
+    else
+      render('events/edit')
+    end
+  end
+
+
+  def destroy
+    event = Event.find(params[:id])
+    event.destroy
+    redirect_to(events_url)
+  end
+
+  def bulk_create
     search = "#{params[:name]} Football"
     safe_search = URI.encode(search)
     url = "http://api.eventful.com/json/events/search?app_key=mW23BC9SZCPfrVgP&keywords=#{safe_search}&date=Future"
@@ -51,17 +68,21 @@ class EventsController < ApplicationController
     @events.each do |event|
       new_event = Event.new
       new_event.name = event["title"]
-      new_event.date = event["start_time"]
-      new_event.time = event["start_time"]
       new_event.venue = event["venue_name"]
       new_event.city = event["city_name"]
       new_event.state = event["region_abbr"]
       new_event.ap_id = event["id"]
       new_event.api_modified = event["modified"]
+
+      time = Time.parse(event["start_time"])
+      date = Time.parse(event["start_time"])
+
+      new_event.time = time.strftime("%I:%M%p, %Z")
+      new_event.date = date.strftime("%A, %B %d, %Y")
       new_event.save
     end
 
-    redirect_to('/events/index')
+    redirect_to(events_url)
   end
 
 end

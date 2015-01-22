@@ -7,32 +7,8 @@
 
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <form action="profile">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-        </div>
-        
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          <p class="form-field-description"><a href="">Forgot Password?</a></p>
-        </div>
-
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> <span>Remember me on this computer</span>
-          </label>
-        </div>
-        
-        <!-- JUST DOING THIS FOR DEMO SO SUBMIT DOES NOT SEND POST REQUEST-->
-        <!-- <button type="submit" class="btn btn-primary btn-block">Log In</button> -->
-        <p class="btn btn-primary btn-block"><%= link_to "Log In", confirm_path %></p>
-
-      </form>
-
-      <p class="form-field-description">New user? <%= link_to "Sign up now!", signup_path %></p>
+      <%= render 'sessions/login' %>
     </div>
   </div>
-  
+
 </div>

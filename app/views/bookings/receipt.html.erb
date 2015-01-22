@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="page-header">
-      <h3>Congrats, you're going to Tailgate for Army Game! Cornhole, food, and more...</h3>
-      <h4><small>Penn State vs. Army, Beaver Stadium, University Park, PA, Saturday, Oct. 3</h4>
+      <h3>Congrats, you're going to <em><%= @tailgate.name %></em></h3>
+      <h4><small><%= @tailgate.event.name %>, <%= @tailgate.event.venue %>, <%= @tailgate.event.city %>, <%= @tailgate.event.state %>, <%= @tailgate.event.time %></h4>
     </div>
   </div>
 

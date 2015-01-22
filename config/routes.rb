@@ -2,32 +2,119 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  get('/', { :controller => "static_pages", :action => "home" })
+# STATIC PAGE ROUTES =========================================================================
+  get '/',                    :controller   => "static_pages",
+                              :action       => "home"
 
-  get('/events/new', { :controller => "events", :action => "new" })
-  get('/events/add', { :controller => "events", :action => "add" })
-  get('/events/index', { :controller => "events", :action => "index" })
+# EVENTS ROUTES ==============================================================================
 
-  get('/events/delete/:id', { :controller => "events", :action => "delete" })
-  get('/events/destroy/:id', { :controller => "events", :action => "destroy" })
+  #CREATE
+  get '/events/new',          :controller   => 'events',
+                              :action       => 'new',
+                              :as           => "new_event"
 
-  get('/events/edit/:id', { :controller => "events", :action => "edit" })
-  get('/events/save', { :controller => "events", :action => "save" })
+  post '/events',             :controller   => 'events',
+                              :action       => 'create',
+                              :as           => "events"
 
-  get('/tailgates/index', { :controller => "tailgates", :action => "index" })
-  get('/tailgates/show/:id', { :controller => "tailgates", :action => "show" })
-  get('/new_tailgate', { :controller => "tailgates", :action => "new" })
-  get('/create_tailgate', { :controller => "tailgates", :action => "process_form" })
+  post '/events/bulk_create', :controller   => 'events',
+                              :action       => 'bulk_create',
+                              :as           => "events_bulk_create"
 
-  get 'confirm' => 'tailgates#confirm_purchase'
-  get 'receipt' => 'tailgates#receipt'
+  # READ
+  get '/events',              :controller   => 'events',
+                              :action       => 'index'
+
+  get '/events/:id',          :controller   => 'events',
+                              :action       => 'show',
+                              :as           => "event"
+
+  # UPDATE
+  get '/events/:id/edit',     :controller   => 'events',
+                              :action       => 'edit',
+                              :as           => "edit_event"
+
+  patch '/events/:id',        :controller   => 'events',
+                              :action       => 'update'
+
+  # DELETE
+  delete '/events/:id',       :controller   => 'events',
+                              :action       => 'destroy'
+
+# TAILGATE ROUTES ============================================================================
+
+  #CREATE
+  get '/tailgates/new',       :controller   => 'tailgates',
+                              :action       => 'new',
+                              :as           => "new_tailgate"
+
+  post '/tailgates',          :controller   => 'tailgates',
+                              :action       => 'create',
+                              :as           => "tailgates"
+
+  # READ
+  get '/tailgates',           :controller   => 'tailgates',
+                              :action       => 'index'
+
+  get '/tailgates/:id',       :controller   => 'tailgates',
+                              :action       => 'show',
+                              :as           => "tailgate"
+
+  # UPDATE
+  get '/tailgates/:id/edit',  :controller   => 'tailgates',
+                              :action       => 'edit',
+                              :as           => "edit_tailgate"
+
+  patch '/tailgates/:id',     :controller   => 'tailgates',
+                              :action       => 'update'
+
+  # DELETE
+  delete '/tailgates/:id',    :controller   => 'tailgates',
+                              :action       => 'destroy'
 
 
-  get 'login' => 'sessions#new'
+# BOOKING ROUTES =============================================================================
+
+  get('/tailgates/:id/booking/billing', { :controller => "bookings", :action => "billing" })
+  get('/tailgates/:id/booking/receipt', { :controller => "bookings", :action => "receipt" })
+
+# USER ROUTES ================================================================================
+  get('/users/:id', { :controller => "users", :action => "show" })
+  get('/users/:id/tailgates', { :controller => "users", :action => "tailgates_index" })
 
   get 'signup' => 'users#new'
 
-  get 'review' => 'reviews#new'
+  get 'login' => 'sessions#new'
+
+# REVIEW ROUTES ==============================================================================
+  #CREATE
+  get '/reviews/new',:controller   => 'reviews',
+                              :action       => 'new',
+                              :as           => "new_review"
+
+  post '/reviews',            :controller   => 'reviews',
+                              :action       => 'create',
+                              :as           => "reviews"
+
+  # READ
+  get '/reviews',             :controller   => 'reviews',
+                              :action       => 'index'
+
+  get '/reviews/:id',         :controller   => 'reviews',
+                              :action       => 'show',
+                              :as           => "review"
+
+  # UPDATE
+  get '/reviews/:id/edit',    :controller   => 'reviews',
+                              :action       => 'edit',
+                              :as           => "edit_review"
+
+  patch '/reviews/:id',       :controller   => 'reviews',
+                              :action       => 'update'
+
+  # DELETE
+  delete '/reviews/:id',      :controller   => 'reviews',
+                              :action       => 'destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

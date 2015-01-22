@@ -1,5 +1,4 @@
-
-<form class="form tailgate-forms" action="/create_tailgate">
+<%= form_tag tailgates_url, :method => "post", :class => "form tailgate-forms" do %>
 
     <!-- TIME TAILGATE STARTS, RELATIVE TO KICKOFF-->
     <div class="form-group">
@@ -15,19 +14,19 @@
     <!-- HEADLINE -->
     <div class="form-group">
       <label class="control-label" for="name">Give your tailgate a headline</label>
-      <input type="text" class="form-control" name="name" id="name" placeholder="This is the first thing guests read. Make it stand out." required>
+      <input type="text" class="form-control" name="name" id="name" placeholder="This is the first thing guests read. Make it stand out.">
     </div>
 
     <!-- FREE FORM TAILGATE DESCRIPTION -->
     <div class="form-group">
       <label class="control-label" for="description">Tell us about your tailgate</label>
-      <textarea class="form-control" rows="5" name="description" id="description" placeholder="Guests love clarity. Provide information on your menu, your tailgate style, your typical location, etc." required></textarea>
+      <textarea class="form-control" rows="5" name="description" id="description" placeholder="Guests love clarity. Provide information on your menu, your tailgate style, your typical location, etc."></textarea>
     </div>
 
     <!-- HOW MANY GUESTS -->
     <div class="form-group">
       <label class="control-label" for="size">How many guests do you want to invite?</label>
-      <input type="number" class="form-control" name="size" id="size" placeholder="The more the merrier..." required>
+      <input type="number" class="form-control" name="size" id="size" placeholder="The more the merrier...">
     </div>
 
     <!-- COST -->
@@ -35,7 +34,7 @@
       <label class="control-label" for="price">How much will it cost your guests to attend?</label>
       <div class="input-group">
         <div class="input-group-addon">$</div>
-        <input type="text" class="form-control" name="price" id="price" placeholder="Amount per guest" required>
+        <input type="text" class="form-control" name="price" id="price" placeholder="Amount per guest">
         <div class="input-group-addon">.00</div>
       </div>
     </div>
@@ -160,6 +159,32 @@
       </div>
     </div>
 
-    <input type="submit" class="btn btn-success btn-block" value="Create Tailgate">
+    <!-- ADD IMAGES-->
+    <div class="form-group">
+      <label class="control-label" for="image_1">Image 1</label>
+      <input type="text" class="form-control" name="image_1" id="image_1" placeholder="URL">
+    </div>
 
-</form>
+    <div class="form-group">
+      <label class="control-label" for="image_2">Image 2</label>
+      <input type="text" class="form-control" name="image_2" id="image_2" placeholder="URL">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="image_3">Image 3</label>
+      <input type="text" class="form-control" name="image_3" id="image_3" placeholder="URL">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="image_4">Image 4</label>
+      <input type="text" class="form-control" name="image_4" id="image_4" placeholder="URL">
+    </div>
+
+    <!-- USER ID/ FOR DEV ONLY -->
+    <div class="form-group">
+      <label class="control-label" for="user_id">User ID: 1</label>
+      <input type="number" class="form-control" name="user_id" id="user_id" value="1">
+    </div>
+
+    <input type="submit" class="btn btn-success btn-block" value="Create Tailgate">
+<% end %>

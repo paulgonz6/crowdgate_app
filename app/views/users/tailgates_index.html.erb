@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row no-page-header">
+    <% if @tailgates.length > 0 %>
+      <div class="col-md-10 col-md-offset-1">
+        <% @tailgates.each_with_index do |listing, i| %>
+          <div class="row tailgate-listing">
+            <div class="col-md-1">
+              <p><%= i + 1%>.</p>
+            </div>
+            <div class="col-md-6">
+              <p><strong>Tailgate Info</strong></p>
+              <p><a href="show/<%= listing.id %>"><%= listing.name %></a></p>
+              <p><%= listing.event.name %></p>
+            </div>
+            <div class="col-md-2 text-center">
+              <p><strong>Status</strong></p>
+              <p><%= listing.size %> spots left</p>
+            </div>
+            <div class="col-md-2 text-center">
+              <p class="btn btn-default btn-block"><%= link_to "Manage Listing", edit_tailgate_url(listing.id) %></p>
+              <br>
+              <p class="btn btn-warning btn-block"><a href="/tailgates/<%= listing.id %>/edit">Duplicate Listing</a></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% else %>
+        <div class="col-md-10 col-md-offset-1">
+          <p>You are currently not hosting any tailgates. Add new tailgates today!</p>
+        </div>
+    <% end %>
+  </div>
+</div>

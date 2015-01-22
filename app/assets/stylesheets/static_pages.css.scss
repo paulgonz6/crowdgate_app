@@ -7,7 +7,7 @@
   background-color: #F4F7F9;
   margin-bottom: 0px;
   min-height: 50vh;
-  padding-top: 125px;
+  padding-top: 100px;
   box-shadow: 0 1px 3px rgba(0,0,0,.2);
   h1 {
     font-size: 38px;
@@ -54,27 +54,10 @@
   }
 }
 
-footer {
-  min-height: 50px;
-  padding: 10px;
-  background-color: #647A87;
-  color: white;
-  font-weight: 300;
-
-  legend {
-    color: white;
-    font-size: 18px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-}
-
 .how-to-list {
   margin-top: 20px;
 }
+
 
 .step-3-tailgate {
   background-image: url('step_3_tailgate_group.jpg');

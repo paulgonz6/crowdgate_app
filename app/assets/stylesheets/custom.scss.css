@@ -1,6 +1,11 @@
 
 /*Light blue background color #F4F7F9*/
 
+.site-body {
+  min-height: 80vh;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2)
+}
+
 a,
 a:visited {
   color: inherit;
@@ -12,7 +17,6 @@ a:hover {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  padding-bottom: 100px;
 }
 
 h1 {
@@ -49,4 +53,20 @@ h1 {
 .btn {
   border-width: 1px 1px 3px 1px;
 }
+
+
+footer {
+  min-height: 300px;
+  padding: 50px;
+  background-color: #F4F7F9;
+  color: black;
+  font-weight: 300;
+  margin-top: 2px;
+}
+
+.no-page-header {
+  margin-top: 50px;
+}
+
+
 

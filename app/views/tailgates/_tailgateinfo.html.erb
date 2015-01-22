@@ -1,79 +1,85 @@
 <div class="row">
-  <div class="col-md-8 tailgate-content-section">
-    <h4>Tailgate Information:</h4>
-    <table class="table table-bordered tailgate-details-table">
-      <tr>
-        <td>
-          <% if @tailgate.table? %>
-            Table<i class="fa fa-check pull-right text-success"></i>
-            <% else %>
-            <small class="text-muted">Table</small>
-          <% end %>
-        </td>
-        <td>
-          <% if @tailgate.tent? %>
-            Tent<i class="fa fa-check pull-right text-success"></i>
-            <% else %>
-            <small class="text-muted">Tent</small>
-          <% end %>
-        </td>
-        <td>
-          <% if @tailgate.grill? %>
-            Grill<i class="fa fa-check pull-right text-success"></i>
-            <% else %>
-            <small class="text-muted">Grill</small>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <% if @tailgate.food? %>
-            Food<i class="fa fa-check pull-right text-success"></i>
-            <% else %>
-            <small class="text-muted">Food</small>
-          <% end %>
-        </td>
-        <td>
-          <% if @tailgate.bevs_alcohol? %>
-            Beverages (Alcoholic)<i class="fa fa-check pull-right text-success"></i>
-            <% else %>
-            <small class="text-muted">Beverages (Alcoholic)</small>
-          <% end %>
-        </td>
-        <td>
-          <% if @tailgate.bevs_non_alcohol? %>
-            Beverages (Non-Alcoholic)<i class="fa fa-check pull-right text-success"></i>
-            <% else %>
-            <small class="text-muted">Beverages (Non-Alcoholic)</small>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <% if @tailgate.reserved_parking? %>
-            Reserved Parking<i class="fa fa-check pull-right text-success"></i>
-            <% else %>
-            <small class="text-muted">Reserved Parking</small>
-          <% end %>
-        </td>
-        <td>
-          <% if @tailgate.tailgate_games? %>
-            Tailgate Games<i class="fa fa-check pull-right text-success"></i>
-            <% else %>
-            <small class="text-muted">Tailgate Games</small>
-          <% end %>
-        </td>
-        <td>
-          <% if @tailgate.chairs? %>
-            Chairs<i class="fa fa-check pull-right text-success"></i>
-            <% else %>
-            <small class="text-muted">Chairs</small>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-    <p class="text-justify">
-      <%= @tailgate.description %>
-    </p>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tailgate Details</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table table-bordered tailgate-details-table">
+          <tr>
+            <td>
+              <% if @tailgate.table? %>
+              Table<i class="fa fa-check pull-right text-success"></i>
+              <% else %>
+              <small class="text-muted">Table</small>
+              <% end %>
+            </td>
+            <td>
+              <% if @tailgate.tent? %>
+              Tent<i class="fa fa-check pull-right text-success"></i>
+              <% else %>
+              <small class="text-muted">Tent</small>
+              <% end %>
+            </td>
+            <td>
+              <% if @tailgate.grill? %>
+              Grill<i class="fa fa-check pull-right text-success"></i>
+              <% else %>
+              <small class="text-muted">Grill</small>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <% if @tailgate.food? %>
+              Food<i class="fa fa-check pull-right text-success"></i>
+              <% else %>
+              <small class="text-muted">Food</small>
+              <% end %>
+            </td>
+            <td>
+              <% if @tailgate.bevs_alcohol? %>
+              Beverages (Alcoholic)<i class="fa fa-check pull-right text-success"></i>
+              <% else %>
+              <small class="text-muted">Beverages (Alcoholic)</small>
+              <% end %>
+            </td>
+            <td>
+              <% if @tailgate.bevs_non_alcohol? %>
+              Beverages (Non-Alcoholic)<i class="fa fa-check pull-right text-success"></i>
+              <% else %>
+              <small class="text-muted">Beverages (Non-Alcoholic)</small>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <% if @tailgate.reserved_parking? %>
+              Reserved Parking<i class="fa fa-check pull-right text-success"></i>
+              <% else %>
+              <small class="text-muted">Reserved Parking</small>
+              <% end %>
+            </td>
+            <td>
+              <% if @tailgate.tailgate_games? %>
+              Tailgate Games<i class="fa fa-check pull-right text-success"></i>
+              <% else %>
+              <small class="text-muted">Tailgate Games</small>
+              <% end %>
+            </td>
+            <td>
+              <% if @tailgate.chairs? %>
+              Chairs<i class="fa fa-check pull-right text-success"></i>
+              <% else %>
+              <small class="text-muted">Chairs</small>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+        <p class="text-justify">
+          <%= @tailgate.description %>
+        </p>
+      </div>
+    </div>
   </div>
 </div>

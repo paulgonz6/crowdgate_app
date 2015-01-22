@@ -1,0 +1,15 @@
+
+<div class="row quantity text-left">
+  <div class="col-md-12">
+    <label class="control-label" for="quantity">How many tickets do you want to buy?</label>
+    <select class="form-control" name="quantity" id="quantity">
+      <% @tailgate.size.times do |n| %>
+      <option value="<%= n + 1 %>"><%= n + 1 %></option>
+      <% end %>
+    </select>
+      <h2><small>Ticket Amount: $<%= @tailgate.price %></small></h2>
+      <h4><small>Fees: $0.00</small></h4>
+      <h4><small>Taxes: $0.00</small></h4>
+      <h3>Total Amount: $<%= @tailgate.price %></h3>
+  </div>
+</div>

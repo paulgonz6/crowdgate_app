@@ -3,7 +3,8 @@
   <p><%= @tailgate.size %> Spots Remaining</p>
 
   <!-- JUST FOR DEMO PURPOSES -->
-  <p class="btn btn-primary btn-block"><%= link_to "Book Now", login_path %></p>
+  <p class="btn btn-primary btn-block"><a href="/tailgates/<%= @tailgate.id %>/booking/billing">Book Now</a></p>
+
 
   <hr/>
 

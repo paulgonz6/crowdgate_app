@@ -1,6 +1,25 @@
 <div class="row">
-  <div class="col-md-8 tailgate-content-section">
-    <h4>Previous Tailgate Photos</h4>
-    <img src="/assets/grove_background.jpeg" class="img-thumbnail">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tailgate Photos</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <%= image_tag @tailgate.image_1, :class =>"img-responsive thumbnail" %>
+          </div>
+          <div class="col-md-6">
+            <%= image_tag @tailgate.image_2, :class =>"img-responsive thumbnail" %>
+          </div>
+          <div class="col-md-6">
+            <%= image_tag @tailgate.image_3, :class =>"img-responsive thumbnail" %>
+          </div>
+          <div class="col-md-6">
+            <%= image_tag @tailgate.image_4, :class =>"img-responsive thumbnail" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
