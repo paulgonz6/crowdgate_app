@@ -6,45 +6,51 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new
+
     @booking.tailgate_id = params[:tailgate_id]
-    @booking.stripe_token = params[:stripeToken]
-    @booking.save
+    @booking.quantity = params[:quantity]
+    @booking.user_id = 1
+    @booking.amount = @booking.quantity * Tailgate.find(@booking.tailgate_id).price
 
-    # Set your secret key: remember to change this to your live secret key in production
-    # See your keys here https://dashboard.stripe.com/account
-    Stripe.api_key = "sk_test_Fogj9Y2IHHGTv0vKAHKsxHDW"
+    @booking.process_payment(params[:stripeToken], @booking.amount)
 
-    # Get the credit card details submitted by the form
-    token = params[:stripeToken]
 
-    # Create a Customer
-    customer = Stripe::Customer.create(
-      :card => token,
-      :description => "test payments examples"
-      )
+    respond_to do |format|
+      if @booking.save
+        # Tell the UserMailer to send a welcome email after save
+        BookingMailer.receipt_email(@booking).deliver_now
+        format.html { redirect_to @booking }
+        format.json { render json: @booking, status: :created, location: @booking }
+      else
+        format.html { render action: 'bookings/new' }
+        format.json { render json: @booking.errors, status: :unprocessable_entity }
+      end
+    end
 
-    puts customer.id
-
-    # Save the customer ID in your database so you can use it later
-    user = User.find(1)
-    user.stripe_id = customer.id
-    user.save
-
-    # Charge the Customer instead of the card
-    Stripe::Charge.create(
-        :amount => 100, # in cents
-        :currency => "usd",
-        :customer => customer.id
-        )
-
-    redirect_to booking_url(@booking.id)
   end
 
   def show
     @booking = Booking.find(params[:id])
-    # @tailgate = Tailgate.find(params[:id])
-    # @tailgate.size -= params[:quantity].to_i
-    # @tailgate.save
+  end
+
+  def index
+    @bookings = Booking.all
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    charge = @booking.stripe_token
+
+    @booking.refund(charge)
+
+    tailgate = @booking.tailgate
+    tailgate.size += @booking.quantity
+    tailgate.save
+
+    @booking.destroy
+
+    flash[:danger] = "Booking #{@booking.id} has been deleted"
+    redirect_to bookings_url
   end
 
 end

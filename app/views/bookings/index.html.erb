@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="page-header">
+      <h4>Transactions</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-hover">
+            <thead>
+              <th>Transaction_ID</th>
+              <th>Buyer_ID</th>
+              <th>Tailgate_ID</th>
+              <th>Amount</th>
+              <th></th>
+              <th></th>
+            </thead>
+            <% @bookings.each do |booking| %>
+            <tr>
+              <td><%= booking.id %></td>
+              <td><%= booking.user_id %></td>
+              <td><%= booking.tailgate_id %></td>
+              <td>$<%= booking.amount %></td>
+              <td>
+                <p class="btn btn-default btn-block">
+                  <%= link_to "Edit", edit_booking_url(booking.id) %>
+                </p>
+              </td>
+              <td>
+                <p class="btn btn-danger btn-block">
+                  <%= link_to "Delete", booking_url(booking.id), :method => "delete", :data => { :confirm => "Are you sure you want to delete this event?"} %>
+                </p>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
