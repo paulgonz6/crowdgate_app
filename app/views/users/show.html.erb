@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row no-page-header">
     <div class="col-md-3 col-md-offset-1">
-      <div class="panel panel-default text-center">
+      <aside class="panel panel-default text-center">
         <div class="panel-heading">
           <h3 class="panel-title"><%= @user.name %></h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body text-center">
           <%= image_tag @user.image, :class => "img-responsive thumbnail" %>
           <p>Edit Profile</p>
           <p><a href="/users/<%= @user.id %>/tailgates">View Tailgates</a></p>
         </div>
-      </div>
+      </aside>
     </div>
     <div class="col-md-6">
       <div class="panel panel-default">
@@ -26,23 +26,47 @@
           </dl>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Purchases</h3>
-          </div>
-          <div class="panel-body">
-            <ol class="">
-              <% @bookings.each_with_index do |ticket, i| %>
-                <li class="">
-                  $<%= ticket.amount %> for "<%= ticket.tailgate.name %>" <br>
-                  | <small><%= link_to "View", tailgate_url(ticket.tailgate_id), :method => "get" %></small>| <small><%= link_to "Refund", booking_url(ticket.id), :method => "Delete" %></small>
-                  | <small><%= link_to "Share", booking_url(ticket.id), :method => "Delete" %></small> |
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Purchases</h3>
+        </div>
+        <div class="panel-body">
+          <ol class="">
+            <% @bookings.each_with_index do |ticket, i| %>
+            <li class="">
+              $<%= ticket.amount %> for "<%= ticket.tailgate.name %>" <br>
+              <em><%= ticket.quantity %> tickets</em>
+              | <small><%= link_to "View", tailgate_url(ticket.tailgate_id), :method => "get" %></small>
+              | <small><%= link_to "Refund", booking_url(ticket.id), :method => "Delete" %></small>
+              | <small><%= link_to "Share", booking_url(ticket.id), :method => "Delete" %></small> |
+              <br>
+              <br>
+            </li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Hosted Tailgates</h3>
+        </div>
+        <div class="panel-body">
+          <% if @tailgates.length > 0 %>
+            <ol>
+              <% @tailgates.each_with_index do |listing, i| %>
+                <li>
+                  <p><%= listing.event.name %></p>
+                  <p>$<%= listing.price %> per guest | <%= listing.size %> spots left</p>
+                  <p><%= link_to listing.name, tailgate_url(listing.id) %></p>
+                  <span class="btn btn-warning"><%= link_to "Copy Listing", new_tailgate_url %></span>&nbsp; <span class="btn btn-default"><%= link_to "Manage Listing", edit_tailgate_url(listing.id) %> </span>
+                  <br>
+                  <br>
                 </li>
               <% end %>
             </ol>
+            <% else %>
+            <p>You are currently not hosting any tailgates. Add new tailgates today!</p>
+            <% end %>
           </div>
         </div>
       </div>

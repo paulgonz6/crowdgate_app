@@ -1,5 +1,5 @@
 class BookingMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  default from: 'paul@crowdgate.us'
 
   def receipt_email(booking)
     @booking = booking

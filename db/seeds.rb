@@ -44,3 +44,5 @@ Tailgate.destroy_all
                     image_4: images[rand(0..3)]
                   )
 }
+
+Booking.destroy_all

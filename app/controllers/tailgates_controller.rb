@@ -8,7 +8,6 @@ class TailgatesController < ApplicationController
   def create
     @events = Event.all
     @tailgate = Tailgate.new
-
     @tailgate.size = params[:size]
     @tailgate.name = params[:name]
     @tailgate.description = params[:description]
@@ -33,7 +32,7 @@ class TailgatesController < ApplicationController
 
     if @tailgate.save
       flash[:success] = "Successfully created tailgate for #{@tailgate.event.name}."
-      redirect_to "/users/#{@tailgate.user_id}/tailgates"
+      redirect_to user_url(@tailgate.user_id)
     else
       render('tailgates/new')
     end
@@ -58,7 +57,6 @@ class TailgatesController < ApplicationController
 
   def update
     @tailgate = Tailgate.find(params[:id])
-
     @tailgate.size = params[:size]
     @tailgate.name = params[:name]
     @tailgate.description = params[:description]
@@ -83,7 +81,7 @@ class TailgatesController < ApplicationController
 
     if @tailgate.save
       flash[:success] = "Successfully updated your tailgate for #{@tailgate.event.name}."
-      redirect_to "/users/#{@tailgate.user_id}/tailgates"
+      redirect_to user_url(@tailgate.user_id)
     else
       render('tailgates/edit')
     end
@@ -97,7 +95,7 @@ class TailgatesController < ApplicationController
     t.destroy
 
     flash[:danger] = "You have successfully deleted #{t.name}"
-    redirect_to("/users/#{t.user_id}/tailgates")
+    redirect_to user_url(t.user_id)
   end
 
 end
