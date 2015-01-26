@@ -10,19 +10,20 @@ class Booking < ActiveRecord::Base
     # Get the credit card details submitted by the form
     token = stripe_token
 
-    # Create a Customer
-    customer = Stripe::Customer.create( :card => token, :description => "payment for tailgate")
+    # Create the charge on Stripe's servers - this will charge the user's card
+    begin
+      @charge = Stripe::Charge.create(
+        :amount => amount * 100, # amount in cents, again
+        :currency => "usd",
+        :card => token,
+        :description => "payinguser@example.com"
+      )
 
-    # Charge the Customer instead of the card
-    @charge = Stripe::Charge.create(  :amount => amount * 100,
-                                      :currency => "usd",
-                                      :customer => customer.id,
-                                      :description => "Testing"
-                                    )
+    rescue Stripe::CardError => e
+      # The card has been declined
+    end
 
     self.stripe_token = @charge["id"]
-
-    save_stripe_customer_id(1, customer.id)
 
   end
 
@@ -37,5 +38,9 @@ class Booking < ActiveRecord::Base
     ch = Stripe::Charge.retrieve(charge_id)
     refund = ch.refunds.create
   end
+
+  def send_mailer
+  end
+
 
 end

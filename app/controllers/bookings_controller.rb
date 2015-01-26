@@ -14,6 +14,9 @@ class BookingsController < ApplicationController
 
     @booking.process_payment(params[:stripeToken], @booking.amount)
 
+    tailgate = Tailgate.find(@booking.tailgate_id)
+    tailgate.size -= @booking.quantity
+    tailgate.save
 
     respond_to do |format|
       if @booking.save
@@ -49,8 +52,8 @@ class BookingsController < ApplicationController
 
     @booking.destroy
 
-    flash[:danger] = "Booking #{@booking.id} has been deleted"
-    redirect_to bookings_url
+    flash[:danger] = "You've cancelled your tailgate. We're sorry that you can't make it. You will be refunded in 10 business days."
+    redirect_to user_url(@booking.user_id)
   end
 
 end
