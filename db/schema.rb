@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123205923) do
+ActiveRecord::Schema.define(version: 20150127144549) do
 
   create_table "bookings", force: true do |t|
     t.datetime "created_at",                        null: false
@@ -70,13 +70,16 @@ ActiveRecord::Schema.define(version: 20150123205923) do
   end
 
   create_table "users", force: true do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "name"
     t.string   "email"
     t.string   "image"
     t.string   "password_digest"
-    t.string   "stripe_id"
+    t.boolean  "admin"
+    t.string   "stripe_customer_id"
+    t.boolean  "host_status"
+    t.text     "description"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

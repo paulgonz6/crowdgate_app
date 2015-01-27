@@ -18,7 +18,7 @@
 
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <%= form_tag tailgate_url(@tailgate.id), :method => "patch", :class => "form tailgate-forms" do %>
+      <%= form_for @tailgate do |f| %>
 
       <div class="form-group">
         <input type="hidden" name="user_id" value="<%= @tailgate.user_id %>">
@@ -68,7 +68,7 @@
           <td>
             <div class="radio">
               <label>
-                <input type="radio" name="grill" id="grill" value="true">
+                <%= f.radio_button 'grill', true %>
                 Grill
               </label>
             </div>

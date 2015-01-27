@@ -7,15 +7,12 @@ class Booking < ActiveRecord::Base
   def process_payment(stripe_token, amount)
     Stripe.api_key = "sk_test_Fogj9Y2IHHGTv0vKAHKsxHDW"
 
-    # Get the credit card details submitted by the form
-    token = stripe_token
-
     # Create the charge on Stripe's servers - this will charge the user's card
     begin
       @charge = Stripe::Charge.create(
         :amount => amount * 100, # amount in cents, again
         :currency => "usd",
-        :card => token,
+        :card => stripe_token,
         :description => "payinguser@example.com"
       )
 
@@ -24,7 +21,6 @@ class Booking < ActiveRecord::Base
     end
 
     self.stripe_token = @charge["id"]
-
   end
 
   def save_stripe_customer_id(user_id, customer_id)

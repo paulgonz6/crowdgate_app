@@ -41,7 +41,7 @@ class TailgatesController < ApplicationController
 
   def index
     if params[:search].present?
-      @events = Event.where("name LIKE '%#{params[:search]}%'")
+      @events = Event.where("name LIKE '%#{params[:search]}%'").order(:date)
     else
       @events = []
     end
@@ -53,6 +53,7 @@ class TailgatesController < ApplicationController
 
   def edit
     @tailgate = Tailgate.find(params[:id])
+    @tailgate.grill = true
   end
 
   def update

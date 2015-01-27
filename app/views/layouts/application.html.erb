@@ -4,71 +4,33 @@
   <title>Crowdgate</title>
 
   <!-- Adds Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Adds Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-
-  <!-- STRIPE INTEGRATION -->
-    <!-- The required Stripe lib -->
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
-    <!-- jQuery is used only for this example; it isn't required to use Stripe -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-      // This identifies your website in the createToken call below
-      Stripe.setPublishableKey('pk_test_bgvvOgbdPKr42kXOoLNDPKYO');
-
-      var stripeResponseHandler = function(status, response) {
-        var $form = $('#payment-form');
-
-        if (response.error) {
-          // Show the errors on the form
-          $form.find('.payment-errors').text(response.error.message);
-          $form.find('button').prop('disabled', false);
-        } else {
-          // token contains id, last4, and card type
-          var token = response.id;
-          // Insert the token into the form so it gets submitted to the server
-          $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-          // and re-submit
-          $form.get(0).submit();
-        }
-      };
-
-      jQuery(function($) {
-        $('#payment-form').submit(function(e) {
-          var $form = $(this);
-
-          // Disable the submit button to prevent repeated clicks
-          $form.find('button').prop('disabled', true);
-
-          Stripe.card.createToken($form, stripeResponseHandler);
-
-          // Prevent the form from submitting with the default action
-          return false;
-        });
-      });
-    </script>
-
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 </head>
+
 <body>
   <%= render 'layouts/nav' %>
 
   <div class="site-body">
     <% flash.each do |message_type, message| %>
-      <div class="alert alert-dismissable alert-<%= message_type %>"><%= message %>
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      </div>
+    <div class="alert alert-dismissable alert-<%= message_type %>"><%= message %>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    </div>
     <% end %>
     <%= yield %>
   </div>
 
   <%= render 'layouts/footer' %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <%= yield :bottom %>
 </body>
+
 </html>
