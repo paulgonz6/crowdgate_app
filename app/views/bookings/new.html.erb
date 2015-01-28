@@ -5,7 +5,6 @@
       <h4><small><%= @tailgate.event.name %>, <%= @tailgate.event.venue %>, <%= @tailgate.event.city %>, <%= @tailgate.event.state %>, <%= @tailgate.event.time %></h4>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-4">
       <div class="panel panel-default">
@@ -66,51 +65,47 @@
         </div>
       </div>
     </div>
-
     <% end %>
   </div>
-
 </div>
 
 
 <% content_for :bottom do %>
-
   <script type="text/javascript">
-      Stripe.setPublishableKey('pk_test_bgvvOgbdPKr42kXOoLNDPKYO');
+    Stripe.setPublishableKey('pk_test_bgvvOgbdPKr42kXOoLNDPKYO');
 
-      var stripeResponseHandler = function(status, response) {
-        var $form = $('#payment-form');
+    var stripeResponseHandler = function(status, response) {
+      var $form = $('#payment-form');
 
-        if (response.error) {
-          // Show the errors on the form
-          $form.find('.payment-errors').text(response.error.message);
-          $form.find('button').prop('disabled', false);
-        } else {
-          // token contains id, last4, and card type
-          var token = response.id;
-          // Insert the token into the form so it gets submitted to the server
-          $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-          // and re-submit
-          $form.get(0).submit();
-        }
-      };
+      if (response.error) {
+        // Show the errors on the form
+        $form.find('.payment-errors').text(response.error.message);
+        $form.find('button').prop('disabled', false);
+      } else {
+        // token contains id, last4, and card type
+        var token = response.id;
+        // Insert the token into the form so it gets submitted to the server
+        $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+        // and re-submit
+        $form.get(0).submit();
+      }
+    };
 
-      jQuery(function($) {
+    jQuery(function($) {
 
-        $('#payment-form').submit(function(e) {
-          var $form = $(this);
+      $('#payment-form').submit(function(e) {
+        var $form = $(this);
 
-          // Disable the submit button to prevent repeated clicks
-          $form.find('button').prop('disabled', true);
+        // Disable the submit button to prevent repeated clicks
+        $form.find('button').prop('disabled', true);
 
-          Stripe.card.createToken($form, stripeResponseHandler);
+        Stripe.card.createToken($form, stripeResponseHandler);
 
-          // Prevent the form from submitting with the default action
-          return false;
-        });
-
-
+        // Prevent the form from submitting with the default action
+        return false;
       });
-      </script>
 
+
+    });
+  </script>
 <% end %>

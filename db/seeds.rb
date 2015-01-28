@@ -3,11 +3,6 @@
 #
 
 # USER SEED ==============================
-User.destroy_all
-User.create (  :name => "Paul G.",
-               :email => "pjg5005@gmail.com",
-               :imgage => "https://media.licdn.com/mpr/mpr/shrink_200_200/p/8/005/0a3/13c/3af7967.jpg"
-               )
 
 # TAILGATE SEED ==========================
 
@@ -23,7 +18,7 @@ Tailgate.destroy_all
 30.times{
   Tailgate.create(  name: "Tailgate of the Century. Don't want to miss",
                     description: "Our tailgates have been voted the best at Penn State. We always have regular tailgate food- burgers, hot dogs, etc. We also make salads and chili. We tend to get into some intense corn hole games, and we always keep the beers flowing.",
-                    user_id: 1,
+                    user_id: 3,
                     event_id: rand(2..10),
                     size: rand(1..100),
                     price: rand(1..100),

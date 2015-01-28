@@ -7,7 +7,7 @@
         </div>
         <div class="panel-body text-center">
           <%= image_tag @user.image, :class => "img-responsive thumbnail" %>
-          <p>Edit Profile</p>
+          <%= link_to "Edit Profile", edit_user_url(@user.id) %>
           <p><a href="/users/<%= @user.id %>/tailgates">View Tailgates</a></p>
         </div>
       </aside>
@@ -37,7 +37,7 @@
               $<%= ticket.amount %> for "<%= ticket.tailgate.name %>" <br>
               <em><%= ticket.quantity %> tickets</em>
               | <small><%= link_to "View", tailgate_url(ticket.tailgate_id), :method => "get" %></small>
-              | <small><%= link_to "Refund", booking_url(ticket.id), :method => "Delete" %></small>
+              | <small><%= link_to "Refund", booking_url(ticket.id), :method => "Delete", :data => { :confirm => "Are you sure you want to cancel this tailgate? You may not be eligible for a refund. Please check our refund policy."} %></small>
               <!-- | <small><%= link_to "Share", booking_url(ticket.id), :method => "Delete" %></small> --> |
               <br>
               <br>
@@ -76,8 +76,8 @@
         <div class="panel-body">
           <p>Status: <%= @user.host_status %></p>
           <p>Experience: Hosted 18 tailgates</p>
-          <p>Description: </p>
           <p>Rating: <%= @user.description %></p>
+          <p>Description: </p>
           <p>Reviews: <%= @user.host_status %></p>
         </div>
       </div>

@@ -10,6 +10,9 @@
   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 </head>
 
@@ -26,10 +29,6 @@
   </div>
 
   <%= render 'layouts/footer' %>
-
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <%= yield :bottom %>
 </body>
 
