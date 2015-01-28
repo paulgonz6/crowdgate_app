@@ -75,9 +75,9 @@
         </div>
         <div class="panel-body">
           <p>Status: <%= @user.host_status %></p>
-          <p>Experience: Hosted 18 tailgates</p>
-          <p>Rating: <%= @user.description %></p>
-          <p>Description: </p>
+          <p>Experience: Hosted <%= @user.tailgates.count %> tailgates</p>
+          <p>Description: <%= @user.description %> </p>
+          <p>Rating: </p>
           <p>Reviews: <%= @user.host_status %></p>
         </div>
       </div>
