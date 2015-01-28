@@ -32,7 +32,7 @@
                 <dt>Host Name:</dt>
                 <dd><%= tailgate.user.name %></dd>
                 <dt>Experience:</dt>
-                <dd>Hosted 18 Tailgates</dd>
+                <dd><%= pluralize( Tailgate.where({ :user_id => tailgate.user_id}).count, 'tailgates') %></dd>
                 <dt>Rating:</dt>
                 <dd>
                   <span class="rating">
