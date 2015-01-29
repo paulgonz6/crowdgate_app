@@ -12,40 +12,53 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h2 class="panel-title"><%= event.name %></h2>
-          <h3 class="panel-title"><small><%= event.date %>, <%= event.time %>, <%= event.city %>, <%= event.state %></small></h3>
+          <h3 class="panel-title">
+            <small>
+              <%= event.date %>,
+              <%= event.time %>,
+              <%= event.city %>,
+              <%= event.state %>
+            </small>
+          </h3>
         </div>
         <% event.tailgates.each do |tailgate| %>
-        <div class="panel-body tailgate-listing">
-          <div class="col-md-3 tailgate-listing-image" style="background-image: url(<%= tailgate.image_1 %>);">
+          <%= tailgate_listing_for tailgate do %>
+          <div class="col-md-3 tailgate-listing-image"
+               style="background-image: url(<%= tailgate.image_1 %>);">
+
             <div class="tailgate-listing-price">
               <h5>$<%= tailgate.price %> Per Guest</h5>
             </div>
           </div>
+
           <div class="col-md-6">
-            <h4><strong><%= link_to tailgate.name, tailgate_url(tailgate.id) %></strong></h4>
-            <p><em><%= tailgate.size %> spots remaining | Affiliated with <%= tailgate.affiliation %> team</em></p>
+            <h4>
+              <strong>
+                <%= link_to tailgate.name, tailgate_url(tailgate.id) %>
+              </strong>
+            </h4>
+
+            <p>
+              <em>
+                <%= tailgate.size %> spots remaining |
+                Affiliated with <%= tailgate.affiliation %> team
+              </em>
+            </p>
+
             <p class="text-justify"><%= tailgate.description %></p>
           </div>
           <div class="col-md-3">
             <div class="host-details">
               <dl class="dl-horizontal">
                 <dt>Host Name:</dt>
-                <dd><%= tailgate.user.name %></dd>
+                <dd><%= tailgate.user_name %></dd>
                 <dt>Experience:</dt>
-                <dd><%= pluralize( Tailgate.where({ :user_id => tailgate.user_id}).count, 'tailgates') %></dd>
+                <dd><%= pluralize(tailgate.host_experience, 'tailgate') %></dd>
                 <dt>Rating:</dt>
-                <dd>
-                  <span class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                  </span>
-                </dd>
+                <dd><%= star_rating_for tailgate %></dd>
               </dl>
             </div>
-          </div>
+          <% end %>
         </div>
         <% end %>
       </div>

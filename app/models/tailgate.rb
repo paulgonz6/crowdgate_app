@@ -10,4 +10,16 @@ class Tailgate < ActiveRecord::Base
   validates     :price, presence: true
   validates     :size, presence: true
 
+  def user_name
+    user.name if user
+  end
+
+  def sold_out?
+    size == 0
+  end
+
+  def host_experience
+    user.hosting_experience
+  end
+
 end

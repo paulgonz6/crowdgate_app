@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
 # STATIC PAGE ROUTES =========================================================================
-  get '/',                    :controller   => "static_pages",
-                              :action       => "home"
+  root "static_pages#home"
 
 # EVENTS ROUTES ==============================================================================
 
