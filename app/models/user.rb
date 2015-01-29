@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  def star_rating
+    # pulls all ratings for user- compact removes nils
+    users_tailgates = Tailgate.where({ :user_id => self.id })
+    values = Review.where({:tailgate_id => users_tailgates}).pluck(:rating).compact
+    @average = values.sum / values.size.to_f
+    return @average
+  end
+
 end

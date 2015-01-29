@@ -1,4 +1,6 @@
 class Review < ActiveRecord::Base
-  belongs_to :user
-  validates  :user_id, presence: true
+  belongs_to :tailgate
+
+  validates  :rating, presence: true
+
 end

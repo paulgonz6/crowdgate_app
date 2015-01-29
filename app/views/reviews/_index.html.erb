@@ -3,7 +3,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          <%= pluralize(@tailgate.user.reviews.count, 'Review') %> &nbsp;
+          Rating: <%= @tailgate.user.star_rating %> out of 5, Based on <%= pluralize(@tailgate.user.reviews.count, 'Review') %>
 <!--           <span class="rating">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>

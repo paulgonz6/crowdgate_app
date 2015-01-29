@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127144549) do
+ActiveRecord::Schema.define(version: 20150129160558) do
 
   create_table "bookings", force: true do |t|
     t.datetime "created_at",                        null: false
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20150127144549) do
     t.datetime "updated_at",  null: false
     t.text     "review"
     t.integer  "rating"
-    t.integer  "user_id"
     t.integer  "reviewer_id"
+    t.integer  "tailgate_id"
   end
 
   create_table "tailgates", force: true do |t|
