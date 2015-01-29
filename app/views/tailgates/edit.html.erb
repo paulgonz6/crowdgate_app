@@ -1,6 +1,8 @@
 <% if @tailgate.errors.full_messages.count > 0 %>
 <div class="alert alert-danger alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
   <ul>
     <% @tailgate.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
@@ -18,205 +20,17 @@
 
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <%= form_for @tailgate do |f| %>
-      <%= f.hidden_field :user_id %>
-      <%= f.hidden_field :event_id %>
-
-      <!-- EVENT -->
-      <div class="form-group">
-        <label class="control-label" for="event_id">What game are you tailgating for?</label>
-        <select class="form-control" name="event_id" id="event_id" disabled>
-          <option value=""><%= @tailgate.event.name %></option>
-        </select>
-      </div>
-
-      <!-- HEADLINE -->
-      <div class="form-group">
-        <%= f.label :name, "Give your tailgate a headline", class: "control-label" %>
-        <%= f.text_field :name, class: 'form-control'  %>
-      </div>
-
-      <!-- FREE FORM TAILGATE DESCRIPTION -->
-      <div class="form-group">
-        <%= f.label :description, "Tell us about your tailgate", class: "control-label" %>
-        <%= f.text_area :description, rows: 5, class: 'form-control'  %>
-      </div>
-
-      <!-- HOW MANY GUESTS -->
-      <div class="form-group">
-        <%= f.label :size, "How many guests do you want to invite?", class: "control-label" %>
-        <%= f.number_field :size, class: 'form-control'  %>
-      </div>
-
-      <!-- COST -->
-      <div class="form-group">
-        <%= f.label :price, "How much will it cost your guests to attend?", class: "control-label" %>
-
-        <div class="input-group">
-          <div class="input-group-addon">$</div>
-          <%= f.text_field :price, class: 'form-control'  %>
-          <div class="input-group-addon">.00</div>
-        </div>
-      </div>
-
-      <!-- TABLE FOR TAILGATE DETAILS -->
-      <table class="table table-bordered tailgate-details-table">
-        <tr>
-          <td>
-            <div class="radio">
-              <label>
-                <%= f.radio_button 'grill', true %>
-                Grill
-              </label>
-            </div>
-          </td>
-          <td>
-            <div class="radio">
-              <label>
-                <%= f.radio_button 'tent', true %>
-                Tent
-              </label>
-            </div>
-          </td>
-          <td>
-            <div class="radio">
-              <label>
-                <%= f.radio_button 'reserved_parking', true %>
-                Reserved Parking
-              </label>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="radio">
-              <label>
-                <%= f.radio_button 'food', true %>
-                Food
-              </label>
-            </div>
-          </td>
-          <td>
-            <div class="radio">
-              <label>
-                <%= f.radio_button 'bevs_alcohol', true %>
-                Beverages (Alcoholic)
-              </label>
-            </div>
-          </td>
-          <td>
-            <div class="radio">
-              <label>
-                <%= f.radio_button 'bevs_non_alcohol', true %>
-                Beverages (Non-Alcoholic)
-              </label>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="radio">
-              <label>
-                <%= f.radio_button 'tailgate_games', true %>
-                Games
-              </label>
-            </div>
-          </td>
-          <td>
-            <div class="radio">
-              <label>
-                <%= f.radio_button 'chairs', true %>
-                Chairs
-              </label>
-            </div>
-          </td>
-          <td>
-            <div class="radio">
-              <label>
-                <%= f.radio_button 'table', true %>
-                Table
-              </label>
-            </div>
-          </td>
-        </tr>
-      </table>
-
-      <!-- AFFILIATE TAILGATE -->
-      <div class="form-group">
-        <%= f.label  :affiliation, "Do you want to affiliate your tailgate with either team? (All fans are welcome at any tailgate, but sometimes you just want to let your guests know what jersey you'll be wearing.)", class: "control-label" %>
-        <%= f.select :affiliation,  options_for_select( { "Home team" => "Home Team",
-                                                          "Away team" => "Away Team",
-                                                          "Neither"   => "Neither"
-                                                        }, @tailgate.affiliation ),
-                                                        {},
-                                                        { class: 'form-control'} %>
-      </div>
-
-      <!-- TIME TAILGATE STARTS, RELATIVE TO KICKOFF-->
-      <div class="form-group">
-        <%= f.label  :tailgate_start_time, "When does your tailgate start?", class: "control-label" %>
-        <%= f.select :tailgate_start_time,  options_for_select( { "5 hours before kickoff" => "5 hours before kickoff",
-                                                                  "4 hours before kickoff" => "4 hours before kickoff",
-                                                                  "3 hours before kickoff" => "3 hours before kickoff",
-                                                                  "2 hours before kickoff" => "2 hours before kickoff"
-                                                                }, @tailgate.tailgate_start_time ),
-                                                                {},
-                                                                { class: 'form-control'} %>
-      </div>
-
-      <!-- TAILGATE DURING GAME?-->
-      <div class="form-group">
-        <label class="control-label" for="tailgate_during_game">Are you tailgating during the game?</label>
-        <div class="radio">
-
-          <label>
-            <%= f.radio_button 'tailgate_during_game', true %>
-            Yes
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button 'tailgate_during_game', false %>
-            No
-          </label>
-        </div>
-      </div>
-
-      <!-- ADD IMAGES-->
-
-      <div class="form-group">
-        <%= f.label :image_1, "Image_1", class: "control-label" %>
-        <%= f.text_field :image_1, class: 'form-control'  %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :image_2, "Image_2", class: "control-label" %>
-        <%= f.text_field :image_2, class: 'form-control'  %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :image_3, "Image_3", class: "control-label" %>
-        <%= f.text_field :image_3, class: 'form-control'  %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :image_4, "Image_4", class: "control-label" %>
-        <%= f.text_field :image_4, class: 'form-control'  %>
-      </div>
-
-
+      <%= render 'tailgates/tailgate_form' %>
       <%= f.submit "Save Changes", :class => "btn btn-success btn-block"  %>
-
       <br>
-
       <button class="btn btn-danger btn-block">
-        <%= link_to "Delete Listing", tailgate_url(@tailgate.id), :method => "delete", :data => { :confirm => "Are you sure you want to delete this tailgate?"} %>
+        <%= link_to "Delete Listing", tailgate_url(@tailgate.id),
+                                      :method => "delete",
+                                      :data => { :confirm => "Are you sure you want to delete this tailgate?"}
+                                      %>
       </button>
-
-      <% end %>
-
+    <% end %>
     </div>
   </div>
-  <br>
-  <br>
+
 </div>

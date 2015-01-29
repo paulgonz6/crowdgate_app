@@ -51,11 +51,11 @@
             <div class="host-details">
               <dl class="dl-horizontal">
                 <dt>Host Name:</dt>
-                <dd><%= tailgate.user_name %></dd>
+                <dd><%= tailgate.user.short_name %></dd>
                 <dt>Experience:</dt>
                 <dd><%= pluralize(tailgate.host_experience, 'tailgate') %></dd>
                 <dt>Rating:</dt>
-                <dd><%= star_rating_for tailgate %></dd>
+                <dd><%= star_rating_for(tailgate) %> out of 5</dd>
               </dl>
             </div>
           <% end %>
