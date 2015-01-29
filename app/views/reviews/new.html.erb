@@ -9,12 +9,12 @@
     <div class="col-md-8 col-md-offset-2">
      <%= form_for @review, :class => "form" do |f|  %>
       <div class="form-group">
-        <%= f.label  :user_id, "Who is this review about?", class: "control-label" %>
-        <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :name), {}, class: 'form-control' %>
+        <%= f.label  :tailgate_id, "What tailgate was this about?", class: "control-label" %>
+        <%= f.select :tailgate_id, options_from_collection_for_select(Tailgate.all, :id, :name), {}, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= f.label  :reviewer_id, "Who is this review from?", class: "control-label" %>
-        <%= f.select :reviewer_id, options_from_collection_for_select(User.all, :id, :name), {}, class: 'form-control' %>
+        <%= f.label  :user_id, "Who is this review from?", class: "control-label" %>
+        <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :name), {}, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= f.label  :review, "Write review below", class: "control-label" %>

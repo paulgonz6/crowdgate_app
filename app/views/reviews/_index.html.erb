@@ -3,7 +3,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          Rating: <%= @tailgate.user.star_rating %> out of 5, Based on <%= pluralize(@tailgate.user.reviews.count, 'Review') %>
+          Rating: <%= @tailgate.user.star_rating %> out of 5, Based on <%= pluralize(@reviews.count, 'Review') %>
 <!--           <span class="rating">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -14,11 +14,11 @@
         </h3>
       </div>
       <div class="panel-body">
-        <% @tailgate.user.reviews.each do |review|  %>
+        <% @reviews.each do |review|  %>
         <div class="row review-listing">
           <div class="col-md-3 text-center">
-            <%= image_tag User.find(review.reviewer_id).image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
-            <h6><%= User.find(review.reviewer_id).name %></h6>
+            <%= image_tag User.find(review.user_id).image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
+            <h6><%= User.find(review.user_id).name %></h6>
           </div>
           <div class="col-md-9 text-justify">
             <p>

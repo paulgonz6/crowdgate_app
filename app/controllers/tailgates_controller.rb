@@ -49,6 +49,7 @@ class TailgatesController < ApplicationController
 
   def show
     @tailgate = Tailgate.find(params[:id])
+    @reviews = Review.where({ :tailgate_id => (Tailgate.where({ :user_id => @tailgate.user_id }).pluck(:id)) })
   end
 
   def edit

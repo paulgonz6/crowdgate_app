@@ -13,17 +13,16 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     if @review.save
-      flash[:success] = "Thank you for writing a review about #{User.find(@review.user_id).name}!"
-      redirect_to user_url(@review.reviewer_id)
+      flash[:success] = "Thank you for writing a review about #{Tailgate.find(@review.tailgate_id).name}!"
+      redirect_to user_url(@review.user_id)
     else
       render 'new'
     end
   end
 
   private
-
     def review_params
-      params.require(:review).permit(:review, :rating, :user_id, :reviewer_id)
+      params.require(:review).permit(:review, :rating, :user_id, :tailgate_id)
     end
 
 end

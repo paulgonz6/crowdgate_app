@@ -9,4 +9,5 @@ class Tailgate < ActiveRecord::Base
   validates     :name, presence: true
   validates     :price, presence: true
   validates     :size, presence: true
+
 end
