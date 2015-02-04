@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'devise'
 gem 'rails', '4.2.0.rc3'
 gem 'bcrypt',               '3.1.7'
 gem 'sass-rails', '~> 5.0'

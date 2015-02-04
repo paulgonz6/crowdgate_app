@@ -1,7 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-
 require 'json'
 require 'open-uri'
 require 'time'
@@ -34,7 +33,7 @@ ActiveRecord::Base.transaction do
     User.create!( :name => user_names.sample,
                   :email => "#{n+1}#{user_emails.sample}",
                   :image => user_images.sample,
-                  :password => "test"
+                  :password => "12345678"
                   )
 
   end
