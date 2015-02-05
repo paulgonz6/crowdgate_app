@@ -1,3 +1,6 @@
+/*Blue for nav bar default #303A48*/
+
+
 body {
   background-color: #F4F7F9;
 }
@@ -49,7 +52,6 @@ body {
   background-color: rgba(0,0,0,.6);
   height: 60vh;
   width: 100%;
-  border-bottom: 3px solid #152852;
 }
 
 .team-show-text {
@@ -62,11 +64,11 @@ body {
 
 .team-show-footer {
   height: 20vh;
+  padding: 60px 0;
   display: table;
   width: 100%;
   margin: 0;
   background-color: white;
-  border-top: 1px solid red;
 }
 
 

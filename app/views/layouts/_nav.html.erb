@@ -14,7 +14,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Become a Host", new_tailgate_url%></li>
+
+        <% if current_user.present? && current_user.host_status? %>
+          <li><%= link_to "List a Tailgate", new_tailgate_url%></li>
+        <% else %>
+          <li><%= link_to "Become a Host", new_tailgate_url%></li>
+        <% end %>
+
         <li><%= link_to "FAQ", '#' %></li>
 
         <% if current_user.present? && current_user.admin? %>
@@ -26,6 +32,8 @@
             <li class="divider"></li>
             <li><a href="/users/3">Sample User</a></li>
             <li><%= link_to "Users", users_url%></li>
+            <li class="divider"></li>
+            <li><a href="/teams">Teams</a></li>
           </ul>
         </li>
         <% end %>
