@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 # STATIC PAGE ROUTES =========================================================================
   root "static_pages#home"
 
+  get '/static_pages/landing_page' => 'static_pages#landing_page'
+
 # EVENTS ROUTES ==============================================================================
 
   #CREATE

@@ -19,10 +19,10 @@
 </head>
 
 <body>
-  <%= render 'layouts/nav' %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+
+<!--   <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> -->
 
   <div class="site-body">
     <% flash.each do |message_type, message| %>
@@ -33,7 +33,7 @@
     <%= yield %>
   </div>
 
-  <%= render 'layouts/footer' %>
+
   <%= yield :bottom %>
 </body>
 

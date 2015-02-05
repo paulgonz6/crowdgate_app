@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204204007) do
+ActiveRecord::Schema.define(version: 20150205132221) do
 
   create_table "bookings", force: true do |t|
     t.datetime "created_at",                        null: false
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(version: 20150204204007) do
     t.string  "image_2"
     t.string  "image_3"
     t.string  "image_4"
+  end
+
+  create_table "teams", force: true do |t|
+    t.string   "name"
+    t.string   "headline"
+    t.string   "background_image"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: true do |t|

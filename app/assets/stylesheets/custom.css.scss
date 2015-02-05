@@ -1,27 +1,31 @@
-/* mixins, variables, etc. */
-
-@mixin box_sizing {
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
-}
-
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
-
 
 /*Light blue background color #F4F7F9*/
 
-.site-body {
-  min-height: 80vh;
+/* NAV BAR */
 
+.navbar.transparent {
+  border-width: 0px;
+  -webkit-box-shadow: 0px 0px;
+  box-shadow: 0px 0px;
+  background-color: rgba(0,0,0,0.0);
+  background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
+  background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+  background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+  position: fixed;
+  top: 0;
+}
+
+.nav {
+  color: #647A87;
+}
+
+.navbar {
+  padding: 7px 0;
+}
+
+
+
+.site-body {
 }
 
 a,
@@ -43,24 +47,15 @@ h1 {
 }
 
 .subtext {
-  color: #647A87;
-  color: black;
+
+
   font-size: 22px;
   line-height: 34px;
   font-weight: 300;
   margin-top: 0;
 }
 
-.nav {
-  color: #647A87;
-}
 
-.navbar {
-  background-color: white;
-  padding: 7px 0;
-  border-bottom: none;
-  box-shadow: 0 1px 5px rgba(0,0,0,.2);
-}
 
 .btn-primary {
   border-width: 1px 1px 3px 1px;
