@@ -113,9 +113,8 @@ body {
 }
 
 .navbar-default {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0,0,0,1);
   border: none;
-  transition-duration: 1s;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -125,3 +124,9 @@ body {
 .navbar-default .navbar-brand {
   color: white;
 }
+
+.navbar-default.transparent {
+  background: transparent !important;
+  color: white;
+}
+

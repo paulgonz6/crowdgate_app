@@ -1,4 +1,9 @@
-<div class="row text-center team-show-splash" id="team-show-splash" style="background-image: url(<%= @team.background_image %>); border-bottom: 5px solid <%= @team.color %>;">
+<div
+  class="row text-center team-show-splash"
+  id="team-show-splash"
+  data-behavior="splash"
+  style="background-image: url(<%= @team.background_image %>); border-bottom: 5px solid <%= @team.color %>;">
+
   <div class="team-show-splash-filter">
     <div class="team-show-text">
       <div class="row">
@@ -144,24 +149,4 @@
   </div>
 </div>
 
-
-<!-- Jquery -->
-<script>
-var splashbottom = $('#team-show-splash').offset().top + $('#team-show-splash').height() - 100;
-
-  // on scroll,
-  $(window).on('scroll',function(){
-
-      // we round here to reduce a little workload
-      stop = Math.round($(window).scrollTop());
-      if (stop > splashbottom) {
-        $('.navbar-default').css('background-color', '<%= @team.color %>');
-      } else {
-        $('.navbar-default .navbar-nav > li > a').css('color', 'white');
-        $('.navbar-default').css('background-color', 'transparent')
-      }
-
-    });
-
-</script>
-
+<%= hidden_field_tag :nav_color, @team.color, data: { behavior: "color-for-nav" } %>
