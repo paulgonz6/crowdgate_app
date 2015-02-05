@@ -1,10 +1,11 @@
 <div class="container">
-  <div class="row">
+  <div class="row row-page-start">
     <div class="col-md-8">
-      <div class="page-header">
-        <h3><%= @tailgate.name %></h3>
+
+        <h3 style="margin-top: 0;"><%= @tailgate.name %></h3>
         <h4><small><%= @tailgate.event.name %>, <%= @tailgate.event.venue %>, <%= @tailgate.event.city %>, <%= @tailgate.event.state %>, <%= @tailgate.event.time %></small></h4>
-      </div>
+        <hr/>
+
     </div>
     <%= render 'tailgates/booking_block' %>
   </div>

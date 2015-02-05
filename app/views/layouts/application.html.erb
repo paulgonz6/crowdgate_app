@@ -21,20 +21,22 @@
 <body class="<%= body_css_class %>">
 
   <%= render 'layouts/nav' %>
-<!--   <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p> -->
 
-  <div class="site-body">
+  <div class='notices'>
     <% flash.each do |message_type, message| %>
-    <div class="alert alert-dismissable alert-<%= message_type %>"><%= message %>
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    </div>
+      <div class="alert alert-dismissable alert-<%= message_type %>"><%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      </div>
     <% end %>
+  </div>
+
+  <div class="body-content">
     <%= yield %>
   </div>
 
-
   <%= yield :bottom %>
+
+  <%= render 'layouts/footer' %>
 </body>
 
 </html>

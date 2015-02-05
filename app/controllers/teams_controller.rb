@@ -1,6 +1,8 @@
 class TeamsController < ApplicationController
 
   # before_action :is_user_admin?, :only => [:new, :create, :update, :destroy, :edit]
+  before_action :user_present?, :only => [:new, :create]
+  before_action :is_user_admin?, :only => [:new, :create]
   before_action :find_team, :only => [:show]
 
   def find_team

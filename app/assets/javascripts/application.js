@@ -36,10 +36,12 @@ function setupTransparentHeaderWhenSplash() {
       if (stop > splashbottom) {
         if ($nav.hasClass("transparent")) {
           $nav.removeClass("transparent");
+          $nav.css({"transition": "1s"});
         }
       } else {
         if (!$nav.hasClass("transparent")) {
           $nav.addClass("transparent");
+          $nav.css({"transition": "0s"});
         }
       }
     });

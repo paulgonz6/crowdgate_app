@@ -6,10 +6,19 @@ require 'open-uri'
 require 'time'
 
 ActiveRecord::Base.transaction do
+
 # USER SEED ==============================
   User.destroy_all
 
-  user_names =  [ "Paul Gonzalez", "Bryan Stanton", "Kevin Biggs", "Dale Madan",
+  User.create!( :name => "Paul Gonzalez",
+                :email => "pjg5005@gmail.com",
+                :image => "https://scontent-a-ord.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/1743531_10106178258118094_600695877_n.jpg?oh=a7f0e529c18d0f6f43f43fca18f17132&oe=555CE821",
+                :password => "cjid342d",
+                :admin => true,
+                :host_status => true
+                )
+
+  user_names =  [ "Bryan Stanton", "Kevin Biggs", "Dale Madan",
                   "David Hucke", "Steve Magnani", "John Petruso", "Luke Mueller",
                   "Nick Hauser", "Joe Cullen"
                 ]

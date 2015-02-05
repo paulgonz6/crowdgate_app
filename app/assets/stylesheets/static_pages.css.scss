@@ -68,9 +68,7 @@
 
 /* FOR NEW SPLASH PAGE */
 
-body {
-  padding: 0;
-}
+
 
 .landing-splash {
   height: 80vh;
@@ -110,23 +108,5 @@ body {
     line-height: 32px;
     font-size: 18px;
   }
-}
-
-.navbar-default {
-  background-color: rgba(0,0,0,1);
-  border: none;
-}
-
-.navbar-default .navbar-nav > li > a {
-  color: white;
-}
-
-.navbar-default .navbar-brand {
-  color: white;
-}
-
-.navbar-default.transparent {
-  background: transparent !important;
-  color: white;
 }
 
