@@ -40,6 +40,8 @@ ActiveRecord::Base.transaction do
 
   users = User.all
 
+  puts "#{users.count} users have been created"
+
 # EVENT SEED ====================================================
   Event.destroy_all
     search = "Penn State Football"
@@ -67,6 +69,8 @@ ActiveRecord::Base.transaction do
     end
 
   events = Event.all
+
+  puts "#{events.count} events have been created"
 
 # TAILGATE SEED ==========================
   choice = [true, false]
@@ -107,6 +111,8 @@ ActiveRecord::Base.transaction do
 
   tailgates = Tailgate.all
 
+  puts "#{tailgates.count} tailgates have been created"
+
 # REVIEWS SEED ==========================
   Review.destroy_all
   250.times{
@@ -118,3 +124,31 @@ ActiveRecord::Base.transaction do
  }
 
 end
+
+  puts "#{Review.all.count} reviews have been created"
+
+# TEAMS SEED
+
+  Team.destroy_all
+
+  Team.create!( name: "Penn State",
+                headline: "We are...",
+                background_image: "https://pennstatermag.files.wordpress.com/2011/09/med-beaver-stadium-panorama.jpg",
+                color: "#152852"
+              )
+
+  Team.create!( name: "Texas A&M",
+                headline: "Gig 'Em",
+                background_image: "http://www.glenvigus.com/wordpress/wp-content/uploads/2009/09/Kyle_UAB_Panorama.jpg",
+                color: "#63000D"
+              )
+
+  Team.create!( name: "South Carolina",
+                headline: "GoooOOO Cocks!",
+                background_image: "http://media.gogamecocks.com/static/images/wallpaper/usccitadel2011/usccitadel1.jpg",
+                color: "#750004"
+              )
+
+
+  puts "#{Team.all.count} teams have been created"
+
