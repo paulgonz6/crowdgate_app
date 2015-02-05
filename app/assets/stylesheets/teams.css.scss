@@ -59,7 +59,20 @@ body {
   font-weight: 600;
 }
 
-.team-show-search {
-  padding-left: 0;
-  padding-right: 0;
+
+.team-show-footer {
+  height: 20vh;
+  display: table;
+  width: 100%;
+  margin: 0;
+  background-color: white;
+  border-top: 1px solid red;
+}
+
+
+.team-show-footer-text {
+  display: table-cell;
+  vertical-align: middle;
+  color: black;
+  font-weight: 600;
 }

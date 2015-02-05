@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205132221) do
+ActiveRecord::Schema.define(version: 20150205163540) do
 
   create_table "bookings", force: true do |t|
     t.datetime "created_at",                        null: false
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 20150205132221) do
     t.string   "background_image"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "logo"
+    t.string   "color"
   end
 
   create_table "users", force: true do |t|
