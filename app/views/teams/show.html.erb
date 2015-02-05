@@ -155,7 +155,7 @@ var splashbottom = $('#team-show-splash').offset().top + $('#team-show-splash').
       // we round here to reduce a little workload
       stop = Math.round($(window).scrollTop());
       if (stop > splashbottom) {
-        $('.navbar-default').css('background-color', '#303A48');
+        $('.navbar-default').css('background-color', '<%= @team.color %>');
       } else {
         $('.navbar-default .navbar-nav > li > a').css('color', 'white');
         $('.navbar-default').css('background-color', 'transparent')

@@ -38,7 +38,7 @@ ActiveRecord::Base.transaction do
 
   end
 
-  users_count = User.all.count
+  users = User.all
 
 # EVENT SEED ====================================================
   Event.destroy_all
@@ -66,7 +66,7 @@ ActiveRecord::Base.transaction do
       new_event.save
     end
 
-  events_count = Event.all.count
+  events = Event.all
 
 # TAILGATE SEED ==========================
   choice = [true, false]
@@ -80,11 +80,11 @@ ActiveRecord::Base.transaction do
 
 
   Tailgate.destroy_all
-  60.times{
+  20.times{
    Tailgate.create!( name: "Tailgate of the Century. Don't want to miss",
                      description: "Our tailgates have been voted the best at Penn State. We always have regular tailgate food- burgers, hot dogs, etc. We also make salads and chili. We tend to get into some intense corn hole games, and we always keep the beers flowing.",
-                     user_id: rand(1..(users_count)),
-                     event_id: rand(1..(events_count)),
+                     user_id: users.pluck(:id).sample,
+                     event_id: events.pluck(:id).sample,
                      size: rand(1..100),
                      price: rand(1..100),
                      affiliation: "Neither",
@@ -105,15 +105,15 @@ ActiveRecord::Base.transaction do
                    )
   }
 
-  tailgates_count = Tailgate.all.count
+  tailgates = Tailgate.all
 
 # REVIEWS SEED ==========================
   Review.destroy_all
   250.times{
-   Review.create!(  user_id: rand(1..users_count),
-                    tailgate_id: rand(1..tailgates_count),
+   Review.create!(  user_id: users.pluck(:id).sample,
+                    tailgate_id: tailgates.pluck(:id).sample,
                     rating: rand(0..5),
-                    review: "this is a sample review"
+                    review: "This host was phenomenal. They did a great job of being communicative before the event, and actually handle our special requests. On gameday, they were a lot of fun and went out of their way to make sure we were having a great time. All around a great experience, would definitely use this host again."
                   )
  }
 
