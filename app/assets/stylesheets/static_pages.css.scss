@@ -111,3 +111,17 @@ body {
     font-size: 18px;
   }
 }
+
+.navbar-default {
+  background-color: rgba(0,0,0,0);
+  border: none;
+  transition-duration: 1s;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+}

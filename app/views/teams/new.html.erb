@@ -1,0 +1,26 @@
+<div class="row team-splash">
+
+  <div class="team-text">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4 team-search">
+        <h3 class="text-center">Add a new team</h3>
+        <hr/>
+        <%= form_for @team do |f| %>
+
+
+        <%= f.text_field :name, class: 'form-control team-search-fields', placeholder: "Team Name"  %>
+        <br>
+
+        <%= f.text_field :headline, class: 'form-control team-search-fields', placeholder: "Team Headline" %>
+        <br>
+        <%= f.text_field :background_image, class: 'form-control team-search-fields', placeholder: "Background Image" %>
+
+        <hr/>
+
+        <%= f.submit 'Create Team', class: 'btn btn-primary team-search-fields' %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

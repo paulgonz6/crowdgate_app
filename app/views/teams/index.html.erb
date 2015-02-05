@@ -1,0 +1,22 @@
+
+<div class="row team-splash">
+
+  <div class="team-text">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center">Teams</h2>
+        <hr/>
+        <% @teams.each do |team| %>
+        <div class="col-md-4">
+          <div class="list-group-item text-center" style="background-image: url(<%= team.background_image %>); color: white; background-size: cover; padding: 0;">
+            <div class="team-index-filter" style="background-color: rgba(0,0,0,.6); width: 100%, height: 100%; padding: 10px;">
+              <h3><%= team.name %></h3>
+              <p><%= team.headline %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

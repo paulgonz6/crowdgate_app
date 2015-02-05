@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
 # STATIC PAGE ROUTES =========================================================================
-  root "static_pages#home"
+  root "static_pages#landing_page"
 
   get '/static_pages/landing_page' => 'static_pages#landing_page'
 
@@ -170,6 +170,41 @@ Rails.application.routes.draw do
 
   # DELETE
   delete '/reviews/:id',      :controller   => 'reviews',
+                              :action       => 'destroy'
+
+# TEAM ROUTES ==============================================================================
+
+  get '/search_teams',        :controller   => 'teams',
+                              :action       => 'search',
+                              :as           => "search_teams"
+
+  #CREATE
+  get '/teams/new',           :controller   => 'teams',
+                              :action       => 'new',
+                              :as           => "new_team"
+
+  post '/teams',              :controller   => 'teams',
+                              :action       => 'create',
+                              :as           => "teams"
+
+  # READ
+  get '/teams',               :controller   => 'teams',
+                              :action       => 'index'
+
+  get '/teams/:id',           :controller   => 'teams',
+                              :action       => 'show',
+                              :as           => "team"
+
+  # UPDATE
+  get '/teams/:id/edit',      :controller   => 'teams',
+                              :action       => 'edit',
+                              :as           => "edit_team"
+
+  patch '/teams/:id',         :controller   => 'teams',
+                              :action       => 'update'
+
+  # DELETE
+  delete '/teams/:id',        :controller   => 'teams',
                               :action       => 'destroy'
 
   # Example of regular route:

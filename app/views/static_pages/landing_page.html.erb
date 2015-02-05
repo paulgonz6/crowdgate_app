@@ -1,4 +1,3 @@
-
 <div class="row text-center landing-splash">
   <div class="landing-page-filter">
     <div class="landing-text">
@@ -13,13 +12,13 @@
       <br>
       <br>
       <div class="row">
-        <%= form_for @event do |f| %>
-        <div class="col-md-4 col-md-offset-3 landing-search">
-          <%= f.text_field :name, class: 'form-control landing-search-fields', placeholder: "Search for your team"  %>
-        </div>
-        <div class="col-md-2 landing-search">
-          <%= f.submit 'Find Tailgates', class: 'btn btn-primary landing-search-fields' %>
-        </div>
+        <%= form_tag('/search_teams', :method => 'get') do %>
+          <div class="col-md-4 col-md-offset-3 landing-search">
+            <input type="text" name="name" class='form-control landing-search-fields', placeholder="Search for your team">
+          </div>
+          <div class="col-md-2 landing-search">
+            <input type="submit" value="Find Tailgates" class="btn btn-primary landing-search-fields">
+          </div>
         <% end %>
       </div>
     </div>

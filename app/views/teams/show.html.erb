@@ -1,0 +1,119 @@
+<div class="row text-center team-show-splash" id="team-show-splash" style="background-image: url(<%= @team.background_image %>);">
+  <div class="team-show-splash-filter">
+    <div class="team-show-text">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h1><%= @team.name %></h1>
+          <h3 class="subtext"><%= @team.headline %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-8">
+      <% @events.each do |event| %>
+      <% if event.tailgates.length > 0 %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2 class="panel-title"><%= event.name %></h2>
+              <h3 class="panel-title">
+                <small>
+                  <%= event.date %>,
+                  <%= event.time %>,
+                  <%= event.city %>,
+                  <%= event.state %>
+                </small>
+              </h3>
+            </div>
+            <% event.tailgates.each do |tailgate| %>
+            <%= tailgate_listing_for tailgate do %>
+            <div class="col-md-3 tailgate-listing-image"
+            style="background-image: url(<%= tailgate.image_1 %>);">
+
+            <div class="tailgate-listing-price">
+              <h5>$<%= tailgate.price %> Per Guest</h5>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h4>
+              <strong>
+                <%= link_to tailgate.name, tailgate_url(tailgate.id) %>
+              </strong>
+            </h4>
+
+            <p>
+              <em>
+                <%= tailgate.size %> spots remaining |
+                Affiliated with <%= tailgate.affiliation %> team
+              </em>
+            </p>
+
+            <p class="text-justify"><%= tailgate.description %></p>
+          </div>
+          <div class="col-md-3">
+            <div class="host-details">
+              <dl class="dl-horizontal">
+                <dt>Host Name:</dt>
+                <dd><%= tailgate.user.short_name %></dd>
+                <dt>Experience:</dt>
+                <dd><%= pluralize(tailgate.host_experience, 'tailgate') %></dd>
+                <dt>Rating:</dt>
+                <dd><%= star_rating_for(tailgate) %> out of 5</dd>
+              </dl>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">About Penn State</h3>
+        </div>
+        <div class="panel-body">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Jquery -->
+<script>
+var splashbottom = $('#team-show-splash').offset().top + $('#team-show-splash').height() - 100;
+
+  // on scroll,
+  $(window).on('scroll',function(){
+
+      // we round here to reduce a little workload
+      stop = Math.round($(window).scrollTop());
+      if (stop > splashbottom) {
+        $('.navbar-default').css('background-color', '#303A48');
+      } else {
+        $('.navbar-default .navbar-nav > li > a').css('color', 'white');
+        $('.navbar-default').css('background-color', 'transparent')
+      }
+
+    });
+  </script>
+
