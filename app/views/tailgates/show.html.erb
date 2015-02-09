@@ -1,11 +1,9 @@
 <div class="container">
   <div class="row row-page-start">
     <div class="col-md-8">
-
         <h3 style="margin-top: 0;"><%= @tailgate.name %></h3>
         <h4><small><%= @tailgate.event.name %>, <%= @tailgate.event.venue %>, <%= @tailgate.event.city %>, <%= @tailgate.event.state %>, <%= @tailgate.event.time %></small></h4>
         <hr/>
-
     </div>
     <%= render 'tailgates/booking_block' %>
   </div>
@@ -14,6 +12,7 @@
   <%= render 'tailgates/pictures' %>
   <%= render 'tailgates/host_info' %>
   <%= render 'reviews/index' %>
+
 </div>
 
 

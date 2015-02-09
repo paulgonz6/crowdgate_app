@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
+
   # devise_scope :user do
 
   # # USER SESSIONS=================================================
@@ -167,9 +168,9 @@ Rails.application.routes.draw do
                               :action       => 'index',
                               :as           => 'users'
 
-  # get '/users/:id',           :controller   => 'users',
-  #                             :action       => 'show',
-  #                             :as           => "user"
+  get '/users/:id',           :controller   => 'users',
+                              :action       => 'show',
+                              :as           => "user"
 
   # get '/users/:id/tailgates', :controller   => 'users',
   #                             :action       => 'tailgates_index'

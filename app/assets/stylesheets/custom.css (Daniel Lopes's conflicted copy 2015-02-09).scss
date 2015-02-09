@@ -37,7 +37,7 @@ body {
   background-color: #303A48;
   border: none;
   /*transition: 1s;*/
-  padding: 0 10px;
+  padding: 7px 10px;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -45,15 +45,11 @@ body {
 }
 
 .navbar-default .navbar-nav > li:hover {
-  background-color: #F4F7F9;
+  background-color: white;
   /*box-shadow: 0 1px 3px rgba(0,0,0,.2);*/
 }
 
 .navbar-default .navbar-brand {
-  color: white;
-}
-
-.navbar-default .navbar-brand:hover {
   color: white;
 }
 
@@ -68,6 +64,7 @@ footer {
   background-color: #303A48;
   color: white;
   font-weight: 300;
+  margin-top: 25px;
 }
 
 /* PANEL====================*/

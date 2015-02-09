@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row no-page-header">
+  <div class="row row-page-start">
     <div class="col-md-3 col-md-offset-1">
       <aside class="panel panel-default text-center">
         <div class="panel-heading">
@@ -7,12 +7,12 @@
         </div>
         <div class="panel-body text-center">
           <%= image_tag @user.image, :class => "img-responsive thumbnail" %>
-          <%= link_to "Edit Profile", edit_user_url(@user.id) %>
+
           <p><a href="/users/<%= @user.id %>/tailgates">View Tailgates</a></p>
         </div>
       </aside>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-7">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Account Details</h3>

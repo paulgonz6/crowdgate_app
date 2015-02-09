@@ -48,17 +48,21 @@
             <div class="panel-body">
               <% event.tailgates.each do |tailgate| %>
               <%= tailgate_listing_for tailgate do %>
-                <div class="col-md-3 tailgate-listing-image" style="background-image: url(<%= tailgate.image_1 %>);">
+                <div class="col-md-4 tailgate-listing-image" style="background-image: url(<%= tailgate.image_1 %>);">
                   <div class="tailgate-listing-price" style="background-color: <%= @team.color %>">
                     <h5>$<%= tailgate.price %> Per Guest</h5>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                   <h4>
                     <strong>
                       <%= link_to tailgate.name, tailgate_url(tailgate.id) %>
                     </strong>
                   </h4>
+                  <p>
+                    <strong>Hosted by:</strong>
+                    <%= tailgate.user.short_name %> (<%= star_rating_for(tailgate) %> out of 5 stars)
+                  </p>
 
                   <p>
                     <em>
@@ -67,9 +71,10 @@
                     </em>
                   </p>
 
-                  <p class="text-justify"><%= tailgate.description %></p>
+                  <p class="text-justify"><%= truncate(tailgate.description, length: 170) %></p>
+
                 </div>
-                <div class="col-md-3">
+<!--                 <div class="col-md-3">
                   <div class="host-details">
                     <dl class="dl-horizontal">
                       <dt>Host Name:</dt>
@@ -80,7 +85,7 @@
                       <dd><%= star_rating_for(tailgate) %> out of 5</dd>
                     </dl>
                   </div>
-                </div>
+                </div> -->
               <% end %>
               <% end %>
             </div>
@@ -97,36 +102,7 @@
         </div>
         <div class="panel-body">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-                    <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-                    <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-                    <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Coming soon! If you would like to contribute to this section, please email paul@crowdgate.us.
           </p>
         </div>
 

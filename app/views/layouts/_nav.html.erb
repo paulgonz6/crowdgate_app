@@ -46,11 +46,11 @@
         </a>
         <ul class="dropdown-menu" role="menu">
           <li>
-            <a href="/users/sign_out" data-method="delete">Sign out</a>
+            <%= link_to "Profile", user_url(current_user.id) %>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="/users/sign_out" data-method="delete">Sign out</a>
+            <%= link_to "Sign Out", destroy_user_session_url, 'data-method' => "delete" %>
           </li>
         </ul>
       </li>

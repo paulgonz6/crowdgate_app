@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
+  <div class="row row-page-start">
     <div class="page-header">
-      <h4><%= @tailgate.name %></h4>
+      <h3><%= @tailgate.name %></h3>
       <h4><small><%= @tailgate.event.name %>, <%= @tailgate.event.venue %>, <%= @tailgate.event.city %>, <%= @tailgate.event.state %>, <%= @tailgate.event.time %></h4>
     </div>
   </div>
@@ -45,7 +45,7 @@
             <input class="form-control" type="text" size="2" data-stripe="exp-month">
             <input class="form-control" type="text" size="4" data-stripe="exp-year">
           </div>
-        <%= render '/devise/registrations/new' %>
+
         </div>
       </div>
 
