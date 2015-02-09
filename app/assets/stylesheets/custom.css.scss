@@ -54,7 +54,12 @@ footer {
   margin-top: 2px;
 }
 
-/* LAYOUTS- NAV, FOOTER====================*/
+/* PANEL====================*/
+
+.panel {
+  border-radius: 0;
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
 
 a,
 a:visited {
@@ -81,13 +86,14 @@ h1 {
 }
 
 .btn-primary {
-  border-width: 1px 1px 3px 1px;
+  /*border-width: 1px 1px 3px 1px;*/
   background-color: #06C;
   border-color: #105296;
 }
 
 .btn {
-  border-width: 1px 1px 3px 1px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.2);
+  border-radius: 0;
 }
 
 .no-page-header {
@@ -120,11 +126,11 @@ h1 {
   .form-input-fields {
     width: 100%;
     height: 100%;
-    padding: 6px 12px;
+    padding: 4px 8px;
     border: none;
     border-radius: 0;
-    line-height: 32px;
-    font-size: 18px;
+    line-height: 26px;
+    font-size: 14px;
     font-weight: 400;
   }
 }

@@ -28,7 +28,7 @@ function setupTransparentHeaderWhenSplash() {
   } else {
     $nav.addClass("transparent");
 
-    var splashbottom = $splash.offset().top + $splash.height() - 100;
+    var splashbottom = $splash.offset().top + $splash.height() - 150;
 
     $(window).on('scroll',function(){
       stop = Math.round($(window).scrollTop());

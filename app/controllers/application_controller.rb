@@ -5,12 +5,6 @@ class ApplicationController < ActionController::Base
 
   # before_action :authenticate_user!
 
-  before_filter :update_sanitized_params, if: :devise_controller?
-
-  def update_sanitized_params
-    devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:name, :email, :password, :image, :password_confirmation)}
-  end
-
   def user_present?
     unless current_user.present?
       redirect_to root_url
