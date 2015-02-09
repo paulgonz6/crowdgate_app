@@ -22,7 +22,7 @@
   <div class="row">
     <div class="col-md-8">
       <h3 class="subtext">
-        There are <%= @team.total_tailgates %> tailgates to choose from for <%= @team.name %> games
+        There are <%= pluralize(@team.total_tailgates, 'tailgate') %> to choose from for <%= @team.name %> games
       </h3>
       <hr/>
     </div>

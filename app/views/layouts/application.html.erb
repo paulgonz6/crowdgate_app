@@ -19,9 +19,6 @@
 </head>
 
 <body class="<%= body_css_class %>">
-
-  <%= render 'layouts/nav' %>
-
   <div class='notices'>
     <% flash.each do |message_type, message| %>
       <div class="alert alert-dismissable alert-<%= message_type %>"><%= message %>
@@ -29,6 +26,9 @@
       </div>
     <% end %>
   </div>
+
+  <%= render 'layouts/nav' %>
+
 
   <div class="body-content">
     <%= yield %>
