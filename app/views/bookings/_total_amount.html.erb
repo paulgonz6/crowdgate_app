@@ -1,4 +1,3 @@
-
 <div class="row quantity text-left">
   <div class="col-md-12">
     <label class="control-label" for="quantity">How many tickets do you want to buy?</label>
@@ -7,25 +6,35 @@
       <option value="<%= n + 1 %>"><%= n + 1 %></option>
       <% end %>
     </select>
-    <h2><small>Ticket Amount: <span id="item_price">$<%= @tailgate.price %></span></small></h2>
-    <h4><small>Fees: $0.00</small></h4>
-    <h4><small>Taxes: $0.00</small></h4>
-    <h3>Total Amount: $<span id="total_price"><span></h3>
+    <h2><small>Ticket Amount: $<%= @tailgate.price %></small></h2>
+      <input type="hidden" name="item_price" id="item_price" class="txt" value="<%= @tailgate.price %>" />
+    <h4><small>Fees: $<span id='fees'></span></small></h4>
+    <h4><small>Taxes: $<span id='taxes'></span></small></h4>
+    <h3>Total Amount: $<span id='total_price'><%= @tailgate.price %></span></h3>
   </div>
 </div>
 
 <!-- FOR Dynamically displaying total amount -->
 <script>
   $(function() {
-    $('#quantity, #item_price').on('change', function(e) {
-        //  Get quantity value
-        var quan = $("#quantity").val() != "" ? parseFloat($("#quantity").val()) : 1,
+    $('#quantity, #item_price').change(function() {
+      //  Get quantity value
+      var quan = $("#quantity").val();
 
-        //  Get price value
-        pric = $("#item_price").val() != "" ? parseFloat($("#item_price").val()) : 0;
+      //  Get price, fees, and taxes objects
+      price = $("#item_price").val();
+      fees = $("#fees").val();
+      taxes = $("#taxes").val();
 
-        //  Set total price
-        $('#total_price').val(pric*quan);
+      total = (price*quan)
+      new_taxes = total*0.10
+      new_fees = ((total + new_taxes)*0.029) + 0.30
+
+      new_total = (total + new_fees + new_taxes);
+      //  Set total price
+      $( "#total_price" ).text(new_total.toFixed(2));
+      $( "#taxes" ).text(new_taxes.toFixed(2));
+      $( "#fees" ).text(new_fees.toFixed(2));
     });
   });
 </script>
