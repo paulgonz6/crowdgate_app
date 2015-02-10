@@ -17,4 +17,8 @@ class UsersController < ApplicationController
     @tailgates = User.find(params[:id]).tailgates
   end
 
+  def become_host_sign_up
+    @user = User.new
+  end
+
 end

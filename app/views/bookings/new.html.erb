@@ -6,16 +6,20 @@
     </div>
   </div>
   <div class="row">
+    <% unless current_user.present? %>
     <div class="col-md-4">
+
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Log In</h3>
         </div>
         <div class="panel-body">
-          <%= render 'sessions/login' %>
+          <%= render 'devise/sessions/log_in_form' %>
         </div>
       </div>
     </div>
+    <% end %>
+
     <%= form_tag bookings_url, :class => "form", :id => "payment-form" do %>
     <div class="col-md-4">
       <div class="panel panel-default">
@@ -23,7 +27,6 @@
           <h3 class="panel-title">Check Out and Create Account</h3>
         </div>
         <div class="panel-body">
-          <%= render 'bookings/billingaddress' %>
           <legend><h4>Credit Card Information</h4></legend>
           <span class="payment-errors"></span>
 
@@ -40,11 +43,17 @@
           </div>
 
           <!-- Expiration Date -->
-          <div class="form-row">
-            <label><span>Expiration (MM/YYYY)</span></label>
-            <input class="form-control" type="text" size="2" data-stripe="exp-month">
-            <input class="form-control" type="text" size="4" data-stripe="exp-year">
+          <div class="row">
+            <div class="col-md-6">
+            <label>Expiration (MM)</label>
+              <input class="form-control" type="text" size="2" data-stripe="exp-month">
+            </div>
+            <div class="col-md-6">
+            <label>Expiration (YYYY)</label>
+              <input class="form-control" type="text" size="4" data-stripe="exp-year">
+            </div>
           </div>
+          <%= render 'bookings/billingaddress' %>
 
         </div>
       </div>

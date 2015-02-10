@@ -155,15 +155,11 @@ Rails.application.routes.draw do
 # USER ROUTES ================================================================================
 
   #CREATE
-  # get '/users/new',           :controller   => 'users',
-  #                             :action       => 'new',
-  #                             :as           => "new_user"
+  get '/become_host_sign_up', :controller   => 'users',
+                              :action       => 'become_host_sign_up',
+                              :as           => 'become_host'
 
-  # post '/users',              :controller   => 'users',
-  #                             :action       => 'create',
-  #                             :as           => "users"
-
-  # # READ
+  # READ
   get '/users',               :controller   => 'users',
                               :action       => 'index',
                               :as           => 'users'
