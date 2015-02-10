@@ -94,7 +94,13 @@ style="background-image: url(<%= @team.background_image %>); border-bottom: 5px 
             Do you want to earn money by hosting tailgates at <%= @team.name %>?
           </h2>
 
-          <button class='btn btn-large' style='color: white; background-color: <%= @team.color %>;'>Sign Up Now</button>
+          <% if current_user.try(:admin?) %>
+            <button class='btn btn-large' style='color: white; background-color: <%= @team.color %>;'>  List a Tailgate Now
+            </button>
+          <% else %>
+          <button class='btn btn-large' style='color: white; background-color: <%= @team.color %>;'>    Become a Host Now
+          </button>
+          <% end %>
         </div>
       </div>
       <div class="panel panel-default">

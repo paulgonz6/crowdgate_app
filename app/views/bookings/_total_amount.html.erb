@@ -7,9 +7,25 @@
       <option value="<%= n + 1 %>"><%= n + 1 %></option>
       <% end %>
     </select>
-      <h2><small>Ticket Amount: $<%= @tailgate.price %></small></h2>
-      <h4><small>Fees: $0.00</small></h4>
-      <h4><small>Taxes: $0.00</small></h4>
-      <h3>Total Amount: $<%= @tailgate.price %></h3>
+    <h2><small>Ticket Amount: <span id="item_price">$<%= @tailgate.price %></span></small></h2>
+    <h4><small>Fees: $0.00</small></h4>
+    <h4><small>Taxes: $0.00</small></h4>
+    <h3>Total Amount: $<span id="total_price"><span></h3>
   </div>
 </div>
+
+<!-- FOR Dynamically displaying total amount -->
+<script>
+  $(function() {
+    $('#quantity, #item_price').on('change', function(e) {
+        //  Get quantity value
+        var quan = $("#quantity").val() != "" ? parseFloat($("#quantity").val()) : 1,
+
+        //  Get price value
+        pric = $("#item_price").val() != "" ? parseFloat($("#item_price").val()) : 0;
+
+        //  Set total price
+        $('#total_price').val(pric*quan);
+    });
+  });
+</script>
