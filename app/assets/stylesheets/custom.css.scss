@@ -62,12 +62,14 @@ body {
   color: white;
 }
 
-footer {
-  min-height: 250px;
-  padding: 50px;
-  background-color: #303A48;
-  color: white;
+footer .row {
+  padding: 25px 50px;
+  border-top: 1px solid rgba(50, 50, 50, .2);
+  background-color: #F4F7F9;
+  color: #303A48;
   font-weight: 300;
+  background-color: none;
+  margin-top: 25px;
 }
 
 /* PANEL====================*/

@@ -1,19 +1,19 @@
 <div
-  class="row text-center team-show-splash"
-  id="team-show-splash"
-  data-behavior="splash"
-  style="background-image: url(<%= @team.background_image %>); border-bottom: 5px solid <%= @team.color %>;">
+class="row text-center team-show-splash"
+id="team-show-splash"
+data-behavior="splash"
+style="background-image: url(<%= @team.background_image %>); border-bottom: 5px solid <%= @team.color %>;">
 
-  <div class="team-show-splash-filter">
-    <div class="team-show-text">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1><%= @team.name %></h1>
-          <h3 class="subtext"><%= @team.headline %></h3>
-        </div>
+<div class="team-show-splash-filter">
+  <div class="team-show-text">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1><%= @team.name %></h1>
+        <h3 class="subtext"><%= @team.headline %></h3>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <div class="container">
@@ -48,44 +48,33 @@
             <div class="panel-body">
               <% event.tailgates.each do |tailgate| %>
               <%= tailgate_listing_for tailgate do %>
-                <div class="col-md-4 tailgate-listing-image" style="background-image: url(<%= tailgate.image_1 %>);">
-                  <div class="tailgate-listing-price" style="background-color: <%= @team.color %>">
-                    <h5>$<%= tailgate.price %> Per Guest</h5>
-                  </div>
+              <div class="col-md-4 tailgate-listing-image" style="background-image: url(<%= tailgate.image_1 %>);">
+                <div class="tailgate-listing-price" style="background-color: <%= @team.color %>">
+                  <h5>$<%= tailgate.price %> Per Guest</h5>
                 </div>
-                <div class="col-md-8">
-                  <h4>
-                    <strong>
-                      <%= link_to tailgate.name, tailgate_url(tailgate.id) %>
-                    </strong>
-                  </h4>
-                  <p>
-                    <strong>Hosted by:</strong>
-                    <%= tailgate.user.short_name %> (<%= star_rating_for(tailgate) %> out of 5 stars)
-                  </p>
+              </div>
+              <div class="col-md-8">
+                <h4>
+                  <strong>
+                    <%= link_to tailgate.name, tailgate_url(tailgate.id) %>
+                  </strong>
+                </h4>
+                <p>
+                  <strong>Hosted by:</strong>
+                  <%= tailgate.user.short_name %> (<%= star_rating_for(tailgate) %> out of 5 stars)
+                </p>
 
-                  <p>
-                    <em>
-                      <%= tailgate.size %> spots remaining |
-                      Affiliated with <%= tailgate.affiliation %> team
-                    </em>
-                  </p>
+                <p>
+                  <em>
+                    <%= tailgate.size %> spots remaining |
+                    Affiliated with <%= tailgate.affiliation %> team
+                  </em>
+                </p>
 
-                  <p class="text-justify"><%= truncate(tailgate.description, length: 170) %></p>
+                <p class="text-justify"><%= truncate(tailgate.description, length: 170) %></p>
 
-                </div>
-<!--                 <div class="col-md-3">
-                  <div class="host-details">
-                    <dl class="dl-horizontal">
-                      <dt>Host Name:</dt>
-                      <dd><%= tailgate.user.short_name %></dd>
-                      <dt>Experience:</dt>
-                      <dd><%= pluralize(tailgate.host_experience, 'tailgate') %></dd>
-                      <dt>Rating:</dt>
-                      <dd><%= star_rating_for(tailgate) %> out of 5</dd>
-                    </dl>
-                  </div>
-                </div> -->
+              </div>
+
               <% end %>
               <% end %>
             </div>
@@ -98,6 +87,18 @@
     <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
+          <h3 class="panel-title">Hosting at <%= @team.name %></h3>
+        </div>
+        <div class="panel-body text-center">
+          <h2 class="subtext">
+            Do you want to earn money by hosting tailgates at <%= @team.name %>?
+          </h2>
+
+          <button class='btn btn-large' style='color: white; background-color: <%= @team.color %>;'>Sign Up Now</button>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
           <h3 class="panel-title">About <%= @team.name %></h3>
         </div>
         <div class="panel-body">
@@ -106,20 +107,6 @@
           </p>
         </div>
 
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row text-center team-show-footer" style="border-top: 3px solid <%= @team.color %>;">
-  <div class="team-show-footer-text">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h2 class="subtext">
-          Do you want to earn money by hosting tailgates at <%= @team.name %>?
-        </h2>
-        <br>
-        <button class='btn btn-large' style='color: white; background-color: <%= @team.color %>;'>Sign Up Now</button>
       </div>
     </div>
   </div>

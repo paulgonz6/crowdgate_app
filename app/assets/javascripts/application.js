@@ -28,7 +28,7 @@ function setupTransparentHeaderWhenSplash() {
   } else {
     $nav.addClass("transparent");
 
-    var splashbottom = $splash.offset().top + $splash.height() - 150;
+    var splashbottom = $splash.offset().top + $splash.height() - 100;
 
     $(window).on('scroll',function(){
       stop = Math.round($(window).scrollTop());
@@ -41,7 +41,7 @@ function setupTransparentHeaderWhenSplash() {
       } else {
         if (!$nav.hasClass("transparent")) {
           $nav.addClass("transparent");
-          $nav.css({"transition": "0s"});
+          $nav.css({"transition": "1s"});
         }
       }
     });
