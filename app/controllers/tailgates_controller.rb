@@ -1,5 +1,8 @@
 class TailgatesController < ApplicationController
 
+  before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
+  before_action :is_user_host?, :only => [:new, :create, :edit, :update, :destroy]
+
   def new
     @events = Event.all
     @tailgate = Tailgate.new
@@ -22,7 +25,6 @@ class TailgatesController < ApplicationController
   def index
     if params[:search].present?
       @events = Event.where("name LIKE '%#{params[:search]}%'")
-
     else
       @events = []
     end
@@ -81,6 +83,13 @@ class TailgatesController < ApplicationController
   end
 
   private
+
+    def is_user_host?
+      unless current_user.host_status?
+        flash[:warning] = "Sorry, you are not a host. But you can sign up now."
+        redirect_to become_host_url
+      end
+    end
 
     def tailgate_params
       params.require(:tailgate).permit( :size, :name, :description, :affiliation, :price,

@@ -1,8 +1,8 @@
 class TeamsController < ApplicationController
 
   # before_action :is_user_admin?, :only => [:new, :create, :update, :destroy, :edit]
-  before_action :user_present?, :only => [:new, :create]
-  before_action :is_user_admin?, :only => [:new, :create]
+  before_action :authenticate_user!, :only => [:new, :create, :update, :edit, :destroy]
+  before_action :is_user_admin?, :only => [:new, :create, :update, :edit, :destroy]
   before_action :find_team, :only => [:show]
 
   def find_team
@@ -28,7 +28,7 @@ class TeamsController < ApplicationController
       @team = Team.find_by("name LIKE '%#{params[:name]}%'")
       redirect_to team_url(@team.id)
     else
-      redirect_to :back, :alert => "Sorry that team doesnt exist"
+      redirect_to teams_url
     end
   end
 

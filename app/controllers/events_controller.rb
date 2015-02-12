@@ -4,6 +4,9 @@ require 'time'
 
 class EventsController < ApplicationController
 
+  before_action :authenticate_user!
+  before_action :is_user_admin?
+
   def new
     @event = Event.new
   end

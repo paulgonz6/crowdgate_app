@@ -42,7 +42,8 @@ ActiveRecord::Base.transaction do
     User.create!( :name => user_names.sample,
                   :email => "#{n+1}#{user_emails.sample}",
                   :image => user_images.sample,
-                  :password => "12345678"
+                  :password => "12345678",
+                  :description => "I have been tailgating at Penn State games for the past 10 years. My wife and I have never missed a home go, and the parking lot at Beaver Stadium is one of our favorite places in the world. It is always our goal to make our guests' experiences as great as possible. If you have any questions, do not hesitate to contact me in advance."
                   )
 
   end
@@ -127,7 +128,7 @@ ActiveRecord::Base.transaction do
   250.times{
    Review.create!(  user_id: users.pluck(:id).sample,
                     tailgate_id: tailgates.pluck(:id).sample,
-                    rating: rand(0..5),
+                    rating: rand(1..5),
                     review: "This host was phenomenal. They did a great job of being communicative before the event, and actually handle our special requests. On gameday, they were a lot of fun and went out of their way to make sure we were having a great time. All around a great experience, would definitely use this host again."
                   )
  }

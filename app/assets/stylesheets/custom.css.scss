@@ -178,7 +178,8 @@ h1 {
 }
 
 .static-page-list {
-  height: 45vh;
+  height: 35vh;
+  padding-top: 20px;
 }
 
 .list-group-item.active {
@@ -206,4 +207,14 @@ h1 {
 
 .modal-text-link {
   cursor: pointer;
+}
+
+.modal-content {
+  .form-area {
+    height: 30vh;
+  }
+}
+
+.modal-sm {
+  padding: 10px;
 }

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!, :only => [:index]
   before_action :is_user_admin?, :only => [:index]
+  before_action :is_user_owner?, :only => [:show]
 
   def index
     @users = User.all
@@ -20,9 +21,11 @@ class UsersController < ApplicationController
   end
 
   private
-    def is_user_admin?
-      unless current_user.admin?
-        redirect_to root_url, :notice => "You do not have access to this page"
+
+    def is_user_owner?
+      unless current_user == User.find(params[:id])
+        redirect_to root_url
+        flash[:notice] = "That's not yours. Sorry."
       end
     end
 

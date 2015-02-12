@@ -17,14 +17,19 @@
         <% @reviews.each do |review|  %>
         <div class="row review-listing">
           <div class="col-md-3 text-center">
-            <%= image_tag User.find(review.user_id).image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
-            <h6><%= User.find(review.user_id).name %></h6>
+            <%= image_tag review.user.image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
+            <h6><%= review.user.short_name %></h6>
           </div>
           <div class="col-md-9 text-justify">
             <p>
               <%= review.review %>
             </p>
-            <p class="date"><%= review.created_at.strftime("%b. %d, %Y") %></p>
+            <p>
+              <strong>Rating:</strong> <%= review.rating %> out of 5 stars
+            </p>
+            <p class="date">
+              <%= review.created_at.strftime("%b. %d, %Y") %>
+            </p>
           </div>
         </div>
         <% end %>

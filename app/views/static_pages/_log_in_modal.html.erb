@@ -1,12 +1,21 @@
-<div class="modal fade" id="log-in-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div  class="modal fade"
+      id="log-in-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true">
+
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          Log In
-        </div>
-        <div class="panel-body">
-        <%= render 'devise/sessions/log_in_form' %>
+      <div class="row form-area">
+        <div class="form-content">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="form-inputs">
+                <h3 class="text-center">Log In</h3>
+                <hr/>
+                <%= render 'devise/sessions/log_in_form' %>
+              </div>
+            </div>
         </div>
       </div>
     </div>

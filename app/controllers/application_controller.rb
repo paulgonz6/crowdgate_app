@@ -6,17 +6,10 @@ class ApplicationController < ActionController::Base
 
   # before_action :authenticate_user!
 
-  def user_present?
-    unless current_user.present?
-      redirect_to root_url
-      flash[:notice] = "Please log in to access this page"
-    end
-  end
-
   def is_user_admin?
     unless current_user.admin?
       redirect_to root_url
-      flash[:notice] = "You are not an administrator on this site. Access denied."
+      flash[:notice] = "You are not an admin on this site. Access denied."
     end
   end
 
