@@ -12,13 +12,18 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+  <script type="text/javascript"
+          src="https://js.stripe.com/v2/">
+  </script>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
   <%= csrf_meta_tags %>
 </head>
 
 <body class="<%= body_css_class %>">
+
   <div class='notices'>
     <% flash.each do |message_type, message| %>
       <div class="alert alert-dismissable alert-<%= message_type %>"><%= message %>
@@ -28,7 +33,6 @@
   </div>
 
   <%= render 'layouts/nav' %>
-
 
   <div class="body-content">
     <%= yield %>

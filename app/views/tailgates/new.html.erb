@@ -22,18 +22,10 @@
     <div class="col-md-8 col-md-offset-2">
     <br>
     <%= form_for @tailgate do |f| %>
-      <%= f.hidden_field :user_id %>
-      <%= f.hidden_field :event_id %>
 
-      <!-- EVENT -->
       <div class="form-group">
-        <label class="control-label" for="event_id">What game are you tailgating for?</label>
-        <select class="form-control" name="event_id" id="event_id">
-          <option>Select a game</option>
-          <% @events.each do |event| %>
-          <option value="<%= event.id %>"><%= event.name %></option>
-          <% end %>
-        </select>
+        <%= f.label :event_id, "What game are you tailgating for?", class: "control-label" %>
+        <%= f.collection_select :event_id, Event.all, :id, :name, {}, class: 'form-control' %>
       </div>
 
       <!-- HEADLINE -->
@@ -183,7 +175,7 @@
         <%= f.text_field :image_4, class: 'form-control'  %>
       </div>
 
-      <%= f.submit "Create Tailgate", class: "btn btn-success btn-block"  %>
+      <%= f.submit class: "btn btn-success btn-block"  %>
       <% end %>
 
     </div>

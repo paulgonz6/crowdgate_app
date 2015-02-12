@@ -1,21 +1,32 @@
-
-<div class="row team-splash">
-
-  <div class="team-text">
+<div class="row text-center text-splash static-page-list">
+  <div class="text-splash-content">
     <div class="row">
-      <div class="col-md-12">
-        <h2 class="text-center">Teams</h2>
-        <hr/>
-        <% @teams.each do |team| %>
-        <div class="col-md-4">
-          <div class="list-group-item text-center" style="background-image: url(<%= team.background_image %>); color: white; background-size: cover; padding: 0;">
-            <div class="team-index-filter" style="background-color: rgba(0,0,0,.6); width: 100%, height: 100%; padding: 10px;">
-              <h3><%= team.name %></h3>
-              <p><%= team.headline %></p>
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Teams</h1>
+        <h3 class="subtext">Don't see your team below? Contact us and we can add it.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+  <div class="row team-splash">
+    <div class="team-text">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>College Football</h3>
+          <hr/>
+          <% @teams.each do |team| %>
+          <div class="col-md-4">
+            <div class="list-group-item text-center" style="background-image: url(<%= team.background_image %>); color: white; background-size: cover; padding: 0;">
+              <div class="team-index-filter" style="background-color: rgba(0,0,0,.6); width: 100%, height: 100%; padding: 10px;">
+                <h3><%= link_to team.name, team %></h3>
+                <p><%= team.total_tailgates %> tailgates</p>
+              </div>
             </div>
           </div>
+          <% end %>
         </div>
-        <% end %>
       </div>
     </div>
   </div>

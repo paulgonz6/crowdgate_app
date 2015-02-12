@@ -27,8 +27,14 @@ body {
 
 .notices {
  position: absolute;
- top: 60px;
- width: 100%;
+ top: 40px;
+ left: 35%;
+ width: 30%;
+ text-align: center;
+ background-color: white;
+ border-radius: 5px;
+ z-index: 1000;
+ opacity: .5;
 }
 
 /* LAYOUTS- NAV, FOOTER====================*/
@@ -169,4 +175,31 @@ h1 {
   vertical-align: middle;
   color: #303A48;
   font-weight: 600;
+}
+
+.static-page-list {
+  height: 45vh;
+}
+
+.list-group-item.active {
+  background-color: #303A48;
+  border-color: #303A48;
+}
+
+.list-group-item.inactive {
+  opacity: .6;
+}
+
+.list-group-item.active:hover,
+.list-group-item.inactive:hover {
+  background-color: #303A48;
+  border-color: #303A48;
+  opacity: 1;
+  color: white;
+  cursor: pointer;
+}
+
+.helper-link {
+  opacity: .8;
+  font-weight: 300;
 }

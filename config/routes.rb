@@ -53,6 +53,10 @@ Rails.application.routes.draw do
 
   get '/static_pages/landing_page' => 'static_pages#landing_page'
 
+  get '/faq',                 :controller => 'static_pages',
+                              :action => 'faq',
+                              :as => 'faq'
+
 # EVENTS ROUTES ==============================================================================
 
   #CREATE

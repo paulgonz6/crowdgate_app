@@ -1,0 +1,70 @@
+<div class="row text-center text-splash static-page-list">
+  <div class="text-splash-content">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Got questions?</h1>
+        <h3 class="subtext">
+          We have answers
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="lead">Hosting</span>
+        </div>
+        <ul class="list-group" id="accordion">
+          <li class="list-group-item faq" style="cursor:pointer;">How do I become a host?
+            <i class="fa fa-chevron-down pull-right"></i>
+            <div class="answer" style="display:none;">
+              <hr/>
+              <p>Sorry, we are new. It takes time to write good answers to these questions, so until we publish those answers please contact us directly at paul@crowdgate.us with any questions.</p>
+            </div>
+          </li>
+          <li class="list-group-item faq" style="cursor:pointer;">Does everyone get approved to host?
+            <i class="fa fa-chevron-down pull-right"></i>
+            <div class="answer" style="display:none;">
+              <hr/>
+              <p>Sorry, we are new. It takes time to write good answers to these questions, so until we publish those answers please contact us directly at paul@crowdgate.us with any questions.</p>
+            </div>
+          </li>
+          <li class="list-group-item faq" style="cursor:pointer;">How do I create my first listing?
+            <i class="fa fa-chevron-down pull-right"></i>
+            <div class="answer" style="display:none;">
+              <hr/>
+              <p>Sorry, we are new. It takes time to write good answers to these questions, so until we publish those answers please contact us directly at paul@crowdgate.us with any questions.</p>
+            </div>
+          </li>
+          <li class="list-group-item faq" style="cursor:pointer;">When and how much do I get paid?
+            <i class="fa fa-chevron-down pull-right"></i>
+            <div class="answer" style="display:none;">
+              <hr/>
+              <p>Sorry, we are new. It takes time to write good answers to these questions, so until we publish those answers please contact us directly at paul@crowdgate.us with any questions.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var main = function() {
+    $('.faq').click(function() {
+      var $icon = $(this).find('i');
+        if ($icon.hasClass('fa-chevron-down')) {
+          $icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+        } else {
+          $icon.addClass('fa-chevron-down').removeClass('fa-chevron-up');
+        }
+
+      $(this).children('.answer').toggle();
+    });
+  };
+  $(document).ready(main);
+</script>

@@ -7,32 +7,12 @@ class TailgatesController < ApplicationController
 
   def create
     @events = Event.all
-    @tailgate = Tailgate.new
-    @tailgate.size = params[:size]
-    @tailgate.name = params[:name]
-    @tailgate.description = params[:description]
-    @tailgate.affiliation = params[:affiliation]
-    @tailgate.price = params[:price]
-    @tailgate.grill = params[:grill]
-    @tailgate.tent = params[:tent]
-    @tailgate.table = params[:table]
-    @tailgate.chairs = params[:chairs]
-    @tailgate.reserved_parking = params[:reserved_parking]
-    @tailgate.bevs_alcohol = params[:bevs_alcohol]
-    @tailgate.bevs_non_alcohol = params[:bevs_non_alcohol]
-    @tailgate.food = params[:food]
-    @tailgate.event_id = params[:event_id]
-    @tailgate.tailgate_start_time = params[:tailgate_start_time]
-    @tailgate.tailgate_during_game = params[:tailgate_during_game]
-    @tailgate.user_id = params[:user_id]
-    @tailgate.image_1 = params[:image_1]
-    @tailgate.image_2 = params[:image_2]
-    @tailgate.image_3 = params[:image_3]
-    @tailgate.image_4 = params[:image_4]
+    @tailgate = Tailgate.new(tailgate_params)
+    @tailgate.user_id = current_user.id
 
     if @tailgate.save
       flash[:success] = "Successfully created tailgate for #{@tailgate.event.name}."
-      redirect_to user_url(@tailgate.user_id)
+      redirect_to @tailgate
     else
       render('tailgates/new')
     end
@@ -99,5 +79,16 @@ class TailgatesController < ApplicationController
     flash[:danger] = "You have successfully deleted #{t.name}"
     redirect_to user_url(t.user_id)
   end
+
+  private
+
+    def tailgate_params
+      params.require(:tailgate).permit( :size, :name, :description, :affiliation, :price,
+                                        :grill, :tent, :table, :chairs, :reserved_parking,
+                                        :bevs_alcohol, :bevs_non_alcohol, :food, :event_id,
+                                        :tailgate_start_time, :tailgate_during_game, :user_id,
+                                        :image_1, :image_2, :image_3, :image_4)
+
+    end
 
 end

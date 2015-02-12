@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row row-page-start">
     <div class="page-header">
       <h3>Index of all Users (Admin View) (<%= @users.count %> users)</h3>
     </div>
@@ -28,7 +28,7 @@
             <td><%= user.description %></td>
             <td>
               <p class="btn btn-default btn-block">
-                <%= link_to "Edit", edit_user_url(user.id) %>
+                <%= link_to "Edit", edit_user_registration_url(user.id) %>
               </p>
             </td>
             <td>
