@@ -14,7 +14,6 @@
           <th>Email</th>
           <th>Admin Status</th>
           <th>Host Status</th>
-          <th>Description</th>
           <th></th>
           <th></th>
         </thead>
@@ -25,7 +24,6 @@
             <td><%= user.email %></td>
             <td><%= user.admin %></td>
             <td><%= user.host_status %></td>
-            <td><%= user.description %></td>
             <td>
               <p class="btn btn-default btn-block">
                 <%= link_to "Edit", edit_user_registration_url(user.id) %>

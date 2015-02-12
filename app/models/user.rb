@@ -19,12 +19,20 @@ class User < ActiveRecord::Base
     tailgates.count
   end
 
+  def reviews_about_host
+    Review.where({ :tailgate_id => (Tailgate.where({ :user => self }).pluck(:id)) })
+  end
+
   def short_name
     name_split = self.name.split
     first_name = name_split[0]
     last_initial = name_split[1][0]
     short_name = "#{first_name} #{last_initial}."
     return short_name
+  end
+
+  def ticket_sales
+    Booking.where({ :tailgate_id => (Tailgate.where({ :user => self }).pluck(:id)) }).sum(:amount)
   end
 
 

@@ -3,10 +3,18 @@
     <h3 class="panel-title">Hosting Details</h3>
   </div>
   <div class="panel-body">
-    <p>Status: <%= @user.host_status %></p>
-    <p>Experience: Hosted <%= @user.tailgates.count %> tailgates</p>
+    <p>Status:
+      <% if @user.host_status %>
+      Approved
+      <% else %>
+      Request approval
+      <% end %>
+    </p>
+    <p>Hosting Experience: <%= pluralize(@user.tailgates.count, 'tailgate') %></p>
     <p>Description: <%= @user.description %> </p>
-    <p>Rating: </p>
-    <p>Reviews: <%= @user.host_status %></p>
+    <p>Rating: <%= @user.star_rating %></p>
+    <p>Reviews: <%= @user.reviews_about_host.count %></p>
+    <p>Current take home percentage: <%= @user.ticket_sale_percentage %></p>
+    <p>Total earnings: <%= number_to_currency(@user.ticket_sales) %></p>
   </div>
 </div>
