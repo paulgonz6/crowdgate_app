@@ -30,7 +30,13 @@
 <div class="container">
   <div class="row text-center">
     <h3><strong>How it works</strong></h3>
-    <h3 class="small">Watch tutorial video <i class="fa fa-youtube-play"></i></h3>
+
+    <h3 class="small modal-text-link"
+        data-toggle="modal"
+        data-target="#video_tutorial">
+      Watch tutorial video <i class="fa fa-youtube-play"></i>
+    </h3>
+
   </div>
   <br>
   <br>
@@ -91,4 +97,7 @@
     </div>
   </div>
 </div>
+
+<!-- Modals -->
+<%= render 'video_tutorial_booking' %>
 
