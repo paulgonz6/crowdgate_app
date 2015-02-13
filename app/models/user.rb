@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many  :tailgates, dependent: :destroy
-  has_many  :reviews
   has_many  :bookings
 
   def star_rating

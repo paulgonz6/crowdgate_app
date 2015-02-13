@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'users/registrations' }
 
+  get '/testing_page' => "static_pages#testing_page"
+
   # devise_scope :user do
 
   # # USER SESSIONS=================================================

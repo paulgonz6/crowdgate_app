@@ -94,22 +94,25 @@ puts "#{events.count} events have been created"
 # TAILGATE SEED ==========================
 choice = [true, false]
 images = [
- "http://news.tailgatingwars.com/wp-content/uploads/2013/01/TailgatingEssential-location-ncaa-bosie-state-1024x680.jpg",
+ "http://a.espncdn.com/photo/2013/0815/ncf_tailgate_07.jpg",
  "https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfa1/v/t1.0-9/10624635_1536542439943997_1456801741491328204_n.jpg?oh=c09529bbf61f7febe0061106a0e84a41&oe=5563F998&__gda__=1429189907_c62af91b5603b7bc384976ae12548352",
  "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/t31.0-8/10648279_1504897949775113_8883815475331419429_o.jpg",
  "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xap1/t31.0-8/10547971_1504896163108625_8317675297807138613_o.jpg"
 ]
 
+tailgate_names = [ "Tailgate of the Century. Don't want to miss", "Cornhole, food and more. Great people!", "We keep the food warm and the beer cold!", "Tailgating the right way. Food, beer and more."
+  ]
 
+prices = [20, 25, 40, 50, 15]
 
 Tailgate.destroy_all
 20.times{
- Tailgate.create!( name: "Tailgate of the Century. Don't want to miss",
+ Tailgate.create!( name: tailgate_names.sample,
    description: "Our tailgates have been voted the best at Penn State. We always have regular tailgate food- burgers, hot dogs, etc. We also make salads and chili. We tend to get into some intense corn hole games, and we always keep the beers flowing.",
    user_id: users.pluck(:id).sample,
    event_id: events.pluck(:id).sample,
-   size: rand(1..100),
-   price: rand(1..100),
+   size: rand(1..50),
+   price: prices.sample,
    affiliation: "Neither",
    grill: choice.sample,
    tent: choice.sample,
@@ -128,8 +131,6 @@ Tailgate.destroy_all
    )
 }
 
-
-
 tailgates = Tailgate.all
 
 puts "#{tailgates.count} tailgates have been created"
@@ -139,7 +140,7 @@ Review.destroy_all
 250.times{
  Review.create!(  user_id: users.pluck(:id).sample,
   tailgate_id: tailgates.pluck(:id).sample,
-  rating: rand(1..5),
+  rating: rand(3..5),
   review: "This host was phenomenal. They did a great job of being communicative before the event, and actually handle our special requests. On gameday, they were a lot of fun and went out of their way to make sure we were having a great time. All around a great experience, would definitely use this host again."
   )
 }
