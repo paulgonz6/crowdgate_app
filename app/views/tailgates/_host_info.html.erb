@@ -7,12 +7,12 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-3 text-center">
-            <%= image_tag @tailgate.user.image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
-            <h5><strong><%= @tailgate.user.short_name %></strong><h5>
+            <%= image_tag @tailgate.host.image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
+            <h5><strong><%= @tailgate.host.short_name %></strong><h5>
           </div>
           <div class="col-md-9 text-justify">
             <p>
-              <%= @tailgate.user.description %>
+              <%= @tailgate.host.description %>
             </p>
             <p><strong>Experience:</strong> Has hosted <%= pluralize( Tailgate.where({ :user_id => @tailgate.user_id}).count, 'tailgates') %></p>
           </div>

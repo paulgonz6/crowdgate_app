@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def reviews_about_host
-    Review.where({ :tailgate_id => (Tailgate.where({ :user => self }).pluck(:id)) })
+    Review.where({ :tailgate_id => (Tailgate.where({ :host => self }).pluck(:id)) })
   end
 
   def short_name
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def ticket_sales
-    Booking.where({ :tailgate_id => (Tailgate.where({ :user => self }).pluck(:id)) }).sum(:amount)
+    Booking.where({ :tailgate_id => (Tailgate.where({ :host => self }).pluck(:id)) }).sum(:amount)
   end
 
 

@@ -14,7 +14,7 @@
     <p>Description: <%= @user.description %> </p>
     <p>Rating: <%= @user.star_rating %></p>
     <p>Reviews: <%= @user.reviews_about_host.count %></p>
-    <p>Current take home percentage: </p>
+    <p>Current take home percentage: <%= number_to_percentage(@user.sales_percentage*100, precision: 0) %></p>
     <p>Total earnings: <%= number_to_currency(@user.ticket_sales) %></p>
   </div>
 </div>
