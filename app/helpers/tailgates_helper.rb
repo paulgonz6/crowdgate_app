@@ -1,10 +1,10 @@
 module TailgatesHelper
 
   def star_rating_for(tailgate)
-    if tailgate.user.star_rating.nil?
+    if tailgate.host.star_rating.nil?
       "No ratings"
     else
-      tailgate.user.star_rating
+      tailgate.host.star_rating
     end
   end
 
