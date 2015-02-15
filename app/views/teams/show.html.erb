@@ -38,8 +38,8 @@ style="background-image: url(<%= @team.background_image %>); border-bottom: 5px 
               <h2 class="panel-title"><strong><%= event.name %></strong></h2>
               <h3 class="panel-title">
                 <small>
-                  <%= event.date %>,
-                  <%= event.time %>,
+                  <%= Date.parse(event.date).strftime("%B %e, %Y") %>,
+                  <%= Date.parse(event.time).strftime("%I:%M%p") %>,
                   <%= event.city %>,
                   <%= event.state %>
                 </small>

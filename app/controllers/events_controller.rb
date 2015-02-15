@@ -81,7 +81,7 @@ class EventsController < ApplicationController
       date = Time.parse(event["start_time"])
 
       new_event.time = time.strftime("%I:%M%p, %Z")
-      new_event.date = date.strftime("%A, %B %d, %Y")
+      new_event.date = date.strftime("%B %d, %Y")
       new_event.save
     end
 
