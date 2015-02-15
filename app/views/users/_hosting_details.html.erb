@@ -12,7 +12,15 @@
     </p>
     <p>Hosting Experience: <%= pluralize(@user.tailgates.count, 'tailgate') %></p>
     <p>Description: <%= @user.description %> </p>
-    <p>Rating: <%= @user.star_rating %></p>
+
+    <p>Rating:
+      <% if @user.star_rating.nil? %>
+        No Rating
+      <% else %>
+        <%= @user.star_rating %>
+      <% end %>
+    </p>
+
     <p>Reviews: <%= @user.reviews_about_host.count %></p>
     <p>Current take home percentage:
       <%= number_to_percentage(@user.sales_percentage*100, precision: 0) %></p>

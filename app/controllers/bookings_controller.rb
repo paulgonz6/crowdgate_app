@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def new
     @tailgate = Tailgate.find(params[:id])
+    @booking = Booking.new
   end
 
   def create
@@ -9,7 +10,7 @@ class BookingsController < ApplicationController
 
     @booking.tailgate_id = params[:tailgate_id]
     @booking.quantity = params[:quantity]
-    @booking.user_id = 1
+    @booking.user_id = current_user.id
     @booking.amount = @booking.quantity * Tailgate.find(@booking.tailgate_id).price
 
     @booking.process_payment(params[:stripeToken], @booking.amount)

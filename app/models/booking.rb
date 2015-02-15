@@ -2,7 +2,7 @@ require 'stripe'
 
 class Booking < ActiveRecord::Base
   belongs_to :tailgate
-  belongs_to :user
+  belongs_to :buyer, :class_name => "User", :foreign_key => "user_id"
 
   def process_payment(stripe_token, amount)
     Stripe.api_key = "sk_test_Fogj9Y2IHHGTv0vKAHKsxHDW"
