@@ -11,7 +11,17 @@ class BookingsController < ApplicationController
     @booking.tailgate_id = params[:tailgate_id]
     @booking.quantity = params[:quantity]
     @booking.user_id = current_user.id
-    @booking.amount = @booking.quantity * Tailgate.find(@booking.tailgate_id).price
+
+    tickets_total = @booking.quantity * Tailgate.find(@booking.tailgate_id).price
+    puts "#{tickets_total}"
+
+    taxes = tickets_total * 0.10
+    puts "#{taxes}"
+
+    fees = ((tickets_total + taxes)*0.029) + 0.30
+    puts "#{fees}"
+
+    @booking.amount = (tickets_total + taxes + fees)
 
     @booking.process_payment(params[:stripeToken], @booking.amount)
 

@@ -7,7 +7,7 @@
   </div>
 
   <div class="row">
-    <p class="lead">An amount of $<%= @booking.amount %> has been charged to your account. Order Confirmation Number: #<%= @booking.id %></p>
+    <p class="lead">An amount of <%= number_to_currency(@booking.amount) %> has been charged to your account. Order Confirmation Number: #<%= @booking.id %></p>
     <p class="">A copy of this recepit has been emailed to <%= @booking.buyer.email %></p>
   </div>
 

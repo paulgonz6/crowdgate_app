@@ -10,7 +10,7 @@ class Booking < ActiveRecord::Base
     # Create the charge on Stripe's servers - this will charge the user's card
     begin
       @charge = Stripe::Charge.create(
-        :amount => amount * 100, # amount in cents, again
+        :amount => (amount * 100).to_i, # amount in cents, again
         :currency => "usd",
         :card => stripe_token,
         :description => "payinguser@example.com"

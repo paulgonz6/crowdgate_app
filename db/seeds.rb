@@ -52,7 +52,7 @@ user_images = [ "https://scontent-a-ord.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/17435
     :email => "#{n+1}#{user_emails.sample}",
     :image => user_images.sample,
     :password => "12345678",
-    :description => "I have been tailgating at Penn State games for the past 10 years. My wife and I have never missed a home go, and the parking lot at Beaver Stadium is one of our favorite places in the world. It is always our goal to make our guests' experiences as great as possible. If you have any questions, do not hesitate to contact me in advance."
+    :description => "I have been tailgating at Penn State games for the past 10 years. My wife and I have never missed a home game, and the parking lot at Beaver Stadium is one of our favorite places in the world. It is always our goal to make our guests' experiences as great as possible. If you have any questions, do not hesitate to contact me in advance."
     )
 
 end
