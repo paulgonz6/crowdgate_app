@@ -2,7 +2,16 @@
   <div class="row row-page-start">
     <div class="col-md-8">
         <h3><%= @tailgate.name %></h3>
-        <h4><small><%= @tailgate.event.name %>, <%= @tailgate.event.venue %>, <%= @tailgate.event.city %>, <%= @tailgate.event.state %>, <%= @tailgate.event.time %></small></h4>
+        <h4>
+          <small>
+            <%= @tailgate.event.name %>,
+            <%= @tailgate.event.venue %>,
+            <%= @tailgate.event.city %>,
+            <%= @tailgate.event.state %>,<br>
+            <%= DateTime.parse(@tailgate.event.date).strftime('%A, %B %e, %Y') %>,
+            Kickoff at <%= DateTime.parse(@tailgate.event.date).strftime('%r') %>
+          </small>
+        </h4>
         <hr/>
     </div>
     <%= render 'tailgates/booking_block' %>

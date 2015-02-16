@@ -39,7 +39,9 @@ style="background-image: url(<%= @team.background_image %>); border-bottom: 5px 
               <h3 class="panel-title">
                 <small>
                   <%= event.city %>,
-                  <%= event.state %>
+                  <%= event.state %>,
+                  <%= DateTime.parse(event.date).strftime('%A, %B %e, %Y') %>,
+                  Kickoff at <%= DateTime.parse(event.date).strftime('%r') %>
                 </small>
               </h3>
             </div>

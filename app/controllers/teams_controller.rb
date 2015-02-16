@@ -26,7 +26,12 @@ class TeamsController < ApplicationController
   def search
     if params[:name].present?
       @team = Team.find_by("name LIKE '%#{params[:name]}%'")
-      redirect_to team_url(@team.id)
+      if @team.present?
+        redirect_to team_url(@team.id)
+      else
+        flash[:info] = "We're sorry, we currently do not have that team available. The teams that are currently on our platform are listed below."
+        redirect_to teams_url
+      end
     else
       redirect_to teams_url
     end

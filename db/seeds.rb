@@ -78,12 +78,8 @@ parsed_data = JSON.parse(open(url).read)
   new_event.state = event["region_abbr"]
   new_event.ap_id = event["id"]
   new_event.api_modified = event["modified"]
-
-  time = Time.parse(event["start_time"])
-  date = Time.parse(event["start_time"])
-
-  new_event.time = time.strftime("%I:%M%p, %Z")
-  new_event.date = date.strftime("%B %d, %Y")
+  new_event.date = DateTime.parse(event["start_time"])
+  new_event.time = DateTime.parse(event["start_time"])
   new_event.save
 end
 

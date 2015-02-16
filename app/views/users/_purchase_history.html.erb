@@ -6,7 +6,7 @@
     <ol class="">
       <% @user.bookings.each_with_index do |ticket, i| %>
       <li class="">
-        $<%= ticket.amount %> for "<%= ticket.tailgate.name %>" <br>
+        <%= number_to_currency(ticket.amount) %> for "<%= ticket.tailgate.name %>" <br>
         <em><%= ticket.quantity %> tickets</em>
         | <small><%= link_to "View", tailgate_url(ticket.tailgate_id), :method => "get" %></small>
         | <small><%= link_to "Refund", booking_url(ticket.id), :method => "Delete", :data => { :confirm => "Are you sure you want to cancel this tailgate? You may not be eligible for a refund. Please check our refund policy."} %></small>
