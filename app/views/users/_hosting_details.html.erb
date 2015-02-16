@@ -23,7 +23,10 @@
 
     <p>Reviews: <%= @user.reviews_about_host.count %></p>
     <p>Current take home percentage:
-      <%= number_to_percentage(@user.sales_percentage*100, precision: 0) %></p>
+      <% if @user.sales_percentage.present? %>
+        <%= number_to_percentage(@user.sales_percentage*100, precision: 0) %>
+      <% end %>
+    </p>
     <p>Total earnings: <%= number_to_currency(@user.ticket_sales) %></p>
   </div>
 </div>
