@@ -46,7 +46,7 @@
       <p class="text-justify">
         Crowdgate is all about making your gameday experience as enjoyable as possible. We truly believe there is nothing quite like a sports town on gameday, and we want to help bring you there. Not only do we show you tailgates for that team, but we provide other resources to help make your gameday go as smooth as possible.
       </p>
-      <a href="">See all teams <i class="fa fa-angle-right"></i></a>
+      <%= link_to ('See all teams <i class="fa fa-angle-right"></i>').html_safe, teams_url %>
     </div>
     <div class="col-md-6 text-center">
       <%= image_tag 'select_team_mac.png', class: 'img-responsive' %>
@@ -65,7 +65,7 @@
 
         If there are no tailgates listed that interest you, start earning money today by hosting your own tailgates through Crowdgate!
       </p>
-      <a href="">Learn more about hosting <i class="fa fa-angle-right"></i></a>
+      <%= link_to ('Learn more about hosting <i class="fa fa-angle-right"></i>').html_safe, become_host_url %>
     </div>
   </div>
   <hr/>
