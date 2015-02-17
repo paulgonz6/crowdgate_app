@@ -16,6 +16,10 @@ class Tailgate < ActiveRecord::Base
   scope         :paid_tailgates,      -> { where(type: 'PaidTailgate') }
   scope         :packaged_tailgates,  -> { where(type: 'PackagedTailgate') }
 
+  def self.types
+    %w(FreeTailgate PaidTailgate PackagedTailgate)
+  end
+
   def user_name
     user.name if user
   end

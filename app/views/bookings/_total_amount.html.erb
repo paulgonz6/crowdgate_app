@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <label class="control-label" for="quantity">How many tickets do you want to buy?</label>
     <select class="form-control" name="quantity" id="quantity">
-      <% @tailgate.size.times do |n| %>
+      <% @tailgate.current_size.times do |n| %>
       <option value="<%= n + 1 %>"><%= n + 1 %></option>
       <% end %>
     </select>

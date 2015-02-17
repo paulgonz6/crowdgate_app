@@ -1,13 +1,12 @@
 <div class="col-md-3 col-md-offset-1 booking-block">
   <h3>$<%= @tailgate.price %> per guest</h3>
-  <p><%= @tailgate.size %> Spots Remaining</p>
+  <p><%= @tailgate.current_size %> Spots Remaining</p>
 
-  <% if @tailgate.size > 0 %>
+  <% if @tailgate.current_size > 0 %>
     <p class="btn btn-primary btn-block"><%= link_to "Book Now", new_booking_url(@tailgate.id) %></p>
   <% else %>
     <p class="btn btn-default btn-block"><%= link_to "SOLD OUT", "#" %></p>
   <% end %>
-
 
   <hr/>
 
@@ -19,8 +18,5 @@
     <a href="mailto:?Subject=Check out this tailgate for the <%= @tailgate.event.name %>&amp;body=https://fierce-fjord-6626.herokuapp.com/tailgates/<%= @tailgate.id %>">
       <i class="fa fa-paper-plane"></i> Send to Friends</a>
   </p>
-<!--   <p class="btn btn-default btn-block buttons-with-icons">
-    <a href="#"><i class="fa fa-bookmark"></i> Save this Tailgate</a>
-  </p> -->
 
 </div>

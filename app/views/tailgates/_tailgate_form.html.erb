@@ -1,9 +1,25 @@
 <%= form_for @tailgate do |f| %>
 
-<div class="form-group">
-  <%= f.label :event_id, "What game are you tailgating for?", class: "control-label" %>
-  <%= f.collection_select :event_id, Event.all, :id, :name, {}, class: 'form-control' %>
-</div>
+<% unless @tailgate.persisted? %>
+  <div class="form-group">
+    <%= f.label :event_id, "What game are you tailgating for?", class: "control-label" %>
+    <%= f.collection_select :event_id, Event.all, :id, :name, {}, class: 'form-control' %>
+  </div>
+<% else %>
+  <div class="form-group">
+    <%= f.label :event_id, "What game are you tailgating for?", class: "control-label" %>
+    <p class="form-control-static"><%= @tailgate.event.name %></p>
+  </div>
+<% end %>
+
+  <div class="form-group">
+    <%= f.label :type, "What type of tailgate is this?", class: "control-label" %>
+    <% unless @tailgate.persisted? %>
+      <%= f.select :type, Tailgate.types, {}, class: 'form-control' %>
+    <% else %>
+      <p class="form-control-static"><%= @tailgate.type %></p>
+    <% end %>
+  </div>
 
 <!-- HEADLINE -->
 <div class="form-group">
@@ -18,10 +34,17 @@
 </div>
 
 <!-- HOW MANY GUESTS -->
-<div class="form-group">
-  <%= f.label :size, "How many guests do you want to invite?", class: "control-label" %>
-  <%= f.number_field :size, class: 'form-control'  %>
-</div>
+<% if @tailgate.persisted? %>
+  <div class="form-group">
+    <%= f.label :current_size, "How many guests do you want to invite?", class: "control-label" %>
+    <%= f.number_field :current_size, class: 'form-control'  %>
+  </div>
+<% else %>
+  <div class="form-group">
+    <%= f.label :original_size, "How many guests do you want to invite?", class: "control-label" %>
+    <%= f.number_field :original_size, class: 'form-control'  %>
+  </div>
+<% end %>
 
 <!-- COST -->
 <div class="form-group">
