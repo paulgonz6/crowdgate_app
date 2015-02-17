@@ -17,11 +17,11 @@
   <% @tailgate = PaidTailgate.new %>
   <%= render 'tailgates/tailgate_form', { :@tailgate => @tailgate } %>
 </div>
-<div class='hidden' style="background-color: white; padding: 20px;" id="packaged-tailgate">
+<div class='hidden tailgate-form' id="packaged-tailgate">
   <% @tailgate = PackagedTailgate.new %>
   <%= render 'tailgates/tailgate_form', { :@tailgate => @tailgate } %>
 </div>
-<div class='hidden' style="background-color: white; padding: 20px;" id="free-tailgate">
+<div class='hidden tailgate-form' id="free-tailgate">
   <% @tailgate = FreeTailgate.new %>
   <%= render 'tailgates/tailgate_form', { :@tailgate => @tailgate } %>
 </div>

@@ -12,8 +12,8 @@
   background-color: white;
   padding: 20px;
   width: 100%;
+  margin-left: -5px;
 }
-
 
 .tailgate-type-selection {
   display: table;
@@ -36,6 +36,7 @@
     display: table-cell;
     padding: 20px 0;
     background-color: white;
+    border-bottom: 2px solid #303A48;
   }
 }
 
