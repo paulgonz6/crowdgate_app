@@ -103,28 +103,30 @@ prices = [20, 25, 40, 50, 15]
 
 Tailgate.destroy_all
 20.times{
- Tailgate.create!( name: tailgate_names.sample,
-   description: "Our tailgates have been voted the best at Penn State. We always have regular tailgate food- burgers, hot dogs, etc. We also make salads and chili. We tend to get into some intense corn hole games, and we always keep the beers flowing.",
-   user_id: users.pluck(:id).sample,
-   event_id: events.pluck(:id).sample,
-   size: rand(1..50),
-   price: prices.sample,
-   affiliation: "Neither",
-   grill: choice.sample,
-   tent: choice.sample,
-   table: choice.sample,
-   chairs: choice.sample,
-   reserved_parking: choice.sample,
-   bevs_alcohol: choice.sample,
-   bevs_non_alcohol: choice.sample,
-   food: choice.sample,
-   tailgate_start_time: "3 hours before kickoff",
-   tailgate_during_game: false,
-   image_1: images.sample,
-   image_2: images.sample,
-   image_3: images.sample,
-   image_4: images.sample
-   )
+  size = rand(1..50)
+  Tailgate.create!( name: tailgate_names.sample,
+                    description: "Our tailgates have been voted the best at Penn State. We always have regular tailgate food- burgers, hot dogs, etc. We also make salads and chili. We tend to get into some intense corn hole games, and we always keep the beers flowing.",
+                    user_id: users.pluck(:id).sample,
+                    event_id: events.pluck(:id).sample,
+                    original_size: size,
+                    current_size: size,
+                    price: prices.sample,
+                    affiliation: "Neither",
+                    grill: choice.sample,
+                    tent: choice.sample,
+                    table: choice.sample,
+                    chairs: choice.sample,
+                    reserved_parking: choice.sample,
+                    bevs_alcohol: choice.sample,
+                    bevs_non_alcohol: choice.sample,
+                    food: choice.sample,
+                    tailgate_start_time: "3 hours before kickoff",
+                    tailgate_during_game: false,
+                    image_1: images.sample,
+                    image_2: images.sample,
+                    image_3: images.sample,
+                    image_4: images.sample
+                  )
 }
 
 tailgates = Tailgate.all

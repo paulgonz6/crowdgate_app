@@ -4,7 +4,7 @@
   </div>
   <div class="panel-body">
     <ol class="">
-      <% @user.bookings.each_with_index do |ticket, i| %>
+      <% @user.tickets_purchased.each_with_index do |ticket, i| %>
       <li class="">
         <%= number_to_currency(ticket.amount) %> for "<%= ticket.tailgate.name %>" <br>
         <em><%= ticket.quantity %> tickets</em>

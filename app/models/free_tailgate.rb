@@ -1,0 +1,2 @@
+class FreeTailgate < Tailgate
+end

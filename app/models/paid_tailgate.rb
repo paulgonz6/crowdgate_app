@@ -1,0 +1,2 @@
+class PaidTailgate < Tailgate
+end

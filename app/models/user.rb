@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many  :tailgates, dependent: :destroy
-  has_many  :bookings
+  has_many  :tickets_purchased, :class_name => "Booking", :foreign_key => "user_id"
 
   def star_rating
     values = Review.where(tailgate_id: self.tailgates.ids).pluck(:rating)

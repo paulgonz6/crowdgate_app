@@ -1,0 +1,2 @@
+class PackagedTailgate < Tailgate
+end
