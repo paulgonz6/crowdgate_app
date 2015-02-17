@@ -9,8 +9,6 @@ class Tailgate < ActiveRecord::Base
   validates     :event_id, presence: true
   validates     :user_id, presence: true
   validates     :name, presence: true
-  validates     :price, presence: true
-  validates     :original_size, presence: true
 
   scope         :free_tailgates,      -> { where(type: 'FreeTailgate') }
   scope         :paid_tailgates,      -> { where(type: 'PaidTailgate') }

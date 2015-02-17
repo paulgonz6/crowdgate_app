@@ -3,10 +3,10 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          <% if @reviews.count == 0 %>
+          <% if @tailgate.host.reviews_about_host.count == 0 %>
           There are no reviews on this host
           <% else %>
-          Rating: <%= @tailgate.host.star_rating %> out of 5, Based on <%= pluralize(@reviews.count, 'Review') %>
+          Rating: <%= @tailgate.host.star_rating %> out of 5, Based on <%= pluralize(@tailgate.host.reviews_about_host.count, 'Review') %>
           <% end %>
 <!--           <span class="rating">
             <i class="fa fa-star"></i>
@@ -18,7 +18,7 @@
         </h3>
       </div>
       <div class="panel-body">
-        <% @reviews.each do |review|  %>
+        <% @tailgate.host.reviews_about_host.each do |review|  %>
         <div class="row review-listing">
           <div class="col-md-3 text-center">
             <%= image_tag review.user.image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>

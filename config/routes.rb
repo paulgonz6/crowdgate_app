@@ -39,6 +39,9 @@ Rails.application.routes.draw do
 # TAILGATE ROUTES ============================================================================
 
   resources :tailgates
+  resources :free_tailgates,                controller: 'tailgates', type: 'FreeTailgate'
+  resources :paid_tailgates,                controller: 'tailgates', type: 'PaidTailgate'
+  resources :packaged_tailgates,            controller: 'tailgates', type: 'PackagedTailgate'
 
 
 # BOOKING ROUTES ============================================================================
