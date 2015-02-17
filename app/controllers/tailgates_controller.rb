@@ -1,5 +1,4 @@
 class TailgatesController < ApplicationController
-
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
   before_action :is_user_host?, :only => [:new, :create, :edit, :update, :destroy]
 

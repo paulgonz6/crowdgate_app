@@ -12,6 +12,10 @@ class Tailgate < ActiveRecord::Base
   validates     :price, presence: true
   validates     :original_size, presence: true
 
+  scope         :free_tailgates,      -> { where(type: 'FreeTailgate') }
+  scope         :paid_tailgates,      -> { where(type: 'PaidTailgate') }
+  scope         :packaged_tailgates,  -> { where(type: 'PackagedTailgate') }
+
   def user_name
     user.name if user
   end
