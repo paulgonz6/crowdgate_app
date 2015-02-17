@@ -73,11 +73,13 @@ class TailgatesController < ApplicationController
     end
 
     def tailgate_params
-      params.require(@type.underscore).permit(  :original_size, :current_size, :name, :description, :affiliation, :price,
-                                          :grill, :tent, :table, :chairs, :reserved_parking,
-                                          :bevs_alcohol, :bevs_non_alcohol, :food, :event_id,
-                                          :tailgate_start_time, :tailgate_during_game, :user_id,
-                                          :image_1, :image_2, :image_3, :image_4)
+      params.require(@type.underscore).permit(  :original_size, :current_size, :name, :description,
+                                                :affiliation, :price, :grill, :tent, :table,
+                                                :chairs, :reserved_parking, :bevs_alcohol,
+                                                :bevs_non_alcohol, :tailgate_games, :food,
+                                                :event_id, :tailgate_start_time,
+                                                :tailgate_during_game, :user_id,
+                                                :image_1, :image_2, :image_3, :image_4)
     end
 
     def set_type

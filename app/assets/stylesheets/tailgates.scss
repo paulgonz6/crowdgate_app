@@ -8,8 +8,35 @@
   margin-bottom: 25px;
 }
 
-.tailgate-forms {
-  margin-top: 40px;
+.tailgate-form {
+  background-color: white;
+  padding: 20px;
+  width: 100%;
+}
+
+
+.tailgate-type-selection {
+  display: table;
+  margin-bottom: 0;
+  width: 100%;
+  background-color: white;
+  cursor: pointer;
+
+  li {
+    display: table-cell;
+    padding: 20px 0;
+    background-color: #D2D8D8;
+  }
+
+  li:hover {
+    background-color: white;
+  }
+
+  .active-tailgate-form {
+    display: table-cell;
+    padding: 20px 0;
+    background-color: white;
+  }
 }
 
 .tailgate-listing {

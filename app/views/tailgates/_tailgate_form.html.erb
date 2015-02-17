@@ -25,20 +25,22 @@
 </div>
 
 <!-- HOW MANY GUESTS -->
-<% if @tailgate.persisted? %>
-  <div class="form-group">
-    <%= f.label :current_size, "How many guests do you want to invite?", class: "control-label" %>
-    <%= f.number_field :current_size, class: 'form-control'  %>
-  </div>
-<% else %>
-  <div class="form-group">
-    <%= f.label :original_size, "How many guests do you want to invite?", class: "control-label" %>
-    <%= f.number_field :original_size, class: 'form-control'  %>
-  </div>
+<% unless @tailgate.class == PackagedTailgate %>
+  <% if @tailgate.persisted? %>
+    <div class="form-group">
+      <%= f.label :current_size, "How many guests do you want to invite?", class: "control-label" %>
+      <%= f.number_field :current_size, class: 'form-control'  %>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= f.label :original_size, "How many guests do you want to invite?", class: "control-label" %>
+      <%= f.number_field :original_size, class: 'form-control'  %>
+    </div>
+  <% end %>
 <% end %>
 
 <!-- COST -->
-<% unless @tailgate.class.to_s == "FreeTailgate" %>
+<% unless @tailgate.class == FreeTailgate %>
   <div class="form-group">
     <%= f.label :price, "How much will it cost your guests to attend?", class: "control-label" %>
 

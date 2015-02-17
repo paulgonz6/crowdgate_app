@@ -1,0 +1,88 @@
+
+<ul class="list-inline text-center tailgate-type-selection">
+  <li id="paid-toggle">
+    Paid Tailgate
+  </li>
+
+  <li id="packaged-toggle">
+    Tailgate Package
+  </li>
+
+  <li id="free-toggle">
+    Free Tailgate
+  </li>
+</ul>
+
+<div class='hidden tailgate-form' id="paid-tailgate">
+  <% @tailgate = PaidTailgate.new %>
+  <%= render 'tailgates/tailgate_form', { :@tailgate => @tailgate } %>
+</div>
+<div class='hidden' style="background-color: white; padding: 20px;" id="packaged-tailgate">
+  <% @tailgate = PackagedTailgate.new %>
+  <%= render 'tailgates/tailgate_form', { :@tailgate => @tailgate } %>
+</div>
+<div class='hidden' style="background-color: white; padding: 20px;" id="free-tailgate">
+  <% @tailgate = FreeTailgate.new %>
+  <%= render 'tailgates/tailgate_form', { :@tailgate => @tailgate } %>
+</div>
+
+
+<script type="text/javascript">
+$( "#paid-toggle" ).click(function() {
+  $( "#paid-toggle" ).addClass('active-tailgate-form');
+  $( "#paid-tailgate" ).removeClass('hidden');
+  $( "#paid-tailgate" ).addClass('show');
+
+  var $free = $( "#free-tailgate" );
+  var $free_toggle = $( "#free-toggle" );
+  var $packaged = $( "#packaged-tailgate" );
+  var $packaged_toggle = $( "#packaged-toggle" );
+
+  $free.removeClass('show');
+  $free.addClass('hidden');
+  $free_toggle.removeClass('active-tailgate-form');
+
+  $packaged.removeClass('show');
+  $packaged.addClass('hidden');
+  $packaged_toggle.removeClass('active-tailgate-form');
+});
+
+$( "#free-toggle" ).click(function() {
+  $( "#free-toggle" ).addClass('active-tailgate-form');
+  $( "#free-tailgate" ).removeClass('hidden');
+  $( "#free-tailgate" ).addClass('show');
+
+  var $paid = $( "#paid-tailgate" );
+  var $paid_toggle = $( "#paid-toggle" );
+  var $packaged = $( "#packaged-tailgate" );
+  var $packaged_toggle = $( "#packaged-toggle" );
+
+  $paid.removeClass('show');
+  $paid.addClass('hidden');
+  $paid_toggle.removeClass('active-tailgate-form');
+
+  $packaged.removeClass('show');
+  $packaged.addClass('hidden');
+  $packaged_toggle.removeClass('active-tailgate-form');
+});
+
+$( "#packaged-toggle" ).click(function() {
+  $( "#packaged-toggle" ).addClass('active-tailgate-form');
+  $( "#packaged-tailgate" ).removeClass('hidden');
+  $( "#packaged-tailgate" ).addClass('show');
+
+  var $paid = $( "#paid-tailgate" );
+  var $paid_toggle = $( "#paid-toggle" );
+  var $free = $( "#free-tailgate" );
+  var $free_toggle = $( "#free-toggle" );
+
+  $paid.removeClass('show');
+  $paid.addClass('hidden');
+  $paid_toggle.removeClass('active-tailgate-form');
+
+  $free.removeClass('show');
+  $free.addClass('hidden');
+  $free_toggle.removeClass('active-tailgate-form');
+});
+
+</script>
