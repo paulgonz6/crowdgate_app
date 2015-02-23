@@ -87,7 +87,11 @@ class TailgatesController < ApplicationController
     end
 
     def type
-      Tailgate.types.include?(params[:type]) ? params[:type] : "Tailgate"
+      if Tailgate.types.include?(params[:type])
+        params[:type]
+      else
+        "Tailgate"
+      end
     end
 
     def type_class

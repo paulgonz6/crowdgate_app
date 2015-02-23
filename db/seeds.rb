@@ -104,7 +104,7 @@ prices = [20, 25, 40, 50, 15]
 Tailgate.destroy_all
 20.times{
   size = rand(1..50)
-  Tailgate.create!( name: tailgate_names.sample,
+  PaidTailgate.create!( name: tailgate_names.sample,
                     description: "Our tailgates have been voted the best at Penn State. We always have regular tailgate food- burgers, hot dogs, etc. We also make salads and chili. We tend to get into some intense corn hole games, and we always keep the beers flowing.",
                     user_id: users.pluck(:id).sample,
                     event_id: events.pluck(:id).sample,
