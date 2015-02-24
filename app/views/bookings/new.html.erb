@@ -21,11 +21,11 @@
     <% end %>
 
     <%= form_tag bookings_url, :class => "form", :id => "payment-form" do %>
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
       <%= render 'checkout_logged_in', { :@booking => @booking } %>
-      <% else %>
+    <% else %>
       <%= render 'checkout_new_user', { :@booking => @booking } %>
-      <% end %>
+    <% end %>
     <% end %>
   </div>
 </div>

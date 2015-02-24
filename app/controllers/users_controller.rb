@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :authenticate_user!, :only => [:index]
   before_action :is_user_admin?, :only => [:index]
   before_action :is_user_owner?, :only => [:show]
@@ -21,12 +20,21 @@ class UsersController < ApplicationController
   end
 
   def become_host_sign_up
-    @user = User.new
+  end
+
+  def create_request_to_host
+    @email = params[:email]
+    BecomeHostMailer.become_host(@email).deliver_later
+
+    respond_to do |format|
+      format.js
+    end
+
   end
 
   private
     def is_user_owner?
-      unless current_user == User.find(params[:id])
+      unless (current_user == User.find(params[:id])) || current_user.admin?
         redirect_to root_url
         flash[:notice] = "That's not yours. Sorry."
       end

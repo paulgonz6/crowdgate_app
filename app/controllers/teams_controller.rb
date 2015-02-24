@@ -1,5 +1,4 @@
 class TeamsController < ApplicationController
-
   # before_action :is_user_admin?, :only => [:new, :create, :update, :destroy, :edit]
   before_action :authenticate_user!, :only => [:new, :create, :update, :edit, :destroy]
   before_action :is_user_admin?, :only => [:new, :create, :update, :edit, :destroy]

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
                               :action       => 'become_host_sign_up',
                               :as           => 'become_host'
 
+  post '/host_request',       :controller   => 'users',
+                              :action       => 'create_request_to_host'
+
   # READ
   get '/users',               :controller   => 'users',
                               :action       => 'index',

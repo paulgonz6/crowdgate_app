@@ -1,23 +1,44 @@
 <div class="row quantity text-left">
   <div class="col-md-12">
-    <label class="control-label" for="quantity">How many tickets do you want to buy?</label>
-    <select class="form-control" name="quantity" id="quantity">
-      <% @tailgate.current_size.times do |n| %>
-      <option value="<%= n + 1 %>"><%= n + 1 %></option>
-      <% end %>
-    </select>
-    <h2><small>Ticket Amount: $<%= @tailgate.price %></small></h2>
+    <% if @tailgate.class == PaidTailgate %>
+      <label class="control-label" for="quantity">How many tickets do you want to buy?</label>
+      <select class="form-control" name="quantity" id="quantity">
+        <% @tailgate.current_size.times do |n| %>
+        <option value="<%= n + 1 %>"><%= n + 1 %></option>
+        <% end %>
+      </select>
+      <h2><small>Ticket Amount: $<%= @tailgate.price %></small></h2>
       <input type="hidden" name="item_price" id="item_price" class="txt" value="<%= @tailgate.price %>" />
-    <h4><small>Fees: $<span id='fees'></span></small></h4>
-    <h4><small>Taxes: $<span id='taxes'></span></small></h4>
-    <h3>Total Amount: $<span id='total_price'><%= @tailgate.price %></span></h3>
+      <h4><small>Fees: $<span id='fees'></span></small></h4>
+      <h4>
+        <small>Taxes: $<span id='taxes'><%= sprintf('%.2f', (@tailgate.price * 0.10)) %></span></small>
+      </h4>
+      <h3>Total Amount: $<span id='total_price'><%= @tailgate.price %></span></h3>
+
+    <% elsif @tailgate.class == PackagedTailgate %>
+      <h2 class="no-margin-top">
+        <small>Tailgate Amount: $<%= @tailgate.price %></small>
+      </h2>
+      <input type="hidden" name="item_price" id="item_price" class="txt" value="<%= @tailgate.price %>" />
+      <h4>
+        <small>Fees: $<span id='fees'><%= @tailgate.price %></span></small>
+      </h4>
+      <h4>
+        <small>Taxes: $<span id='taxes'><%= sprintf('%.2f', (@tailgate.price * 0.10)) %></span></small>
+      </h4>
+      <h3>
+        Total Amount: $<span id='total_price'></span>
+      </h3>
+    <% else  %>
+
+    <% end %>
   </div>
 </div>
 
 <!-- FOR Dynamically displaying total amount -->
 <script>
-  $(function() {
-    $('#quantity, #item_price').change(function() {
+$(function() {
+  $('#quantity, #item_price').change(function() {
       //  Get quantity value
       var quan = $("#quantity").val();
 
@@ -36,5 +57,5 @@
       $( "#taxes" ).text(new_taxes.toFixed(2));
       $( "#fees" ).text(new_fees.toFixed(2));
     });
-  });
+});
 </script>

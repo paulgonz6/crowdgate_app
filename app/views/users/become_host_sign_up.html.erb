@@ -6,8 +6,6 @@
         <h3 class="subtext">
           Because you get to connect with awesome fans, spend your Saturdays at the stadium, and earn money doing it!
         </h3>
-        <br>
-        <h3 class="small">How does hosting on Crowdgate work? Watch video <i class="fa fa-youtube-play"></i></h3>
       </div>
     </div>
   </div>
@@ -15,89 +13,16 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-5 text-justify">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="lead">How to become a host</span>
+    <div class="col-md-4 col-md-offset-4 text-center form-inputs">
+      <h2>Sign Up Now</h2>
+      <%= form_tag('/host_request', :remote => true) do %>
+        <div class="form-group">
+          <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address">
         </div>
-        <div class="panel-body">
-          <h3 style="margin-top:0;">Step 1:</h3>
-          <p>Fill out the form to the right.</p>
-
-          <h3>Step 2:</h3>
-          <p>
-            We will contact you within 48 hours of submitting your form to schedule a call. This is not an interview, more like a meet and greet. We just like to get to know you first. We take great pride in the quality of the hosts on Crowdgate, and want to make sure you understand the expectations.
-          </p>
-
-          <h3>Step 3:</h3>
-          <p>
-            If all goes well, you will receive an email confirming that you are now eligible to host. Once that happens, you will have access to create a tailgate listing directly on our website.
-          </p>
-        </div>
-      </div>
+        <input type="submit" value="Become a host" class="btn btn-success">
+      <% end %>
     </div>
-    <div class="col-md-6 col-md-offset-1 form-inputs">
-
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'form-horizontal' })  do |f| %>
-      <%= devise_error_messages! %>
+  </div>
+</div>
 
 
-      <%= f.email_field :email, autofocus: true,
-      class: 'form-control form-input-fields text-left',
-        placeholder: "Email address" %>
-
-        <br>
-
-        <%= f.text_field :name,
-        class: 'form-control form-input-fields text-left',
-          placeholder: "First and Last Name" %>
-
-          <br>
-
-          <%= f.text_field :image,
-          class: 'form-control form-input-fields text-left',
-            placeholder: "Image URL"  %>
-
-            <br>
-
-            <%= f.text_area :description,
-            class: 'form-control form-input-fields text-left',
-              rows: 10,
-              placeholder: "Write a brief description of your tailgating history. This will display publically to guests."  %>
-
-              <br>
-
-              <%= f.text_field :phone,
-              class: 'form-control form-input-fields text-left',
-                placeholder: "Please enter mobile phone number"  %>
-
-                <br>
-
-                <%= f.password_field :password, autocomplete: "off",
-                class: 'form-control form-input-fields text-left',
-                  placeholder: "Password (8 characters minimum)" %>
-
-                  <br>
-
-                  <%= f.password_field :password_confirmation, autocomplete: "off",
-                  class: 'form-control form-input-fields text-left',
-                    placeholder: "Password Confirmation" %>
-
-                    <br>
-                    <% if devise_mapping.rememberable? -%>
-                    <div class="field">
-                      <%= f.check_box :remember_me %>
-                      <%= f.label :remember_me %>
-                    </div>
-                    <% end -%>
-
-                    <hr/>
-
-                    <%= f.submit 'Sign Up', class: 'btn btn-primary form-input-fields' %>
-                    <br>
-                    <% end %>
-                    <br>
-                    <p class="text-center">Sign up with Facebook and Twitter coming soon!</p>
-                  </div>
-                </div>
-              </div>
