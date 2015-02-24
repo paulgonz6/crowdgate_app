@@ -45,3 +45,35 @@
   }
 }
 
+#landing-carousel-1 {
+  position: absolute;
+  -webkit-animation: first-carousel 10s infinite linear;
+}
+
+#landing-carousel-2 {
+  position: absolute;
+  display: none;
+  opacity: .3;
+  -webkit-animation: second-carousel 5s 5s infinite linear;
+}
+
+#landing-carousel-3 {
+  position: absolute;
+}
+
+@-webkit-keyframes first-carousel {
+  0%    { transform: translateX(100em);}
+  10%    { transform: translateX(0em);}
+  50%   { transform: translateX(0em);}
+  90%   { transform: translateX(0em);}
+  100%  { transform: translateX(-100em);}
+}
+
+@-webkit-keyframes second-carousel {
+  0%    { transform: translateX(100em); display: block;}
+  10%    { transform: translateX(0em); display: block;}
+  50%   { transform: translateX(0em); display: block;}
+  90%   { transform: translateX(0em); display: block;}
+  100%  { transform: translateX(-100em); display: block;}
+}
+

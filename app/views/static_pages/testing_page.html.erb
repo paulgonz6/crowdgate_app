@@ -1,0 +1,87 @@
+<div class="row" data-behavior="">
+  <div class="col-md-12">
+    <div class="carousel slide" id="myCarousel">
+      <div class="carousel-inner" style="max-height: 80vh;">
+        <div class="item active">
+          <div class="bannerImage">
+            <a href="#">
+              <%= image_tag 'http://arbiteronline.com/files/2013/11/Tailgate_BSUFootball_JakeEssman.jpg', class: 'img-responsive' %>
+            </a>
+            <div class="caption row">
+              <div class="col-md-6">
+                <h3>Testing</h3>
+                <a class="btn btn-mini" href="#">&raquo; Read More</a>
+              </div>
+              <div class="col-md-6">
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /Slide1 -->
+
+        <div class="item">
+          <div class="bannerImage">
+            <a href="#">
+              <%= image_tag 'http://onwardstate.com/wp-content/uploads/2011/01/IMG_2701.jpg', class: 'img-responsive' %>
+            </a>
+          </div>
+
+          <div class="caption row">
+            <div class="col-md-6">
+              <h3>Nullam Condimentum Nibh Etiam Sem</h3>
+              <a class="btn btn-mini" href="#">&raquo; Read More</a>
+            </div>
+            <div class="col-md-6">
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+              </p>
+            </div>
+          </div>
+        </div><!-- /Slide2 -->
+
+        <div class="item">
+          <div class="bannerImage">
+            <a href="#">
+              <%= image_tag 'http://cdn0.vox-cdn.com/assets/4720324/Mina1.JPG', class: 'img-responsive' %>
+            </a>
+          </div>
+
+          <div class="caption row">
+            <div class="col-md-6">
+              <h3>Nullam Condimentum Nibh Etiam Sem</h3>
+              <a class="btn btn-mini" href="#">&raquo; Read More</a>
+            </div>
+            <div class="col-md-6">
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+              </p>
+            </div>
+          </div>
+        </div><!-- /Slide2 -->
+
+      </div>
+
+      <div class="control-box">
+        <a data-slide="prev" href="#myCarousel" class="carousel-control left">
+          <i class='fa fa-chevron-left'></i>
+        </a>
+        <a data-slide="next" href="#myCarousel" class="carousel-control right">
+          <i class='fa fa-chevron-right'></i>
+        </a>
+      </div><!-- /.control-box -->
+
+    </div><!-- /#myCarousel -->
+
+  </div>
+</div><!-- /.row -->
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.carousel').carousel({
+    interval: 6000
+  })
+});
+</script>

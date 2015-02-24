@@ -1,0 +1,30 @@
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Hosting at <%= @team.name %></h3>
+    </div>
+    <div class="panel-body text-center">
+      <h2 class="subtext">
+        Do you want to earn money by hosting tailgates at <%= @team.name %>?
+      </h2>
+
+      <% if current_user.try(:host_status?) %>
+      <button class='btn btn-large' style='color: white; background-color: <%= @team.color %>;'>  List a Tailgate Now
+      </button>
+      <% else %>
+      <button class='btn btn-large' style='color: white; background-color: <%= @team.color %>;'>    <%= link_to "Become a host now", become_host_url %>
+      </button>
+      <% end %>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">About <%= @team.name %></h3>
+    </div>
+    <div class="panel-body">
+      <p>
+        Coming soon! If you would like to contribute to this section, please email paul@crowdgate.us.
+      </p>
+    </div>
+  </div>
+</div>

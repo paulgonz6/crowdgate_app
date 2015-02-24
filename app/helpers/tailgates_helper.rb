@@ -8,13 +8,13 @@ module TailgatesHelper
     end
   end
 
-  def tailgate_listing_for(tailgate, &block)
-    content_tag :div, class: "panel-body tailgate-listing #{'sold-out' if tailgate.sold_out?}" do
-      html = ""
-      html += content_tag :div, "SOLD OUT", class: "sold-out-label", style: "display: none;" if tailgate.sold_out?
-      html += capture(&block)
-      html.html_safe
-    end
-  end
+  # def tailgate_listing_for(tailgate, &block)
+  #   content_tag :div, class: "panel-body tailgate-listing #{'sold-out' if tailgate.sold_out?}" do
+  #     html = ""
+  #     html += content_tag :div, "SOLD OUT", class: "sold-out-label", style: "display: none;" if tailgate.sold_out?
+  #     html += capture(&block)
+  #     html.html_safe
+  #   end
+  # end
 
 end

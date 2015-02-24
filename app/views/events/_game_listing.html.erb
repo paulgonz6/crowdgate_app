@@ -1,0 +1,24 @@
+<% @events.each do |event| %>
+<% if event.tailgates.length > 0 %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title"><strong><%= event.name %></strong></h2>
+        <h3 class="panel-title">
+          <small>
+            <%= event.city %>,
+            <%= event.state %>,
+            <%= DateTime.parse(event.date).strftime('%A, %B %e, %Y') %>,
+            Kickoff at <%= DateTime.parse(event.date).strftime('%r') %>
+          </small>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= render 'tailgates/listing', { :event => event } %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>
