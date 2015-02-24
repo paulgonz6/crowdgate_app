@@ -1,25 +1,29 @@
-<div class="row text-center text-splash" style="height: 80vh;">
-  <div class="text-splash-content">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h1>Why should you become a host with Crowdgate?</h1>
-        <h3 class="subtext">
-          Because you get to connect with awesome fans, spend your Saturdays at the stadium, and earn money doing it!
-        </h3>
-      </div>
-      <div class="col-md-4 col-md-offset-4 text-center form-inputs">
-        <hr/>
-        <h2>Sign Up Now</h2>
-        <%= form_tag('/host_request', :remote => true) do %>
-          <div class="form-group">
-            <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address">
+<div class="container">
+  <div class="row text-splash" style="height: 80vh;">
+    <div class="text-splash-content">
+      <div class="row text-center">
+        <div class="col-md-6 col-md-offset-3">
+          <h1>Earn money by welcoming fans to your tailgate</h1>
+          <h3 class="subtext">
+            Connect with fans<br>
+            Spend Saturdays at the stadium<br>
+            Get paid to tailgate
+          </h3>
+          <hr/>
+          <div class="form-inputs">
+            <%= form_tag('/host_request', :remote => true) do %>
+            <div class="form-group">
+              <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address to sign up">
+            </div>
+            <input type="submit" value="Become a Host" class="btn btn-success btn-block">
+            <% end %>
           </div>
-          <input type="submit" value="Become a host" class="btn btn-success">
-        <% end %>
+        </div>
+        <div class="col-md-4 col-md-offset-4 text-center form-inputs">
+        </div>
       </div>
     </div>
   </div>
+
+  <%= render 'become_host_confirmation_modal' %>
 </div>
-
-<%= render 'become_host_confirmation_modal' %>
-
