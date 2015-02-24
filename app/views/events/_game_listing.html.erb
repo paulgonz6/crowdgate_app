@@ -9,8 +9,8 @@
           <small>
             <%= event.city %>,
             <%= event.state %>,
-            <%= DateTime.parse(event.date).strftime('%A, %B %e, %Y') %>,
-            Kickoff at <%= DateTime.parse(event.date).strftime('%r') %>
+            <%= event.date.strftime('%A, %B %e, %Y') %>,
+            Kickoff at <%= event.date.strftime('%r') %>
           </small>
         </h3>
       </div>
