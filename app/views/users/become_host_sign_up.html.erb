@@ -1,4 +1,4 @@
-<div class="row text-center text-splash">
+<div class="row text-center text-splash" style="height: 80vh;">
   <div class="text-splash-content">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
@@ -7,22 +7,19 @@
           Because you get to connect with awesome fans, spend your Saturdays at the stadium, and earn money doing it!
         </h3>
       </div>
+      <div class="col-md-4 col-md-offset-4 text-center form-inputs">
+        <hr/>
+        <h2>Sign Up Now</h2>
+        <%= form_tag('/host_request', :remote => true) do %>
+          <div class="form-group">
+            <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address">
+          </div>
+          <input type="submit" value="Become a host" class="btn btn-success">
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4 text-center form-inputs">
-      <h2>Sign Up Now</h2>
-      <%= form_tag('/host_request', :remote => true) do %>
-        <div class="form-group">
-          <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address">
-        </div>
-        <input type="submit" value="Become a host" class="btn btn-success">
-      <% end %>
-    </div>
-  </div>
-</div>
-
+<%= render 'become_host_confirmation_modal' %>
 

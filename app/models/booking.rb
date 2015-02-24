@@ -5,7 +5,7 @@ class Booking < ActiveRecord::Base
   belongs_to :buyer, :class_name => "User", :foreign_key => "user_id"
 
   def process_payment(stripe_token, amount)
-    Stripe.api_key = "sk_test_Fogj9Y2IHHGTv0vKAHKsxHDW"
+    Stripe.api_key = ENV['stripe_api_key']
 
     # Create the charge on Stripe's servers - this will charge the user's card
     begin

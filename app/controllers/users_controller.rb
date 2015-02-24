@@ -24,12 +24,11 @@ class UsersController < ApplicationController
 
   def create_request_to_host
     @email = params[:email]
-    BecomeHostMailer.become_host(@email).deliver_later
+    BecomeHostMailer.become_host(@email).deliver
 
     respond_to do |format|
       format.js
     end
-
   end
 
   private
