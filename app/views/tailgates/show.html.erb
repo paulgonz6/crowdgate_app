@@ -8,8 +8,8 @@
             <%= @tailgate.event.venue %>,
             <%= @tailgate.event.city %>,
             <%= @tailgate.event.state %>,<br>
-            <%= DateTime.parse(@tailgate.event.date).strftime('%A, %B %e, %Y') %>,
-            Kickoff at <%= DateTime.parse(@tailgate.event.date).strftime('%r') %>
+            <%= @tailgate.event.date.strftime('%A, %B %e, %Y') %>,
+            Kickoff at <%= @tailgate.event.date.strftime('%r') %>
           </small>
         </h4>
         <hr/>
