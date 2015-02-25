@@ -150,3 +150,11 @@
 
 <%= render 'become_host_confirmation_modal' %>
 
+<script>
+  $(function(){
+    $('.btn').on('click', function() {
+      $(this).val('Play is currently under review...');
+      $(this).addClass('submitting')
+    });
+  });
+</script>
