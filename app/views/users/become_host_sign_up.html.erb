@@ -1,29 +1,152 @@
+<div class="row" style="height: 70vh; background-image: url('<%= asset_path 'tailgater_background.jpg' %>'); background-size: cover;">
+  <div class="col-md-5 col-md-offset-6" style="background-color: rgba(255,255,255,.7); height: 100%; padding-top: 100px;">
+    <h1>Make someone's game day</h1>
+    <h2>
+      Earn money by welcoming fans to your tailgate
+    </h2>
+    <hr/>
+    <div class="form-inputs">
+      <%= form_tag('/host_request', :remote => true) do %>
+      <div class="form-group">
+        <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address" required>
+      </div>
+      <input type="submit" value="Become a Host" class="btn btn-success btn-block btn-lg">
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="container">
-  <div class="row text-splash" style="height: 80vh;">
-    <div class="text-splash-content">
-      <div class="row text-center">
-        <div class="col-md-6 col-md-offset-3">
-          <h1>Earn money by welcoming fans to your tailgate</h1>
-          <h3 class="subtext">
-            Connect with fans<br>
-            Spend Saturdays at the stadium<br>
-            Get paid to tailgate
-          </h3>
-          <hr/>
-          <div class="form-inputs">
-            <%= form_tag('/host_request', :remote => true) do %>
-            <div class="form-group">
-              <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address to sign up">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <br>
+      <h3>The X's and O's of Hosting on Crowdgate</h3>
+      <hr/>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Join our team</h4>
             </div>
-            <input type="submit" value="Become a Host" class="btn btn-success btn-block">
-            <% end %>
+            <div class="panel-body">
+              <p class="text-content">
+                Our tryout is simple. Submit your email on this page and we will contact you within 48 hours to schedule a phone call. On the call, we like to get a feel for your tailgating philosophy. We pride ourselves on exceptional customer service and attention detail. As a host, you should have a similar gameplan.
+              </p>
+            </div>
           </div>
         </div>
-        <div class="col-md-4 col-md-offset-4 text-center form-inputs">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Call your own plays</h4>
+            </div>
+            <div class="panel-body">
+              <p class="text-content">
+                Aside from ensuring exceptional customer service, we give you the freedom to tailgate as you wish. Take a week off. Host a large tailgate. Host a small tailgate. It's totally your call.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Tailgate like a champion</h4>
+            </div>
+            <div class="panel-body">
+              <p class="text-content">
+                All the hardwork and preperation culminate on game day. It's time to execute and your guests expect the best. Deliver it to them. And of course, have some fun yourself. It's tailgating. Where else could you possibly want to be.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <%= render 'become_host_confirmation_modal' %>
+  <hr/>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h3 class="text-center">
+        <strong>Offense sells tickets, defense wins championships, <u>tailgates create memories</u></strong>
+      </h3>
+      <br>
+      <div class="text-content">
+        <p>
+          You've experienced it before. The grill. The beer. The food. The smell is distinct. The buzz in the parking lot on game day is magical. It's the best place to be in the world. You love it.
+        </p>
+        <p>
+          We are giving you more reasons to do what you love every weekend. You now have the opportunity to earn money tailgating by inviting other fans to join your tailgate. You now get the opportunity to show off your tailgating skills to other fans. We guess it's time for you to create some more memories.
+        </p>
+        <br>
+        <p>Here are some other specific reasons why you should host on Crowdgate:</p>
+        <ul class="list-group text-left">
+          <li class="list-group-item">Offset game ticket cost</li>
+          <li class="list-group-item">Show away fans how your team tailgates</li>
+          <li class="list-group-item">Run a small weekend tailgating business</li>
+          <li class="list-group-item">Get exposure for your catering company</li>
+        </ul>
+      </div>
+      <hr/>
+      <h4 class="text-center">
+        <strong>Start creating memories in the parking lot now</strong>
+      </h4>
+      <br>
+      <div class="form-inputs">
+        <%= form_tag('/host_request', :remote => true) do %>
+        <div class="form-group">
+          <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address" required>
+        </div>
+        <input type="submit" value="Become a Host" class="btn btn-success btn-block btn-lg">
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h3 class="text-center">
+        <strong>Make tailgating accessible to every fan</strong>
+      </h3>
+      <br>
+      <div class="text-content">
+        <p>
+          Game day is special. And it's not just about how your team performs on the field. It's about the tailgate too. Unfortunately tailgating is not accessible to all fans. Traveling fans can't bring their equipment, and some people just do not have the time to plan a tailgate.
+        </p>
+        <p>
+          You can help make that fan's game day special. As a host, your full service tailgate creates a completely hassle-free experience for them. They get all the enjoyment of a tailgate done right, with out all the hard work. You are their quarterback in the parking lot.
+        </p>
+        <br>
+        <p>
+          Here are examples of fans who book tailgates through Crowdgate:
+        </p>
+        <ul class="list-group">
+          <li class="list-group-item">Fans who love tailgating, but not hosting</li>
+          <li class="list-group-item">Traveling fans from the away team</li>
+          <li class="list-group-item">Alumni groups</li>
+          <li class="list-group-item">Fans who do not have tailgating equipment</li>
+          <li class="list-group-item">Companies entertaining clients</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class="row" style="background-color: #303A48; padding: 50px;">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <h2 class="no-margin-top" style="color: white;">Start getting paid to tailgate</h2>
+    <br>
+    <br>
+    <div class="form-inputs">
+      <%= form_tag('/host_request', :remote => true) do %>
+      <div class="form-group">
+        <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address" required>
+      </div>
+      <input type="submit" value="Become a Host" class="btn btn-success btn-block btn-lg">
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<%= render 'become_host_confirmation_modal' %>
+
