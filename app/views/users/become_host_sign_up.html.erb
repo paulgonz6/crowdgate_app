@@ -1,5 +1,5 @@
-<div class="row" style="height: 70vh; background-image: url('<%= asset_path 'tailgater_background.jpg' %>'); background-size: cover;">
-  <div class="col-md-5 col-md-offset-6" style="background-color: rgba(255,255,255,.7); height: 100%; padding-top: 100px;">
+<div class="row hidden-xs" style="height: 70vh; background-image: url('<%= asset_path 'tailgater_background.jpg' %>'); background-size: cover;">
+  <div class="col-xs-12 col-md-5 col-md-offset-6" style="background-color: rgba(255,255,255,.7); height: 100%; padding-top: 100px;">
     <h1>Make someone's game day</h1>
     <h2>
       Earn money by welcoming fans to your tailgate
@@ -12,6 +12,26 @@
       </div>
       <input type="submit" value="Become a Host" class="btn btn-success btn-block btn-lg">
       <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container visible-xs ">
+  <div class="row text-center">
+    <div class="col-xs-12 col-md-5 col-md-offset-6" style="background-color: rgba(255,255,255,.7); padding-top: 100px;">
+      <h2><strong>Make someone's game day</strong></h2>
+      <h3>
+        Earn money by welcoming fans to your tailgate
+      </h3>
+      <hr/>
+      <div class="form-inputs text-center">
+        <%= form_tag('/host_request', :remote => true) do %>
+        <div class="form-group">
+          <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address" required>
+        </div>
+        <input type="submit" value="Become a Host" class="btn btn-success btn-block btn-lg">
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
@@ -151,10 +171,10 @@
 <%= render 'become_host_confirmation_modal' %>
 
 <script>
-  $(function(){
-    $('.btn').on('click', function() {
-      $(this).val('Play is currently under review...');
-      $(this).addClass('submitting')
-    });
+$(function(){
+  $('.btn').on('click', function() {
+    $(this).val('Play is currently under review...');
+    $(this).addClass('submitting')
   });
+});
 </script>
