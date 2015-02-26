@@ -1,7 +1,16 @@
+# TODO: I would try to go with rest routes (eg. resources) as most as possible here.
+
 Rails.application.routes.draw do
 
 # USER ROUTES =========================================================================
   devise_for :users, :controllers => { registrations: 'users/registrations' }
+
+
+  # TODO: I would try to think in a resource here, the reason why thinking about
+  # resources in Rails is helpful is because it kind of constraints you to make
+  # sure you don't create gigantic controllers that handle more than on thing
+  # A suggestion for a possible resource could be host:
+  # (HostsController with a create action for example)
 
   #CREATE
   get '/become_host_sign_up', :controller   => 'users',
