@@ -19,18 +19,6 @@ class UsersController < ApplicationController
     @tailgates = @user.tailgates
   end
 
-  def become_host_sign_up
-  end
-
-  def create_request_to_host
-    @email = params[:email]
-    BecomeHostMailer.become_host(@email).deliver
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
     def is_user_owner?
       unless (current_user == User.find(params[:id])) || current_user.admin?
