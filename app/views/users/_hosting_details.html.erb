@@ -21,7 +21,7 @@
       <% end %>
     </p>
 
-    <p>Reviews: <%= @user.reviews_about_host.count %></p>
+    <p>Reviews: <%= @user.reviews.count %></p>
     <p>Current take home percentage:
       <% if @user.sales_percentage.present? %>
         <%= number_to_percentage(@user.sales_percentage*100, precision: 0) %>

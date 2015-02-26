@@ -37,11 +37,7 @@ class Booking < ActiveRecord::Base
   end
 
   def refund(charge_id)
-    # TODO: You shouldn't keep keys in your code, take a look on how to use the secret.yml and env vars
-    # Reference links:
-    # ENV Vars on Heroku https://devcenter.heroku.com/articles/config-vars
-    # secrets.yml http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
-    Stripe.api_key = "sk_test_Fogj9Y2IHHGTv0vKAHKsxHDW"
+    Stripe.api_key = ENV['stripe_api_key']
     ch = Stripe::Charge.retrieve(charge_id)
     refund = ch.refunds.create
   end

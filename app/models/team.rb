@@ -1,6 +1,5 @@
 class Team < ActiveRecord::Base
 
-  # TODO: There's no reason to call return explicitly
   # TODO: This looks fragile to me, are you trying to get the team based on
   # the title of the tailgate? If that's the case I think I would go with a
   # regular association instead and if there is situations where the user
@@ -13,7 +12,7 @@ class Team < ActiveRecord::Base
     events.each do |event|
       tailgates += event.tailgates.count
     end
-    return tailgates
+    tailgates
   end
 
 end
