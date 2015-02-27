@@ -1,13 +1,13 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, :only => [:show, :destroy]
 
   def new
-    @tailgate = Tailgate.find(params[:id])
+    @tailgate = Tailgate.find(params[:tailgate_id])
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new
-
     @booking.tailgate_id = params[:tailgate_id]
     @booking.quantity = params[:quantity]
     @booking.user_id = current_user.id
@@ -42,7 +42,6 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
   end
 
   def index
@@ -50,7 +49,6 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking = Booking.find(params[:id])
     charge = @booking.stripe_token
 
     @booking.refund(charge)
@@ -63,6 +61,10 @@ class BookingsController < ApplicationController
 
     flash[:danger] = "You've cancelled your tailgate. We're sorry that you can't make it. You will be refunded in 10 business days."
     redirect_to user_url(@booking.user_id)
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 
 end
