@@ -1,72 +1,79 @@
+<div class="row text-center text-splash static-page-list">
+  <div class="text-splash-content">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>How Booking a Tailgate Works</h1>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <div class="row text-center">
-    <h3><strong>How it works</strong></h3>
-    <h3 class="small modal-text-link"
-    data-toggle="modal"
-    data-target="#video_tutorial">
-    Watch tutorial video <i class="fa fa-youtube-play"></i>
-  </h3>
+    <h3 class="modal-text-link"
+        data-toggle="modal"
+        data-target="#video_tutorial">
+        Watch tutorial video <i class="fa fa-youtube-play"></i>
+    </h3>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <h3><strong>Select a team</strong></h3>
+      <p class="text-justify">
+        Crowdgate is all about making your gameday experience as enjoyable as possible. We truly believe there is nothing quite like a sports town on gameday, and we want to help bring you there. Not only do we show you tailgates for that team, but we provide other resources to help make your gameday go as smooth as possible.
+      </p>
+      <%= link_to ('See all teams <i class="fa fa-angle-right"></i>').html_safe, teams_url %>
+    </div>
+    <div class="col-md-6 text-center">
+      <%= image_tag 'select_team_mac.png', class: 'img-responsive' %>
+    </div>
+  </div>
+  <hr/>
 
-</div>
-<br>
-<br>
-<div class="row">
-  <div class="col-md-6">
-    <h3><strong>Select a team</strong></h3>
-    <p class="text-justify">
-      Crowdgate is all about making your gameday experience as enjoyable as possible. We truly believe there is nothing quite like a sports town on gameday, and we want to help bring you there. Not only do we show you tailgates for that team, but we provide other resources to help make your gameday go as smooth as possible.
-    </p>
-    <%= link_to ('See all teams <i class="fa fa-angle-right"></i>').html_safe, teams_url %>
-  </div>
-  <div class="col-md-6 text-center">
-    <%= image_tag 'select_team_mac.png', class: 'img-responsive' %>
-  </div>
-</div>
-<hr/>
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag 'find_tailgate_mac.png', class: 'img-responsive' %>
+    </div>
+    <div class="col-md-6">
+      <h3><strong>Find a tailgate</strong></h3>
+      <p class="text-justify">
+        Our network of hosts provide some of the best culinary and most enjoyable experiences in parking lots across the country. Whether you need a simple tailgate to just post up before the game, or a full buffet and entertainment package, our hosts provide a wide variety of options. Just choose a tailgate that fits your desire. Also, feel free to reach out to the hosts beforehand if you have any questions or have any special accomodation requests.
 
-<div class="row">
-  <div class="col-md-6">
-    <%= image_tag 'find_tailgate_mac.png', class: 'img-responsive' %>
+        If there are no tailgates listed that interest you, start earning money today by hosting your own tailgates through Crowdgate!
+      </p>
+      <%= link_to ('Learn more about hosting <i class="fa fa-angle-right"></i>').html_safe, new_host_url %>
+    </div>
   </div>
-  <div class="col-md-6">
-    <h3><strong>Find a tailgate</strong></h3>
-    <p class="text-justify">
-      Our network of hosts provide some of the best culinary and most enjoyable experiences in parking lots across the country. Whether you need a simple tailgate to just post up before the game, or a full buffet and entertainment package, our hosts provide a wide variety of options. Just choose a tailgate that fits your desire. Also, feel free to reach out to the hosts beforehand if you have any questions or have any special accomodation requests.
+  <hr/>
 
-      If there are no tailgates listed that interest you, start earning money today by hosting your own tailgates through Crowdgate!
-    </p>
-    <%= link_to ('Learn more about hosting <i class="fa fa-angle-right"></i>').html_safe, new_host_url %>
-  </div>
-</div>
-<hr/>
+  <div class="row">
+    <div class="col-md-6">
+      <h3><strong>Book online</strong></h3>
+      <p>
+        Our online checkout process is secure and easy. Simply enter your billing information and select the number of tickets you want. The rest is taken care of. No more awkward moments of collecting cash at tailgates.
+      </p>
 
-<div class="row">
-  <div class="col-md-6">
-    <h3><strong>Book online</strong></h3>
-    <p>
-      Our online checkout process is secure and easy. Simply enter your billing information and select the number of tickets you want. The rest is taken care of. No more awkward moments of collecting cash at tailgates.
-    </p>
+    </div>
+    <div class="col-md-6">
+      <%= image_tag 'book_now_mac.png', class: 'img-responsive' %>
+    </div>
+  </div>
+  <hr/>
 
-  </div>
-  <div class="col-md-6">
-    <%= image_tag 'book_now_mac.png', class: 'img-responsive' %>
-  </div>
-</div>
-<hr/>
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag 'tailgate_group.jpg', class: 'img-responsive' %>
+    </div>
+    <div class="col-md-6">
+      <h3><strong>Enjoy gameday</strong></h3>
+      <p>
+        The most important step in this process is the last. Tailgate your ass off and have fun. Crowdgate strives to deliver the best gameday experience as possible, and or network of hosts and guests live up to those standards. Even if your team doesn't win on the field, you can still win in the parking lot. Bottoms up!
+      </p>
 
-<div class="row">
-  <div class="col-md-6">
-    <%= image_tag 'tailgate_group.jpg', class: 'img-responsive' %>
+    </div>
   </div>
-  <div class="col-md-6">
-    <h3><strong>Enjoy gameday</strong></h3>
-    <p>
-      The most important step in this process is the last. Tailgate your ass off and have fun. Crowdgate strives to deliver the best gameday experience as possible, and or network of hosts and guests live up to those standards. Even if your team doesn't win on the field, you can still win in the parking lot. Bottoms up!
-    </p>
-
-  </div>
-</div>
 </div>
 
 <!-- Modals -->
