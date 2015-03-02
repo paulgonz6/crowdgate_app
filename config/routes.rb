@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for  :users, :controllers => { registrations: 'users/registrations' }
+  devise_for  :users, :controllers =>
+                          { registrations: 'users/registrations',
+                            sessions: 'users/sessions' }
+
   resources   :users, :only => ['index', 'show']
   resources   :hosts, :only => ['new', 'create']
 
@@ -22,7 +25,7 @@ Rails.application.routes.draw do
   resources   :events
 
 # STATIC PAGE ROUTES =========================================================================
-  root "hosts#new"
+  root "static_pages#landing_page"
 
   get '/static_pages/landing_page' => 'static_pages#landing_page'
 
@@ -30,7 +33,13 @@ Rails.application.routes.draw do
                               :action => 'faq',
                               :as => 'faq'
 
+  get '/how_it_works',        :controller => 'static_pages',
+                              :action => 'how_it_works',
+                              :as => 'how_it_works'
+
   get '/testing_page' => "static_pages#testing_page"
+
+
 
 # EVENTS ROUTES ==============================================================================
 

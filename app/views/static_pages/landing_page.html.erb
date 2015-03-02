@@ -3,102 +3,32 @@
     <div class="landing-text">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h1>Discover tailgates to join</h1>
+          <h1>Have more fun tailgating with Crowdgate</h1>
           <h3 class="subtext">
-            Hassle-free tailgating is here. No planning, no preparing, no clean up. All you need to worry about is having fun on gameday.
+            With Crowdgate, you get access to some of the best, and most unique, tailgates across the country. Now your only job on game day is to have fun.
           </h3>
+          <br>
         </div>
       </div>
-      <br>
-      <br>
-      <div class="row">
-        <%= form_tag('/search_teams', :method => 'get') do %>
-        <div class="col-md-4 col-md-offset-3 landing-search">
-          <input type="text" name="name" class='form-control landing-search-fields', placeholder="Search for your team">
-        </div>
-
-        <div class="col-md-2 landing-search">
-          <input type="submit" value="Find Tailgates" class="btn btn-primary landing-search-fields">
-        </div>
-        <% end %>
-      </div>
-      <br>
-      <p><%= link_to "Can't find your team? Click here to see all available teams", teams_url, class: 'helper-link' %></p>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <div class="row text-center">
-    <h3><strong>How it works</strong></h3>
-
-    <h3 class="small modal-text-link"
-        data-toggle="modal"
-        data-target="#video_tutorial">
-      Watch tutorial video <i class="fa fa-youtube-play"></i>
-    </h3>
-
-  </div>
-  <br>
-  <br>
   <div class="row">
-    <div class="col-md-6">
-      <h3><strong>Select a team</strong></h3>
-      <p class="text-justify">
-        Crowdgate is all about making your gameday experience as enjoyable as possible. We truly believe there is nothing quite like a sports town on gameday, and we want to help bring you there. Not only do we show you tailgates for that team, but we provide other resources to help make your gameday go as smooth as possible.
-      </p>
-      <%= link_to ('See all teams <i class="fa fa-angle-right"></i>').html_safe, teams_url %>
-    </div>
-    <div class="col-md-6 text-center">
-      <%= image_tag 'select_team_mac.png', class: 'img-responsive' %>
-    </div>
-  </div>
-  <hr/>
-
-  <div class="row">
-    <div class="col-md-6">
-      <%= image_tag 'find_tailgate_mac.png', class: 'img-responsive' %>
-    </div>
-    <div class="col-md-6">
-      <h3><strong>Find a tailgate</strong></h3>
-      <p class="text-justify">
-        Our network of hosts provide some of the best culinary and most enjoyable experiences in parking lots across the country. Whether you need a simple tailgate to just post up before the game, or a full buffet and entertainment package, our hosts provide a wide variety of options. Just choose a tailgate that fits your desire. Also, feel free to reach out to the hosts beforehand if you have any questions or have any special accomodation requests.
-
-        If there are no tailgates listed that interest you, start earning money today by hosting your own tailgates through Crowdgate!
-      </p>
-      <%= link_to ('Learn more about hosting <i class="fa fa-angle-right"></i>').html_safe, become_host_url %>
-    </div>
-  </div>
-  <hr/>
-
-  <div class="row">
-    <div class="col-md-6">
-      <h3><strong>Book online</strong></h3>
-      <p>
-        Our online checkout process is secure and easy. Simply enter your billing information and select the number of tickets you want. The rest is taken care of. No more awkward moments of collecting cash at tailgates.
-      </p>
-
-    </div>
-    <div class="col-md-6">
-      <%= image_tag 'book_now_mac.png', class: 'img-responsive' %>
-    </div>
-  </div>
-  <hr/>
-
-  <div class="row">
-    <div class="col-md-6">
-      <%= image_tag 'tailgate_group.jpg', class: 'img-responsive' %>
-    </div>
-    <div class="col-md-6">
-      <h3><strong>Enjoy gameday</strong></h3>
-      <p>
-        The most important step in this process is the last. Tailgate your ass off and have fun. Crowdgate strives to deliver the best gameday experience as possible, and or network of hosts and guests live up to those standards. Even if your team doesn't win on the field, you can still win in the parking lot. Bottoms up!
-      </p>
-
+    <div class="col-md-8 text-center">
+      <h3><strong>Featured Tailgates</strong></h3>
+      <div class="row">
+        <div class="col-md-4" style="border: 1px solid red; height: 150px;">
+          Southern Hospitality
+        </div>
+        <div class="col-md-4">
+          Chicago Style Tailgating
+        </div>
+        <div class="col-md-4">
+          Your Personal 12th Man
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-<!-- Modals -->
-<%= render 'video_tutorial_booking' %>
-

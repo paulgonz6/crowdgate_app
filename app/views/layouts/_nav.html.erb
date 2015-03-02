@@ -13,15 +13,30 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+        <%= form_tag( '/search_teams',
+                      class: 'navbar-form navbar-left',
+                      :method => 'get') do %>
 
+          <div class="input-group">
+            <input  type="text" name="name"
+                    class='form-control landing-search-fields'
+                    placeholder="Search for your team">
+            <span class="input-group-btn">
+              <input  type="submit"
+                      value="Find Tailgates"
+                      class="btn btn-primary landing-search-fields">
+            </span>
+          </div>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <% if current_user.present? && current_user.host_status? %>
         <li><%= link_to "List a Tailgate", new_tailgate_url%></li>
         <% else %>
         <li><%= link_to "Become a Host", new_host_url%></li>
         <% end %>
 
-        <li><%= link_to "FAQ", faq_url %></li>
+        <li><%= link_to "How It Works", how_it_works_url %></li>
 
         <% if current_user.present? && current_user.admin? %>
         <li class="dropdown">
