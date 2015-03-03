@@ -12,7 +12,7 @@ class TailgatesController < ApplicationController
   def create
     @events = Event.all
     @tailgate = type_class.new(tailgate_params)
-    @tailgate.user_id = current_user.id
+    @tailgate.host_id = current_user.id
     @tailgate.current_size = params["#{@type.underscore}"]["original_size"]
 
     if @tailgate.save

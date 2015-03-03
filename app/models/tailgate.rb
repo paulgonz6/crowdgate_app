@@ -1,6 +1,6 @@
 class Tailgate < ActiveRecord::Base
   belongs_to  :event
-  belongs_to  :host, :class_name => "User", :foreign_key => "user_id"
+  belongs_to  :host, :class_name => "User", :foreign_key => "host_id"
   has_many    :guests, :through => "tickets_sold", :source => "user"
   has_many    :reviews
   has_many    :tickets_sold,
@@ -8,7 +8,7 @@ class Tailgate < ActiveRecord::Base
                 :foreign_key => "tailgate_id",
                 :dependent => :destroy
 
-  validates_presence_of :event, :user, :name
+  validates_presence_of :event, :host, :name
 
   scope :free_tailgates,      -> { where(:type => 'FreeTailgate') }
   scope :paid_tailgates,      -> { where(:type => 'PaidTailgate') }

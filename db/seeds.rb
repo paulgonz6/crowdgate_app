@@ -1,11 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
 require 'json'
 require 'open-uri'
 require 'time'
 
-ActiveRecord::Base.transaction do
 
 # USER SEED ==============================
 User.destroy_all
@@ -106,7 +102,7 @@ Tailgate.destroy_all
   size = rand(1..50)
   PaidTailgate.create!( name: tailgate_names.sample,
                     description: "Our tailgates have been voted the best at Penn State. We always have regular tailgate food- burgers, hot dogs, etc. We also make salads and chili. We tend to get into some intense corn hole games, and we always keep the beers flowing.",
-                    user_id: users.pluck(:id).sample,
+                    host_id: users.pluck(:id).sample,
                     event_id: events.pluck(:id).sample,
                     original_size: size,
                     current_size: size,
@@ -137,13 +133,11 @@ puts "#{tailgates.count} tailgates have been created"
 Review.destroy_all
 250.times{
  Review.create!(  user_id: users.pluck(:id).sample,
-  tailgate_id: tailgates.pluck(:id).sample,
-  rating: rand(3..5),
-  review: "This host was phenomenal. They did a great job of being communicative before the event, and actually handle our special requests. On gameday, they were a lot of fun and went out of their way to make sure we were having a great time. All around a great experience, would definitely use this host again."
-  )
+                  tailgate_id: tailgates.pluck(:id).sample,
+                  rating: rand(3..5),
+                  review: "This host was phenomenal. They did a great job of being communicative before the event, and actually handle our special requests. On gameday, they were a lot of fun and went out of their way to make sure we were having a great time. All around a great experience, would definitely use this host again."
+                )
 }
-
-end
 
 puts "#{Review.all.count} reviews have been created"
 

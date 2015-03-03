@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224135914) do
+ActiveRecord::Schema.define(version: 20150303032913) do
 
   create_table "bookings", force: true do |t|
     t.datetime "created_at",                                                 null: false
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20150224135914) do
     t.boolean "tailgate_games"
     t.boolean "food"
     t.integer "event_id"
-    t.integer "user_id"
     t.string  "image_1"
     t.string  "image_2"
     t.string  "image_3"
@@ -72,6 +71,7 @@ ActiveRecord::Schema.define(version: 20150224135914) do
     t.string  "type"
     t.integer "original_size"
     t.integer "current_size"
+    t.integer "host_id"
   end
 
   create_table "teams", force: true do |t|

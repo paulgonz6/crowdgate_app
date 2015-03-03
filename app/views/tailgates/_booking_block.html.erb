@@ -18,7 +18,7 @@
     <p><%= @tailgate.current_size %> Spots Remaining</p>
 
   <% if @tailgate.current_size > 0 %>
-    <p class="btn btn-primary btn-block"><%= link_to "RSVP Now", '#' %></p>
+    <p class="btn btn-primary btn-block"><%= link_to "RSVP Now", new_tailgate_booking_url(@tailgate.id) %></p>
   <% else %>
     <p class="btn btn-default btn-block"><%= link_to "SOLD OUT", "#" %></p>
   <% end %>

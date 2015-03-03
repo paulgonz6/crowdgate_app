@@ -1,0 +1,35 @@
+<div  class= "row hidden-xs landing-splash"
+      style= "background-image: url('<%= asset_path 'tailgater_background.jpg' %>');
+              background-size: cover;">
+
+  <div  class="landing-page-filter">
+
+    <div  class="col-xs-12 col-md-8 col-md-offset-2 text-center"
+          style="height: 100%; padding-top: 100px; color: white;">
+
+    <h1>Make someone's game day</h1>
+    <h2>Earn money by welcoming fans to your tailgate</h2>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <hr/>
+          <div class="form-inputs">
+            <%= form_tag('/hosts', :remote => true) do %>
+              <div class="form-group">
+                <input  type="email" name="email"
+                        class="form-control text-center form-input-fields"
+                        placeholder="Enter your email address"
+                        required >
+              </div>
+
+              <input  type="submit"
+                      value="Become a Host"
+                      class="btn btn-success btn-block btn-lg" >
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container visible-xs ">
+  <div class="row text-center">
+    <div class="col-xs-12 col-md-5 col-md-offset-6" style="background-color: rgba(255,255,255,.7); padding-top: 100px;">
+      <h2><strong>Make someone's game day</strong></h2>
+      <h3>
+        Earn money by welcoming fans to your tailgate
+      </h3>
+      <hr/>
+      <div class="form-inputs text-center">
+        <%= form_tag('/host_request', :remote => true) do %>
+        <div class="form-group">
+          <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address" required>
+        </div>
+        <input type="submit" value="Become a Host" class="btn btn-success btn-block btn-lg">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

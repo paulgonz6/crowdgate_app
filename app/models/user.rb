@@ -2,9 +2,22 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many  :tailgates, dependent: :destroy
-  has_many  :sales, :through => 'tailgates', :source => 'tickets_sold'
-  has_many  :reviews, :through => "tailgates"
+  has_many  :tailgates,
+              :class_name => "Tailgate",
+              :foreign_key => "host_id",
+              :dependent => :destroy
+
+  has_many  :sales,
+              :through => 'tailgates',
+              :source => 'tickets_sold'
+
+  has_many  :written_reviews,
+              :through => "tailgates",
+              :source => "reviews"
+
+  has_many  :reviews_as_host,
+              :through => ''
+
   has_many  :tickets_purchased,
               :class_name => "Booking",
               :foreign_key => "user_id"

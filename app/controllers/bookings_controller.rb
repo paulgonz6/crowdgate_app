@@ -27,17 +27,6 @@ class BookingsController < ApplicationController
     @booking.save
 
     redirect_to booking_url(@booking.id)
-    # respond_to do |format|
-    #   if @booking.save
-    #     # Tell the UserMailer to send a welcome email after save
-    #     BookingMailer.receipt_email(@booking).deliver_later
-    #     format.html { redirect_to @booking }
-    #     format.json { render json: @booking, status: :created, location: @booking }
-    #   else
-    #     format.html { render action: 'bookings/new' }
-    #     format.json { render json: @booking.errors, status: :unprocessable_entity }
-    #   end
-    # end
 
   end
 
