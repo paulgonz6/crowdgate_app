@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   before_action :set_booking, :only => [:show, :destroy]
+  before_action :set_tailgate, :only => [:new, :show]
 
   def new
-    @tailgate = Tailgate.find(params[:tailgate_id])
     @booking = Booking.new
   end
 
@@ -26,8 +26,7 @@ class BookingsController < ApplicationController
 
     @booking.save
 
-    redirect_to booking_url(@booking.id)
-
+    redirect_to tailgate_booking_url(@booking.tailgate_id, @booking.id)
   end
 
   def show
@@ -54,6 +53,10 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def set_tailgate
+    @tailgate = Tailgate.find(params[:tailgate_id])
   end
 
 end

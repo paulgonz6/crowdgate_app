@@ -8,6 +8,12 @@
 
 <br>
 
+<%= f.phone_field :phone, autofocus: true,
+    class: 'form-control form-input-fields',
+    placeholder: "Mobile phone number" %>
+
+<br>
+
 <%= f.password_field :password, autocomplete: "off",
     class: 'form-control form-input-fields',
     placeholder: "Password (8 characters minimum)" %>
@@ -20,10 +26,8 @@
 
 <hr/>
 
-<p  class="modal-text-link" data-toggle="modal" data-target="#log-in-modal">
-    <a>Already have an account? Log In Now</a>
+<p class="modal-text-link" data-toggle="modal" data-target="#log-in-modal">
+  <a>Already have an account? Log In Now</a>
 </p>
-
-<br>
 
 <% end %>
