@@ -4,29 +4,30 @@
   </div>
   <div class="panel-body">
     <p>Status:
-      <% if @user.host_status %>
-      Approved
-      <% else %>
-      Request approval
-      <% end %>
+      <%= @user.host_status ? "Approved" : (link_to 'Request Approval', new_host_url) %>
     </p>
-    <p>Hosting Experience: <%= pluralize(@user.tailgates.count, 'tailgate') %></p>
-    <p>Description: <%= @user.description %> </p>
+    <% if @user.host_status %>
+      <p>
+        Hosting Experience: <%= pluralize(@user.tailgates.count, 'tailgate') %>
+      </p>
+      <p>
+        Description: <%= @user.description %>
+      </p>
 
-    <p>Rating:
-      <% if @user.star_rating.nil? %>
-        No Rating
-      <% else %>
-        <%= @user.star_rating %>
-      <% end %>
-    </p>
+      <p>Rating:
+        <%= @user.star_rating.nil? ? "No Rating" : @user.star_rating %>
+      </p>
 
-    <p>Reviews: <%= @user.reviews.count %></p>
-    <p>Current take home percentage:
-      <% if @user.sales_percentage.present? %>
+      <p>
+        Reviews: <%= @user.reviews_as_host.count %>
+      </p>
+      <p>
+        Sales Percentage:
         <%= number_to_percentage(@user.sales_percentage*100, precision: 0) %>
-      <% end %>
-    </p>
-    <p>Total earnings: <%= number_to_currency(@user.sales.sum(:amount)) %></p>
+      </p>
+      <p>
+        Total earnings: <%= number_to_currency(@user.sales.sum(:amount)) %>
+      </p>
+    <% end %>
   </div>
 </div>

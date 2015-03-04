@@ -1,32 +1,23 @@
 class BookingsController < ApplicationController
   before_action :set_booking, :only => [:show, :destroy]
-  before_action :set_tailgate, :only => [:new, :show]
+  before_action :set_tailgate, :only => [:new, :show, :create]
 
   def new
-    @booking = Booking.new
+    @booking = Booking.new(:tailgate => @tailgate)
   end
 
   def create
-    @booking = Booking.new
-    @booking.tailgate_id = params[:tailgate_id]
-    @booking.quantity = params[:quantity]
-    @booking.user_id = current_user.id
+    @booking = Booking.new(booking_params)
+    @booking.tailgate = @tailgate
+    @booking.set_buyer(current_user)
+    @booking.set_amounts_and_fees(params)
 
-    tickets_total = @booking.quantity * Tailgate.find(@booking.tailgate_id).price
-
-    taxes = tickets_total * 0.10
-    fees = ((tickets_total + taxes)*0.029) + 0.30
-    @booking.amount = (tickets_total + taxes + fees)
-
-    @booking.process_payment(params[:stripeToken], @booking.amount)
-
-    tailgate = Tailgate.find(@booking.tailgate_id)
-    tailgate.current_size -= @booking.quantity
-    tailgate.save
-
-    @booking.save
-
-    redirect_to tailgate_booking_url(@booking.tailgate_id, @booking.id)
+    if @booking.save
+      @booking.adjust_tailgate_size
+      redirect_to tailgate_booking_url(@booking.tailgate_id, @booking.id)
+    else
+      redirect_to :back, :notice => "Someting went wrong"
+    end
   end
 
   def show
@@ -51,12 +42,17 @@ class BookingsController < ApplicationController
     redirect_to user_url(@booking.user_id)
   end
 
-  def set_booking
-    @booking = Booking.find(params[:id])
-  end
+  private
+    def set_booking
+      @booking = Booking.find(params[:id])
+    end
 
-  def set_tailgate
-    @tailgate = Tailgate.find(params[:tailgate_id])
-  end
+    def set_tailgate
+      @tailgate = Tailgate.find(params[:tailgate_id])
+    end
 
+    def booking_params
+      params.require(:booking).permit(:quantity, :email, :phone,
+                                      :donation_amount, :checkout_as_guest)
+    end
 end

@@ -12,22 +12,27 @@
       </h4>
     </div>
   </div>
-  <div class="row">
-    <%= form_for( [@tailgate, @booking],
-                  :url => tailgate_bookings_url,
-                  :html => {:class => "form", :id => "payment-form"},) do %>
+  <% unless @tailgate.class == FreeTailgate %>
+    <div class="row">
+      <%= form_for( [@tailgate, @booking],
+                    :url => tailgate_bookings_url,
+                    :html => {:class => "form", :id => "payment-form"},) do |f| %>
 
-      <% if user_signed_in? %>
-        <%= render 'checkout_logged_in', { :@booking => @booking } %>
-
-      <% else %>
-        <%= render 'checkout_new_user', { :@booking => @booking } %>
-
+        <% if user_signed_in? %>
+          <%= render 'checkout_logged_in', { :@booking => @booking, :f => f } %>
+        <% else %>
+          <%= render 'checkout_new_user', { :@booking => @booking, :f => f } %>
+        <% end %>
       <% end %>
-
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <%= render 'rsvp_block', { :@booking => @booking } %>
+    </div>
+  <% end %>
 </div>
+
+
 
 
 <% content_for :bottom do %>
@@ -40,7 +45,7 @@ var stripeResponseHandler = function(status, response) {
   if (response.error) {
         // Show the errors on the form
         $form.find('.payment-errors').text(response.error.message);
-        $form.find('button').prop('disabled', false);
+        $form.find('button', '#buttonStripe').prop('disabled', false);
       } else {
         // token contains id, last4, and card type
         var token = response.id;
@@ -57,7 +62,7 @@ var stripeResponseHandler = function(status, response) {
         var $form = $(this);
 
         // Disable the submit button to prevent repeated clicks
-        $form.find('button').prop('disabled', true);
+        $form.find('button', '#buttonStripe').prop('disabled', true);
 
         Stripe.card.createToken($form, stripeResponseHandler);
 

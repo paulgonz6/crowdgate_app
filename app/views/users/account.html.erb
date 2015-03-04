@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row row-page-start">
+    <aside>
+      <div class="col-md-3 col-md-offset-1">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= current_user.name %></h3>
+          </div>
+          <div class="panel-body text-center">
+            <%= image_tag current_user.image, :class => "img-responsive thumbnail" %>
+            <a href="mailto:paul@crowdgate.us">Edit Profile</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="col-md-7 profile-information">
+      <div id="account_details">
+        <%= render 'account_details', { :@user => current_user } %>
+      </div>
+      <div id="purchase_history">
+        <%= render 'purchase_history', { :@user => current_user } %>
+      </div>
+      <div id="hosting_details">
+        <%= render 'hosting_details', { :@user => current_user } %>
+      </div>
+      <% if current_user.host_status %>
+        <div id="hosting_history">
+          <%= render 'hosting_history', { :@user => current_user } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

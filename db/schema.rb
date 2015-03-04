@@ -11,17 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303032913) do
+ActiveRecord::Schema.define(version: 20150304213301) do
 
   create_table "bookings", force: true do |t|
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
-    t.integer  "user_id"
-    t.boolean  "valid_transaction",                          default: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.integer  "tailgate_id"
     t.string   "stripe_token"
     t.integer  "quantity"
-    t.decimal  "amount",            precision: 10, scale: 4
+    t.decimal  "stripe_fees",       precision: 10, scale: 4, default: 0.0
+    t.decimal  "total_price",       precision: 10, scale: 4, default: 0.0
+    t.decimal  "donation_amount",   precision: 10, scale: 4, default: 0.0
+    t.integer  "buyer_id"
+    t.string   "email"
+    t.string   "phone"
+    t.boolean  "checkout_as_guest"
+    t.decimal  "ticket_sales",      precision: 10, scale: 4, default: 0.0
   end
 
   create_table "events", force: true do |t|
@@ -82,29 +87,30 @@ ActiveRecord::Schema.define(version: 20150303032913) do
     t.datetime "updated_at",       null: false
     t.string   "logo"
     t.string   "color"
+    t.string   "sport"
   end
 
   create_table "users", force: true do |t|
-    t.datetime "created_at",                                                  null: false
-    t.datetime "updated_at",                                                  null: false
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
     t.string   "name"
     t.string   "image"
     t.boolean  "admin"
     t.string   "stripe_customer_id"
     t.boolean  "host_status"
     t.text     "description"
-    t.string   "email",                                          default: "", null: false
-    t.string   "encrypted_password",                             default: "", null: false
+    t.string   "email",                                          default: "",  null: false
+    t.string   "encrypted_password",                             default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                  default: 0,  null: false
+    t.integer  "sign_in_count",                                  default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "phone"
-    t.decimal  "sales_percentage",       precision: 6, scale: 5
+    t.decimal  "sales_percentage",       precision: 6, scale: 5, default: 0.8
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

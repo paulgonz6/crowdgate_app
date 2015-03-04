@@ -2,7 +2,38 @@ require 'stripe'
 
 class Booking < ActiveRecord::Base
   belongs_to :tailgate
-  belongs_to :buyer, :class_name => "User", :foreign_key => "user_id"
+  belongs_to :buyer, :class_name => "User", :foreign_key => "buyer_id"
+
+  def set_buyer(current_user)
+    unless checkout_as_guest
+      self.buyer = current_user
+    end
+  end
+
+  def set_amounts_and_fees(params)
+    set_ticket_sales
+
+    if ticket_sales > 0
+      set_stripe_fees
+    end
+
+    self.total_price = ticket_sales + stripe_fees
+
+    process_payment(params[:stripeToken], total_price)
+
+  end
+
+  def set_ticket_sales
+    if tailgate.type == "FreeTailgate"
+      self.ticket_sales = donation_amount.to_f
+    else
+      self.ticket_sales = quantity * tailgate.price.to_f
+    end
+  end
+
+  def set_stripe_fees
+    self.stripe_fees = ((ticket_sales*0.029) + 0.30).to_f
+  end
 
   def process_payment(stripe_token, amount)
     Stripe.api_key = ENV['stripe_api_key']
@@ -28,22 +59,16 @@ class Booking < ActiveRecord::Base
     self.stripe_token = @charge["id"]
   end
 
-  # TODO: Looks like you are not using this method but if you do I would move it
-  # to the user model (or even call user.stripe_id = customer_id straigh from the controllers)
-  def save_stripe_customer_id(user_id, customer_id)
-    user = User.find(user_id)
-    user.stripe_id = customer_id
-    user.save
-  end
-
   def refund(charge_id)
     Stripe.api_key = ENV['stripe_api_key']
     ch = Stripe::Charge.retrieve(charge_id)
     refund = ch.refunds.create
   end
 
-  def send_mailer
+  def adjust_tailgate_size
+    tailgate = self.tailgate
+    tailgate.current_size -= self.quantity
+    tailgate.save
   end
-
 
 end

@@ -1,0 +1,63 @@
+<div class="col-md-4 col-md-offset-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">RSVP</h3>
+    </div>
+    <div class="panel-body">
+
+      <%= form_for( [@tailgate, @booking],
+                    :url => tailgate_bookings_url,
+                    :html => {:class => "form", :id => "payment-form"}) do |f| %>
+
+        <% unless current_user.present? %>
+          <div class="checkbox">
+            <label>
+              <%= f.check_box :checkout_as_guest, :checked => true %>
+              Checkout as guest
+            </label><br>
+            <small>or
+              <span>  <%= link_to "Log In", "#",  :remote => :true,
+                                                  :class => "modal-text-link",
+                                                  "data-toggle" => "modal",
+                                                  "data-target" => "#log-in-modal"  %> </span>
+            </small>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :phone, "Mobile Phone Number" %>
+            <%= f.text_field :phone, class: 'form-control' %>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :quantity, "How many tickets do you want?" %>
+          <%= f.select :quantity,
+                        options_for_select(1..@tailgate.current_size),
+                        {},
+                        :class => 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :donation_amount, "How much would you like to donate?" %>
+          <%= f.text_field :donation_amount, class: 'form-control' %>
+        </div>
+
+        <%= render 'credit_card_details' %>
+
+        <hr/>
+        <%= f.submit class: 'btn btn-primary btn-block', id: "buttonStripe" %>
+        <br>
+        <% if current_user.present? %>
+          <p class="text-center">
+            <small>Your receipt will be emailed to <%= current_user.email %></small>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

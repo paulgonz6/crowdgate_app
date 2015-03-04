@@ -3,24 +3,25 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many  :tailgates,
-              :class_name => "Tailgate",
+              :class_name => 'Tailgate',
               :foreign_key => "host_id",
               :dependent => :destroy
+
+  has_many  :written_reviews,
+              :class_name => "Review",
+              :foreign_key => "user_id"
+
+  has_many  :tickets_purchased,
+              :class_name => "Booking",
+              :foreign_key => "user_id"
 
   has_many  :sales,
               :through => 'tailgates',
               :source => 'tickets_sold'
 
-  has_many  :written_reviews,
-              :through => "tailgates",
-              :source => "reviews"
-
   has_many  :reviews_as_host,
-              :through => ''
-
-  has_many  :tickets_purchased,
-              :class_name => "Booking",
-              :foreign_key => "user_id"
+              :through => 'tailgates',
+              :source => 'reviews'
 
   def star_rating
     values = Review.where(:tailgate_id => self.tailgates.ids).pluck(:rating)
@@ -29,7 +30,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def hosting_experience
+  def experience
     tailgates.count
   end
 

@@ -30,7 +30,7 @@
   <p class="btn btn-default btn-block"><%= link_to "SOLD OUT", "#" %></p>
   <% else %>
   <p class="btn btn-primary btn-block">
-    <%= link_to "Book Now", new_booking_url(@tailgate.id) %>
+    <%= link_to "Book Now", new_tailgate_booking_url(@tailgate.id) %>
   </p>
   <% end %>
   <% end %>

@@ -2,19 +2,32 @@
   <div class="panel-heading">
     <h3 class="panel-title">Purchases</h3>
   </div>
+  <% if @user.tickets_purchased.count > 0 %>
+  <ul class="list-group">
+    <% @user.tickets_purchased.each_with_index do |ticket, i| %>
+    <li class="list-group-item">
+      <%= number_to_currency(ticket.amount) %> for "<%= ticket.tailgate.name %>"
+      <br>
+      <em><%= ticket.quantity %> tickets</em>
+      <small>
+        <%= link_to "View", tailgate_url(ticket.tailgate_id),
+                            :method => "get" %>
+      </small>
+      <small>
+        <%= link_to "Refund", booking_url(ticket.id),
+                              :method => "Delete",
+                              :data => { :confirm => "Are you sure you want to cancel this tailgate? You may not be eligible for a refund. Please check our refund policy."} %>
+      </small>
+      <br>
+      <br>
+    </li>
+    <% end %>
+  </ul>
+  <% else %>
   <div class="panel-body">
-    <ol class="">
-      <% @user.tickets_purchased.each_with_index do |ticket, i| %>
-      <li class="">
-        <%= number_to_currency(ticket.amount) %> for "<%= ticket.tailgate.name %>" <br>
-        <em><%= ticket.quantity %> tickets</em>
-        | <small><%= link_to "View", tailgate_url(ticket.tailgate_id), :method => "get" %></small>
-        | <small><%= link_to "Refund", booking_url(ticket.id), :method => "Delete", :data => { :confirm => "Are you sure you want to cancel this tailgate? You may not be eligible for a refund. Please check our refund policy."} %></small>
-        <!-- | <small><%= link_to "Share", booking_url(ticket.id), :method => "Delete" %></small> --> |
-        <br>
-        <br>
-      </li>
-      <% end %>
-    </ol>
+    <p>
+      You have yet to book any tailgates.
+    </p>
   </div>
+  <% end %>
 </div>

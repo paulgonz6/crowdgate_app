@@ -1,0 +1,34 @@
+Bookings model
+
+Tailgates
+  Free Tailgates
+    Booking- RSVP
+      Presence:
+        # tailgate_id
+        # quantity
+        buyer_id || checkout_as_guest = TRUE && Phone and Email
+
+      Optional: Donation
+        If donation is present then stripe frees, total price, and stripe token must be present
+
+  Paid Tailgates
+    Booking- Tickets
+      Presence:
+        tailgate_id
+        quantity
+        buyer_id || checkout_as_guest = TRUE && Phone and Email
+        stripe_fees
+        total_price
+        stripe_token
+
+
+  Packaged Tailgates
+    Booking- Ticket
+      Presence:
+        tailgate_id
+        quantity == 1
+        buyer_id || checkout_as_guest = TRUE && Phone and Email
+        stripe_fees
+        total_price
+        stripe_token
+

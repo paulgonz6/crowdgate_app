@@ -5,6 +5,10 @@ Rails.application.routes.draw do
                             sessions: 'users/sessions' }
 
   resources   :users, :only => ['index', 'show']
+  get '/account',             :controller => 'users',
+                              :action => 'account',
+                              :as => 'account'
+
   resources   :hosts, :only => ['new', 'create']
 
   resources   :tailgates do
