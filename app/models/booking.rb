@@ -19,7 +19,7 @@ class Booking < ActiveRecord::Base
 
     self.total_price = ticket_sales + stripe_fees
 
-    process_payment(params[:stripeToken], total_price)
+    process_payment(params[:stripeToken], total_price, set_description)
 
   end
 
@@ -35,7 +35,14 @@ class Booking < ActiveRecord::Base
     self.stripe_fees = ((ticket_sales*0.029) + 0.30).to_f
   end
 
-  def process_payment(stripe_token, amount)
+  def set_description
+    email = self.buyer.email || self.email
+    event = self.tailgate.event.name
+    tailgate = self.tailgate_id
+    return "#{email} bought a ticket for tailgate # #{tailgate}, at #{event}"
+  end
+
+  def process_payment(stripe_token, amount, description)
     Stripe.api_key = ENV['stripe_api_key']
 
     # TODO: If you keep a rescue like this your code will be like a blackhole
@@ -49,7 +56,7 @@ class Booking < ActiveRecord::Base
         :amount => (amount * 100).to_i, # amount in cents, again
         :currency => "usd",
         :card => stripe_token,
-        :description => "payinguser@example.com"
+        :description => description
       )
 
     rescue Stripe::CardError => e

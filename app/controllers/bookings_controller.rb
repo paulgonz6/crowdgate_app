@@ -14,6 +14,8 @@ class BookingsController < ApplicationController
 
     if @booking.save
       @booking.adjust_tailgate_size
+      # MailerToHost
+      # ReceiptToBuyer
       redirect_to tailgate_booking_url(@booking.tailgate_id, @booking.id)
     else
       redirect_to :back, :notice => "Someting went wrong"

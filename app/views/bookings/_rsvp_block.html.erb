@@ -1,4 +1,4 @@
-<div class="col-md-4 col-md-offset-4">
+<div class="col-xs-12 col-md-4 col-md-offset-4">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">RSVP</h3>
@@ -42,15 +42,32 @@
                         :class => 'form-control' %>
         </div>
 
-        <div class="form-group">
-          <%= f.label :donation_amount, "How much would you like to donate?" %>
-          <%= f.text_field :donation_amount, class: 'form-control' %>
+        <p class='btn donation-button' style="white-space: normal;">
+          Click here to add a donation for this tailgate
+        </p>
+
+        <div id="donation_block" style="display:none;">
+          <hr/>
+
+          <div class="form-group">
+            <%= f.label :donation_amount, "How much would you like to donate?",
+                        class: "control-label" %>
+            <div class="input-group">
+              <div class="input-group-addon">$</div>
+              <%= f.text_field :donation_amount, class: 'form-control'  %>
+              <div class="input-group-addon">.00</div>
+            </div>
+          </div>
+          <p>
+            A 4% transaction fee is added to all online donations.
+            The total amount charged to your card will be $<span id="total_charge">0.00</span>
+          </p>
+
+          <%= render 'credit_card_details' %>
         </div>
 
-        <%= render 'credit_card_details' %>
-
         <hr/>
-        <%= f.submit class: 'btn btn-primary btn-block', id: "buttonStripe" %>
+        <%= f.submit 'Send RSVP', class: 'btn btn-primary btn-block', id: "buttonStripe" %>
         <br>
         <% if current_user.present? %>
           <p class="text-center">
@@ -61,3 +78,24 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+
+  var main = function() {
+    $('.donation-button').click(function() {
+      $('#donation_block').slideToggle();
+    });
+  };
+
+  $('#booking_donation_amount, #total_charge').change(function() {
+
+    var donation = $("#booking_donation_amount").val();
+    total_charge = ((donation)*1.029) + 0.30
+
+    $( "#total_charge" ).text(total_charge.toFixed(2));
+  });
+
+  $(document).ready(main);
+
+</script>
