@@ -1,14 +1,14 @@
-<div class="col-md-4">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Checkout</h3>
-    </div>
-    <div class="panel-body text-center">
-      <%= render 'bookings/total_amount' %>
-      <input  type="hidden" name="tailgate_id" value="<%= @tailgate.id %>">
-      <button type="submit" class="btn btn-primary btn-block">
-        Submit Payment
-      </button>
-    </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Checkout</h3>
+  </div>
+  <div class="panel-body text-center">
+    <%= render 'bookings/total_amount' %>
+    <input  type="hidden" name="tailgate_id" value="<%= @tailgate.id %>">
+    <button type="submit" class="btn btn-primary btn-block">
+      Submit Payment
+    </button>
   </div>
 </div>
+
