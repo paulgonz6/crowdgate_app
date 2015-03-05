@@ -8,18 +8,20 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.tailgate = @tailgate
-    @booking.set_buyer(current_user)
-    @booking.set_amounts_and_fees(params)
+    @booking.save
+    status = @booking.process_booking(@tailgate,current_user,params[:stripeToken])
 
-    if @booking.save
-      @booking.adjust_tailgate_size
-      # MailerToHost
-      # ReceiptToBuyer
+    if status.nil?
+      @booking.save
+      #MailerToHost
+      #MailerToBuyer
+      #MailerToAdmin
       redirect_to tailgate_booking_url(@booking.tailgate_id, @booking.id)
     else
-      redirect_to :back, :notice => "Someting went wrong"
+      flash[:danger] = "#{status}"
+      redirect_to :back
     end
+
   end
 
   def show

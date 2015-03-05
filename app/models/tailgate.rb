@@ -32,4 +32,15 @@ class Tailgate < ActiveRecord::Base
     user.hosting_experience
   end
 
+  def adjust_size(quantity)
+    self.with_lock do
+      if quantity > self.current_size
+        return false
+      else
+        self.current_size -= quantity
+        self.save!
+      end
+    end
+  end
+
 end
