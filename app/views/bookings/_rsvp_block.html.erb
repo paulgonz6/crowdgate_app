@@ -25,12 +25,15 @@
 
           <div class="form-group">
             <%= f.label :email %>
-            <%= f.email_field :email, class: 'form-control' %>
+            <%= f.email_field :email, class: 'form-control', :required => true %>
           </div>
 
           <div class="form-group">
-            <%= f.label :phone, "Mobile Phone Number" %>
-            <%= f.text_field :phone, class: 'form-control' %>
+            <%= f.label :phone, "Mobile Phone Number" %> <i class="fa fa-question-circle" id="phoneQuestion"></i>
+            <p id="phoneAnswer" class="alert alert-warning" style="display:none;">We require a mobile phone number because this is how you will find the tailgate on game day. The host will send you a text with their exact location.</p>
+            <%= f.text_field  :phone,
+                              class: 'form-control',
+                              :required => true %>
           </div>
         <% end %>
 
@@ -59,7 +62,7 @@
             </div>
           </div>
           <p>
-            A 4% transaction fee is added to all online donations.
+            A transaction fee of about 4% is added to all online donations.
             The total amount charged to your card will be $<span id="total_charge">0.00</span>
           </p>
 
@@ -67,7 +70,14 @@
         </div>
 
         <hr/>
-        <%= f.submit 'Send RSVP', class: 'btn btn-primary btn-block', id: "buttonStripe" %>
+        <%= f.submit 'Send RSVP with no Donation',
+                      class: 'btn btn-primary btn-block',
+                      id: "rsvpButton" %>
+
+        <%= f.submit 'Send RSVP with Donation',
+                      class: 'btn btn-primary btn-block',
+                      style: "display: none;",
+                      id: "buttonStripe" %>
         <br>
         <% if current_user.present? %>
           <p class="text-center">
@@ -80,22 +90,32 @@
 </div>
 
 <script type="text/javascript">
-
-
-  var main = function() {
+  $( document ).ready(function() {
     $('.donation-button').click(function() {
-      $('#donation_block').slideToggle();
+        $('#donation_block').slideToggle();
     });
-  };
 
-  $('#booking_donation_amount, #total_charge').change(function() {
+    $('#phoneQuestion')
+      .mouseover(function() {
+        $('#phoneAnswer').toggle();
+      })
 
-    var donation = $("#booking_donation_amount").val();
-    total_charge = ((donation)*1.029) + 0.30
+      .mouseout(function() {
+        $('#phoneAnswer').toggle();
+      });
 
-    $( "#total_charge" ).text(total_charge.toFixed(2));
+
+    $('#booking_donation_amount, #total_charge').change(function() {
+
+      var donation = $("#booking_donation_amount").val();
+
+      if ($(donation) != "0") {
+        total_charge = ((donation)*1.03) + 0.30;
+        $( "#total_charge" ).text(total_charge.toFixed(2));
+        $('#buttonStripe').toggle();
+        $('#rsvpButton').toggle();
+      }
+    });
   });
-
-  $(document).ready(main);
 
 </script>

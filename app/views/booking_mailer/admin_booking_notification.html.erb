@@ -1,0 +1,56 @@
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Adds Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Adds Font Awesome -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 well">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">New Booking on Crowdgate</h3>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Tailgate Name:</strong>
+              <%= @booking.tailgate.name %>
+            </li>
+            <li class="list-group-item">
+              <strong>Tailgate Host:</strong>
+              <%= @booking.tailgate.host.name %>
+            </li>
+            <li class="list-group-item">
+              <strong>Ticket Quantity:</strong>
+              <%= @booking.quantity %>
+            </li>
+            <li class="list-group-item">
+              <strong>Total Price:</strong>
+              <%= number_to_currency(@booking.total_price) %>
+            </li>
+            <li class="list-group-item">
+              <strong>Ticket Sales:</strong>
+              <%= number_to_currency(@booking.ticket_sales) %>
+            </li>
+            <li class="list-group-item">
+              <strong>Stripe Fees:</strong>
+              <%= number_to_currency(@booking.stripe_fees) %>
+            </li>
+            <li class="list-group-item">
+              <strong>Buyer:</strong>
+              <%= @booking.buyer.try(:id) || @booking.email %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

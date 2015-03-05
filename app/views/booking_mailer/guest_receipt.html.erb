@@ -1,0 +1,70 @@
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Adds Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Adds Font Awesome -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 well">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Your Receipt: Confirmation #<%= @booking.id %></h3>
+          </div>
+          <div class="panel-body">
+            <p class="lead">
+              We are so excited that you will be joining the tailgate "<%= @booking.tailgate.name %>." This confirmation is for <%= pluralize(@booking.quantity, 'ticket') %>.
+            </p>
+
+            <% if @booking.donation_amount.present? %>
+            <p>
+              Also, thank you so much for your generous donation of
+              <%= number_to_currency(@booking.donation_amount) %> to this tailgate.
+            </p>
+            <% end %>
+
+            <p>Here is some more information to keep in mind as the day gets closer:</p>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <strong>Event Date:</strong>
+                <%= @booking.tailgate.event.date.strftime('%A, %B %e, %Y') %>
+              </li>
+              <li class="list-group-item">
+                <strong>Tailgate Start Time:</strong>
+                <%= @booking.tailgate.tailgate_start_time %>
+              </li>
+              <li class="list-group-item">
+                <strong>Host Email:</strong>
+                <%= @booking.tailgate.host.email %>
+              </li>
+              <li class="list-group-item">
+                <strong>Host Phone Number:</strong>
+                <%= @booking.tailgate.host.phone %>
+              </li>
+            </ul>
+
+            <p>
+              On game day, the tailgate host will contact you with their exact location. If you included your mobile phone number during checkout, you will get a text that day with the information.
+            </p>
+
+            <p>
+              If you have any questions, please do not hesitate to contact the host directly. Also, anytime before game day, you can reply to this email directly and I will help you out.
+            </p>
+            <hr/>
+            <p>Bottoms Up,</p>
+            <p>Paul Gonzalez</p>
+            <p>Founder and Head Coach, Crowdgate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

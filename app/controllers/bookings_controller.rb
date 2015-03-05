@@ -8,17 +8,23 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.save
-    status = @booking.process_booking(@tailgate,current_user,params[:stripeToken])
 
-    if status.nil?
+    if @booking.email.present? || current_user.present?
       @booking.save
-      #MailerToHost
-      #MailerToBuyer
-      #MailerToAdmin
-      redirect_to tailgate_booking_url(@booking.tailgate_id, @booking.id)
+      status = @booking.process_booking(@tailgate,current_user,params[:stripeToken])
+      if status.nil?
+        @booking.save
+        BookingMailer.guest_receipt(@booking).deliver
+        BookingMailer.admin_booking_notification(@booking).deliver
+        BookingMailer.host_alert(@booking).deliver
+        redirect_to tailgate_booking_url(@booking.tailgate_id, @booking.id)
+      else
+        flash[:danger] = "#{status}"
+        redirect_to :back
+      end
+
     else
-      flash[:danger] = "#{status}"
+      flash[:danger] = "Please include an email address."
       redirect_to :back
     end
 

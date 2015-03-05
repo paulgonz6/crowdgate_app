@@ -4,6 +4,14 @@ class Booking < ActiveRecord::Base
   belongs_to :tailgate
   belongs_to :buyer, :class_name => "User", :foreign_key => "buyer_id"
 
+  def user_validation(current_user)
+    if current_user.present? || self.email.present?
+      return true
+    else
+      return false
+    end
+  end
+
   def process_booking(tailgate,buyer,stripe_token)
     self.tailgate = tailgate
     set_buyer(buyer)
@@ -11,8 +19,10 @@ class Booking < ActiveRecord::Base
     error = nil
     tailgate.transaction do
       if tailgate.adjust_size(quantity)
-        unless set_amounts_and_fees(stripe_token)
-          error = "Error charging the card"
+        unless tailgate.type == "FreeTailgate" && ( donation_amount == 0 || donation_amount == nil )
+          unless set_amounts_and_fees(stripe_token)
+            error = "Error charging the card"
+          end
         end
       else
         error = "You just missed it! We no longer have that many tickets available."
@@ -48,7 +58,7 @@ class Booking < ActiveRecord::Base
   end
 
   def set_stripe_fees
-    self.stripe_fees = ((ticket_sales*0.029) + 0.30).to_f
+    self.stripe_fees = ((ticket_sales*0.03) + 0.30).to_f
   end
 
   def set_description

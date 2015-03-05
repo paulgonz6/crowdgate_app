@@ -1,38 +1,45 @@
 <div class="container">
   <div class="row row-page-start">
-    <div class="page-header">
-      <h3>Congrats, you're going to <em><%= @booking.tailgate.name %></em></h3>
-      <h4>
-        <small>
-          <%= @booking.tailgate.event.name %>,
-          <%= @booking.tailgate.event.venue %>,
-          <%= @booking.tailgate.event.city %>,
-          <%= @booking.tailgate.event.state %>,
-          <%= @booking.tailgate.event.time %>
-        </small>
-      </h4>
+    <div class="col-xs-12">
+      <div class="page-header">
+        <h3>Have fun at <em><%= @booking.tailgate.name %>!</em></h3>
+        <h4>
+          <small>
+            <%= @booking.tailgate.event.name %>,
+            <%= @booking.tailgate.event.venue %>,
+            <%= @booking.tailgate.event.date.strftime('%A, %B %e, %Y') %>
+          </small>
+        </h4>
+      </div>
     </div>
   </div>
 
   <div class="row">
-    <p class="lead">
-      An amount of <%= number_to_currency(@booking.total_price) %> has been charged to your account. Order Confirmation Number: #<%= @booking.id %>
-    </p>
-    <p class="">
-      A copy of this recepit has been emailed to
-      <%= current_user ? @booking.buyer.email : @booking.email %>
-    </p>
+    <div class="col-xs-12">
+      <p class="lead">
+        Order Confirmation Number: #<%= @booking.id %><br>
+        <% if @booking.total_price > 0 %>
+          An amount of <%= number_to_currency(@booking.total_price) %>
+          has been charged to your account.
+        <% end %>
+      </p>
+      <p class="">
+        A copy of this recepit has been emailed to
+        <%= current_user ? @booking.buyer.email : @booking.email %>
+      </p>
+    </div>
   </div>
 
   <div class="row">
-    <div class="col-md-10 col-md-offset-1 text-center social-box">
-      <h2>Tailgating is more fun with your friends!</h2>
+    <div class="col-xs-12 col-md-10 col-md-offset-1 text-center social-box">
+      <h2>Tailgating is more fun with friends!</h2>
       <h4>Don't forget to share your plans with them:</h4>
-      <ul class="social-icons">
-        <li><i class="fa fa-facebook"></i></li>
-        <li><i class="fa fa-twitter"></i></li>
-        <li><i class="fa fa-envelope"></i></li>
-      </ul>
+      <br>
+      <div class="btn-group btn-group-justified lead">
+        <i class="btn btn-primary fa fa-facebook"></i>
+        <i class="btn btn-primary fa fa-twitter"></i>
+        <i class="btn btn-primary fa fa-envelope"></i>
+      </div>
     </div>
   </div>
 </div>
