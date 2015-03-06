@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div role="tabpanel" style="font-size: 10px;">
+      <ul class="nav nav-tabs text-center" role="tablist">
+        <li role="presentation" class="active" style="width: 25%;">
+          <a href="#description" aria-controls="description" role="tab" data-toggle="tab">
+            Description
+          </a>
+        </li>
+        <li role="presentation"  style="width: 25%;">
+          <a href="#details" aria-controls="details" role="tab" data-toggle="tab">
+            Details
+          </a>
+        </li>
+        <li role="presentation" style="width: 25%;">
+          <a href="#host" aria-controls="host" role="tab" data-toggle="tab">
+            Host
+          </a>
+        </li>
+        <li role="presentation" style="width: 25%;">
+          <a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">
+            Reviews
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Tab panes -->
+<div class="container">
+  <div class="row">
+    <div  class="col-xs-12 text-justify"
+            style="background-color: white; font-size: 12px; padding: 10px;">
+      <div class="tab-content">
+        <!-- PANELS -->
+        <div role="tabpanel" class="tab-pane active" id="description">
+          <%= @tailgate.description %>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="details">
+          <%= render 'tailgateinfo' %>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="host">
+          <%= render 'host_info' %>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="reviews">
+          <%= render 'reviews/index' %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

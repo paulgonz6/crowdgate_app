@@ -1,27 +1,9 @@
-<div class="container">
-  <div class="row row-page-start">
-    <div class="col-md-8">
-        <h3><%= @tailgate.name %></h3>
-        <h4>
-          <small>
-            <%= @tailgate.event.name %>,
-            <%= @tailgate.event.venue %>,
-            <%= @tailgate.event.city %>,
-            <%= @tailgate.event.state %>,<br>
-            <%= @tailgate.event.date.strftime('%A, %B %e, %Y') %>,
-            Kickoff at <%= @tailgate.event.date.strftime('%r') %>
-          </small>
-        </h4>
-        <hr/>
-    </div>
-    <%= render 'tailgates/booking_block' %>
-  </div>
+<div class="hidden-xs">
+  <%= render 'tailgate_show_desktop' %>
+</div>
 
-  <%= render 'tailgates/tailgateinfo' %>
-  <%= render 'tailgates/pictures' %>
-  <%= render 'tailgates/host_info' %>
-  <%= render 'reviews/index' %>
-
+<div class="visible-xs">
+  <%= render 'tailgate_show_mobile' %>
 </div>
 
 

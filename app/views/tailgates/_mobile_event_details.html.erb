@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">More Event Details</h4>
+  </div>
+  <ul class="list-group" style="font-size: 12px">
+    <li class="list-group-item">
+      <strong>Event Date:</strong> <%= @tailgate.event.date.strftime('%A, %B %e, %Y') %>
+    </li>
+    <li class="list-group-item">
+      <strong>Event Time:</strong> Kickoff at <%= @tailgate.event.date.strftime('%r') %>
+    </li>
+    <li class="list-group-item">
+      <strong>Venue:</strong> <%= @tailgate.event.venue %>
+    </li>
+  </ul>
+</div>
+
+

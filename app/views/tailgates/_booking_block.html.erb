@@ -1,4 +1,51 @@
-<div class="col-md-3 col-md-offset-1 booking-block">
+<!-- BOOKING BUTTONS MOBILE -->
+
+<div class="visible-xs">
+  <% if @tailgate.class == PaidTailgate %>
+
+  <% if @tailgate.current_size > 0 %>
+  <p class="btn btn-primary mobile-booking-button">
+    <%= link_to "Book Now", new_tailgate_booking_url(@tailgate.id) %>
+  </p>
+  <% else %>
+  <p class="btn btn-default">
+    <%= link_to "SOLD OUT", "#" %>
+  </p>
+  <% end %>
+
+  <% elsif @tailgate.class == FreeTailgate %>
+    <h3>FREE</h3>
+    <p><%= @tailgate.current_size %> Spots Remaining</p>
+
+  <% if @tailgate.current_size > 0 %>
+    <p class="btn btn-primary"><%= link_to "RSVP Now", new_tailgate_booking_url(@tailgate.id) %></p>
+  <% else %>
+    <p class="btn btn-default"><%= link_to "SOLD OUT", "#" %></p>
+  <% end %>
+
+  <% else @tailgate.class == PackagedTailgate %>
+  <h3>$<%= @tailgate.price %> for group tailgate package</h3>
+  <br>
+  <% if @tailgate.tickets_sold.present? %>
+  <p class="btn btn-default"><%= link_to "SOLD OUT", "#" %></p>
+  <% else %>
+  <p class="btn btn-primary">
+    <%= link_to "Book Now", new_tailgate_booking_url(@tailgate.id) %>
+  </p>
+  <% end %>
+  <% end %>
+
+  <p class="btn btn-default mobile-booking-button">
+    <a href="mailto:<%= @tailgate.host.email %>?Subject= Question about
+      your tailgate for the <%= @tailgate.event.name %> game">Email Host
+    </a>
+  </p>
+</div>
+
+
+<!-- BOOKING BUTTONS DESKTOP -->
+
+<div class="col-md-3 col-md-offset-1 booking-block hidden-xs">
   <% if @tailgate.class == PaidTailgate %>
   <h3>$<%= @tailgate.price %> per guest</h3>
   <p><%= @tailgate.current_size %> Spots Remaining</p>
@@ -36,18 +83,18 @@
   <% end %>
 
   <hr/>
-
   <p class="btn btn-default btn-block buttons-with-icons">
     <a href="mailto:<%= @tailgate.host.email %>?Subject= Question about
       your tailgate for the <%= @tailgate.event.name %> game">
-      <i class="fa fa-envelope"></i> Email Host</a>
-    </p>
-    <p class="btn btn-default btn-block buttons-with-icons">
-      <a href="mailto:?Subject=Check out this tailgate for the
-      <%= @tailgate.event.name %>&amp;
-      body=https://fierce-fjord-6626.herokuapp.com/tailgates/
-      <%= @tailgate.id %>">
-      <i class="fa fa-paper-plane"></i> Send to Friends</a>
-    </p>
-
-  </div>
+      <i class="fa fa-envelope"></i> Email Host
+    </a>
+  </p>
+  <p class="btn btn-default btn-block buttons-with-icons">
+    <a href="mailto:?Subject=Check out this tailgate for the
+    <%= @tailgate.event.name %>&amp;
+    body=https://fierce-fjord-6626.herokuapp.com/tailgates/
+    <%= @tailgate.id %>">
+    <i class="fa fa-paper-plane"></i> Send to Friends
+    </a>
+  </p>
+</div>

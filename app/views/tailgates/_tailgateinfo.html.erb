@@ -1,4 +1,112 @@
-<div class="row">
+<!-- MOBILE -->
+<div class="visible-xs">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <% if @tailgate.table? %>
+      <span class="lead">
+        <strong>
+          Table<i class="fa fa-check pull-right text-success"></i>
+        </strong>
+      </span>
+      <% else %>
+      <small class="text-muted">Table</small>
+      <% end %>
+    </li>
+    <li class="list-group-item">
+      <% if @tailgate.grill? %>
+      <span class="lead">
+        <strong>
+          Grill<i class="fa fa-check pull-right text-success"></i>
+        </strong>
+      </span>
+      <% else %>
+      <small class="text-muted">Grill</small>
+      <% end %>
+    </li>
+    <li class="list-group-item">
+      <% if @tailgate.tent? %>
+            <span class="lead">
+        <strong>
+          Tent<i class="fa fa-check pull-right text-success"></i>
+        </strong>
+      </span>
+      <% else %>
+      <small class="text-muted">Tent</small>
+      <% end %>
+    </li>
+    <li class="list-group-item">
+      <% if @tailgate.food? %>
+            <span class="lead">
+        <strong>
+          Food<i class="fa fa-check pull-right text-success"></i>
+        </strong>
+      </span>
+      <% else %>
+      <small class="text-muted">Food</small>
+      <% end %>
+    </li>
+    <li class="list-group-item">
+      <% if @tailgate.bevs_alcohol? %>
+            <span class="lead">
+        <strong>
+          Beverages (Alcoholic)<i class="fa fa-check pull-right text-success"></i>
+        </strong>
+      </span>
+      <% else %>
+      <small class="text-muted">Beverages (Alcoholic)</small>
+      <% end %>
+    </li>
+    <li class="list-group-item">
+      <% if @tailgate.bevs_non_alcohol? %>
+                  <span class="lead">
+        <strong>
+          Beverages (Non-Alcoholic)<i class="fa fa-check pull-right text-success"></i>
+        </strong>
+      </span>
+      <% else %>
+      <small class="text-muted">Beverages (Non-Alcoholic)</small>
+      <% end %>
+    </li>
+    <li class="list-group-item">
+      <% if @tailgate.reserved_parking? %>
+      <span class="lead">
+        <strong>
+          Reserved Parking<i class="fa fa-check pull-right text-success"></i>
+        </strong>
+      </span>
+      <% else %>
+      <small class="text-muted">Reserved Parking</small>
+      <% end %>
+    </li>
+    <li class="list-group-item">
+      <% if @tailgate.tailgate_games? %>
+                  <span class="lead">
+        <strong>
+          Tailgate Games<i class="fa fa-check pull-right text-success"></i>
+        </strong>
+      </span>
+      <% else %>
+      <small class="text-muted">Tailgate Games</small>
+      <% end %>
+    </li>
+    <li class="list-group-item">
+      <% if @tailgate.chairs? %>
+                  <span class="lead">
+        <strong>
+          Chairs<i class="fa fa-check pull-right text-success"></i>
+        </strong>
+      </span>
+      <% else %>
+      <small class="text-muted">Chairs</small>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+
+
+<!-- DESKTOP -->
+<div class="row hidden-xs">
   <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
