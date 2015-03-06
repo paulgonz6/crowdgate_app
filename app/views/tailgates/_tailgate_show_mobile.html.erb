@@ -1,17 +1,21 @@
 <div class="container">
   <div  class="row"
-        style= "height:40vh;
+        style= "height:50vh;
                 background-image: url('<%= @tailgate.image_1 %>');
                 background-size: cover;
                 position: relative;">
     <div style="position: absolute; bottom: 0; right: 0; padding: 10px; background-color: #303A48; color:white;">
+      <% if @tailgate.class == FreeTailgate %>
+        FREE
+      <% else %>
         <%= number_to_currency(@tailgate.price) %>
+      <% end %>
     </div>
   </div>
   <div class="row" style="background-color: white;">
     <div class="col-xs-12" style="padding-top: 5px;">
-      <p style="font-size: 12px;">
-        <strong><%= @tailgate.name %></strong>
+      <p style="font-size: 14px;">
+        <strong><%= @tailgate.name %></strong><br>
         <small><%= @tailgate.event.name %></small><br>
         <small>Tailgate starts <%= @tailgate.tailgate_start_time %></small><br>
       </p>

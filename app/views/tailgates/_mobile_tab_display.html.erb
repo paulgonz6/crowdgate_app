@@ -35,19 +35,19 @@
             style="background-color: white; font-size: 12px; padding: 10px;">
       <div class="tab-content">
         <!-- PANELS -->
-        <div role="tabpanel" class="tab-pane active" id="description">
+        <div role="tabpanel" class="tab-pane fade in active" id="description">
           <%= @tailgate.description %>
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="details">
+        <div role="tabpanel" class="tab-pane fade" id="details">
           <%= render 'tailgateinfo' %>
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="host">
+        <div role="tabpanel" class="tab-pane fade" id="host">
           <%= render 'host_info' %>
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="reviews">
+        <div role="tabpanel" class="tab-pane fade" id="reviews">
           <%= render 'reviews/index' %>
         </div>
 

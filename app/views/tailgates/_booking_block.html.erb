@@ -8,36 +8,32 @@
     <%= link_to "Book Now", new_tailgate_booking_url(@tailgate.id) %>
   </p>
   <% else %>
-  <p class="btn btn-default">
+  <p class="btn btn-default mobile-booking-button">
     <%= link_to "SOLD OUT", "#" %>
   </p>
   <% end %>
 
   <% elsif @tailgate.class == FreeTailgate %>
-    <h3>FREE</h3>
-    <p><%= @tailgate.current_size %> Spots Remaining</p>
 
   <% if @tailgate.current_size > 0 %>
-    <p class="btn btn-primary"><%= link_to "RSVP Now", new_tailgate_booking_url(@tailgate.id) %></p>
+    <p class="btn btn-primary mobile-booking-button"><%= link_to "RSVP Now", new_tailgate_booking_url(@tailgate.id) %></p>
   <% else %>
-    <p class="btn btn-default"><%= link_to "SOLD OUT", "#" %></p>
+    <p class="btn btn-default mobile-booking-button"><%= link_to "SOLD OUT", "#" %></p>
   <% end %>
 
   <% else @tailgate.class == PackagedTailgate %>
-  <h3>$<%= @tailgate.price %> for group tailgate package</h3>
-  <br>
+
   <% if @tailgate.tickets_sold.present? %>
-  <p class="btn btn-default"><%= link_to "SOLD OUT", "#" %></p>
+  <p class="btn btn-default mobile-booking-button"><%= link_to "SOLD OUT", "#" %></p>
   <% else %>
   <p class="btn btn-primary">
-    <%= link_to "Book Now", new_tailgate_booking_url(@tailgate.id) %>
+    <%= link_to "Book Now mobile-booking-button", new_tailgate_booking_url(@tailgate.id) %>
   </p>
   <% end %>
   <% end %>
 
   <p class="btn btn-default mobile-booking-button">
-    <a href="mailto:<%= @tailgate.host.email %>?Subject= Question about
-      your tailgate for the <%= @tailgate.event.name %> game">Email Host
+    <a href="mailto:<%= @tailgate.host.email %>?Subject= Question about your tailgate for the <%= @tailgate.event.name %> game">Email Host
     </a>
   </p>
 </div>
