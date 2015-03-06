@@ -57,7 +57,7 @@
                         class: "control-label" %>
             <div class="input-group">
               <div class="input-group-addon">$</div>
-              <%= f.text_field :donation_amount, class: 'form-control'  %>
+              <%= f.number_field :donation_amount, class: 'form-control'  %>
               <div class="input-group-addon">.00</div>
             </div>
           </div>
@@ -71,12 +71,11 @@
 
         <hr/>
         <%= f.submit 'Send RSVP with no Donation',
-                      class: 'btn btn-primary btn-block',
+                      class: 'btn btn-primary btn-block visible',
                       id: "rsvpButton" %>
 
         <%= f.submit 'Send RSVP with Donation',
-                      class: 'btn btn-primary btn-block',
-                      style: "display: none;",
+                      class: 'btn btn-primary btn-block hidden',
                       id: "buttonStripe" %>
         <br>
         <% if current_user.present? %>
@@ -107,14 +106,36 @@
 
     $('#booking_donation_amount, #total_charge').change(function() {
 
-      var donation = $("#booking_donation_amount").val();
+      var donation = parseFloat($("#booking_donation_amount").val());
 
-      if ($(donation) != "0") {
+      if (donation != 0 ) {
         total_charge = ((donation)*1.03) + 0.30;
         $( "#total_charge" ).text(total_charge.toFixed(2));
-        $('#buttonStripe').toggle();
-        $('#rsvpButton').toggle();
+
+        if ($('#buttonStripe').hasClass('hidden')) {
+          $('#buttonStripe').removeClass('hidden');
+          $('#buttonStripe').addClass('visible');
+        }
+        if ($('#rsvpButton').hasClass('visible')) {
+          $('#rsvpButton').removeClass('visible');
+          $('#rsvpButton').addClass('hidden');
+        }
+
+      } else {
+        total_charge = 0
+        $( "#total_charge" ).text(total_charge.toFixed(2));
+
+        if ($('#buttonStripe').hasClass('visible')) {
+          $('#buttonStripe').removeClass('visible');
+          $('#buttonStripe').addClass('hidden');
+        }
+
+        if ($('#rsvpButton').hasClass('hidden')) {
+          $('#rsvpButton').removeClass('hidden');
+          $('#rsvpButton').addClass('visible');
+        }
       }
+
     });
   });
 

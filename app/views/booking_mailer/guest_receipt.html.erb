@@ -23,11 +23,15 @@
               We are so excited that you will be joining the tailgate "<%= @booking.tailgate.name %>." This confirmation is for <%= pluralize(@booking.quantity, 'ticket') %>.
             </p>
 
-            <% if @booking.donation_amount.present? %>
-            <p>
-              Also, thank you so much for your generous donation of
-              <%= number_to_currency(@booking.donation_amount) %> to this tailgate.
-            </p>
+            <% if @booking.donation_amount > 0 %>
+              <p>
+                Also, thank you so much for your generous donation of
+                <%= number_to_currency(@booking.donation_amount) %> to this tailgate.
+              </p>
+            <% end %>
+
+            <% if @booking.total_price > 0 %>
+              <p>The total amount charged to your card was <%= @booking.total_price %>.</p>
             <% end %>
 
             <p>Here is some more information to keep in mind as the day gets closer:</p>
