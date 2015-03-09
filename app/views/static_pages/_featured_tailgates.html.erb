@@ -1,45 +1,24 @@
 <div class="col-md-10 col-md-offset-1 text-center">
-  <h3><strong>Featured Tailgates</strong></h3>
+  <h3><strong>Featured Tailgate</strong></h3>
   <hr/>
   <div class="row">
-    <div class="col-md-4">
-      <div style="background-image: url('http://tailgatetroubadours.com/wp-content/uploads/2014/03/2013-10-19-21.22.071.jpg'); background-size: cover; height: 300px; padding-top: 120px;">
-        <span style="color: white; font-weight: 600; font-size: 22px;">
-          Your Personal 12th Man
-        </span>
-        <div class="text-left" style="overflow: hidden; background-color: #640009; margin-top: 80px; padding: 10px;">
-          <%= image_tag User.first.image, class: 'img-circle pull-left', height: '40px' %>
-          <div style="color: white; margin-left: 50px;">
-            <p>Private Tailgate hosted by Kyle S.</p>
-            <p>Texas A&M</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div style="background-image: url('http://tailgatetroubadours.com/wp-content/uploads/2014/03/2013-10-19-21.22.071.jpg'); background-size: cover; height: 300px; padding-top: 120px;">
-        <span style="color: white; font-weight: 600; font-size: 22px;">
-          Your Personal 12th Man
-        </span>
-        <div class="text-left" style="overflow: hidden; background-color: #640009; margin-top: 80px; padding: 10px;">
-          <%= image_tag User.first.image, class: 'img-circle pull-left', height: '40px' %>
-          <div style="color: white; margin-left: 50px;">
-            <p>Private Tailgate hosted by Kyle S.</p>
-            <p>Texas A&M</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div style="background-image: url('http://tailgatetroubadours.com/wp-content/uploads/2014/03/2013-10-19-21.22.071.jpg'); background-size: cover; height: 300px; padding-top: 120px;">
-        <span style="color: white; font-weight: 600; font-size: 22px;">
-          Your Personal 12th Man
-        </span>
-        <div class="text-left" style="overflow: hidden; background-color: #640009; margin-top: 80px; padding: 10px;">
-          <%= image_tag User.first.image, class: 'img-circle pull-left', height: '40px' %>
-          <div style="color: white; margin-left: 50px;">
-            <p>Private Tailgate hosted by Kyle S.</p>
-            <p>Texas A&M</p>
+    <% tailgate = Tailgate.first %>
+    <div class="col-md-6 col-md-offset-3">
+      <div style="background-image: url('<%= tailgate.image_1 %>'); background-size: cover; height: 300px;">
+        <div style="height: 100%; background-color: rgba(0,0,0,.3); padding-top: 110px;">
+          <span style="color: white; font-weight: 600; font-size: 22px;">
+            <%= link_to "Tailgating for a Cause", tailgate %>
+          </span>
+          <div class="text-left" style="overflow: hidden; background-color: #640009; margin-top: 80px; padding: 10px;">
+            <%= image_tag tailgate.host.image, class: 'img-circle pull-left', height: '40px' %>
+            <div style="color: white; margin-left: 50px;">
+              <p>
+                <%= link_to "Free Tailgate hosted by #{tailgate.host.short_name}", tailgate %>
+              </p>
+              <p>
+                South Carolina | <small><%= tailgate.event.date.strftime('%A, %B %e, %Y') %></small>
+              </p>
+            </div>
           </div>
         </div>
       </div>
