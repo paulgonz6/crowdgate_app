@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="row row-page-start">
+    <aside>
+      <div class="col-md-3 col-md-offset-1">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @user.short_name %></h3>
+          </div>
+          <div class="panel-body text-center">
+            <%= image_tag @user.image, :class => "img-responsive thumbnail" %>
+            <%= link_to "Contact #{@user.short_name}", '#', class: 'btn btn-default' %>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="col-md-7 profile-information">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Tailgates from this host</h3>
+        </div>
+        <div class="panel-body">
+          <% @tailgates.each do |tailgate| %>
+          <p>
+            <%= tailgate.event.name %> |
+            <small><%= tailgate.event.date.strftime('%A, %B %e, %Y') %></small>
+          </p>
+
+          <hr/>
+
+          <% if tailgate.current_size.nil? || tailgate.current_size > 0 %>
+          <div class='row tailgate-listing'>
+            <div class="col-md-4 tailgate-listing-image" style="background-image: url(<%= tailgate.image_1 %>);">
+              <% if tailgate.class == PaidTailgate %>
+              <div class="tailgate-listing-price">
+                <h5>$<%= tailgate.price %> Per Guest</h5>
+              </div>
+              <% elsif tailgate.class == FreeTailgate %>
+              <div class="tailgate-listing-price">
+                <h5>FREE</h5>
+              </div>
+              <% else %>
+              <div class="tailgate-listing-price">
+                <h5>$<%= tailgate.price %> for group</h5>
+              </div>
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <h4 class="no-margin-top">
+                <strong>
+                  <%= link_to tailgate.name, tailgate_url(tailgate.id) %>
+                </strong>
+              </h4>
+              <p>
+                <strong>Hosted by:</strong>
+                <%= tailgate.host.short_name %>
+                <% if tailgate.host.star_rating.present? %>
+                (<%= star_rating_for(tailgate) %> out of 5 stars)
+                <% else %>
+                (No reviews)
+                <% end %>
+              </p>
+
+              <p>
+                <em>
+                  <%= tailgate.current_size %> spots remaining |
+                  Affiliated with <%= tailgate.affiliation %>
+                </em>
+              </p>
+              <p class="text-justify">
+                <%= truncate(tailgate.description, length: 170) %>
+              </p>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <% if @reviews.count == 0 %>
+            There are no reviews on this host
+            <% else %>
+            Rating: <%= @user.star_rating %> out of 5, Based on <%= pluralize(@reviews.count, 'Review') %>
+            <% end %>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <% @reviews.each do |review|  %>
+          <div class="row review-listing">
+            <div class="col-md-3 text-center">
+              <%= image_tag review.user.image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
+              <h6><%= review.user.short_name %></h6>
+            </div>
+            <div class="col-md-9 text-justify">
+              <p>
+                <%= review.review %>
+              </p>
+              <p>
+                <strong>Rating:</strong> <%= review.rating %> out of 5 stars
+              </p>
+              <p class="date">
+                <%= review.created_at.strftime("%b. %d, %Y") %>
+              </p>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

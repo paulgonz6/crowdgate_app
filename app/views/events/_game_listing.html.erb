@@ -15,7 +15,9 @@
         </h3>
       </div>
       <div class="panel-body">
-        <%= render 'tailgates/listing', { :event => event } %>
+        <% event.tailgates.each do |tailgate| %>
+          <%= render 'tailgates/listing', { :tailgate => tailgate } %>
+        <% end %>
       </div>
     </div>
   </div>

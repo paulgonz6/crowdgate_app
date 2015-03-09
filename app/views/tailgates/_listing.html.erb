@@ -1,4 +1,4 @@
-<% event.tailgates.each do |tailgate| %>
+
   <% if tailgate.current_size.nil? || tailgate.current_size > 0 %>
   <div class='row tailgate-listing'>
     <div class="col-md-4 tailgate-listing-image" style="background-image: url(<%= tailgate.image_1 %>);">
@@ -44,4 +44,4 @@
     </div>
   </div>
   <% end %>
-<% end %>
+
