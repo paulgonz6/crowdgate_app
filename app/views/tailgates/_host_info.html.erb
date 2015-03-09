@@ -14,7 +14,10 @@
             <p>
               <%= @tailgate.host.description %>
             </p>
-            <p><strong>Experience:</strong> Has hosted <%= pluralize( Tailgate.where({ :host_id => @tailgate.host_id}).count, 'tailgates') on Crowdgate %></p>
+            <p>
+              <strong>Experience:</strong>
+              Has hosted <%= pluralize( Tailgate.where({ :host_id => @tailgate.host_id}).count, 'tailgates') %> on Crowdgate
+            </p>
           </div>
         </div>
       </div>
