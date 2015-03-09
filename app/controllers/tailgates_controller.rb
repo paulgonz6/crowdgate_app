@@ -43,7 +43,7 @@ class TailgatesController < ApplicationController
 
     if @tailgate.save
       flash[:success] = "Successfully updated your tailgate for #{@tailgate.event.name}."
-      redirect_to user_url(@tailgate.user_id)
+      redirect_to account_url
     else
       render('tailgates/edit')
     end
@@ -56,7 +56,7 @@ class TailgatesController < ApplicationController
     @tailgate.destroy
 
     flash[:danger] = "You have successfully deleted #{@tailgate.name}"
-    redirect_to user_url(@tailgate.user_id)
+    redirect_to account_url
   end
 
   private
