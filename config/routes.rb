@@ -4,7 +4,8 @@ Rails.application.routes.draw do
                           { registrations: 'users/registrations',
                             sessions: 'users/sessions' }
 
-  resources   :users, :only => ['index', 'show']
+  resources   :users, :only => ['index', 'show', 'edit']
+
   get '/account',             :controller => 'users',
                               :action => 'account',
                               :as => 'account'

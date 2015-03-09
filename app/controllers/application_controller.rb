@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
         request.path != "/users/sign_up" &&
         request.path != "/users/password/new" &&
         request.path != "/users/password/edit" &&
+        request.path != "/users/edit" &&
         request.path != "/users/confirmation" &&
         request.path != "/users/sign_out" &&
         !request.xhr?) # don't store ajax calls
@@ -43,6 +44,7 @@ class ApplicationController < ActionController::Base
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) << [:name, :image, :phone, :description, :remember_me]
+      devise_parameter_sanitizer.for(:account_update) << [:name, :image, :phone, :description, :remember_me]
     end
 
 end

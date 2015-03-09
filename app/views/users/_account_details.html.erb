@@ -8,6 +8,8 @@
       <dd><%= @user.name %></dd>
       <dt>Email</dt>
       <dd><%= @user.email %></dd>
+      <dt>Mobile</dt>
+      <dd><%= number_to_phone(@user.phone, area_code: true)%></dd>
     </dl>
   </div>
 </div>

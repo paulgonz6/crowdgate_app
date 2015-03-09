@@ -31,7 +31,7 @@
             <% end %>
 
             <% if @booking.total_price > 0 %>
-              <p>The total amount charged to your card was <%= @booking.total_price %>.</p>
+              <p>The total amount charged to your card was <%= number_to_currency(@booking.total_price) %>.</p>
             <% end %>
 
             <p>Here is some more information to keep in mind as the day gets closer:</p>

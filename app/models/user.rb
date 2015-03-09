@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   has_many  :tickets_purchased,
               :class_name => "Booking",
-              :foreign_key => "user_id"
+              :foreign_key => "buyer_id"
 
   has_many  :sales,
               :through => 'tailgates',
