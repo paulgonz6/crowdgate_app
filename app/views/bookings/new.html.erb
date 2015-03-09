@@ -12,20 +12,49 @@
       </div>
     </div>
   </div>
-  <% unless @tailgate.class == FreeTailgate %>
-    <div class="row">
-      <%= form_for( [@tailgate, @booking],
-                    :url => tailgate_bookings_url,
-                    :html => {:class => "form", :id => "payment-form"},) do |f| %>
 
-        <% if user_signed_in? %>
-          <%= render 'checkout_logged_in', { :@booking => @booking, :f => f } %>
-        <% else %>
-          <%= render 'checkout_new_user', { :@booking => @booking, :f => f } %>
-        <% end %>
-      <% end %>
+  <%= form_for( [@tailgate, @booking],
+                :url => tailgate_bookings_url,
+                :html => {:class => "form", :id => "payment-form"},) do |f| %>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Account Details
+          </div>
+          <div class="panel-body">
+            <%= render 'account_details', { :f => f } %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Payment Details
+          </div>
+          <div class="panel-body">
+            <%= render 'payment_details', { :f => f } %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Confirmation
+          </div>
+          <div class="panel-body">
+            <%= render 'checkout_block', { :f => f } %>
+          </div>
+        </div>
+      </div>
     </div>
-  <% else %>
+
+  <% end %>
+
+
+
+  <% if @tailgate.class == FreeTailgate %>
     <div class="row">
       <%= render 'rsvp_block', { :@booking => @booking } %>
     </div>

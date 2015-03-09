@@ -1,0 +1,13 @@
+
+<% if current_user.present? %>
+  <div class="form-group">
+    <label  for="disabledTextInput">Email</label>
+    <input  type="text"
+            id="disabledTextInput"
+            class="form-control"
+            value="<%= current_user.email %>"
+            disabled >
+  </div>
+<% else %>
+  <%= render 'devise/registrations/basic_new_user_form' %>
+<% end %>

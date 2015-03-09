@@ -8,6 +8,10 @@ class BookingsController < ApplicationController
   end
 
   def create
+    unless current_user.present?
+      @new_user = User.create(user_params)
+    end
+
     @booking = Booking.new(booking_params)
 
     if @booking.email.present? || current_user.present?
@@ -66,4 +70,9 @@ class BookingsController < ApplicationController
       params.require(:booking).permit(:quantity, :email, :phone,
                                       :donation_amount, :checkout_as_guest)
     end
+
+    def user_params
+      params.require(:user).permit(:email, :phone, :password, :password_confirmation)
+    end
+
 end

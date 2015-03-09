@@ -2,15 +2,11 @@
   <div class="col-md-12">
     <% if @tailgate.class == PaidTailgate %>
 
-      <label class="control-label" for="quantity">
-        How many tickets do you want to buy?
-      </label>
-
-      <select class="form-control" name="quantity" id="quantity">
-        <% @tailgate.current_size.times do |n| %>
-          <option value="<%= n + 1 %>"><%= n + 1 %></option>
-        <% end %>
-      </select>
+      <%= f.label :quantity, "How many tickets do you want to buy?", class: 'control-label' %>
+      <%= f.select :quantity,
+              options_for_select(1..@tailgate.current_size),
+              {},
+              :class => 'form-control' %>
 
       <h2>
         <small>Ticket Amount: $<%= @tailgate.price %></small>
@@ -18,9 +14,8 @@
 
       <input  type="hidden" name="item_price"
               id="item_price" class="txt" value="<%= @tailgate.price %>" />
-      <h4>
-        <small>Fees: $<span id='fees'></span></small>
-      </h4>
+
+      <h4><small>Fees: $<span id='fees'></span></small></h4>
 
       <h3>
         Total Amount: $<span id='total_price'><%= @tailgate.price %></span>
@@ -41,17 +36,14 @@
       <h3>
         Total Amount: $<span id='total_price'></span>
       </h3>
+
     <% else  %>
 
-      <label class="control-label" for="quantity">
-        How many do you want to RSVP for?
-      </label>
-
-      <select class="form-control" name="quantity" id="quantity">
-        <% @tailgate.current_size.times do |n| %>
-          <option value="<%= n + 1 %>"><%= n + 1 %></option>
-        <% end %>
-      </select>
+      <%= f.label :quantity, "How many tickets do you want to buy?", class: 'control-label' %>
+      <%= f.select :quantity,
+              options_for_select(1..@tailgate.current_size),
+              {},
+              :class => 'form-control' %>
 
     <% end %>
   </div>
