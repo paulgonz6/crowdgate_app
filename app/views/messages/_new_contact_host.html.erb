@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Send a message to the host</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_tag 'messages/create', class: 'form-horizontal' do %>
+
+      <div class="form-group">
+        <div class="col-md-2">
+          <%= label_tag 'Host Name', class: 'control-label'  %>
+        </div>
+        <div class="col-md-10">
+          <%= text_field_tag 'host_name' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

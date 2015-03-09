@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new(:tailgate => @tailgate)
+    @stripe_key = set_stripe_publishable_key
   end
 
   def create

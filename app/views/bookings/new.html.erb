@@ -33,11 +33,10 @@
 </div>
 
 
-
-
 <% content_for :bottom do %>
   <script type="text/javascript">
-  Stripe.setPublishableKey('pk_test_bgvvOgbdPKr42kXOoLNDPKYO');
+
+  Stripe.setPublishableKey('<%= @stripe_key %>');
 
   var stripeResponseHandler = function(status, response) {
     var $form = $('#payment-form');

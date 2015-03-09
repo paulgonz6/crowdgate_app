@@ -41,6 +41,14 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def set_stripe_publishable_key
+    if Rails.env.production?
+      return 'pk_live_ZRjeh0njN9qKM3pCk6EyOGVW'
+    else
+      return 'pk_test_OKqxDQsFmQZ10rvLwSNw8UzW'
+    end
+  end
+
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) << [:name, :image, :phone, :description, :remember_me]

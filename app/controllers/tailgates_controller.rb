@@ -49,9 +49,6 @@ class TailgatesController < ApplicationController
     end
   end
 
-  def confirm_purchase
-  end
-
   def destroy
     @tailgate.destroy
 

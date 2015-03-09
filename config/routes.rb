@@ -10,7 +10,6 @@ Rails.application.routes.draw do
                               :action => 'account',
                               :as => 'account'
 
-  resources   :hosts, :only => ['new', 'create']
 
   resources   :tailgates do
     resources   :bookings
@@ -28,6 +27,8 @@ Rails.application.routes.draw do
 
   resources   :teams
   resources   :events
+  resources   :hosts, :only => ['new', 'create']
+  resources   :messages, :only => ['create', 'new']
 
 # STATIC PAGE ROUTES =========================================================================
   root "static_pages#landing_page"
