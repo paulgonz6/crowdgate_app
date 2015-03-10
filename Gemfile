@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rollbar', '~> 1.4.4'
 gem 'chosen-rails'
 gem 'figaro'
 gem 'faker'
