@@ -1,9 +1,8 @@
-
-<%= render 'bookings/total_amount', { :f => f } %>
-
-<input  type="hidden" name="tailgate_id" value="<%= @tailgate.id %>">
-
-<button type="submit" id="buttonStripe" class="btn btn-primary btn-block">
-  Submit Payment
-</button>
-
+<% unless current_user.present? %>
+  <fieldset disabled>
+<% end %>
+    <%= render 'bookings/total_amount', { :f => f } %>
+    <button type="submit" id="buttonStripe" class="btn btn-primary btn-block">
+      Submit Payment
+    </button>
+  </fieldset>

@@ -2,6 +2,14 @@
   <div class="row row-page-start">
     <div class="col-xs-12">
       <div class="page-header">
+        <% if current_user.nil? && @tailgate.class != FreeTailgate %>
+          <div class="alert alert-warning" role="alert">
+            You must be logged in before you can proceed.
+            <a href="#" id="signupmodal" data-toggle="modal" data-target="#myModal">
+              Click here to Log In or Sign Up
+            </a>
+          </div>
+        <% end %>
         <h3><%= @tailgate.name %></h3>
         <h4>
           <small>
@@ -13,48 +21,45 @@
     </div>
   </div>
 
-  <%= form_for( [@tailgate, @booking],
-                :url => tailgate_bookings_url,
-                :html => {:class => "form", :id => "payment-form"},) do |f| %>
+  <% unless @tailgate.class == FreeTailgate %>
+    <%= form_for( [@tailgate, @booking],
+                  :url => tailgate_bookings_url,
+                  :html => {:class => "form", :id => "payment-form"},) do |f| %>
 
-    <div class="row">
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Account Details
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Your Account
+            </div>
+            <div class="panel-body">
+              <%= render 'account_details', { :f => f } %>
+            </div>
           </div>
-          <div class="panel-body">
-            <%= render 'account_details', { :f => f } %>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Payment Details
+            </div>
+            <div class="panel-body">
+              <%= render 'payment_details', { :f => f } %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Confirmation
+            </div>
+            <div class="panel-body">
+              <%= render 'checkout_block', { :f => f } %>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Payment Details
-          </div>
-          <div class="panel-body">
-            <%= render 'payment_details', { :f => f } %>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Confirmation
-          </div>
-          <div class="panel-body">
-            <%= render 'checkout_block', { :f => f } %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <% end %>
-
-
-
-  <% if @tailgate.class == FreeTailgate %>
+    <% end %>
+  <% else %>
     <div class="row">
       <%= render 'rsvp_block', { :@booking => @booking } %>
     </div>
@@ -62,11 +67,13 @@
 </div>
 
 
-<% unless current_user.present? %>
-  <p class="hidden" id="signupmodal" data-toggle="modal" data-target="#myModal">
-    Launch demo modal
-  </p>
-  <%= render 'users/signup_login_modal' %>
+<% unless @tailgate.class == FreeTailgate %>
+  <% unless current_user.present? %>
+    <p class="hidden" id="signupmodal" data-toggle="modal" data-target="#myModal">
+      Sign up or Log in Modal
+    </p>
+    <%= render 'users/signup_login_modal' %>
+  <% end %>
 <% end %>
 
 
