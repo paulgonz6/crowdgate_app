@@ -6,35 +6,50 @@
       <%= f.select :quantity,
               options_for_select(1..@tailgate.current_size),
               {},
-              :class => 'form-control' %>
+              :class => 'form-control',
+              :id => 'quantity' %>
 
       <h2>
-        <small>Ticket Amount: $<%= @tailgate.price %></small>
+        <small>
+          Ticket Amount: $<span id='total_ticket_price'><%= @tailgate.price %><span>
+        </small>
       </h2>
 
-      <input  type="hidden" name="item_price"
-              id="item_price" class="txt" value="<%= @tailgate.price %>" />
-
-      <h4><small>Fees: $<span id='fees'></span></small></h4>
-
-      <h3>
-        Total Amount: $<span id='total_price'><%= @tailgate.price %></span>
-      </h3>
-
-    <% elsif @tailgate.class == PackagedTailgate %>
-
-      <%= f.hidden_field :quantity %>
-
-      <h2 class="no-margin-top">
-        <small>Tailgate Amount: $<%= @tailgate.price %></small>
-      </h2>
 
       <h4>
-        <small>Fees: $<span id='fees'></span></small>
+        <small>Fees: $<span id='fees'></span>
+        </small>
       </h4>
 
       <h3>
         Total Amount: $<span id='total_price'></span>
+      </h3>
+
+    <% elsif @tailgate.class == PackagedTailgate %>
+
+      <%= f.hidden_field :quantity, :id => 'quantity' %>
+
+      <h2>
+        <small>
+          Ticket Amount: $
+            <span id='total_ticket_price'>
+              <%= @tailgate.price %>
+            <span>
+        </small>
+      </h2>
+
+
+      <h4>
+        <small>Fees: $
+          <span id='fees'>
+          </span>
+        </small>
+      </h4>
+
+      <h3>
+        Total Amount: $
+        <span id='total_price'>
+        </span>
       </h3>
 
     <% else  %>
@@ -52,23 +67,42 @@
 <!-- FOR Dynamically displaying total amount -->
 <script>
   $(function() {
-    $('#quantity, #item_price').change(function() {
+
+    $('body').ready(function(){
+      var quantity = $("#quantity").val();
+      var tailgate_price = <%= @tailgate.price %>;
+
+      total_ticket_price = $("#total_ticket_price").val();
+      fees = $("#fees").val();
+      total_price = $("#total_price").val();
+
+      initial_total_ticket_price = (tailgate_price*quantity);
+      initial_fees = ((initial_total_ticket_price)*0.03) + 0.30;
+      initial_total = (initial_total_ticket_price + initial_fees);
+
+      $("#total_ticket_price" ).text(initial_total_ticket_price.toFixed(2));
+      $("#fees").text(initial_fees.toFixed(2));
+      $("#total_price").text(initial_total.toFixed(2));
+    });
+
+    $('#quantity').change(function() {
         //  Get quantity value
-        var quan = $("#quantity").val();
+        var quantity = $("#quantity").val();
+        var tailgate_price = <%= @tailgate.price %>;
 
         //  Get price, fees, and taxes objects
-        price = $("#item_price").val();
+        total_ticket_price = $("#total_ticket_price").val();
         fees = $("#fees").val();
+        total_price = $("#total_price").val();
 
-        total = (price*quan)
+        new_total_ticket_price = (tailgate_price*quantity);
+        new_fees = ((new_total_ticket_price)*0.03) + 0.30;
+        new_total = (new_total_ticket_price + new_fees);
 
-        new_fees = ((total)*0.03) + 0.30
-
-        new_total = (total + new_fees);
         //  Set total price
-        $( "#total_price" ).text(new_total.toFixed(2));
-        $( "#item_price" ).text(new_total.toFixed(2));
+        $( "#total_ticket_price" ).text(new_total_ticket_price.toFixed(2));
         $( "#fees" ).text(new_fees.toFixed(2));
+        $( "#total_price" ).text(new_total.toFixed(2));
       });
   });
 </script>
