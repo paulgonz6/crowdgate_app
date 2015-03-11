@@ -34,8 +34,10 @@
 
       <p>
         <em>
-          <%= tailgate.current_size %> spots remaining |
-          Affiliated with <%= tailgate.affiliation %>
+          <% unless tailgate.class == PackagedTailgate %>
+            <%= pluralize(tailgate.current_size, 'spot') %> remaining |
+          <% end %>
+          Affiliated with <%= tailgate.affiliation.downcase %> team
         </em>
       </p>
       <p class="text-justify">

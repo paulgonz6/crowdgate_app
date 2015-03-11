@@ -31,4 +31,17 @@ class Team < ActiveRecord::Base
     tailgates
   end
 
+  def total_live_tailgates
+    events = Event.where("name LIKE '%#{self.name}%'")
+    tailgates = 0
+    events.each do |event|
+      event.tailgates.each do |tailgate|
+        if tailgate.current_size > 0
+          tailgates += 1
+        end
+      end
+    end
+    tailgates
+  end
+
 end
