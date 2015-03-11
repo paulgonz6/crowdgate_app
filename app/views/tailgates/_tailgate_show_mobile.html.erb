@@ -4,11 +4,11 @@
                 background-image: url('<%= @tailgate.image_1 %>');
                 background-size: cover;
                 position: relative;">
-    <div style="position: absolute; bottom: 0; right: 0; padding: 10px; background-color: #303A48; color:white;">
+    <div class="slide-from-right" style="position: absolute; bottom: 0; right: 0; padding: 15px; background-color: #303A48; color:white;">
       <% if @tailgate.class == FreeTailgate %>
-        FREE
+        <span>FREE</span>
       <% else %>
-        <%= number_to_currency(@tailgate.price) %>
+        <span><%= number_to_currency(@tailgate.price) %> / guest</span>
       <% end %>
     </div>
   </div>
@@ -39,3 +39,4 @@
     </div>
   </div>
 </div>
+

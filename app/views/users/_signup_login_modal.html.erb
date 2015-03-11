@@ -1,0 +1,37 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" style="background-color: white;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">You're probably awesome. Tell us who you are!</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Log In</h4>
+            <hr/>
+            <%= render 'devise/sessions/log_in_form_for_signup_login_modal' %>
+          </div>
+          <div class="col-md-4">
+            <h4>Sign Up</h4>
+            <hr/>
+            <%= render 'devise/registrations/new_user_form_for_signup_login_modal' %>
+          </div>
+          <div class="col-md-4">
+            <h4>Why do I need an account?</h4>
+            <hr/>
+            <p class="text-justify">
+              It is very important to us that our community has great communication with one another. You can email the host before the event if you have any questions. The host will text you on game day with their exact location. Or if you ever need to cancel, we are happy to work with you on getting a refund.
+
+              <u>For all of this to work, we need to know who you are.</u>
+
+              Don't worry, your email will not be made public and we will not spam you with pointless emails. Only awesome ones! Bottoms up.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

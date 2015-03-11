@@ -1,0 +1,17 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<%= f.email_field :email,   autofocus: true,
+                            class: 'form-control form-input-fields',
+                            placeholder: "Email" %>
+<br>
+<%= f.password_field :password, autocomplete: "off",
+                                class: 'form-control form-input-fields',
+                                placeholder: "Password" %>
+
+<hr/>
+
+<%= f.submit 'Log In', class: 'btn btn-primary form-input-fields' %>
+<br>
+<br>
+
+<% end %>

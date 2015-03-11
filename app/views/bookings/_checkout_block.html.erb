@@ -1,14 +1,9 @@
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Checkout</h3>
-  </div>
-  <div class="panel-body text-center">
-    <%= render 'bookings/total_amount' %>
-    <input  type="hidden" name="tailgate_id" value="<%= @tailgate.id %>">
-    <button type="submit" class="btn btn-primary btn-block">
+<% unless current_user.present? %>
+  <fieldset disabled>
+<% end %>
+    <%= render 'bookings/total_amount', { :f => f } %>
+    <button type="submit" id="buttonStripe" class="btn btn-primary btn-block">
       Submit Payment
     </button>
-  </div>
-</div>
+  </fieldset>
 

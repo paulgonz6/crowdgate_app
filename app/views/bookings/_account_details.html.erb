@@ -1,0 +1,9 @@
+
+<div class="form-group">
+  <label  for="disabledTextInput">Email</label>
+  <input  type="text"
+          id="disabledTextInput"
+          class="form-control"
+          value="<%= current_user.try(:email) %>"
+          disabled >
+</div>

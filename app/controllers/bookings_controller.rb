@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_tailgate, :only => [:new, :show, :create]
 
   def new
-    @booking = Booking.new(:tailgate => @tailgate)
+    @booking = Booking.new(:tailgate => @tailgate, :quantity => 1)
     @stripe_key = set_stripe_publishable_key
   end
 
@@ -66,4 +66,5 @@ class BookingsController < ApplicationController
       params.require(:booking).permit(:quantity, :email, :phone,
                                       :donation_amount, :checkout_as_guest)
     end
+
 end
