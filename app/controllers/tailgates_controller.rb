@@ -10,10 +10,9 @@ class TailgatesController < ApplicationController
   end
 
   def create
-    @events = Event.all
     @tailgate = type_class.new(tailgate_params)
     @tailgate.host_id = current_user.id
-    @tailgate.current_size = params["#{@type.underscore}"]["original_size"]
+    @tailgate.current_size = params["#{@type.underscore}"]["original_size"] || 1
 
     if @tailgate.save
       flash[:success] = "Successfully created tailgate for #{@tailgate.event.name}."

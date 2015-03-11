@@ -23,12 +23,12 @@
 
     <% elsif @tailgate.class == PackagedTailgate %>
 
+      <%= f.hidden_field :quantity %>
+
       <h2 class="no-margin-top">
         <small>Tailgate Amount: $<%= @tailgate.price %></small>
       </h2>
 
-      <input  type="hidden" name="item_price"
-              id="item_price" class="txt" value="<%= @tailgate.price %>" />
       <h4>
         <small>Fees: $<span id='fees'></span></small>
       </h4>
@@ -39,7 +39,7 @@
 
     <% else  %>
 
-      <%= f.label :quantity, "How many tickets do you want to buy?", class: 'control-label' %>
+      <%= f.label :quantity, "How many tickets do you want to reserve?", class: 'control-label' %>
       <%= f.select :quantity,
               options_for_select(1..@tailgate.current_size),
               {},

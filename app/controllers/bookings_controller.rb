@@ -3,15 +3,11 @@ class BookingsController < ApplicationController
   before_action :set_tailgate, :only => [:new, :show, :create]
 
   def new
-    @booking = Booking.new(:tailgate => @tailgate)
+    @booking = Booking.new(:tailgate => @tailgate, :quantity => 1)
     @stripe_key = set_stripe_publishable_key
   end
 
   def create
-    unless current_user.present?
-      @new_user = User.create(user_params)
-    end
-
     @booking = Booking.new(booking_params)
 
     if @booking.email.present? || current_user.present?
@@ -69,10 +65,6 @@ class BookingsController < ApplicationController
     def booking_params
       params.require(:booking).permit(:quantity, :email, :phone,
                                       :donation_amount, :checkout_as_guest)
-    end
-
-    def user_params
-      params.require(:user).permit(:email, :phone, :password, :password_confirmation)
     end
 
 end

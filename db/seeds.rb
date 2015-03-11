@@ -73,7 +73,7 @@ sample_numbers = [20, 25, 40, 50, 15]
 
 Tailgate.destroy_all
 
-10.times do
+2.times do
 PaidTailgate.create!( name: tailgate_names.sample,
                       description: "Our tailgates have been voted the best at Penn State. We always have regular tailgate food- burgers, hot dogs, etc. We also make salads and chili. We tend to get into some intense corn hole games, and we always keep the beers flowing.",
                       host_id: users.pluck(:id).sample,
@@ -99,7 +99,7 @@ PaidTailgate.create!( name: tailgate_names.sample,
                     )
 end
 
-
+2.times do
 FreeTailgate.create!( name: tailgate_names.sample,
                       description: "Our tailgates have been voted the best at Penn State. We always have regular tailgate food- burgers, hot dogs, etc. We also make salads and chili. We tend to get into some intense corn hole games, and we always keep the beers flowing.",
                       host_id: users.pluck(:id).sample,
@@ -122,12 +122,16 @@ FreeTailgate.create!( name: tailgate_names.sample,
                       image_3: images.sample,
                       image_4: images.sample
                     )
+end
 
+2.times do
 PackagedTailgate.create!( name: tailgate_names.sample,
                           description: "Our tailgates have been voted the best at Penn State. We always have regular tailgate food- burgers, hot dogs, etc. We also make salads and chili. We tend to get into some intense corn hole games, and we always keep the beers flowing.",
                           host_id: users.pluck(:id).sample,
                           event_id: events.pluck(:id).sample,
                           price: 500,
+                          original_size: 1,
+                          current_size: 1,
                           affiliation: "Neither",
                           grill: rand(2),
                           tent: rand(2),
@@ -144,6 +148,7 @@ PackagedTailgate.create!( name: tailgate_names.sample,
                           image_3: images.sample,
                           image_4: images.sample
                         )
+end
 
 tailgates = Tailgate.all
 

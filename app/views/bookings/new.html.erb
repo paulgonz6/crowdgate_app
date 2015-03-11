@@ -110,6 +110,16 @@
     $(document).ready(function() {
       $('#signupmodal').trigger('click');
     });
+
+    var NewContent = 'Play is currently under review... <div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>'
+
+    $('#buttonStripe').on('click', function() {
+      if ($('body').hasClass('payment-errors')) {
+      } else {
+        $(this).html(NewContent);
+        $(this).addClass('submitting')
+      }
+    });
   </script>
 
 <% end %>
