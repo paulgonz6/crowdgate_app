@@ -62,6 +62,14 @@
 </div>
 
 
+<% unless current_user.present? %>
+  <p class="hidden" id="signupmodal" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+  </p>
+  <%= render 'users/signup_login_modal' %>
+<% end %>
+
+
 <% content_for :bottom do %>
   <script type="text/javascript">
 
@@ -90,4 +98,11 @@
 
       });
   </script>
+
+  <script>
+    $(document).ready(function() {
+      $('#signupmodal').trigger('click');
+    });
+  </script>
+
 <% end %>
