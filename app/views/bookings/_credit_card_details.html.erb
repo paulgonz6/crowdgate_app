@@ -1,4 +1,4 @@
-<fieldset <%= 'disabled' unless current_user %>>
+<fieldset <%= 'disabled' if current_user.nil? && @tailgate.class != FreeTailgate %>>
   <span class="payment-errors" style="color:red;"></span>
 
   <!-- Credit Card Number -->
