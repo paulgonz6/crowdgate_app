@@ -12,16 +12,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new
-    @event.name = params[:name]
-    @event.date = params[:date]
-    @event.time = params[:time]
-    @event.venue = params[:venue]
-    @event.city = params[:city]
-    @event.state = params[:state]
+    @event = Event.new(event_params)
 
     if @event.save
-      redirect_to(events_url)
+      flash[:success] = "Event created succesfully"
+      redirect_to :back
     else
       render('events/new')
     end
@@ -87,5 +82,10 @@ class EventsController < ApplicationController
 
     redirect_to(events_url)
   end
+
+  private
+    def event_params
+      params.require(:event).permit(:name, :date, :time, :venue, :city, :state)
+    end
 
 end

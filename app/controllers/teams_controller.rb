@@ -16,7 +16,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     if @team.save
       flash[:success] = "You have just added #{@team.name}"
-      redirect_to teams_url
+      redirect_to :back
     else
       render 'new'
     end
@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
   private
 
     def team_params
-      params.require(:team).permit(:headline, :name, :background_image, :color)
+      params.require(:team).permit(:headline, :name, :background_image, :color, :sport)
     end
 
 end

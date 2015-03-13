@@ -1,0 +1,43 @@
+<%= form_for event do |f| %>
+  <%= f.text_field  :name,
+                    class: 'form-control form-input-fields',
+                    placeholder: "Event Name"  %>
+  <br>
+  <%= f.text_field  :date,
+                    class: 'form-control form-input-fields',
+                    placeholder: "Event Date"  %>
+  <br>
+
+  <%= f.text_field  :time,
+                    class: 'form-control form-input-fields',
+                    placeholder: "Event Time"  %>
+  <br>
+
+  <%= f.text_field  :city,
+                    class: 'form-control form-input-fields',
+                    placeholder: "Event City"  %>
+  <br>
+
+  <%= f.text_field  :state,
+                    class: 'form-control form-input-fields',
+                    placeholder: "Event State"  %>
+  <br>
+
+  <%= f.text_field  :venue,
+                    class: 'form-control form-input-fields',
+                    placeholder: "Event Venue Name"  %>
+  <br>
+
+  <%= f.label :home_team_id %>
+  <%= f.collection_select :home_team_id, Team.all, :id, :name, {}, class: 'form-control form-input-fields' %>
+
+  <br>
+
+  <%= f.label :away_team_id %>
+  <%= f.collection_select :away_team_id, Team.all, :id, :name, {}, class: 'form-control form-input-fields' %>
+
+  <br>
+
+  <%= f.submit class: "btn btn-primary btn-block form-input-fields"  %>
+
+<% end %>
