@@ -7,5 +7,4 @@ class Event < ActiveRecord::Base
   def live_tailgates
     self.tailgates.where("current_size > ?", 0)
   end
-
 end
