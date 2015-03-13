@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
 
   def search
     if params[:name].present?
-      Rollbar.info("Search for #{params[:name]}")
+      Rollbar.info("Search for #{params[:name].downcase}")
       @team = Team.find_by("name LIKE '%#{params[:name]}%'")
       if @team.present?
         redirect_to team_url(@team.id)
