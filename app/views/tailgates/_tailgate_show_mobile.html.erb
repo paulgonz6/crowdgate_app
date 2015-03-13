@@ -7,6 +7,8 @@
     <div class="slide-from-right" style="position: absolute; bottom: 0; right: 0; padding: 15px; background-color: #303A48; color:white;">
       <% if @tailgate.class == FreeTailgate %>
         <span>FREE</span>
+      <% elsif @tailgate.class == PackagedTailgate %>
+        <span><%= number_to_currency(@tailgate.price) %> for package</span>
       <% else %>
         <span><%= number_to_currency(@tailgate.price) %> / guest</span>
       <% end %>
@@ -23,7 +25,9 @@
   </div>
   <div class="row">
     <div class="col-xs-12 text-center" style="padding: 15px;">
-      <p><%= @tailgate.current_size %> Spots Remaining</p>
+      <% unless @tailgate.class == PackagedTailgate %>
+        <p><%= @tailgate.current_size %> Spots Remaining</p>
+      <% end %>
       <%= render 'booking_block' %>
     </div>
   </div>
