@@ -4,7 +4,10 @@
                 background-image: url('<%= @tailgate.image_1 %>');
                 background-size: cover;
                 position: relative;">
-    <div class="slide-from-right" style="position: absolute; bottom: 0; right: 0; padding: 15px; background-color: #303A48; color:white;">
+    <div  class="slide-from-right"
+          style=   "position: absolute; bottom: 0; right: 0;
+                    padding: 15px; background-color: #303A48; color:white;">
+
       <% if @tailgate.class == FreeTailgate %>
         <span>FREE</span>
       <% elsif @tailgate.class == PackagedTailgate %>
@@ -12,27 +15,44 @@
       <% else %>
         <span><%= number_to_currency(@tailgate.price) %> / guest</span>
       <% end %>
+
     </div>
   </div>
+
   <div class="row" style="background-color: white;">
     <div class="col-xs-12" style="padding-top: 5px;">
       <p style="font-size: 14px;">
-        <strong><%= @tailgate.name %></strong><br>
-        <small><%= @tailgate.event.name %></small><br>
-        <small>Tailgate starts <%= @tailgate.tailgate_start_time %></small><br>
+        <strong>
+          <%= @tailgate.name %>
+        </strong>
+        <br>
+        <small>
+          <%= @tailgate.event.name %>
+        </small>
+        <br>
+        <small>
+          Tailgate starts <%= @tailgate.tailgate_start_time %>
+        </small>
+        <br>
       </p>
     </div>
   </div>
+
   <div class="row">
     <div class="col-xs-12 text-center" style="padding: 15px;">
       <% unless @tailgate.class == PackagedTailgate %>
-        <p><%= @tailgate.current_size %> Spots Remaining</p>
+        <p>
+          <%= @tailgate.current_size %> Spots Remaining
+        </p>
       <% end %>
       <%= render 'booking_block' %>
     </div>
   </div>
+
 </div>
+
 <%= render 'mobile_tab_display' %>
+
 <hr/>
 
 <div class="container">
