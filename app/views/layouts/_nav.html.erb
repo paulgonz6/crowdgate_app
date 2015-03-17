@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default hidden-xs">
   <div class="container-fluid">
 
     <div class="navbar-header">
@@ -15,16 +15,12 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <%= form_tag( '/search_teams',
-                      class: 'navbar-form navbar-left',
-                      :method => 'get') do %>
-
-          <div class="input-group">
-            <input  type="text" name="name"
-                    class='form-control landing-search-fields'
-                    placeholder="Search for your team">
-          </div>
-        <% end %>
+      <ul class="nav navbar-nav navbar-left">
+        <li id="findTailgateButton">
+          <a href="#">
+            Find a Tailgate <i class="fa fa-chevron-down"></i>
+          </a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.present? && current_user.host_status? %>
