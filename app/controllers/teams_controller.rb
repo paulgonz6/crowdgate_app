@@ -37,6 +37,15 @@ class TeamsController < ApplicationController
     end
   end
 
+  def team_request
+    gb = Gibbon::API.new(ENV["mail_chimp"])
+    gb.lists.subscribe( {:id => "cae8fe74df",
+                        :email => {:email => params[:email]},
+                        :merge_vars => {:TEAMNAME => params[:team_name]},
+                        :double_optin => false}
+                      )
+  end
+
   def show
     @events = Event.where("name LIKE '%#{@team.name}%'").order("date ASC")
   end

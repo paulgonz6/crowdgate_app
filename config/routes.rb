@@ -26,6 +26,9 @@ Rails.application.routes.draw do
                   controller: 'tailgates', type: 'PackagedTailgate'
 
   resources   :teams
+    post '/team_request',     :controller => 'teams',
+                              :action => 'team_request'
+
   resources   :events
   resources   :hosts, :only => ['new', 'create']
   resources   :messages, :only => ['create', 'new']

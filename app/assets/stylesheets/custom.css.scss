@@ -70,6 +70,11 @@ body {
   }
 }
 
+.navbar.visible-xs {
+  height: 1px !important;
+  padding: 0;
+}
+
 .navbar-default .navbar-nav > li > a {
   color: white;
 }
