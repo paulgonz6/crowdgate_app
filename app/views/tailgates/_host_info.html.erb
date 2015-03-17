@@ -8,7 +8,9 @@
         <div class="row">
           <div class="col-md-3 text-center">
             <%= image_tag @tailgate.host.image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
-            <h5><strong><%= @tailgate.host.short_name %></strong><h5>
+            <h5>
+              <strong><%= link_to @tailgate.host.short_name, @tailgate.host %></strong>
+            </h5>
           </div>
           <div class="col-md-9 text-justify">
             <p>
