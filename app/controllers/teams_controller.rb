@@ -38,12 +38,15 @@ class TeamsController < ApplicationController
   end
 
   def team_request
-    gb = Gibbon::API.new(ENV["mail_chimp"])
-    gb.lists.subscribe( {:id => "cae8fe74df",
+    gb = Gibbon::API.new(ENV['mail_chimp_api'])
+    gb.lists.subscribe( {:id => ENV['mail_chimp_teams_list'],
                         :email => {:email => params[:email]},
                         :merge_vars => {:TEAMNAME => params[:team_name]},
                         :double_optin => false}
                       )
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show
