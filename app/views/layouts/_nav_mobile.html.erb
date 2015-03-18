@@ -4,13 +4,46 @@
   </span>
   <div class="pull-right" style="color: white; vertical-align: top; margin-right: 20px;">
     <ul class="nav navbar-nav">
-      <li>
+      <li class="icon-menu">
         <a href="#"><i class="fa fa-bars"></i></a>
       </li>
     </ul>
   </div>
 </nav>
 
-<div class="side-nav-menu">
-
+<div class="nav-side-menu">
+  <div class="menu-close">
+    <i class="fa fa-close pull-right"></i>
+  </div>
+  <div class="text-center">
+    <p></p>
+    <hr/>
+    <p>Find Tailgates</p>
+    <hr/>
+    <p>Become a Host</p>
+    <hr/>
+    <p>Log In</p>
+    <hr/>
+    <p>Sign Up</p>
+    <hr/>
+  </div>
 </div>
+
+<script>
+  var main = function() {
+    $('.icon-menu').click(function() {
+      $('.nav-side-menu').animate({
+        right: "0px"
+      }, 200);
+    });
+
+    $('.menu-close').click(function() {
+      $('.nav-side-menu').animate({
+        right: "-210px"
+      }, 200);
+
+    });
+  };
+  $(document).ready(main);
+</script>
+
