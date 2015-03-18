@@ -1,0 +1,99 @@
+
+<div  class="row" id="findTailgatesSearch"
+      style=  " display: none;
+                background-color: rgba(48, 58, 72, 0.9);
+                width: 100%;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                z-index: 1500;
+                margin: 0;
+                padding-top: 25px;">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="row" style="color: white;">
+      <div class="col-md-4">
+        <h4>College Football</h4>
+        <hr/>
+        <ul class="list-unstyled">
+          <% Team.college_football.each do |team|  %>
+            <li><%= link_to team.name, team %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>NFL</h4>
+        <hr/>
+        <ul class="list-unstyled">
+          <% Team.nfl.each do |team|  %>
+            <li><%= link_to team.name, team %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>College Baseball</h4>
+        <hr/>
+        <ul class="list-unstyled">
+          <% Team.college_baseball.each do |team|  %>
+            <li><%= link_to team.name, team %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div id="teamRequest"class="row text-center" style="color: white; padding-bottom: 25px;">
+      <h3>Don't see your team listed above?</h3>
+      <h4 class="subtext">Help bring Crowdgate to your favorite team by entering your email and the team's name below.</h4>
+      <br>
+      <div class="col-md-12 form-inputs">
+        <%= form_tag('/team_request', class: 'form-inline', :remote => true) do %>
+
+          <div class="form-group">
+            <label  class="sr-only">Email</label>
+            <input  type="email"
+                    name="email"
+                    class="form-control form-input-fields"
+                    placeholder="Enter Your Email">
+          </div>
+
+          <div class="form-group">
+            <label  class="sr-only">Team Name</label>
+            <input  type="text"
+                    name="team_name"
+                    class="form-control form-input-fields"
+                    placeholder="Enter Team Name">
+          </div>
+
+          <button type="submit" class="btn btn-success">Submit</button>
+
+        <% end %>
+
+        <br>
+        <p>
+          <small>
+            <em>
+              We will notify you when there are tailgates available for your team
+            </em>
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function() {
+    $("#findTailgateButton").mouseenter( function() {
+        $('#findTailgatesSearch').slideToggle('slow');
+        $('.landing-text').fadeToggle('slow');
+        $('.team-show-text').fadeToggle('slow');
+      }
+    );
+
+    $("#findTailgatesSearch").mouseleave( function() {
+        $('#findTailgatesSearch').slideToggle('slow');
+        $('.landing-text').fadeToggle('slow');
+        $('.team-show-text').fadeToggle('slow');
+      }
+    );
+  });
+</script>
