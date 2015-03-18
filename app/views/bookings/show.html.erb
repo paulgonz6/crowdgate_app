@@ -24,8 +24,12 @@
         <% end %>
       </p>
       <p class="">
-        A copy of this recepit has been emailed to
-        <%= current_user ? @booking.buyer.email : @booking.email %>
+        A copy of this receipt has been emailed to
+        <% if @booking.buyer.present? %>
+          <%= @booking.buyer.email %>
+        <% else %>
+          <%= @booking.email %>
+        <% end %>
       </p>
     </div>
   </div>
