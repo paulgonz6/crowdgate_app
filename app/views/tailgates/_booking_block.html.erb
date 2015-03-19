@@ -16,7 +16,11 @@
   <% elsif @tailgate.class == FreeTailgate %>
 
   <% if @tailgate.current_size > 0 %>
-    <p class="btn btn-primary mobile-booking-button"><%= link_to "RSVP Now", new_tailgate_booking_url(@tailgate.id) %></p>
+    <%= link_to new_tailgate_booking_url(@tailgate.id) do %>
+      <p class="btn btn-primary mobile-booking-button">
+        RSVP Now
+      </p>
+    <% end %>
   <% else %>
     <p class="btn btn-default mobile-booking-button"><%= link_to "SOLD OUT", "#" %></p>
   <% end %>
@@ -64,7 +68,11 @@
     <p><%= @tailgate.current_size %> Spots Remaining</p>
 
   <% if @tailgate.current_size > 0 %>
-    <p class="btn btn-primary btn-block"><%= link_to "RSVP Now", new_tailgate_booking_url(@tailgate.id) %></p>
+    <%= link_to new_tailgate_booking_url(@tailgate.id) do %>
+      <p class="btn btn-primary btn-block">
+        RSVP Now
+      </p>
+    <% end %>
   <% else %>
     <p class="btn btn-default btn-block"><%= link_to "SOLD OUT", "#" %></p>
   <% end %>
