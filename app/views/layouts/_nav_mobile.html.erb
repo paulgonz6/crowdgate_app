@@ -11,39 +11,68 @@
   </div>
 </nav>
 
-<div class="nav-side-menu">
+<div class="nav-side-menu" style="display:none;">
   <div class="menu-close">
     <i class="fa fa-close pull-right"></i>
   </div>
   <div class="text-center">
-    <p></p>
+    <% if current_user.present? %>
+      <p>
+        Hi, <%= current_user.try(:short_name) %>
+      </p>
+    <% end %>
+
     <hr/>
-    <p>Find Tailgates</p>
+    <p><%= link_to 'Find Tailgates', teams_url %></p>
     <hr/>
-    <p>Become a Host</p>
+
+    <% if current_user.present? && current_user.host_status? %>
+      <p><%= link_to "List a Tailgate", new_tailgate_url%></li>
+    <% else %>
+      <p><%= link_to "Become a Host", new_host_url%></p>
+    <% end %>
     <hr/>
-    <p>Log In</p>
-    <hr/>
-    <p>Sign Up</p>
-    <hr/>
+
+    <% if current_user.present? %>
+      <p>
+        <%= link_to "Profile", user_url(current_user.id) %>
+      </p>
+      <p>
+        <%= link_to "Account Details", account_url %>
+      </p>
+      <p>
+        <%= link_to "Sign Out", destroy_user_session_url, 'data-method' => "delete" %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to "Log In", new_user_session_url %>
+      </p>
+      <hr/>
+      <p>
+        <%= link_to "Sign Up", new_user_registration_url %>
+      </p>
+      <hr/>
+    <% end %>
   </div>
 </div>
 
 <script>
   var main = function() {
+
     $('.icon-menu').click(function() {
       $('.nav-side-menu').animate({
-        right: "0px"
-      }, 200);
+        right: "0px"}, 200);
+      $('.nav-side-menu').toggle('slow');
     });
 
     $('.menu-close').click(function() {
       $('.nav-side-menu').animate({
-        right: "-210px"
-      }, 200);
-
+        right: "-210px" }, 200);
+      $('.nav-side-menu').toggle('slow');
     });
+
   };
+
   $(document).ready(main);
 </script>
 

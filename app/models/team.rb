@@ -9,9 +9,9 @@ class Team < ActiveRecord::Base
   validates :sport,
             inclusion: { in: ["College Football", "College Baseball", "NFL"] }
 
-  scope :college_football,  -> { where(:sport => 'College Football') }
-  scope :college_baseball,  -> { where(:sport => 'College Baseball') }
-  scope :nfl,               -> { where(:sport => 'NFL') }
+  scope :college_football,  -> { where(:sport => 'College Football').order(:name) }
+  scope :college_baseball,  -> { where(:sport => 'College Baseball').order(:name) }
+  scope :nfl,               -> { where(:sport => 'NFL').order(:name) }
 
   def games
     self.home_games + self.away_games

@@ -1,6 +1,6 @@
 <div class="col-md-8">
   <h3 class="subtext">
-    <%= pluralize(@team.total_live_tailgates, 'tailgate') %> to choose from for <%= @team.name %> games
+    <%= pluralize(@team.total_live_tailgates.count, 'tailgate') %> to choose from for <%= @team.name %> games
   </h3>
   <hr/>
 </div>

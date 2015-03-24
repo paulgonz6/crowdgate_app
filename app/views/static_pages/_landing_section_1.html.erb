@@ -11,16 +11,9 @@
     <u>Crowdgate removes all planning when it comes to tailgating, and creates an entirely hassle-free pre-game experience for you.</u> We do this by connecting you with the best turnkey tailgate hosts across the country. Turnkey tailgating is a service where you pay in advance, and the local tailgate host takes care of everything. The host does setup, clean up, food preperation, etc. All you need to do is show up and have fun on game day.
   </p>
   <p class='text-content'>
-    If you love tailgating, but can't plan one, Crowdgate is perfect for you. If you are traveling to an away game, and want to experience how locals tailgate, Crowdgate is perfect you. If you have a larger group such as a bachelor party or alumni assocation, Crowdgate is perfect for you. When it comes down to it, if you just want to have more fun on game day, Crowdgate is perfect for you.
+    If you love tailgating, but can't plan one, Crowdgate is perfect for you. If you are traveling to an away game, and want to experience how locals tailgate, Crowdgate is perfect for you. If you have a larger group such as a bachelor party or alumni assocation, Crowdgate is perfect for you. When it comes down to it, if you just want to have more fun on game day, Crowdgate is perfect for you.
   </p>
   <hr/>
-  <%= form_tag( '/search_teams', :method => 'get') do %>
-    <div class='form-group'>
-      <input  type="text" name="name" class='form-control text-center'
-                                      placeholder="Search for your team">
-    </div>
-    <button class="btn btn-primary btn-block">
-      Your Best Game Day Awaits
-    </button>
-  <% end %>
+  <%= link_to 'Your Best Game Day Awaits', teams_url,
+      :class => "btn btn-primary btn-block", style: "color: white;" %>
 </div>

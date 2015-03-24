@@ -39,7 +39,7 @@
         </ul>
       </div>
     </div>
-    <div id="teamRequest"class="row text-center" style="color: white; padding-bottom: 25px;">
+    <div class="row text-center team-request" style="color: white; padding-bottom: 25px;">
       <h3>Don't see your team listed above?</h3>
       <h4 class="subtext">Help bring Crowdgate to your favorite team by entering your email and the team's name below.</h4>
       <br>
@@ -82,18 +82,12 @@
 
 <script>
   $(document).ready(function() {
-    $("#findTailgateButton").mouseenter( function() {
-        $('#findTailgatesSearch').slideToggle('slow');
-        $('.landing-text').fadeToggle('slow');
-        $('.team-show-text').fadeToggle('slow');
-      }
-    );
-
-    $("#findTailgatesSearch").mouseleave( function() {
-        $('#findTailgatesSearch').slideToggle('slow');
-        $('.landing-text').fadeToggle('slow');
-        $('.team-show-text').fadeToggle('slow');
-      }
-    );
+    $("#findTailgateButton").on('click', function() {
+      $('#findTailgatesSearch').slideToggle('slow');
+      $('.landing-text').fadeToggle('slow');
+      $('.team-show-text').fadeToggle('slow');
+      $('.text-splash-content').fadeToggle('slow');
+      $('.become-host-text').fadeToggle('slow');
+    });
   });
 </script>

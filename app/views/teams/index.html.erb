@@ -2,30 +2,99 @@
   <div class="text-splash-content">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <h1>Teams</h1>
-        <h3 class="subtext">Don't see your team below? Contact us and we can add it.</h3>
+        <h1>What team do you want to tailgate for?</h1>
       </div>
     </div>
   </div>
 </div>
 <div class="container">
-
-  <div class="row team-splash">
-    <div class="team-text">
+  <div class="row">
+    <div class="col-xs-12 col-md-4">
+      <h3>College Football</h3>
+      <hr/>
+      <% @teams.college_football.each do |team| %>
       <div class="row">
-        <div class="col-md-12">
-          <h3>College Football</h3>
-          <hr/>
-          <% @teams.each do |team| %>
-          <div class="col-md-4">
-            <div class="list-group-item text-center" style="background-image: url(<%= team.background_image %>); color: white; background-size: cover; padding: 0;">
-              <div class="team-index-filter" style="background-color: rgba(0,0,0,.6); width: 100%, height: 100%; padding: 10px;">
-                <h3><%= link_to team.name, team %></h3>
-                <p><%= pluralize(team.total_live_tailgates.count, 'tailgate') %></p>
-              </div>
+        <div class="col-xs-12">
+          <div class="list-group-item text-center" style="background-image: url(<%= team.background_image %>); color: white; background-size: cover; padding: 0;">
+            <div class="team-index-filter" style="background-color: rgba(0,0,0,.6); width: 100%, height: 100%; padding: 10px;">
+              <h3><%= link_to team.name, team %></h3>
+              <p><%= pluralize(team.total_live_tailgates.count, 'tailgate') %></p>
             </div>
           </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <h3>College Baseball</h3>
+      <hr/>
+      <% @teams.college_baseball.each do |team| %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="list-group-item text-center" style="background-image: url(<%= team.background_image %>); color: white; background-size: cover; padding: 0;">
+            <div class="team-index-filter" style="background-color: rgba(0,0,0,.6); width: 100%, height: 100%; padding: 10px;">
+              <h3><%= link_to team.name, team %></h3>
+              <p><%= pluralize(team.total_live_tailgates.count, 'tailgate') %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <h3>NFL</h3>
+      <hr/>
+      <% @teams.nfl.each do |team| %>
+      <div class="col-xs-12">
+        <div class="list-group-item text-center" style="background-image: url(<%= team.background_image %>); color: white; background-size: cover; padding: 0;">
+          <div class="team-index-filter" style="background-color: rgba(0,0,0,.6); width: 100%, height: 100%; padding: 10px;">
+            <h3><%= link_to team.name, team %></h3>
+            <p><%= pluralize(team.total_live_tailgates.count, 'tailgate') %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <br>
+      <hr/>
+      <div class="row text-center team-request">
+        <h3>Don't see your team listed above?</h3>
+        <h4 class="subtext">Help bring Crowdgate to your favorite team by entering your email and the team's name below.</h4>
+        <br>
+        <div class="col-md-12 form-inputs">
+          <%= form_tag('/team_request', class: 'form-inline', :remote => true) do %>
+
+          <div class="form-group">
+            <label  class="sr-only">Email</label>
+            <input  type="email"
+            name="email"
+            class="form-control form-input-fields"
+            placeholder="Enter Your Email">
+          </div>
+
+          <div class="form-group">
+            <label  class="sr-only">Team Name</label>
+            <input  type="text"
+            name="team_name"
+            class="form-control form-input-fields"
+            placeholder="Enter Team Name">
+          </div>
+
+          <button type="submit" class="btn btn-success">Submit</button>
+
           <% end %>
+
+          <br>
+          <p>
+            <small>
+              <em>
+                We will notify you when there are tailgates available for your team
+              </em>
+            </small>
+          </p>
         </div>
       </div>
     </div>

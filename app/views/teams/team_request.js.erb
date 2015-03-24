@@ -1,5 +1,5 @@
-$("#teamRequest").fadeOut(function() {
-  $(this).html("<p>Request submitted.</p><h3>Do you want to help bring Crowdgate to your team?</h3><br><p class='btn btn-primary'><%= escape_javascript(link_to 'Click Here', new_host_url) %></p>").fadeIn();
+$(".team-request").fadeOut(function() {
+  $(this).html("<p>Request submitted.</p><h3>Do you want to help bring Crowdgate to your team?</h3><br><p class='btn btn-primary'><%= escape_javascript(link_to 'Click Here Now to Become a Tailgate Host', new_host_url) %></p>").fadeIn();
 });
 
 // <a href='hosts/new'>Click here to become a host now!</a>
