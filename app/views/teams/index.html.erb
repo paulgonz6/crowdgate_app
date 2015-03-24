@@ -21,7 +21,7 @@
             <div class="list-group-item text-center" style="background-image: url(<%= team.background_image %>); color: white; background-size: cover; padding: 0;">
               <div class="team-index-filter" style="background-color: rgba(0,0,0,.6); width: 100%, height: 100%; padding: 10px;">
                 <h3><%= link_to team.name, team %></h3>
-                <p><%= team.total_tailgates %> tailgates</p>
+                <p><%= pluralize(team.total_live_tailgates.count, 'tailgate') %></p>
               </div>
             </div>
           </div>
