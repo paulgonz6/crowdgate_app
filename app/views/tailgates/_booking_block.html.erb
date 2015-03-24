@@ -91,16 +91,12 @@
 
   <hr/>
   <p class="btn btn-default btn-block buttons-with-icons">
-    <a href="mailto:<%= @tailgate.host.email %>?Subject= Question about
-      your tailgate for the <%= @tailgate.event.name %> game">
+    <a href="mailto:<%= @tailgate.host.email %>?Subject= Question about your tailgate for the <%= @tailgate.event.name %> game">
       <i class="fa fa-envelope"></i> Email Host
     </a>
   </p>
   <p class="btn btn-default btn-block buttons-with-icons">
-    <a href="mailto:?Subject=Check out this tailgate for the
-    <%= @tailgate.event.name %>&amp;
-    body=https://fierce-fjord-6626.herokuapp.com/tailgates/
-    <%= @tailgate.id %>">
+    <a href="mailto:?Subject=Check out this tailgate for <%= @tailgate.event.name %>&amp;body=Here is the link to the tailgate: https://www.crowdgate.us/tailgates/<%= @tailgate.id %>">
     <i class="fa fa-paper-plane"></i> Send to Friends
     </a>
   </p>

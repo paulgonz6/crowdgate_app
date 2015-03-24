@@ -40,7 +40,7 @@
             </li>
             <li class="list-group-item">
               <strong>Buyer:</strong>
-              <%= @booking.buyer.try(:id) || @booking.email %>
+              <%= @booking.buyer.try(:email) || @booking.email %>
             </li>
           </ul>
         </div>
