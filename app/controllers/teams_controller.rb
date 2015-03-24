@@ -50,7 +50,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @events = Event.where("name LIKE '%#{@team.name}%'").order("date ASC")
+    @events = @team.games
   end
 
   def index
