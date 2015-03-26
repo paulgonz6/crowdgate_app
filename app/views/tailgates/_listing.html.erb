@@ -1,49 +1,64 @@
 
   <% if tailgate.current_size.nil? || tailgate.current_size > 0 %>
-  <div class='row tailgate-listing'>
-    <div class="col-md-4 tailgate-listing-image" style="background-image: url(<%= tailgate.image_1 %>);">
-      <% if tailgate.class == PaidTailgate %>
-      <div class="tailgate-listing-price" style="background-color: <%= @team.color %>">
-        <h5>$<%= tailgate.price %> Per Guest</h5>
-      </div>
-      <% elsif tailgate.class == FreeTailgate %>
-      <div class="tailgate-listing-price" style="background-color: <%= @team.color %>">
-        <h5>FREE</h5>
-      </div>
-      <% else %>
-      <div class="tailgate-listing-price" style="background-color: <%= @team.color %>">
-        <h5>$<%= tailgate.price %> for group</h5>
-      </div>
-      <% end %>
-    </div>
-    <div class="col-md-8">
-      <h4 class="no-margin-top">
-        <strong>
-          <%= link_to tailgate.name, tailgate_url(tailgate.id) %>
-        </strong>
-      </h4>
-      <p>
-        <strong>Hosted by:</strong>
-        <%= tailgate.host.short_name %>
-        <% if tailgate.host.star_rating.present? %>
-        (<%= star_rating_for(tailgate) %> out of 5 stars)
-        <% else %>
-        (No reviews)
-        <% end %>
-      </p>
-
-      <p>
-        <em>
-          <% unless tailgate.class == PackagedTailgate %>
-            <%= pluralize(tailgate.current_size, 'spot') %> remaining |
+    <%= link_to tailgate_url(tailgate.id) do %>
+      <div class='row tailgate-listing'>
+        <div class="col-md-4 tailgate-listing-image" style="background-image: url(<%= tailgate.image_1 %>);">
+          <% if tailgate.class == PaidTailgate %>
+          <div class="tailgate-listing-price" style="background-color: <%= @team.color %>">
+            <h5>$<%= tailgate.price %> Per Guest</h5>
+          </div>
+          <% elsif tailgate.class == FreeTailgate %>
+          <div class="tailgate-listing-price" style="background-color: <%= @team.color %>">
+            <h5>FREE</h5>
+          </div>
+          <% else %>
+          <div class="tailgate-listing-price" style="background-color: <%= @team.color %>">
+            <h5>$<%= tailgate.price %> for group</h5>
+          </div>
           <% end %>
-          Affiliated with <%= tailgate.affiliation.downcase %> team
-        </em>
-      </p>
-      <p class="text-justify">
-        <%= truncate(tailgate.description, length: 170) %>
-      </p>
-    </div>
-  </div>
+        </div>
+        <div class="col-md-8">
+          <div class="hidden-xs">
+            <h4 class="no-margin-top">
+              <strong>
+                <%= tailgate.name %>
+              </strong>
+            </h4>
+          </div>
+          <div class="visible-xs">
+            <h4>
+              <strong>
+                <%= tailgate.name %>
+              </strong>
+            </h4>
+          </div>
+          <p>
+            <strong>Hosted by:</strong>
+            <%= tailgate.host.short_name %>
+            <% if tailgate.host.star_rating.present? %>
+            (<%= star_rating_for(tailgate) %> out of 5 stars)
+            <% else %>
+            (No reviews)
+            <% end %>
+          </p>
+
+          <p>
+            <em>
+              <% unless tailgate.class == PackagedTailgate %>
+                <%= pluralize(tailgate.current_size, 'spot') %> remaining |
+              <% end %>
+              <% if tailgate.affiliation == "Neither" %>
+                Affiliated with <%= tailgate.affiliation.downcase %> team
+              <% else %>
+                Affiliated with the <%= tailgate.affiliation.downcase %>
+              <% end %>
+            </em>
+          </p>
+          <p class="text-justify">
+            <%= truncate(tailgate.description, length: 170) %>
+          </p>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 
