@@ -13,7 +13,7 @@ class BecomeHostMailer < ApplicationMailer
     @email = email
     mail( to: @email,
           cc: 'paul@crowdgate.us',
-          subject: 'Thanks for your interest in Crowdgate. Schedule a quick call with us.'
+          subject: 'Thanks for your interest in Crowdgate. You are almost ready to start listing your tailgates!'
         )
   end
 
