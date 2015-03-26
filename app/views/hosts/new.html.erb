@@ -3,11 +3,90 @@
 <%= render 'become_host_landing_ios' %>
 
 <div class="container">
+
   <div class="row">
     <div class="col-md-12 text-center">
       <br>
-      <h3>The X's and O's of Hosting on Crowdgate</h3>
+      <h3 class="text-center">
+        <strong>Why list your tailgates on Crowdgate?</strong>
+      </h3>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Access to more fans</h4>
+            </div>
+            <div class="panel-body" style="height: 250px;">
+              <p class="text-content">
+                Running a tailgating business is difficult. The hardest part can be finding enough fans to join your tailgate. With Crowdgate, you now have access to the crowd. By centralizing all tailgate offerings into one marketplace, we are bringing more fans together who want to purchase tailgates.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Offset the cost of your game tickets</h4>
+            </div>
+            <div class="panel-body" style="height: 250px;">
+              <p class="text-content">
+                It costs a fortune to go to sporting events these days. We feel your pain and that's why we are here to help. If you have tailgating gear, and love being in the parking lot before the big game, you can now earn cash by hosting a tailgate. Your game day just got a little bit more affordable.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Show off your tailgating chops</h4>
+            </div>
+            <div class="panel-body" style="height: 250px;">
+              <p class="text-content">
+                Sometimes it's pride. Sometimes it's competitiveness. Whatever the reason, you love being the one to host the best tailgate. Now you can show off that skill to more people by connecting with fans before the big game. The more guests, the more fun. Your tailgate just became more awesome.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
       <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h3 class="text-center">
+        <strong>Game day is all about the experience</strong>
+      </h3>
+      <br>
+      <div class="text-content">
+        <p>
+          You've experienced it before. The grill. The beer. The food. The smell is distinct. You're surrounded by your favorite people. The buzz in the parking lot on game day is magical. It's the best place to be in the world.
+        </p>
+        <p>
+          We are now giving you more reasons to do what you love every weekend. With Crowdgate, you have the opportunity to earn extra cash, and connect with more fans, by inviting others to join your tailgate. The only question now is, what are you waiting for?
+        </p>
+      </div>
+      <div class="form-inputs">
+        <%= form_tag('/hosts', :remote => true) do %>
+        <div class="form-group">
+          <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address" required>
+        </div>
+        <input type="submit" value="Become a Host" class="btn btn-success btn-block btn-lg">
+        <% end %><br>
+      </div>
+    <hr/>
+    </div>
+    <br>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3 class="text-center">
+        <strong>The X's and O's of hosting on Crowdgate</strong>
+      </h3>
+      <br>
       <div class="row">
         <div class="col-md-4">
           <div class="panel panel-default">
@@ -40,7 +119,7 @@
             </div>
             <div class="panel-body" style="height: 250px;">
               <p class="text-content">
-                All the hardwork and preperation culminate on game day. It's time to execute and your guests expect the best. Deliver it to them. And of course, have some fun yourself. It's tailgating. Where else could you possibly want to be.
+                All the hardwork and preperation culminate on game day. It's time to execute and your guests expect the best. Deliver it to them. And of course, have some fun yourself. You're in the parking lot, surrounded by thousands of your closest friends. Where else could you possibly want to be?
               </p>
             </div>
           </div>
@@ -48,49 +127,13 @@
       </div>
       <br>
       <%= link_to 'Click here to see other frequently asked questions about hosting on Crowdgate',
-          faq_url, class: 'btn btn-default btn-lg', style: 'white-space: normal;' %>
-    </div>
-  </div>
-  <hr/>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h3 class="text-center">
-        <strong>Offense sells tickets, defense wins championships, <u>tailgates create memories</u></strong>
-      </h3>
+      faq_url, class: 'btn btn-default btn-lg', style: 'white-space: normal;' %>
       <br>
-      <div class="text-content">
-        <p>
-          You've experienced it before. The grill. The beer. The food. The smell is distinct. The buzz in the parking lot on game day is magical. It's the best place to be in the world. You love it.
-        </p>
-        <p>
-          We are giving you more reasons to do what you love every weekend. You now have the opportunity to earn money tailgating by inviting other fans to join your tailgate. You now get the opportunity to show off your tailgating skills to other fans. We guess it's time for you to create some more memories.
-        </p>
-        <br>
-        <p>Here are some other specific reasons why you should host on Crowdgate:</p>
-        <ul class="list-group text-left">
-          <li class="list-group-item">Offset game ticket cost</li>
-          <li class="list-group-item">Show away fans how your team tailgates</li>
-          <li class="list-group-item">Run a small weekend tailgating business</li>
-          <li class="list-group-item">Get exposure for your catering company</li>
-        </ul>
-      </div>
+      <br>
       <hr/>
-      <h4 class="text-center">
-        <strong>Start creating memories in the parking lot now</strong>
-      </h4>
-      <br>
-      <div class="form-inputs">
-        <%= form_tag('/hosts', :remote => true) do %>
-        <div class="form-group">
-          <input type="email" name="email" class="form-control text-center form-input-fields" placeholder="Enter your email address" required>
-        </div>
-        <input type="submit" value="Become a Host" class="btn btn-success btn-block btn-lg">
-        <% end %>
-      </div>
     </div>
   </div>
-  <br>
-  <br>
+
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h3 class="text-center">
@@ -99,25 +142,17 @@
       <br>
       <div class="text-content">
         <p>
-          Game day is special. And it's not just about how your team performs on the field. It's about the tailgate too. Unfortunately tailgating is not accessible to all fans. Traveling fans can't bring their equipment, and some people just do not have the time to plan a tailgate.
+          Game day is special. And it's not just about how your team performs on the field. It's about the whole experience, especially the tailgate! Unfortunately tailgating is not accessible to all fans. Traveling fans can't bring their equipment, and some people just do not have the time to plan a tailgate.
         </p>
         <p>
-          You can help make that fan's game day special. As a host, your full service tailgate creates a completely hassle-free experience for them. They get all the enjoyment of a tailgate done right, with out all the hard work. You are their quarterback in the parking lot.
+          You can help make that fan's game day special. As a host, your full service tailgate creates a completely hassle-free experience for them. They get all the enjoyment of a tailgate done right, with out all the hard work.
         </p>
-        <br>
-        <p>
-          Here are examples of fans who book tailgates through Crowdgate:
-        </p>
-        <ul class="list-group">
-          <li class="list-group-item">Fans who love tailgating, but not hosting</li>
-          <li class="list-group-item">Traveling fans from the away team</li>
-          <li class="list-group-item">Alumni groups</li>
-          <li class="list-group-item">Fans who do not have tailgating equipment</li>
-          <li class="list-group-item">Companies entertaining clients</li>
-        </ul>
       </div>
+      <br>
+      <br>
     </div>
   </div>
+
 </div>
 
 <div class="row" style="background-color: #303A48; padding: 50px;">
@@ -140,10 +175,10 @@
 <%= render 'become_host_confirmation_modal' %>
 
 <script>
-$(function(){
-  $('.btn').on('click', function() {
-    $(this).val('Play is currently under review...');
-    $(this).addClass('submitting')
+  $(function(){
+    $('.btn').on('click', function() {
+      $(this).val('Play is currently under review...');
+      $(this).addClass('submitting')
+    });
   });
-});
 </script>

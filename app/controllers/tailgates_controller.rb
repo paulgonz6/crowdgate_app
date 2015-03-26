@@ -69,7 +69,7 @@ class TailgatesController < ApplicationController
     def is_user_host?
       unless current_user.host_status?
         flash[:warning] = "Sorry, you are not a host. But you can sign up now."
-        redirect_to become_host_url
+        redirect_to new_host_url
       end
     end
 
