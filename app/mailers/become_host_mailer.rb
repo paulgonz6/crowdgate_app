@@ -9,4 +9,12 @@ class BecomeHostMailer < ApplicationMailer
         )
   end
 
+  def schedule_appointment(email)
+    @email = email
+    mail( to: @email,
+          cc: 'paul@crowdgate.us',
+          subject: 'Thanks for your interest in Crowdgate. Schedule a quick call with us.'
+        )
+  end
+
 end
