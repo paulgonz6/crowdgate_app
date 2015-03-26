@@ -1,10 +1,10 @@
 class BecomeHostMailer < ApplicationMailer
+
   default from: ENV['gmail']
 
   def become_host(email)
     @email = email
-    mail( to: ENV['gmail'],
-          cc: ENV['trello_board'],
+    mail( to: ENV['trello_board'],
           subject: 'New Host Request for ' + @email
         )
   end

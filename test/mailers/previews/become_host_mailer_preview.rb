@@ -6,7 +6,7 @@ class BecomeHostMailerPreview < ActionMailer::Preview
   end
 
   def schedule_appointment
-    BecomeHostMailer.schedule_appointment('paul@crowdgate.us')
+    BecomeHostMailer.schedule_appointment('pjg5005@gmail.com')
   end
 
 end
