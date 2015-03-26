@@ -9,4 +9,7 @@ class StaticPagesController < ApplicationController
   def faq
   end
 
+  def press
+  end
+
 end

@@ -42,6 +42,10 @@ Rails.application.routes.draw do
                               :action => 'faq',
                               :as => 'faq'
 
+  get '/press',               :controller => 'static_pages',
+                              :action => 'press',
+                              :as => 'press'
+
   get '/how_it_works',        :controller => 'static_pages',
                               :action => 'how_it_works',
                               :as => 'how_it_works'
