@@ -2,40 +2,44 @@
 
 <div class="visible-xs">
   <% if @tailgate.class == PaidTailgate %>
+    <% if @tailgate.current_size > 0 %>
+      <%= link_to new_tailgate_booking_url(@tailgate.id) do %>
+        <p class="btn btn-primary mobile-booking-button">
+          Book Now
+        </p>
+      <% end %>
 
-  <% if @tailgate.current_size > 0 %>
-  <p class="btn btn-primary mobile-booking-button">
-    <%= link_to "Book Now", new_tailgate_booking_url(@tailgate.id) %>
-  </p>
-  <% else %>
-  <p class="btn btn-default mobile-booking-button">
-    <%= link_to "SOLD OUT", "#" %>
-  </p>
-  <% end %>
+    <% else %>
+      <p class="btn btn-default mobile-booking-button">
+        <%= link_to "SOLD OUT", "#" %>
+      </p>
+    <% end %>
 
   <% elsif @tailgate.class == FreeTailgate %>
 
-  <% if @tailgate.current_size > 0 %>
-    <%= link_to new_tailgate_booking_url(@tailgate.id) do %>
-      <p class="btn btn-primary mobile-booking-button">
-        RSVP Now
-      </p>
+    <% if @tailgate.current_size > 0 %>
+      <%= link_to new_tailgate_booking_url(@tailgate.id) do %>
+        <p class="btn btn-primary mobile-booking-button">
+          RSVP Now
+        </p>
+      <% end %>
+    <% else %>
+      <p class="btn btn-default mobile-booking-button"><%= link_to "SOLD OUT", "#" %></p>
     <% end %>
-  <% else %>
-    <p class="btn btn-default mobile-booking-button"><%= link_to "SOLD OUT", "#" %></p>
-  <% end %>
 
   <% else @tailgate.class == PackagedTailgate %>
 
-  <% if @tailgate.tickets_sold.present? %>
-    <p class="btn btn-default mobile-booking-button">
-      <%= link_to "SOLD OUT", "#" %>
-    </p>
-  <% else %>
-    <p class="btn btn-primary mobile-booking-button">
-      <%= link_to "Book Now", new_tailgate_booking_url(@tailgate.id) %>
-    </p>
-  <% end %>
+    <% if @tailgate.tickets_sold.present? %>
+      <p class="btn btn-default mobile-booking-button">
+        <%= link_to "SOLD OUT", "#" %>
+      </p>
+    <% else %>
+      <%= link_to new_tailgate_booking_url(@tailgate.id) do %>
+        <p class="btn btn-primary mobile-booking-button">
+          Book Now
+        </p>
+      <% end %>
+    <% end %>
 
   <% end %>
 
@@ -49,44 +53,51 @@
 <!-- BOOKING BUTTONS DESKTOP -->
 
 <div class="col-md-3 col-md-offset-1 booking-block hidden-xs">
-  <% if @tailgate.class == PaidTailgate %>
-  <h3>$<%= @tailgate.price %> per guest</h3>
-  <p><%= @tailgate.current_size %> Spots Remaining</p>
 
-  <% if @tailgate.current_size > 0 %>
-  <p class="btn btn-primary btn-block">
-    <%= link_to "Book Now", new_tailgate_booking_url(@tailgate.id) %>
-  </p>
-  <% else %>
-  <p class="btn btn-default btn-block">
-    <%= link_to "SOLD OUT", "#" %>
-  </p>
-  <% end %>
+  <% if @tailgate.class == PaidTailgate %>
+    <h3>$<%= @tailgate.price %> per guest</h3>
+    <p><%= @tailgate.current_size %> Spots Remaining</p>
+
+    <% if @tailgate.current_size > 0 %>
+      <%= link_to new_tailgate_booking_url(@tailgate.id) do %>
+        <p class="btn btn-primary btn-block">
+          Book Now
+        </p>
+      <% end %>
+
+    <% else %>
+      <p class="btn btn-default btn-block">
+        <%= link_to "SOLD OUT", "#" %>
+      </p>
+    <% end %>
 
   <% elsif @tailgate.class == FreeTailgate %>
     <h3>FREE</h3>
     <p><%= @tailgate.current_size %> Spots Remaining</p>
 
-  <% if @tailgate.current_size > 0 %>
-    <%= link_to new_tailgate_booking_url(@tailgate.id) do %>
-      <p class="btn btn-primary btn-block">
-        RSVP Now
-      </p>
+    <% if @tailgate.current_size > 0 %>
+      <%= link_to new_tailgate_booking_url(@tailgate.id) do %>
+        <p class="btn btn-primary btn-block">
+          RSVP Now
+        </p>
+      <% end %>
+    <% else %>
+      <p class="btn btn-default btn-block"><%= link_to "SOLD OUT", "#" %></p>
     <% end %>
-  <% else %>
-    <p class="btn btn-default btn-block"><%= link_to "SOLD OUT", "#" %></p>
-  <% end %>
 
   <% else @tailgate.class == PackagedTailgate %>
-  <h3>$<%= @tailgate.price %> for group tailgate package</h3>
-  <br>
-  <% if @tailgate.tickets_sold.present? %>
-  <p class="btn btn-default btn-block"><%= link_to "SOLD OUT", "#" %></p>
-  <% else %>
-  <p class="btn btn-primary btn-block">
-    <%= link_to "Book Now", new_tailgate_booking_url(@tailgate.id) %>
-  </p>
-  <% end %>
+    <h3>$<%= @tailgate.price %> for group tailgate package</h3>
+    <br>
+    <% if @tailgate.tickets_sold.present? %>
+      <p class="btn btn-default btn-block"><%= link_to "SOLD OUT", "#" %></p>
+    <% else %>
+      <%= link_to new_tailgate_booking_url(@tailgate.id) do %>
+        <p class="btn btn-primary btn-block">
+          Book Now
+        </p>
+      <% end %>
+    <% end %>
+
   <% end %>
 
   <hr/>
