@@ -185,7 +185,7 @@
           </tr>
         </table>
         <p class="text-justify">
-          <%= @tailgate.description %>
+          <%= @tailgate.description.html_safe %>
         </p>
         <p><strong>Tailgate Start Time:</strong> <%= @tailgate.tailgate_start_time %></p>
       </div>

@@ -36,7 +36,7 @@
       <div class="tab-content">
         <!-- PANELS -->
         <div role="tabpanel" class="tab-pane fade in active" id="description">
-          <%= @tailgate.description %>
+          <%= @tailgate.description.html_safe %>
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="details">
