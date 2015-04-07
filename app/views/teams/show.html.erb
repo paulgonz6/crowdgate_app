@@ -1,19 +1,20 @@
 <div
-class="row text-center team-show-splash"
-id="team-show-splash"
-data-behavior="splash"
-style="background-image: url(<%= @team.background_image %>); border-bottom: 5px solid <%= @team.color %>;">
+  class="row text-center team-show-splash"
+  id="team-show-splash"
+  data-behavior="splash"
+  style=  "background-image: url(<%= @team.background_image %>);
+          border-bottom: 5px solid <%= @team.color %>;">
 
-<div class="team-show-splash-filter">
-  <div class="team-show-text">
-    <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
-        <h1><%= @team.name %></h1>
-        <h3 class="subtext"><%= @team.headline %></h3>
+  <div class="team-show-splash-filter">
+    <div class="team-show-text">
+      <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+          <h1><%= @team.name %></h1>
+          <h3 class="subtext"><%= @team.headline %></h3>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <div class="container">
