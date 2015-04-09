@@ -3,14 +3,10 @@
                     class: 'form-control form-input-fields',
                     placeholder: "Event Name"  %>
   <br>
-  <%= f.text_field  :date,
-                    class: 'form-control form-input-fields',
-                    placeholder: "Event Date"  %>
-  <br>
 
-  <%= f.text_field  :time,
-                    class: 'form-control form-input-fields',
-                    placeholder: "Event Time"  %>
+  <%= f.text_field  :date,
+                    class: 'form-control form-input-fields datetimepicker',
+                    placeholder: "Event Date and Time"  %>
   <br>
 
   <%= f.text_field  :city,

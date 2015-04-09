@@ -7,7 +7,8 @@
       <strong>Event Date:</strong> <%= @tailgate.event.date.strftime('%A, %B %e, %Y') %>
     </li>
     <li class="list-group-item">
-      <strong>Event Time:</strong> Game starts at <%= @tailgate.event.date.strftime('%r') %>
+      <strong>Event Time:</strong>
+      Game starts at <%= @tailgate.event.date.strftime('%I:%M %p') %>
     </li>
     <li class="list-group-item">
       <strong>Venue:</strong> <%= @tailgate.event.venue %>

@@ -19,60 +19,7 @@
 
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-
-      <%= form_tag event_url(@event.id), :method => "patch", :class => "form-horizontal" do %>
-
-        <div class="form-group">
-          <label for="name" class="col-md-2 control-label">Name</label>
-          <div class="col-md-10">
-            <input type="text" class="form-control" name="name" id="name" value="<%= @event.name %>">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="date" class="col-md-2 control-label">Date</label>
-          <div class="col-md-10">
-            <input type="text" class="form-control" id="date" name="date" value="<%= @event.date %>">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="time" class="col-md-2 control-label">Time</label>
-          <div class="col-md-10">
-            <input type="text" class="form-control" name="time" id="time" value="<%= @event.time %>">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="venue" class="col-md-2 control-label">Venue</label>
-          <div class="col-md-10">
-            <input type="text" class="form-control" name="venue" id="venue" value="<%= @event.venue %>">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="city" class="col-md-2 control-label">City</label>
-          <div class="col-md-10">
-            <input type="text" class="form-control" name="city" id="city" value="<%= @event.city %>">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="name" class="col-md-2 control-label">State</label>
-          <div class="col-md-10">
-            <input type="text" class="form-control" name="state" id="state" value="<%= @event.state %>">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary btn-lrg">Update</button>
-            or
-            <small class="text-danger"><%= link_to "Cancel...", events_url %></small>
-          </div>
-        </div>
-      <% end %>
-
+      <%= render 'form_for_event', {:event => @event} %>
     </div>
   </div>
 </div>

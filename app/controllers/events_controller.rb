@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :is_user_admin?
+  before_action :set_event, :only => [:edit, :update, :destroy]
 
   def new
     @event = Event.new
@@ -28,18 +29,10 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find_by({ :id => params[:id]})
   end
 
   def update
-    @event = Event.find_by({ :id => params[:id]})
-
-    @event.name = params[:name]
-    @event.date = params[:date]
-    @event.time = params[:time]
-    @event.venue = params[:venue]
-    @event.city = params[:city]
-    @event.state = params[:state]
+    @event.update_attributes(event_params)
 
     if @event.save
       redirect_to(events_url)
@@ -50,8 +43,8 @@ class EventsController < ApplicationController
 
 
   def destroy
-    event = Event.find(params[:id])
-    event.destroy
+    @event.destroy
+    flash[:warning] = "Event ##{@event.id} deleted."
     redirect_to(events_url)
   end
 
@@ -86,6 +79,10 @@ class EventsController < ApplicationController
   private
     def event_params
       params.require(:event).permit(:name, :date, :time, :venue, :city, :state, :home_team_id, :away_team_id)
+    end
+
+    def set_event
+      @event = Event.find(params[:id])
     end
 
 end
