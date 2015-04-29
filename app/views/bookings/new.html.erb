@@ -10,6 +10,13 @@
             </a>
           </div>
         <% end %>
+
+        <% if @tailgate.class == FreeTailgate %>
+          <div class="alert alert-info" role="alert">
+            If you can not attend the tailgate, but would still like to make a donation, select zero tickets in your RSVP. Thanks so much for your willingness to contribute.
+          </div>
+        <% end %>
+
         <h3><%= @tailgate.name %></h3>
         <h4>
           <small>
@@ -61,6 +68,7 @@
     <% end %>
   <% else %>
     <div class="row">
+
       <%= render 'rsvp_block', { :@booking => @booking } %>
     </div>
   <% end %>

@@ -40,9 +40,9 @@
         <div class="form-group">
           <%= f.label :quantity, "How many tickets do you want?" %>
           <%= f.select :quantity,
-                        options_for_select(1..@tailgate.current_size),
+                        options_for_select(0..@tailgate.current_size),
                         {},
-                        :class => 'form-control' %>
+                        :class => 'form-control', :selected => 1 %>
         </div>
 
         <p class='btn btn-warning btn-block donation-button' style="white-space: normal;">
