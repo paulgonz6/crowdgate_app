@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="page-header">
-      <h3>Tell us how "<%= @tailgate.name %>" was! </h3>
+      <h3>How was your tailgate "<%= @tailgate.name %>"? </h3>
     </div>
   </div>
 
@@ -22,13 +22,13 @@
       </div> -->
 
       <div class="form-group">
-        <%= f.label  :review, "Tell us how you thought #{@tailgate.host_name} did as the tailgate host", class: "control-label" %>
+        <%= f.label  :review, "How did #{@tailgate.host.short_name} do as the tailgate host?", class: "control-label" %>
         <%= f.text_area :review, rows: 5, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label  :rating, "Rating: 1 to 5", class: "control-label" %>
-        <%= f.select :rating, options_for_select(@rating), {}, class: 'form-control' %>
+        <%= f.label  :rating, "Rating: 1 to 5 (5 is the best!)", class: "control-label" %>
+        <%= f.select :rating, options_for_select(@rating, 5), {}, class: 'form-control' %>
       </div>
 
       <%= f.submit "Create Review", class: "btn btn-primary" %>
