@@ -1,0 +1,59 @@
+<div class="col-md-12 giveaway-alert animated fadeInUp">
+  <h3>
+    <strong>Sign up now for a chance to win over $300 of tailgating gear!</strong>
+  </h3>
+  <br>
+  <div class="col-md-12 form-inputs">
+    <%= form_tag('/promo_mailing_list', class: 'form-inline', :remote => true) do %>
+
+    <div class="form-group">
+      <label  class="sr-only">Email</label>
+      <input  type="email"
+      name="email"
+      class="form-control form-input-fields"
+      placeholder="Enter Your Email">
+    </div>
+
+    <button type="submit" class="btn btn-success">Enter to win</button>
+
+    <% end %>
+
+    <br>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-md-offset-2">
+      <%= image_tag "https://americanrec.app.box.com/representation/file_version_21520643941/image_2048_jpg/1.jpg?shared_name=evuq96ofg1qpt7cfv4su7ozllva43nhe",
+      class: 'img-responsive promo-pics' %>
+    </div>
+    <div class="col-md-2">
+      <%= image_tag "https://americanrec.app.box.com/representation/file_version_11434972864/image_2048_jpg/1.jpg?shared_name=3fczs91alsk7ocg2f1dp5g6q0m04aoko",
+      class: 'img-responsive promo-pics' %>
+    </div>
+    <div class="col-md-2">
+      <%= image_tag "https://americanrec.app.box.com/representation/file_version_11435756002/image_2048_jpg/1.jpg?shared_name=iyzz9vh70kr1do63b4daqmvc84fuqf75",
+      class: 'img-responsive promo-pics' %>
+    </div>
+    <div class="col-md-2">
+      <%= image_tag "https://americanrec.app.box.com/representation/file_version_25185274274/image_2048_jpg/1.jpg?shared_name=lw6ccalu78khchzugzty8z0xuh5podbv",
+      class: 'img-responsive promo-pics' %>
+    </div>
+  </div>
+  <br>
+  <h4 class="subtext">
+    Designed and tested to be durable, easy to travel with and hassle free, Tailgaterz gear elevates your Tailgating experience to the next level. This Tailgaterz prize package covers all your basic needs and is valued at over $300.
+  </h4>
+  <h6><em>Your email will be added to the Crowdgate and Tailgaterz mailing lists</em></h6>
+</div>
+
+<div class="col-md-12 giveaway-thank-you animated pulse">
+  <h3>
+    <strong>Thank you for signing up, we will contact you if you win. Good luck!</strong>
+  </h3>
+</div>
+
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $(".giveaway-alert").delay(4000).slideToggle();
+  });
+</script>

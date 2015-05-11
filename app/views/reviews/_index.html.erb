@@ -14,8 +14,13 @@
         <% @tailgate.reviews.each do |review|  %>
         <div class="row review-listing">
           <div class="col-md-3 text-center">
-            <%= image_tag review.user.image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
-            <h6><%= review.user.short_name %></h6>
+            <% if review.user.present? %>
+              <%= image_tag review.user.image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
+              <h6><%= review.user.short_name %></h6>
+            <% else %>
+            <%= image_tag "no-photo.png", :class => "img-circle host-image", :width => "75px", :height => "auto" %>
+              <h6>Annonymous</h6>
+            <% end %>
           </div>
           <div class="col-md-9 text-justify">
             <p>

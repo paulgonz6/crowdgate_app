@@ -28,6 +28,10 @@ class Tailgate < ActiveRecord::Base
     current_size == 0
   end
 
+  def host_name
+    self.host.name
+  end
+
   def host_experience
     user.hosting_experience
   end

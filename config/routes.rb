@@ -4,6 +4,9 @@ Rails.application.routes.draw do
                           { registrations: 'users/registrations',
                             sessions: 'users/sessions' }
 
+  post '/promo_mailing_list', :controller => 'static_pages',
+                              :action => 'promo_mailing_list'
+
   resources   :users, :only => ['index', 'show', 'edit']
 
   get '/account',             :controller => 'users',
