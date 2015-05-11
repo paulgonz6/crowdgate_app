@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     @review.tailgate = @tailgate
 
     if @review.save
-      flash[:success] = "Thank you for writing a review about #{@tailgate.name}. See other tailgates from this host below."
+      flash[:success] = "Thank you for the feedback. See other tailgates from this host below."
       redirect_to user_url(@tailgate.host)
     else
       render 'new'
