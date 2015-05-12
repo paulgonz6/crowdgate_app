@@ -58,7 +58,10 @@ class EventsController < ApplicationController
 
     @events.each do |event|
       new_event = Event.new
-      new_event.name = event["title"]
+
+      title_array = event["title"].split('.vs')
+      new_event.name = title_array[1].strip + " vs. " + title_array[0].strip
+
       new_event.venue = event["venue_name"]
       new_event.city = event["city_name"]
       new_event.state = event["region_abbr"]
