@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  default_scope { order('id DESC') }
+
   has_many  :tailgates, dependent: :destroy
   validates :name, presence: true, :uniqueness => true
 
