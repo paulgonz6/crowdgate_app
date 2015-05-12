@@ -24,15 +24,15 @@
         </div>
         <div class="panel-body">
           <% @tailgates.each do |tailgate| %>
-          <p>
-            <%= tailgate.event.name %> |
-            <small><%= tailgate.event.date.strftime('%A, %B %e, %Y') %></small>
-          </p>
-
-          <hr/>
 
           <% if tailgate.current_size.nil? || tailgate.current_size > 0 %>
-          <div class='row tailgate-listing'>
+          <br>
+          <strong>
+              <%= tailgate.event.name %> |
+              <small><%= tailgate.event.date.strftime('%A, %B %e, %Y') %></small>
+          </strong>
+
+          <div class="row tailgate-listing">
             <div class="col-md-4 tailgate-listing-image" style="background-image: url(<%= tailgate.image_1 %>);">
               <% if tailgate.class == PaidTailgate %>
               <div class="tailgate-listing-price">
@@ -94,11 +94,11 @@
           <div class="row review-listing">
             <div class="col-md-3 text-center">
               <% if review.user.present? %>
-                <%= image_tag review.user.image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
-                <h6><%= review.user.short_name %></h6>
+              <%= image_tag review.user.image, :class => "img-circle host-image", :width => "75px", :height => "auto" %>
+              <h6><%= review.user.short_name %></h6>
               <% else %>
               <%= image_tag "no-photo.png", :class => "img-circle host-image", :width => "75px", :height => "auto" %>
-                <h6>Anonymous</h6>
+              <h6>Anonymous</h6>
               <% end %>
             </div>
             <div class="col-md-9 text-justify">
