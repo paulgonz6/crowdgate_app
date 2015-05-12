@@ -21,13 +21,13 @@
       <p>
         Reviews: <%= @user.reviews_as_host.count %>
       </p>
-      <p>
+<!--       <p>
         Sales Percentage:
         <%= number_to_percentage(@user.sales_percentage*100, precision: 0) %>
       </p>
       <p>
         Total earnings: <%= number_to_currency(@user.sales.sum(:ticket_sales)) %>
-      </p>
+      </p> -->
     <% end %>
   </div>
 </div>
