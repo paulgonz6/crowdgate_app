@@ -13,6 +13,7 @@ class Tailgate < ActiveRecord::Base
   scope :free_tailgates,      -> { where(:type => 'FreeTailgate') }
   scope :paid_tailgates,      -> { where(:type => 'PaidTailgate') }
   scope :packaged_tailgates,  -> { where(:type => 'PackagedTailgate') }
+  scope :live_tailgates,      -> { where(:live => true) }
 
   # TODO: I think I would store values like this in a constant instead of a method
   # http://rubylearning.com/satishtalim/ruby_constants.html

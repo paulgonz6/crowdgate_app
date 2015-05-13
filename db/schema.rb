@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304213301) do
+ActiveRecord::Schema.define(version: 20150513155754) do
 
   create_table "bookings", force: true do |t|
     t.datetime "created_at",                                               null: false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20150304213301) do
     t.integer "original_size"
     t.integer "current_size"
     t.integer "host_id"
+    t.boolean "live",                 default: true
   end
 
   create_table "teams", force: true do |t|

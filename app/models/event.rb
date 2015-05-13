@@ -7,6 +7,6 @@ class Event < ActiveRecord::Base
   validates_presence_of :date, :venue, :city, :state
 
   def live_tailgates
-    self.tailgates.where("current_size > ?", 0)
+    self.tailgates.where("current_size > ?", 0) && self.tailgates.where("live = ?", true)
   end
 end

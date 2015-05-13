@@ -27,7 +27,7 @@ class Team < ActiveRecord::Base
     games = self.games
     games.each do |game|
       game.tailgates.each do |tailgate|
-        if tailgate.current_size > 0
+        if tailgate.current_size > 0 && tailgate.live?
           tailgates << tailgate
         end
       end

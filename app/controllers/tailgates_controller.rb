@@ -37,6 +37,10 @@ class TailgatesController < ApplicationController
   end
 
   def show
+    unless @tailgate.live?
+      flash[:warning] = "That tailgate is no longer live, sorry about that!"
+      redirect_to team_url(@tailgate.event.home_team_id)
+    end
   end
 
   def edit

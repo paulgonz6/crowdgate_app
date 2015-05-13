@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @tailgates = @user.tailgates
+    @tailgates = @user.tailgates.live_tailgates
     @reviews = @user.reviews_as_host
   end
 
