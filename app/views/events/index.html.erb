@@ -13,7 +13,10 @@
           <th>Name</th>
           <th>Venue</th>
           <th>City</th>
-          <th>State</th>
+
+          <th>Time</th>
+          <th>Home Team</th>
+          <th>Away Team</th>
           <th></th>
           <th></th>
         </thead>
@@ -23,7 +26,11 @@
             <td><%= event.name %></td>
             <td><%= event.venue %></td>
             <td><%= event.city %></td>
-            <td><%= event.state %></td>
+
+            <td><%= event.date.in_time_zone('Eastern Time (US & Canada)').strftime('%b %e, %Y %I:%M %p %Z') %></td>
+            <td><%= event.home_team.try(:name) %></td>
+            <td><%= event.away_team.try(:name) %></td>
+
             <td>
               <p class="btn btn-default btn-block">
                 <%= link_to "Edit", edit_event_url(event.id) %>
