@@ -55,6 +55,10 @@ Rails.application.routes.draw do
 
   get '/testing_page' => "static_pages#testing_page"
 
+  get '/tos' => "static_pages#tos", as: 'tos'
+
+  get '/privacy' => "static_pages#privacy", as: 'privacy'
+
 
 
 # EVENTS ROUTES ==============================================================================

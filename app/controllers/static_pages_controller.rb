@@ -12,6 +12,12 @@ class StaticPagesController < ApplicationController
   def press
   end
 
+  def tos
+  end
+
+  def privacy
+  end
+
   def promo_mailing_list
     # gb = Gibbon::API.new(ENV['mail_chimp_api'])
 
