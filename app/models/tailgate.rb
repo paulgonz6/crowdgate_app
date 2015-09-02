@@ -37,6 +37,10 @@ class Tailgate < ActiveRecord::Base
     user.hosting_experience
   end
 
+  def live?
+    event.date > DateTime.now
+  end
+
   def adjust_size(quantity)
     self.with_lock do
       if quantity > self.current_size
