@@ -11,36 +11,21 @@
                 padding-top: 25px;">
   <div class="col-md-10 col-md-offset-1">
     <div class="row" style="color: white;">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <h4>College Football</h4>
         <hr/>
         <ul class="list-unstyled">
           <% Team.college_football.each do |team|  %>
-            <% if team.total_live_tailgates.count > 0 %>
-              <li><%= link_to team.name, team %></li>
-            <% end %>
+            <li><%= link_to team.name, team %></li>
           <% end %>
         </ul>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <h4>NFL</h4>
         <hr/>
         <ul class="list-unstyled">
           <% Team.nfl.each do |team|  %>
-            <% if team.total_live_tailgates.count > 0 %>
-              <li><%= link_to team.name, team %></li>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h4>College Baseball</h4>
-        <hr/>
-        <ul class="list-unstyled">
-          <% Team.college_baseball.each do |team|  %>
-            <% if team.total_live_tailgates.count > 0 %>
-              <li><%= link_to team.name, team %></li>
-            <% end %>
+            <li><%= link_to team.name, team %></li>
           <% end %>
         </ul>
       </div>
