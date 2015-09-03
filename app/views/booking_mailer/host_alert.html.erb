@@ -31,12 +31,13 @@
               <%= @booking.quantity %>
             </li>
             <li class="list-group-item">
-              <% if @booking.donation_amount.present? %>
+              <% if @booking.donation_amount > 0 %>
                 <strong>Donation Amount:</strong>
+                <%= number_to_currency(@booking.donation_amount) %>
               <% else %>
                 <strong>Ticket Sales:</strong>
+                <%= number_to_currency(@booking.ticket_sales) %>
               <% end %>
-              <%= number_to_currency(@booking.ticket_sales) %>
             </li>
             <li class="list-group-item">
               <strong>Buyer:</strong>

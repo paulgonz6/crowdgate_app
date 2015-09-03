@@ -4,10 +4,6 @@ class TeamsController < ApplicationController
   before_action :is_user_admin?, :only => [:new, :create, :update, :edit, :destroy]
   before_action :find_team, :only => [:show]
 
-  def find_team
-    @team = Team.find(params[:id])
-  end
-
   def new
     @team = Team.new
   end
@@ -58,6 +54,10 @@ class TeamsController < ApplicationController
   end
 
   private
+
+    def find_team
+      @team = Team.find(params[:id])
+    end
 
     def team_params
       params.require(:team).permit(:headline, :name, :background_image, :color, :sport)
