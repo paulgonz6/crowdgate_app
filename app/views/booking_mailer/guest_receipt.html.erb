@@ -38,7 +38,7 @@
             <ul class="list-group">
               <li class="list-group-item">
                 <strong>Event Date:</strong>
-                <%= @booking.tailgate.event.date.strftime('%A, %B %e, %Y') %>
+                <%= @booking.tailgate.event.date.in_time_zone('Eastern Time (US & Canada)').strftime('%A, %B %e, %Y') %>
               </li>
               <li class="list-group-item">
                 <strong>Tailgate Start Time:</strong>
@@ -53,10 +53,6 @@
                 <%= @booking.tailgate.host.phone %>
               </li>
             </ul>
-
-            <p>
-              On game day, the tailgate host will contact you with their exact location. If you included your mobile phone number during checkout, you will get a text that day with the information.
-            </p>
 
             <p>
               If you have any questions, please do not hesitate to contact the host directly. Also, anytime before game day, you can reply to this email directly and I will help you out.

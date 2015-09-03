@@ -9,7 +9,7 @@
           <small>
             <%= event.city %>,
             <%= event.state %>,
-            <%= event.date.strftime('%A, %B %e, %Y') %>,
+            <%= event.date.in_time_zone('Eastern Time (US & Canada)').strftime('%A, %B %e, %Y') %>,
             Game starts at <%= event.date.in_time_zone('Eastern Time (US & Canada)').strftime('%I:%M %p %Z') %>
           </small>
         </h3>

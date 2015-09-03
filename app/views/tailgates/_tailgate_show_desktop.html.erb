@@ -8,7 +8,7 @@
             <%= @tailgate.event.venue %>,
             <%= @tailgate.event.city %>,
             <%= @tailgate.event.state %><br>
-            <%= @tailgate.event.date.strftime('%A, %B %e, %Y') %>,
+            <%= @tailgate.event.date.in_time_zone('Eastern Time (US & Canada)').strftime('%A, %B %e, %Y') %>,
             Game starts at <%= @tailgate.event.date.in_time_zone('Eastern Time (US & Canada)').strftime('%I:%M %p %Z') %>
           </small>
         </h4>

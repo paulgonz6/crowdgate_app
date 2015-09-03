@@ -4,7 +4,7 @@
   </div>
   <ul class="list-group" style="font-size: 12px">
     <li class="list-group-item">
-      <strong>Event Date:</strong> <%= @tailgate.event.date.strftime('%A, %B %e, %Y') %>
+      <strong>Event Date:</strong> <%= @tailgate.event.date.in_time_zone('Eastern Time (US & Canada)').strftime('%A, %B %e, %Y') %>
     </li>
     <li class="list-group-item">
       <strong>Event Time:</strong>

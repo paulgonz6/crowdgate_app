@@ -7,7 +7,7 @@
           <small>
             <%= @booking.tailgate.event.name %>,
             <%= @booking.tailgate.event.venue %>,
-            <%= @booking.tailgate.event.date.strftime('%A, %B %e, %Y') %>
+            <%= @booking.tailgate.event.date.in_time_zone('Eastern Time (US & Canada)').strftime('%A, %B %e, %Y') %>
           </small>
         </h4>
       </div>
