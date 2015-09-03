@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  default_scope { order('id DESC') }
+  default_scope { order('date ASC') }
 
   has_many  :tailgates, dependent: :destroy
   validates :name, presence: true, :uniqueness => true
